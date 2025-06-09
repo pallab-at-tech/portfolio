@@ -22,6 +22,7 @@ body {
 @theme {
   --color-primary-dark: #242629;
   --color-secoundary-dark: #ff8e3c;
+  --color-terniary-dark : #fc5e03;
   --color-primary-text: #ededed;
 }
 
