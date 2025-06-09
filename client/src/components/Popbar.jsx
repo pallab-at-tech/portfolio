@@ -14,7 +14,7 @@ const Popbar = () => {
     
 
     return (
-        <div className='relative'>
+        <div className='relative z-10'>
             <FaChevronCircleUp size={20} onClick={() => {
                 setClosePopUp(!closePopUp)
             }} />

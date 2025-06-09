@@ -27,7 +27,7 @@ const Header = () => {
 
         <div className='flex justify-center items-center'>Logo</div>
 
-        <div className='lg:gap-12 md:gap-4 justify-center items-center text-primary-text lg:flex md:flex hidden'>
+        <div className='lg:gap-12 md:gap-4 justify-center items-center text-primary-text lg:flex md:flex hidden relative z-10'>
           <NavLink to={""} className={({ isActive }) =>
             isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
           }>Home <ActiveUnderline active={isHomeActive} /></NavLink>
