@@ -21,9 +21,9 @@ const Header = () => {
 
 
   return (
-    <header className='h-18 bg-white dark:bg-primary-dark text-white w-full'>
+    <header className='h-[72px] bg-white dark:bg-primary-dark text-white w-full fixed top-0 z-50'>
 
-      <div className='grid lg:grid-cols-[2fr_1fr_2fr] md:grid-cols-[2fr_1fr_2fr] grid-cols-2 justify-between gap-35 w-full h-full'>
+      <div className='grid lg:grid-cols-[2fr_1fr_2fr] md:grid-cols-[2fr_1fr_2fr] grid-cols-2 justify-between gap-35 w-full h-full relative z-50'>
 
         <div className='flex justify-center items-center'>Logo</div>
 
@@ -53,9 +53,9 @@ const Header = () => {
           }>Contact <ActiveUnderline active={isContactActive} /></NavLink>
         </div>
 
-        <div className='flex justify-center items-center w-full cursor-pointer'>
+        <div className='flex justify-center items-center w-full cursor-pointer '>
 
-          <Popbar/>
+          <Popbar />
 
         </div>
 
