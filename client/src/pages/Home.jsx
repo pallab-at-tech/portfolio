@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { LuChevronsDown } from "react-icons/lu";
 import About from './About'
 import Education from "./Education"
+import Projects from './Projects';
 
 import b from "../assets/leave.png"
 import Header from '../components/Header';
@@ -78,7 +79,10 @@ const Home = () => {
 
       {/* <About/> */}
 
+
+
       <Education/>
+      <Projects/>
     </div>
   )
 }

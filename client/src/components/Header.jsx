@@ -36,17 +36,17 @@ const Header = () => {
             isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
           }>About <ActiveUnderline active={isAboutActive} /></NavLink>
 
-          <NavLink to={"/education"} className={({ isActive }) =>
+          <NavLink to={"/projects"} className={({ isActive }) =>
             isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
-          }>Education <ActiveUnderline active={isEducationActive} /></NavLink>
+          }>Projects <ActiveUnderline active={isProjectsActive} /></NavLink>
 
           <NavLink to={"/skills"} className={({ isActive }) =>
             isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
           }>Skills <ActiveUnderline active={isSkillActive} /></NavLink>
 
-          <NavLink to={"/projects"} className={({ isActive }) =>
+          <NavLink to={"/education"} className={({ isActive }) =>
             isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
-          }>Projects <ActiveUnderline active={isProjectsActive} /></NavLink>
+          }>Education <ActiveUnderline active={isEducationActive} /></NavLink>
 
           <NavLink to={"/contact"} className={({ isActive }) =>
             isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
