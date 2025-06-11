@@ -21,7 +21,7 @@ const Header = () => {
 
 
   return (
-    <header className='h-[72px] bg-white dark:bg-primary-dark text-white w-full fixed top-0 z-50'>
+    <header className='h-[72px] bg-primary-dark text-white w-full fixed top-0 z-50'>
 
       <div className='grid lg:grid-cols-[2fr_1fr_2fr] md:grid-cols-[2fr_1fr_2fr] grid-cols-2 justify-between gap-35 w-full h-full relative z-50'>
 

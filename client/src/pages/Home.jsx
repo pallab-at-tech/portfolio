@@ -17,22 +17,39 @@ const Home = () => {
   return (
 
     <div className=''>
-      <div className='min-h-[calc(100vh)] bg-primary-dark pt-[72px]'>
+      <div className='min-h-screen  bg-primary-dark pt-[72px]'>
 
-        <div className='grid grid-cols-[2fr_3fr] mx-10 pt-14'>
+        <div className='grid lg:grid-cols-[2fr_3fr] lg:mx-10 md:mx-[140px]  mx-7 lg:pt-14 md:pt-14'>
 
-          <div className='flex items-center justify-center p-3 mt-14 lg:pl-16'>
+          {/* for desktop */}
+          <div className='items-center justify-center p-3 mt-14 lg:pl-16 lg:flex  hidden'>
             <div className='relative'>
-              <span className='corner top-left'></span>
-              <span className='corner1 bottom-right'></span>
-              <img src={pic} alt="" className='w-[220px] h-[254px] rounded-[40px] m-3 hover:scale-110 transition-all' />
+              <span className='corner top-left '></span>
+              <span className='corner1 bottom-right '></span>
+              <img src={pic} alt="" className='w-[220px] h-[254px] rounded-[40px] m-3 hover:scale-110 transition-all ' />
+            </div>
+          </div>
+
+          {/* for tablet */}
+           <div className='items-center justify-center p-3 mt-6 lg:hidden md:flex hidden'>
+            <div className='relative'>
+              <span className='corner top-left '></span>
+              <span className='corner1 bottom-right '></span>
+              <img src={pic} alt="" className='w-[220px] h-[234px] object-top m-4 object-cover rounded-2xl' />
+            </div>
+          </div>
+
+          {/* for mobile */}
+           <div className='items-center justify-center p-3 mt-6 flex md:hidden'>
+            <div className='relative'>
+              <img src={pic} alt="" className='w-[180px] h-[180px] object-top object-cover rounded-full' />
             </div>
           </div>
 
           <div className='flex'>
-            <div className='text-primary-text flex-col extra-font-style flex items-start mt-18 justify-start text-5xl relative z-10'>
-              <div className='grid gap-0.5'>
-                <p className='pb-2'>Hi  {" "}, </p>
+            <div className='text-primary-text flex-col extra-font-style flex items-start lg:mt-14 md:mt-[20%] mt-5 justify-start md:text-5xl text-3xl relative z-10'>
+              <div className='flex flex-col gap-0.5'>
+                <p className='md:pb-2'>Hi  {" "}, </p>
                 <p className=''> i am ,{" "}<span className='text-terniary-dark'>Pallab Bag</span></p>
                 <p className=''>Full <span className='text-[#59b806]'>stack</span> developer</p>
               </div>
@@ -43,7 +60,7 @@ const Home = () => {
                 </p>
               </div>
 
-              <div className='flex mt-6 items-center gap-7'>
+              <div className='flex lg:mt-6 md:mt-12 mt-9 items-center lg:gap-7 md:gap-10 gap-5'>
                 <div className='bg-terniary-dark  rounded flex items-center pl-0.5 cursor-pointer hover:bg-[#f04f0a]'>
                   <IoMdDownload size={20} />
                   <p className='text-base px-2 py-1.5'>Resume</p>
@@ -59,7 +76,7 @@ const Home = () => {
 
             </div>
 
-            <div className='overflow-hidden absolute right-15 bottom-55 rotate-185 z-5 scale-120 object-scale-down select-none'>
+            <div className='overflow-hidden absolute right-15 bottom-55 rotate-185 z-5 scale-120 object-scale-down select-none lg:block  hidden'>
               <img src={b} alt="" className="h-[500px] z-0" />
             </div>
 
@@ -73,7 +90,7 @@ const Home = () => {
 
         </div>
 
-        <div className='flex items-center justify-center h-full mt-14 pt-14 text-primary-text'><LuChevronsDown size={30} /></div>
+        <div className='items-center justify-center h-full mt-14 pt-14 text-primary-text flex sm:static relative bottom-7'><LuChevronsDown size={30} /></div>
 
       </div>
 
