@@ -60,3 +60,8 @@ body {
   border-left: none;
   border-bottom-right-radius: 50px;
 }
+
+/* decorate scroll bar */
+.scrollbar-none::-webkit-scrollbar{
+    display: none;
+}
