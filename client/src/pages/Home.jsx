@@ -19,7 +19,7 @@ const Home = () => {
     <div className=''>
       <div className='min-h-screen  bg-primary-dark pt-[72px]'>
 
-        <div className='grid lg:grid-cols-[2fr_3fr] lg:mx-10 md:mx-[140px]  mx-7 p-10 md:p-0 lg:pt-14 md:pt-14'>
+        <div className='grid lg:grid-cols-[2fr_3fr] lg:mx-10 md:mx-[140px] pt-2  p-10 md:p-0 lg:pt-14 md:pt-14'>
 
           {/* for desktop */}
           <div className='items-center justify-center p-3 mt-14 lg:pl-16 lg:flex  hidden'>
@@ -40,21 +40,21 @@ const Home = () => {
           </div>
 
           {/* for mobile */}
-           <div className='items-center justify-center p-3 mt-6 flex md:hidden'>
+           <div className='items-center justify-center flex md:hidden'>
             <div className='relative'>
               <img src={pic} alt="" className='w-[180px] h-[180px] object-top object-cover rounded-full' />
             </div>
           </div>
 
           <div className='flex'>
-            <div className='text-primary-text flex-col extra-font-style flex items-start lg:mt-14 md:mt-[20%] mt-5 justify-start md:text-5xl text-3xl relative z-10'>
+            <div className='text-primary-text flex-col extra-font-style flex items-start lg:mt-14 md:mt-[20%] mt-1 justify-start md:text-5xl text-3xl relative z-10'>
               <div className='flex flex-col gap-0.5'>
                 <p className='md:pb-2'>Hi  {" "}, </p>
                 <p className=''> i am ,{" "}<span className='text-terniary-dark'>Pallab Bag</span></p>
                 <p className=''>Full <span className='text-[#59b806]'>stack</span> developer</p>
               </div>
 
-              <div className='text-sm mt-5 lg:w-[60%] text-[#747573]'>
+              <div className='text-sm mt-1 md:mt-5 lg:w-[60%] text-[#747573]'>
                 <p>
                   A goal-oriented software developer with experience in building applications using modern technologies like <span className='text-[#59b806]'>React, MongoDB, Express.js, Node.js, and more</span>. I am seeking to leverage my technical skills to deliver exceptional user experiences.
                 </p>

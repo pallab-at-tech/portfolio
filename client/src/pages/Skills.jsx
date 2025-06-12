@@ -16,7 +16,7 @@ import { SiExpress } from "react-icons/si";
 
 const Skills = () => {
   return (
-    <section className='bg-primary-black md:p-20 p-10 text-primary-text extra-font-style pt-10'>
+    <section className='bg-primary-black  p-10 text-primary-text extra-font-style pt-10 md:p-14  pb-5'>
       <h1 className='font-bold text-2xl md:pl-6'>My Skills</h1>
       <p className='md:pl-6 pt-1 text-[#cbd5e1] text-sm pb-8'>Technology and tools i have work with throughout my projects and experience</p>
 
@@ -28,7 +28,7 @@ const Skills = () => {
 
             <h2 className='pl-2.5'>Front-End</h2>
 
-            <div className='flex gap-5 flex-wrap text-sm pt-3'>
+            <div className='flex flex-wrap text-sm pt-3'>
 
               <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
                 <div className='bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 light-yellow-shadow'>

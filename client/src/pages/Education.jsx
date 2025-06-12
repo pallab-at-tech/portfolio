@@ -4,15 +4,15 @@ import { IoSchoolOutline } from "react-icons/io5";
 
 const Education = () => {
   return (
-    <section className='bg-primary-black p-20'>
-      <div className='text-primary-text extra-font-style w-full flex justify-center items-center'>
+    <section className='bg-primary-black'>
+      <div className='text-primary-text extra-font-style w-full flex justify-start items-center md:p-20   p-10 pb-5'>
 
         <div>
           <p className='font-bold text-2xl mb-3'>Education</p>
 
           <div className='tracking-wide pb-4'>
             <div className='text-lg pb-1 flex gap-2 items-center'>
-              <div className='p-1 bg-[#5a5a5a3a] rounded-md hover:text-primary-dark hover:bg-[#9b9a9a] hover:scale-110'><LuSchool /></div>
+              <div className='p-1 bg-[#5a5a5a3a] rounded-md hover:text-primary-dark hover:bg-[#9b9a9a] hover:scale-110 md:block hidden'><LuSchool /></div>
               <p>MCKV Institute Of Engineering , Liluah , Howrah</p>
             </div>
             <div className='text-sm text-[#747573]'>
@@ -23,11 +23,11 @@ const Education = () => {
 
           <div className='tracking-wide'>
             <div className='text-lg pb-1 flex gap-2 items-cente'>
-              <div className='p-1 bg-[#5a5a5a3a] rounded-md hover:text-[#070707] hover:bg-[#9b9a9a] hover:scale-110'><IoSchoolOutline/></div>
+              <div className='p-1 bg-[#5a5a5a3a] rounded-md hover:text-[#070707] hover:bg-[#9b9a9a] hover:scale-110 md:block hidden'><IoSchoolOutline/></div>
               <p>Singur MahaMaya High School , Singur , Hooghly</p>
             </div>
             <div className='text-sm text-[#747573]'>
-              <ul className='list-disc flex gap-16'>
+              <ul className='list-disc pl-6 flex gap-16'>
                 <li>
                   <p>High Secoundary , Science</p>
                   <p>jan 2022 - jul 2023 , score : 80%</p>

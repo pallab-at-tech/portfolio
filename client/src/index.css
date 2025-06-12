@@ -62,8 +62,21 @@ body {
 }
 
 /* decorate scroll bar */
-.scrollbar-none::-webkit-scrollbar{
+/* .scrollbar-none::-webkit-scrollbar{
     display: none;
+} */
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1; 
+  border-radius: 15px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #1a1a1a;
 }
 
 /* adding box shadow */
