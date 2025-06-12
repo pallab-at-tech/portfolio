@@ -11,7 +11,7 @@ import Education from "./Education"
 import Projects from './Projects';
 
 import b from "../assets/leave.png"
-import Header from '../components/Header';
+import Skills from './Skills';
 
 const Home = () => {
   return (
@@ -100,6 +100,7 @@ const Home = () => {
 
       <Education/>
       <Projects/>
+      <Skills/>
     </div>
   )
 }

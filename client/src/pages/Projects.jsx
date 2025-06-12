@@ -11,7 +11,7 @@ import { SiVite } from "react-icons/si";
 
 const Projects = () => {
   return (
-    <section className='bg-primary-black p-20 pt-0 text-primary-text extra-font-style'>
+    <section className='bg-primary-black p-20 pt-0 text-primary-text extra-font-style pt-10'>
       <p className='font-bold text-2xl mb-6 pl-6'>project ShowCase</p>
       <div className='w-full'>
 
