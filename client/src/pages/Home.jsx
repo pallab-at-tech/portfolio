@@ -12,6 +12,8 @@ import Projects from './Projects';
 
 import b from "../assets/leave.png"
 import Skills from './Skills';
+import Contact from './Contact';
+import MarginBottom from '../utils/MarginBottom';
 
 const Home = () => {
   return (
@@ -31,7 +33,7 @@ const Home = () => {
           </div>
 
           {/* for tablet */}
-           <div className='items-center justify-center p-3 mt-6 lg:hidden md:flex hidden'>
+          <div className='items-center justify-center p-3 mt-6 lg:hidden md:flex hidden'>
             <div className='relative'>
               <span className='corner top-left '></span>
               <span className='corner1 bottom-right '></span>
@@ -40,7 +42,7 @@ const Home = () => {
           </div>
 
           {/* for mobile */}
-           <div className='items-center justify-center flex md:hidden'>
+          <div className='items-center justify-center flex md:hidden'>
             <div className='relative'>
               <img src={pic} alt="" className='w-[180px] h-[180px] object-top object-cover rounded-full' />
             </div>
@@ -84,7 +86,7 @@ const Home = () => {
               <img src={b} alt="" className="" />
             </div> */}
 
-            
+
 
           </div>
 
@@ -98,9 +100,13 @@ const Home = () => {
 
 
 
-      <Education/>
-      <Projects/>
-      <Skills/>
+      <Education />
+      <Projects />
+      <Skills />
+
+
+
+      <Contact />
     </div>
   )
 }
