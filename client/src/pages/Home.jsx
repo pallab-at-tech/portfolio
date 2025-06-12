@@ -19,7 +19,7 @@ const Home = () => {
     <div className=''>
       <div className='min-h-screen  bg-primary-dark pt-[72px]'>
 
-        <div className='grid lg:grid-cols-[2fr_3fr] lg:mx-10 md:mx-[140px]  mx-7 lg:pt-14 md:pt-14'>
+        <div className='grid lg:grid-cols-[2fr_3fr] lg:mx-10 md:mx-[140px]  mx-7 p-10 md:p-0 lg:pt-14 md:pt-14'>
 
           {/* for desktop */}
           <div className='items-center justify-center p-3 mt-14 lg:pl-16 lg:flex  hidden'>
