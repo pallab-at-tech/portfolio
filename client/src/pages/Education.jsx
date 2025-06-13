@@ -5,7 +5,7 @@ import { IoSchoolOutline } from "react-icons/io5";
 const Education = () => {
   return (
     <section className='bg-primary-black'>
-      <div className='text-primary-text extra-font-style w-full flex justify-start items-center md:p-20   p-10 pb-5'>
+      <div className='text-primary-text extra-font-style w-full flex justify-start items-center md:px-20   px-10 pb-5 pt-10'>
 
         <div>
           <p className='font-bold text-2xl mb-3'>Education</p>

@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom'
 
 const Contact = () => {
   return (
-    <section className='bg-primary-black text-primary-text extra-font-style pt-10 lg:p-10 p-10  pb-5 '>
+    <section className='bg-primary-black text-primary-text extra-font-style  md:px-20 p-10  pb-5 '>
 
       {/* for margin */}
       <div className="flex justify-center">
         <div className="h-[1px] w-full  bg-[#aba1a180] rounded-full" />
       </div>
 
-      <div className='lg:px-20 md:px-10 px-1 pt-10 '>
+      <div className='pt-10 '>
         <h1 className='font-bold text-2xl pb-4'>Contact me</h1>
 
         <div className='flex flex-col md:flex-row items-start justify-between lg:gap-8 md:gap-10 gap-8'>
@@ -77,14 +77,14 @@ const Contact = () => {
 
                 <div className='group'>
 
-                  <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1 font-semibold '>Name</p>
+                  <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1 font-semibold pr-1'>Name</p>
                   <input type="text" className='bg-[#444444f2] rounded outline-none w-full p-2' />
 
                 </div>
 
                 <div className='group'>
 
-                  <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1 font-semibold'>Email</p>
+                  <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1 font-semibold pr-1'>Email</p>
                   <input type="email" className='bg-[#444444f2] rounded outline-none w-full p-2' />
 
                 </div>
@@ -93,8 +93,8 @@ const Contact = () => {
 
               <div className='group  text-sm'>
 
-                <p className='group-hover:scale-y-105 font-semibold transition-all duration-500 group-hover:-translate-y-1'>Message</p>
-                <textarea name="" id="" className='bg-[#444444f2] rounded outline-none h-16 w-full p-2'></textarea>
+                <p className='group-hover:scale-y-105 font-semibold transition-all duration-500 group-hover:-translate-y-1 pr-1'>Message</p>
+                <textarea name="" id="" className='bg-[#444444f2] rounded outline-none h-16 max-h-16 w-full p-2'></textarea>
 
               </div>
 
