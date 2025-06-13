@@ -6,6 +6,7 @@ import Education from '../pages/Education'
 import Skills from '../pages/Skills'
 import Projects from '../pages/Projects'
 import Contact from '../pages/Contact'
+import Others from "../pages/Others"
 import Home from '../pages/Home'
 
 const router = createBrowserRouter([
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
             {
                 path : "/projects",
                 element : <Projects/>
+            },
+            {
+                path : "/Others",
+                element : <Others/>
+
             },
             {
                 path : "/contact",

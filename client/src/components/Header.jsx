@@ -15,6 +15,7 @@ const Header = () => {
   const isEducationActive = location.pathname === '/education';
   const isSkillActive = location.pathname === '/skills';
   const isProjectsActive = location.pathname === '/projects';
+  const isOrderActive = location.pathname === '/Others'
   const isContactActive = location.pathname === '/contact';
 
 
@@ -51,6 +52,11 @@ const Header = () => {
           <NavLink to={"/contact"} className={({ isActive }) =>
             isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
           }>Contact <ActiveUnderline active={isContactActive} /></NavLink>
+
+          <NavLink to={"/Others"} className={({ isActive }) =>
+            isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
+          }>Others <ActiveUnderline active={isOrderActive} /></NavLink>
+
         </div>
 
         <div className='flex justify-center items-center w-full cursor-pointer '>
