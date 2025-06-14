@@ -113,3 +113,9 @@ body {
   box-shadow: inset 0 0 9px #766a6596 ,0 0 5px #766a6596 ;
 }
 
+/* shadow for others */
+
+.other-blue-shadow{
+  box-shadow: inset 0px 0 38px #2d2f3196 ,2px 3px 29px #0d05444d;
+}
+
