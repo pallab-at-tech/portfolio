@@ -25,9 +25,9 @@ const Popbar = () => {
                         <div className='flex justify-end mx-5 pt-4 cursor-pointer hover:text-[#fc5e03]'><IoClose size={20} onClick={() => setClosePopUp(false)} /></div>
                         <div className='flex flex-col gap-2 px-2 font-semibold mt-[0.5%] text-xl m-2'>
 
-                            <Link to={"/SignUp"} className='hover:bg-gray-300 rounded-xl mr-10 group pl-4' onClick={()=>setClosePopUp(false)}><p className='group-hover:scale-110 transition  duration-200'>sign up</p></Link>
+                            <Link to={"/SignUp"} className='hover:bg-[#c4c3c350] rounded mr-10 group pl-4' onClick={()=>setClosePopUp(false)}><p className='group-hover:scale-105 transition hover:-translate-y-0.5  duration-200'>sign up</p></Link>
                             <MarginBottom />
-                            <Link to={"/SignIn"} className='hover:bg-gray-300 rounded-xl mr-10 group pl-4' onClick={()=>setClosePopUp(false)}><p className='group-hover:scale-110 transition  duration-200'>sign in</p></Link>
+                            <Link to={"/SignIn"} className='hover:bg-[#c4c3c350] rounded mr-10 group pl-4' onClick={()=>setClosePopUp(false)}><p className='group-hover:scale-105 transition hover:-translate-y-0.5  duration-200'>sign in</p></Link>
                             <MarginBottom />
 
                             <div className='mx-10 px-2 mt-2 border w-fit rounded-2xl ' onClick={() => {
