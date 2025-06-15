@@ -29,7 +29,7 @@ const Education = () => {
                 <p>Singur MahaMaya High School , Singur , Hooghly</p>
               </div>
               <div className='text-sm text-[#747573]'>
-                <ul className='list-disc pl-6 flex gap-16'>
+                <ul className='list-disc md:pl-6 pl-5 flex md:gap-16'>
                   <li>
                     <p>High Secoundary , Science</p>
                     <p>jan 2022 - jul 2023 , score : 80%</p>
