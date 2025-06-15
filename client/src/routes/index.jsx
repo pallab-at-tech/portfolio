@@ -8,45 +8,58 @@ import Projects from '../pages/Projects'
 import Contact from '../pages/Contact'
 import Others from "../pages/Others"
 import Home from '../pages/Home'
+import SignUpPage from "../pages/SignUpPage"
+import SignInPage from "../pages/SignInPage"
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
 
+
+
         children: [
             {
-                path : "",
-                element : <Home/>
+                path: "",
+                element: <Home />
 
             },
             {
                 path: "/about",
-                element: <About/>,
+                element: <About />,
             },
             {
-                path : "/education",
-                element : <Education/>
+                path: "/education",
+                element: <Education />
             },
             {
-                path : "/skills",
-                element : <Skills/>
+                path: "/skills",
+                element: <Skills />
             },
             {
-                path : "/projects",
-                element : <Projects/>
+                path: "/projects",
+                element: <Projects />
             },
             {
-                path : "/Others",
-                element : <Others/>
+                path: "/Others",
+                element: <Others />
 
             },
             {
-                path : "/contact",
-                element : <Contact/>
+                path: "/contact",
+                element: <Contact />
+            },
+            {
+                path: "/SignUp",
+                element: <SignUpPage />
+            },
+            {
+                path : "/SignIn",
+                element : <SignInPage/>
             }
         ]
     },
+
 
 ])
 
