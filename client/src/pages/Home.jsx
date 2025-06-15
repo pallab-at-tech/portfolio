@@ -13,88 +13,97 @@ import Projects from './Projects';
 import b from "../assets/leave.png"
 import Skills from './Skills';
 import Contact from './Contact';
-import MarginBottom from '../utils/MarginBottom';
+import { Element } from 'react-scroll';
 
 const Home = () => {
   return (
 
     <div className=''>
+
       <div className='min-h-screen  bg-primary-dark pt-[72px]'>
 
-        <div className='grid lg:grid-cols-[2fr_3fr] lg:mx-10 md:mx-[140px] pt-2  p-10 md:p-0 lg:pt-14 md:pt-14'>
+        <Element id='HomeID'>
 
-          {/* for desktop */}
-          <div className='items-center justify-center p-3 mt-14 lg:pl-16 lg:flex  hidden'>
-            <div className='relative'>
-              <span className='corner top-left '></span>
-              <span className='corner1 bottom-right '></span>
-              <img src={pic} alt="" className='w-[220px] h-[254px] rounded-[40px] m-3 hover:scale-110 transition-all ' />
-            </div>
-          </div>
+          <div className='grid lg:grid-cols-[2fr_3fr] lg:mx-10 md:mx-[140px] pt-2  p-10 md:p-0 lg:pt-14 md:pt-14'>
 
-          {/* for tablet */}
-          <div className='items-center justify-center p-3 mt-6 lg:hidden md:flex hidden'>
-            <div className='relative'>
-              <span className='corner top-left '></span>
-              <span className='corner1 bottom-right '></span>
-              <img src={pic} alt="" className='w-[220px] h-[234px] object-top m-4 object-cover rounded-2xl' />
-            </div>
-          </div>
-
-          {/* for mobile */}
-          <div className='items-center justify-center flex md:hidden'>
-            <div className='relative'>
-              <img src={pic} alt="" className='w-[180px] h-[180px] object-top object-cover rounded-full' />
-            </div>
-          </div>
-
-          <div className='flex'>
-            <div className='text-primary-text flex-col extra-font-style flex items-start lg:mt-14 md:mt-[20%] mt-1 justify-start md:text-5xl text-3xl relative z-10'>
-              <div className='flex flex-col gap-0.5'>
-                <p className='md:pb-2'>Hi  {" "}, </p>
-                <p className=''> i am ,{" "}<span className='text-terniary-dark'>Pallab Bag</span></p>
-                <p className=''>Full <span className='text-[#59b806]'>stack</span> developer</p>
+            {/* for desktop */}
+            <div className='items-center justify-center p-3 mt-14 lg:pl-16 lg:flex  hidden'>
+              <div className='relative'>
+                <span className='corner top-left '></span>
+                <span className='corner1 bottom-right '></span>
+                <img src={pic} alt="" className='w-[220px] h-[254px] rounded-[40px] m-3 hover:scale-110 transition-all ' />
               </div>
+            </div>
 
-              <div className='text-sm mt-1 md:mt-5 lg:w-[60%] text-[#747573]'>
-                <p>
-                  A goal-oriented software developer with experience in building applications using modern technologies like <span className='text-[#59b806]'>React, MongoDB, Express.js, Node.js, and more</span>. I am seeking to leverage my technical skills to deliver exceptional user experiences.
-                </p>
+            {/* for tablet */}
+            <div className='items-center justify-center p-3 mt-6 lg:hidden md:flex hidden'>
+              <div className='relative'>
+                <span className='corner top-left '></span>
+                <span className='corner1 bottom-right '></span>
+                <img src={pic} alt="" className='w-[220px] h-[234px] object-top m-4 object-cover rounded-2xl' />
               </div>
+            </div>
 
-              <div className='flex lg:mt-6 md:mt-12 mt-9 items-center lg:gap-7 md:gap-10 gap-5'>
-                <div className='bg-terniary-dark  rounded flex items-center pl-0.5 cursor-pointer hover:bg-[#f04f0a]'>
-                  <IoMdDownload size={20} />
-                  <p className='text-base px-2 py-1.5'>Resume</p>
+            {/* for mobile */}
+            <div className='items-center justify-center flex md:hidden'>
+              <div className='relative'>
+                <img src={pic} alt="" className='w-[180px] h-[180px] object-top object-cover rounded-full' />
+              </div>
+            </div>
+
+            <div className='flex'>
+              <div className='text-primary-text flex-col extra-font-style flex items-start lg:mt-14 md:mt-[20%] mt-1 justify-start md:text-5xl text-3xl relative z-10'>
+                <div className='flex flex-col gap-0.5'>
+                  <p className='md:pb-2'>Hi  {" "}, </p>
+                  <p className=''> i am ,{" "}<span className='text-terniary-dark'>Pallab Bag</span></p>
+                  <p className=''>Full <span className='text-[#59b806]'>stack</span> developer</p>
                 </div>
 
-                <Link className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><FaGithub size={20} /></Link>
+                <div className='text-sm mt-1 md:mt-5 lg:w-[60%] text-[#747573]'>
+                  <p>
+                    A goal-oriented software developer with experience in building applications using modern technologies like <span className='text-[#59b806]'>React, MongoDB, Express.js, Node.js, and more</span>. I am seeking to leverage my technical skills to deliver exceptional user experiences.
+                  </p>
+                </div>
 
-                <Link className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><SiGmail size={20} /></Link>
+                <div className='flex lg:mt-6 md:mt-12 mt-9 items-center lg:gap-7 md:gap-10 gap-5'>
+                  <div className='bg-terniary-dark  rounded flex items-center pl-0.5 cursor-pointer hover:bg-[#f04f0a]'>
+                    <IoMdDownload size={20} />
+                    <p className='text-base px-2 py-1.5'>Resume</p>
+                  </div>
 
-                <Link className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><FaLinkedin size={20} /></Link>
+                  <Link className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><FaGithub size={20} /></Link>
+
+                  <Link className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><SiGmail size={20} /></Link>
+
+                  <Link className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><FaLinkedin size={20} /></Link>
+
+                </div>
 
               </div>
 
-            </div>
+              <div className='overflow-hidden absolute right-15 bottom-55 rotate-185 z-5 scale-120 object-scale-down select-none lg:block  hidden'>
+                <img src={b} alt="" className="h-[500px] z-0" />
+              </div>
 
-            <div className='overflow-hidden absolute right-15 bottom-55 rotate-185 z-5 scale-120 object-scale-down select-none lg:block  hidden'>
-              <img src={b} alt="" className="h-[500px] z-0" />
-            </div>
-
-            {/* <div className='relative flex justify-end right-[20px] -top-[120px] rotate-185 z-10 scale-120 pointer-events-none '>
+              {/* <div className='relative flex justify-end right-[20px] -top-[120px] rotate-185 z-10 scale-120 pointer-events-none '>
               <img src={b} alt="" className="" />
             </div> */}
 
 
 
+            </div>
+
           </div>
 
-        </div>
+        </Element>
 
         <div className='items-center justify-center h-full mt-14 pt-14 text-primary-text flex sm:static relative bottom-7'><LuChevronsDown size={30} /></div>
 
+
+
       </div>
+
+
 
       {/* <About/> */}
 
@@ -107,7 +116,7 @@ const Home = () => {
 
 
       <Contact />
-    </div>
+    </div >
   )
 }
 

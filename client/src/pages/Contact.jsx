@@ -8,7 +8,7 @@ import { Element } from 'react-scroll';
 
 const Contact = () => {
   return (
-    <section className='bg-primary-black text-primary-text extra-font-style  md:px-20 p-10  pb-40'>
+    <section className='bg-primary-black text-primary-text extra-font-style  md:px-20 p-10  pb-10'>
 
       {/* for margin */}
       <div className="flex justify-center">
@@ -17,7 +17,7 @@ const Contact = () => {
 
       <Element id='ContactID'>
 
-        <div className='pt-40'>
+        <div className='pt-10'>
           <h1 className='font-bold text-2xl pb-4'>Contact me</h1>
 
           <div className='flex flex-col md:flex-row items-start justify-between lg:gap-8 md:gap-10 gap-8'>

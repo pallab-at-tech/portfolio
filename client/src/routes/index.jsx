@@ -41,11 +41,6 @@ const router = createBrowserRouter([
                 element: <Projects />
             },
             {
-                path: "/Others",
-                element: <Others />
-
-            },
-            {
                 path: "/contact",
                 element: <Contact />
             },
@@ -54,10 +49,15 @@ const router = createBrowserRouter([
                 element: <SignUpPage />
             },
             {
-                path : "/SignIn",
-                element : <SignInPage/>
+                path: "/SignIn",
+                element: <SignInPage />
             }
         ]
+    },
+    {
+        path: "/Others",
+        element: <Others />
+
     },
 
 

@@ -11,14 +11,6 @@ const Header = () => {
 
   const location = useLocation();
 
-  const isHomeActive = location.pathname === '/';
-  const isAboutActive = location.pathname === '/about';
-  const isEducationActive = location.pathname === '/education';
-  const isSkillActive = location.pathname === '/skills';
-  const isProjectsActive = location.pathname === '/projects';
-  const isOrderActive = location.pathname === '/Others'
-  const isContactActive = location.pathname === '/contact';
-
   const [activeSection, setActiveSection] = useState("")
 
 
@@ -33,33 +25,11 @@ const Header = () => {
 
         <div className='lg:gap-12 md:gap-4 justify-center items-center text-primary-text lg:flex md:flex hidden relative z-10'>
 
-          <NavLink to={""} className={({ isActive }) =>
-            isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
-          }>Home <ActiveUnderline active={isHomeActive} /></NavLink>
-
-          {/* <NavLink to={"/about"} className={({ isActive }) =>
-            isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
-          }>About <ActiveUnderline active={isAboutActive} /></NavLink>
-
-          <NavLink to={"/projects"} className={({ isActive }) =>
-            isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
-          }>Projects <ActiveUnderline active={isProjectsActive} /></NavLink>
-
-          <NavLink to={"/skills"} className={({ isActive }) =>
-            isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
-          }>Skills <ActiveUnderline active={isSkillActive} /></NavLink>
-
-          <NavLink to={"/education"} className={({ isActive }) =>
-            isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
-          }>Education <ActiveUnderline active={isEducationActive} /></NavLink>
-
-          <NavLink to={"/contact"} className={({ isActive }) =>
-            isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
-          }>Contact <ActiveUnderline active={isContactActive} /></NavLink>
-
-          <NavLink to={"/Others"} className={({ isActive }) =>
-            isActive ? 'text-amber-500 text-glow font-bold transition-all' : ''
-          }>Others <ActiveUnderline active={isOrderActive} /></NavLink> */}
+          <Link to='HomeID' smooth={true} duration={200} spy offset={-80}
+            activeClass={'active text-glow'} onSetActive={() => setActiveSection("HomeID")}
+            onSetInactive={() => setActiveSection("")} className='cursor-pointer' >Home
+            {activeSection === "HomeID" && <ActiveUnderline />}
+          </Link>
 
           <Link to='EducationID' smooth={true} duration={200} spy offset={-80}
             activeClass={'active text-glow'} onSetActive={() => setActiveSection("EducationID")}
@@ -74,16 +44,18 @@ const Header = () => {
           </Link>
 
           <Link to='skillID' smooth={true} duration={200} spy offset={-80}
-            activeClass={'active text-glow'} onSetActive={() => setActiveSection("skillID")}
-            onSetInactive={() => setActiveSection("")} className='cursor-pointer' >Skills
+            onSetActive={() => setActiveSection("skillID")} activeClass=''
+            onSetInactive={() => setActiveSection("")} className={`${activeSection === "skillID" && "active text-glow"} cursor-pointer`} >Skills
             {activeSection === "skillID" && <ActiveUnderline />}
           </Link>
 
-          <Link to='ContactID' smooth={true} duration={200} spy offset={-60}
-            activeClass={'active text-glow'} onSetActive={() => setActiveSection("ContactID")}
-            onSetInactive={() => setActiveSection("")} className='cursor-pointer' >Contact
+          <Link to='ContactID' smooth={true} duration={200} spy offset={-80}
+            onSetActive={() => setActiveSection("ContactID")} activeClass=''
+            onSetInactive={() => setActiveSection("")} className={`${activeSection === "ContactID" ? "active text-glow" : ""} cursor-pointer`} >Contact
             {activeSection === "ContactID" && <ActiveUnderline />}
           </Link>
+
+          <NavLink to={"/Others"}>Others</NavLink>
 
         </div>
 

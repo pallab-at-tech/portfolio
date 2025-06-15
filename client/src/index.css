@@ -121,5 +121,15 @@ body {
 
 /* active class */
 .active {
-  @apply text-amber-500  font-bold transition-all
+  @apply text-amber-500 font-bold transition-all
+}
+
+/* for responsive */
+.sm-custom {
+  @media(width >=500px
+
+    /* 640px */
+  ) {
+    display: flex;
+  }
 }
