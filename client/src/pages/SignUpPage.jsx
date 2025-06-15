@@ -5,7 +5,7 @@ const SignUpPage = () => {
   return (
     <section className='min-h-[calc(100vh-32px)] bg-primary-dark text-primary-text extra-font-style md:px-14 pt-[72px]'>
 
-      <div className='container mx-auto  max-w-lg p-7 rounded-md'>
+      <div className='container mx-auto  md:max-w-lg max-w-[95%] p-7 rounded-md'>
 
         <div className='flex items-center justify-center rounded mt-4 text-sm font-normal'>
           <p className='bg-[#d2645a]  leading-tight text-red-800 p-1.5 font-bold rounded'>Note: After registration, your account will be verified by an admin. Until then, you won't have permission to access admin privileges. </p>
@@ -34,7 +34,11 @@ const SignUpPage = () => {
           </div>
 
           <button className='p-2 bg-[#2c6abc] hover:bg-[#2463b5] w-[90%] mt-2 rounded text-[#d1dcfb] font-semibold'>Register</button>
-          <p className='pl-6 text-base pt-1 text-sky-50'>Already have account ? <Link to={"/SignIn"} className='text-blue-300 p-2'>Login</Link></p>
+
+          <div className='flex md:flex-row gap-x-1 flex-col  justify-center items-center pr-6 pb-2'>
+            <p className='text-base  text-sky-50'>Already have account ? </p>
+            <Link to={"/SignIn"} className='text-blue-300  flex justify-center'>Login</Link>
+          </div>
 
         </form>
 
