@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ActiveUnderline = ({active}) => {
+const ActiveUnderline = () => {
   return (
-    <div className={`h-[3px] rounded-2xl bg-amber-600  ${active ? "block" : "hidden"} mx-0.5 transition-transform `}>
+    <div className={`h-[3px] rounded-2xl bg-amber-600  mx-0.5 transition-transform `}>
       
     </div>
   )

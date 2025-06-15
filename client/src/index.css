@@ -23,7 +23,7 @@ body {
   --color-primary-dark: #242629;
   --color-secoundary-dark: #ff8e3c;
   --color-terniary-dark: #fc5e03;
-  --color-primary-black : #121314;
+  --color-primary-black: #121314;
   --color-primary-text: #ededed;
 }
 
@@ -35,14 +35,14 @@ body {
   position: absolute;
   width: 200px;
   height: 60px;
-  border: 3px double  #3f7212;
+  border: 3px double #3f7212;
 }
 
 .corner1 {
   position: absolute;
   width: 200px;
   height: 60px;
-  border: 3px double  #754421;
+  border: 3px double #754421;
 }
 
 .top-left {
@@ -71,7 +71,7 @@ body {
 }
 
 .scrollbar-custom::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1; 
+  background-color: #cbd5e1;
   border-radius: 15px;
 }
 
@@ -81,41 +81,45 @@ body {
 
 /* adding box shadow */
 /* yellow shadow */
-.light-yellow-shadow{
-  box-shadow: inset 0 0 9px #62563496 ,0 0 5px #62563496;
+.light-yellow-shadow {
+  box-shadow: inset 0 0 9px #62563496, 0 0 5px #62563496;
 }
 
-.light-violet-shadow{
-  box-shadow: inset 0 0 9px #5e346296 ,0 0 5px #5e346296;
+.light-violet-shadow {
+  box-shadow: inset 0 0 9px #5e346296, 0 0 5px #5e346296;
 }
 
-.light-orange-shadow{
-  box-shadow: inset 0 0 9px #62503496 ,0 0 5px #62503496;
+.light-orange-shadow {
+  box-shadow: inset 0 0 9px #62503496, 0 0 5px #62503496;
 }
 
-.light-sky-shadow{
-  box-shadow: inset 0 0 9px #34516296 ,0 0 5px #34516296 ;
+.light-sky-shadow {
+  box-shadow: inset 0 0 9px #34516296, 0 0 5px #34516296;
 }
 
-.light-cyan-shadow{
-  box-shadow: inset 0 0 9px #34516296 ,0 0 5px #34516296 ;
+.light-cyan-shadow {
+  box-shadow: inset 0 0 9px #34516296, 0 0 5px #34516296;
 }
 
-.light-green-shadow{
-  box-shadow: inset 0 0 9px #34623796 ,0 0 5px #34623796 ;
+.light-green-shadow {
+  box-shadow: inset 0 0 9px #34623796, 0 0 5px #34623796;
 }
 
-.light-red-shadow{
-  box-shadow: inset 0 0 9px #62413496 ,0 0 5px #62413496 ;
+.light-red-shadow {
+  box-shadow: inset 0 0 9px #62413496, 0 0 5px #62413496;
 }
 
-.light-gray-shadow{
-  box-shadow: inset 0 0 9px #766a6596 ,0 0 5px #766a6596 ;
+.light-gray-shadow {
+  box-shadow: inset 0 0 9px #766a6596, 0 0 5px #766a6596;
 }
 
 /* shadow for others */
 
-.other-blue-shadow{
-  box-shadow: inset 0px 0 38px #2d2f3196 ,2px 3px 29px #0d05444d;
+.other-blue-shadow {
+  box-shadow: inset 0px 0 38px #2d2f3196, 2px 3px 29px #0d05444d;
 }
 
+/* active class */
+.active {
+  @apply text-amber-500  font-bold transition-all
+}
