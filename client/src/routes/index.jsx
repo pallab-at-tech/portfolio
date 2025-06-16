@@ -10,6 +10,8 @@ import Others from "../pages/Others"
 import Home from '../pages/Home'
 import SignUpPage from "../pages/SignUpPage"
 import SignInPage from "../pages/SignInPage"
+import ForgotPassword from '../pages/ForgotPassword'
+import OtpVerification from '../pages/OtpVerification'
 
 const router = createBrowserRouter([
     {
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
             {
                 path: "/SignIn",
                 element: <SignInPage />
+            },
+            {
+                path : "/forgot-password",
+                element : <ForgotPassword/>
+            },
+            {
+                path : "/Otp-verification",
+                element : <OtpVerification/>
             }
         ]
     },

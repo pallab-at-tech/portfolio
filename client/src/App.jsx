@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom'
 import Header from './components/Header';
 import DarkModeToggle from './features/DarkModeToggle';
 import Footer from './components/Footer';
+import toast, { Toaster } from 'react-hot-toast';
 
 const App = () => {
 
@@ -16,6 +17,7 @@ const App = () => {
         <Outlet />
 
         <Footer/>
+        <Toaster/>
 
       </GlobalProvider >
     </>

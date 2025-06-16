@@ -1,7 +1,74 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import AxiosTostError from '../utils/AxiosToastError'
+import toast from 'react-hot-toast'
+import Axios from '../utils/Axios'
+import SummaryApi from '../common/SummaryApi'
+import { useNavigate } from 'react-router-dom'
 
 const SignUpPage = () => {
+
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  })
+
+  const navigate = useNavigate()
+  const valid = Object.values(data).every(el => el)
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+
+    setData((preve) => {
+      return {
+        ...preve,
+        [name]: value
+      }
+
+    })
+  }
+
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+
+    if (data.password !== data.confirmPassword) {
+      toast.error("password and confirm password must be same")
+      return
+    }
+
+    try {
+
+      const response = await Axios({
+        ...SummaryApi.register,
+        data : data
+      })
+
+      console.log(response)
+
+      if(response.data.error){
+        toast.error(response?.data?.message)
+      }
+
+      if(response.data.success){
+        toast.success(response?.data?.message)
+
+        setData({
+          name : "",
+          email : "",
+          password : "",
+          confirmPassword : ""
+        })
+
+        navigate("/SignIn")
+      }
+
+    } catch (error) {
+      AxiosTostError(error)
+    }
+  }
+
   return (
     <section className='min-h-[calc(100vh-32px)] bg-primary-dark text-primary-text extra-font-style md:px-14 pt-[72px]'>
 
@@ -11,29 +78,29 @@ const SignUpPage = () => {
           <p className='bg-[#d2645a]  leading-tight text-red-800 p-1.5 font-bold rounded'>Note: After registration, your account will be verified by an admin. Until then, you won't have permission to access admin privileges. </p>
         </div>
 
-        <form action="" className='grid gap-4 pl-6 py-1 text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36] mt-4'>
+        <form onSubmit={handleSubmit} className='grid gap-4 pl-6 py-1 text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36] mt-4'>
 
           <div className='group'>
             <p className='font-semibold group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1'>Name :</p>
-            <input type="text" className='bg-[#b2b8de] rounded w-[90%] h-8 text-base outline-none p-2 mt-1 text-[#100f0f]' />
+            <input type="text" onChange={handleChange} value={data.name} name="name" required className='bg-[#b2b8de] rounded w-[90%] h-8 text-base outline-none p-2 mt-1 text-[#100f0f]' />
           </div>
 
           <div className='group'>
             <p className='font-semibold group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1'>Email : </p>
-            <input type="email" className='bg-[#b2b8de] rounded w-[90%] h-8 text-base outline-none p-2 mt-1 text-[#100f0f]' />
+            <input type="email" onChange={handleChange} name='email' value={data.email} required className='bg-[#b2b8de] rounded w-[90%] h-8 text-base outline-none p-2 mt-1 text-[#100f0f]' />
           </div>
 
           <div className='group'>
             <p className='font-semibold group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1'>Password : </p>
-            <input type="text" className='bg-[#b2b8de] rounded w-[90%] h-8 text-base outline-none p-2 mt-1 text-[#100f0f]' />
+            <input type="text" onChange={handleChange} name='password' value={data.password} required className='bg-[#b2b8de] rounded w-[90%] h-8 text-base outline-none p-2 mt-1 text-[#100f0f]' />
           </div>
 
           <div className='group'>
             <p className='font-semibold group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1'>Confirm password :</p>
-            <input type="text" className='bg-[#b2b8de] rounded w-[90%] h-8 text-base outline-none p-2 mt-1 text-[#100f0f]' />
+            <input type="text" onChange={handleChange} name='confirmPassword' value={data.confirmPassword} required className='bg-[#b2b8de] rounded w-[90%] h-8 text-base outline-none p-2 mt-1 text-[#100f0f]' />
           </div>
 
-          <button className='p-2 bg-[#2c6abc] hover:bg-[#2463b5] w-[90%] mt-2 rounded text-[#d1dcfb] font-semibold'>Register</button>
+          <button disabled={!valid} className={`p-2 ${valid ? "bg-[#2c6abc] hover:bg-[#2463b5] text-[#d1dcfb]" : "bg-[#4c79b4] hover:bg-[#2c6abc]  text-[#d1dcfb]"} w-[90%] mt-2 rounded  font-semibold`}>Register</button>
 
           <div className='flex md:flex-row gap-x-1 flex-col  justify-center items-center pr-6 pb-2'>
             <p className='text-base  text-sky-50'>Already have account ? </p>
