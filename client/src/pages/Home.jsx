@@ -14,8 +14,20 @@ import b from "../assets/leave.png"
 import Skills from './Skills';
 import Contact from './Contact';
 import { Element } from 'react-scroll';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux'
 
 const Home = () => {
+
+  const user = useSelector((state) => state?.user)
+
+  const [data, setdata] = useState({})
+
+  useEffect(()=>{
+    setdata(user)
+    console.log("user from home",user)
+  },[])
+
   return (
 
     <div className=''>

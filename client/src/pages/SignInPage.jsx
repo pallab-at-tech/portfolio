@@ -4,6 +4,9 @@ import AxiosTostError from '../utils/AxiosToastError'
 import toast from 'react-hot-toast'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
+import fetchUserDetails from '../utils/FetchUserDetails'
+import { setUserDetails } from '../store/userSlice'
+import { useDispatch } from 'react-redux'
 
 const SignInPage = () => {
 
@@ -14,6 +17,7 @@ const SignInPage = () => {
 
   const navigate = useNavigate()
   const valid = Object.values(data).every(el => el)
+  const dispatch = useDispatch()
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -37,7 +41,7 @@ const SignInPage = () => {
         data: data
       })
 
-      console.log(response)
+      console.log("response from log-in page",response)
 
       if (response.data.error) {
         toast.error(response?.data?.message)
@@ -46,8 +50,11 @@ const SignInPage = () => {
       if (response.data.success) {
 
         toast.success(response?.data?.message)
-        localStorage.setItem('accesstoken', response.data.data.accesstoken)
+        localStorage.setItem('accesstoken', response.data.data.accessToken)
         localStorage.setItem('refreshToken', response.data.data.refreshToken)
+
+        const userDetails = await fetchUserDetails()
+        dispatch(setUserDetails(userDetails?.data))
 
         setData({
           email: "",
