@@ -1,5 +1,9 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate , useLocation } from 'react-router-dom'
+import Axios from '../utils/Axios'
+import SummaryApi from '../common/SummaryApi'
+import AxiosTostError from '../utils/AxiosToastError'
+import toast from 'react-hot-toast'
 
 const ResetPassword = () => {
 
@@ -9,7 +13,10 @@ const ResetPassword = () => {
     })
 
     const navigate = useNavigate()
+    const location = useLocation()
     const valid = Object.values(data).every(el => el)
+
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -23,55 +30,52 @@ const ResetPassword = () => {
         })
     }
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    //     if (data.newPassword !== data.confirmPassword) {
-    //         toast.error(
-    //             "New password and confirm password must be same"
-    //         )
-    //         return
-    //     }
+        if (data.password !== data.password) {
+            toast.error(
+                "New password and confirm password must be same"
+            )
+            return
+        }
 
-    //     try {
-    //         const response = await Axios({
-    //             ...SummaryApi.resetPassword,
-    //             data: data
-    //         })
-    //         // console.log(response)
+        try {
+            const response = await Axios({
+                ...SummaryApi.reset_password,
+                data: {
+                    newPassword : data.password,
+                    confirmPassword : data.confirmPassword,
+                    email : location?.state?.email
+                }
+            })
 
-    //         if (response.data.error) {
-    //             toast.error(
-    //                 response.data.message
-    //             )
-    //             // console.log(response)
-    //         }
+            if (response.data.error) {
+                toast.error(
+                    response.data.message
+                )
+            }
 
-    //         if (response.data.success) {
+            if (response.data.success) {
 
-    //             navigate("/login")
+                navigate("/SignIn")
 
-    //             toast.success(
-    //                 response.data.message
-    //             )
+                toast.success(
+                    response.data.message
+                )
 
-    //             setdata({
-    //                 email: "",
-    //                 newPassword: "",
-    //                 confirmPassword: ""
-    //             })
+                setData({
+                    password : "",
+                    confirmPassword: ""
+                })
 
+            }
 
-    //         }
+        } catch (error) {
+            AxiosTostError(error)
+        }
 
-    //         // console.log("response ",response)
-
-    //     } catch (error) {
-    //         AxiosTostError(error)
-    //         // console.log("error occur")
-    //     }
-
-    // }
+    }
 
     return (
         <section className='min-h-[calc(100vh-32px)] bg-primary-dark text-primary-text extra-font-style md:px-14 pt-[72px]'>
@@ -79,7 +83,7 @@ const ResetPassword = () => {
             <div className='container mx-auto  md:max-w-lg max-w-[95%] p-7 rounded-md'>
 
 
-                <form className='grid gap-4 pl-6 py-1 text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36] mt-4'>
+                <form onSubmit={handleSubmit} className='grid gap-4 pl-6 text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36]  py-6 mt-[30%]'>
 
                     <div className='group'>
                         <p className='font-semibold group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1'>Password : </p>

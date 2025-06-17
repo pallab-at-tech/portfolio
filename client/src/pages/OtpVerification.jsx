@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
 import { useLocation } from 'react-router-dom'
@@ -14,48 +14,47 @@ const OtpVerification = () => {
     const location = useLocation()
     const navigate = useNavigate()
 
-    console.log("location",location)
-    
 
-    const handleSubmit = async(e)=>{
+
+    const handleSubmit = async (e) => {
 
         e.preventDefault()
 
         try {
 
-            console.log(location?.state?.email)
-
             const response = await Axios({
                 ...SummaryApi.forgot_password_otp_verify,
-                data : {
-                    otp : data.join(""),
-                    email : location?.state?.email
+                data: {
+                    otp: data.join(""),
+                    email: location?.state?.email
                 }
 
             })
 
-            if(response.data.error){
+            if (response.data.error) {
                 toast.error(response.data.message)
             }
 
-            if(response.data.success){
+            if (response.data.success) {
                 toast.success(response.data.message)
                 setData(["", "", "", "", "", ""])
 
-                navigate("/reset-password",{
-                    state : {
-                        data : response.data,
-                        email : location?.state?.email
+                navigate("/reset-password", {
+                    state: {
+                        data: response.data,
+                        email: location?.state?.email
                     }
                 })
             }
 
-            console.log(response)
-            
         } catch (error) {
             AxiosTostError(error)
         }
     }
+
+    useEffect(() => {
+        inputRef.current[0].focus()
+    }, [])
 
 
 
@@ -74,19 +73,19 @@ const OtpVerification = () => {
                                     <input type="text"
                                         key={index}
                                         value={data[index]}
-                                        onChange={(e)=>{
+                                        onChange={(e) => {
 
                                             const value = e.target.value
                                             const newData = [...data]
                                             newData[index] = value
                                             setData(newData)
 
-                                            if(value && index < 5){
-                                                inputRef.current[index+1].focus()
+                                            if (value && index < 5) {
+                                                inputRef.current[index + 1].focus()
                                             }
-                                            
+
                                         }}
-                                        ref={(ref)=>{
+                                        ref={(ref) => {
                                             inputRef.current[index] = ref
                                         }}
                                         required
