@@ -14,6 +14,7 @@ import ForgotPassword from '../pages/ForgotPassword'
 import OtpVerification from '../pages/OtpVerification'
 import ResetPassword from '../pages/ResetPassword'
 import Dashboard from '../layout/Dashboard'
+import Profile from '../pages/Profile'
 
 const router = createBrowserRouter([
     {
@@ -70,7 +71,15 @@ const router = createBrowserRouter([
             },
             {
                 path : "/dashboard/:user",
-                element : <Dashboard/>
+                element : <Dashboard/>,
+                
+                children : [
+                    {
+                        path : "/dashboard/:user",
+                        element : <Profile/>
+
+                    }
+                ]
             }
         ]
     },
