@@ -19,15 +19,6 @@ import { useSelector } from 'react-redux'
 
 const Home = () => {
 
-  const user = useSelector((state) => state?.user)
-
-  const [data, setdata] = useState({})
-
-  useEffect(()=>{
-    setdata(user)
-    console.log("user from home",user)
-  },[])
-
   return (
 
     <div className=''>

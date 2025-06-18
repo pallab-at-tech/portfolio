@@ -31,6 +31,9 @@ const Header = () => {
             {activeSection === "HomeID" && <ActiveUnderline />}
           </Link>
 
+          {/* <NavLink to={"/"}  className='cursor-pointer' >Home
+          </NavLink> */}
+
           <Link to='EducationID' smooth={true} duration={200} spy offset={-80}
             activeClass={'active text-glow'} onSetActive={() => setActiveSection("EducationID")}
             onSetInactive={() => setActiveSection("")} className='cursor-pointer' >Education

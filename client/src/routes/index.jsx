@@ -13,6 +13,7 @@ import SignInPage from "../pages/SignInPage"
 import ForgotPassword from '../pages/ForgotPassword'
 import OtpVerification from '../pages/OtpVerification'
 import ResetPassword from '../pages/ResetPassword'
+import Dashboard from '../layout/Dashboard'
 
 const router = createBrowserRouter([
     {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
             {
                 path : "/reset-password",
                 element : <ResetPassword/>
+            },
+            {
+                path : "/dashboard/:user",
+                element : <Dashboard/>
             }
         ]
     },
