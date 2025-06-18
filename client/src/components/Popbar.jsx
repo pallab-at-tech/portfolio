@@ -7,10 +7,16 @@ import { FaCloudSun } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { useGlobalProvider } from '../provider/GlobalProvider';
 import { Link } from 'react-scroll';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CgProfile } from "react-icons/cg";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { useLocation } from 'react-router-dom';
+import SummaryApi from "../common/SummaryApi"
+import Axios from "../utils/Axios"
+import toast from 'react-hot-toast'
+import { setLogOut } from '../store/userSlice';
+import { useNavigate } from 'react-router-dom';
+
 
 const Popbar = () => {
 
@@ -21,6 +27,27 @@ const Popbar = () => {
     const userUrl = `/dashboard/${user?.name?.toLowerCase()?.replace(" ", "-")}-${user?._id}`
 
     const location = useLocation()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const handleLogOut = async () => {
+        try {
+            const response = await Axios({
+                ...SummaryApi.user_logOut
+            })
+
+            if (response?.data?.success) {
+                dispatch(setLogOut())
+
+                localStorage.clear()
+
+                toast.success(response?.data?.message)
+                navigate("/")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div className='relative z-50'>
@@ -63,21 +90,28 @@ const Popbar = () => {
                                     <>
                                         {/* <div className=""> */}
 
-                                            <div className='rounded mr-10 group lg:pl-4 flex flex-col items-start'>
+                                        <div className='rounded mr-10 group lg:pl-4 flex flex-col items-start'>
 
-                                                <div className='pb-0.5'><CgProfile size={32} /></div>
+                                            <div className='pb-0.5'><CgProfile size={32} /></div>
 
-                                                <div className='flex gap-2 items-center'>
-                                                    <p className='text-xl'>{user?.name?.split(" ")[0]}</p>
-                                                    <NavLink to={userUrl} className='hover:text-[#fc5e03] cursor-pointer' onClick={() => setClosePopUp(false)}><FaExternalLinkAlt /></NavLink>
-                                                </div>
-
+                                            <div className='flex gap-2 items-center'>
+                                                <p className='text-xl'>{user?.name?.split(" ")[0]}</p>
+                                                <NavLink to={userUrl} className='hover:text-[#fc5e03] cursor-pointer' onClick={() => setClosePopUp(false)}><FaExternalLinkAlt /></NavLink>
                                             </div>
 
-                                            <MarginBottom />
+                                        </div>
 
-                                            <button className='hover:bg-[#c4c3c350] rounded mr-14 lg:mr-11 group ' onClick={() => setClosePopUp(false)}><p className='lg:group-hover:scale-105 lg:transition  lg:hover:-translate-y-0.5  lg:duration-200 text-xl'>LogOut</p></button>
-                                            <MarginBottom />
+                                        <MarginBottom />
+
+                                        <button className='hover:bg-[#c4c3c350] rounded mr-14 lg:mr-11 group '
+                                            onClick={() => {
+
+                                                setClosePopUp(false);
+                                                handleLogOut()
+
+                                            }}>
+                                            <p className='lg:group-hover:scale-105 lg:transition  lg:hover:-translate-y-0.5  lg:duration-200 text-xl'>LogOut</p></button>
+                                        <MarginBottom />
 
                                         {/* </div> */}
 
