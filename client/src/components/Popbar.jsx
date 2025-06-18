@@ -10,6 +10,7 @@ import { Link } from 'react-scroll';
 import { useSelector } from 'react-redux';
 import { CgProfile } from "react-icons/cg";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { useLocation } from 'react-router-dom';
 
 const Popbar = () => {
 
@@ -17,14 +18,9 @@ const Popbar = () => {
     const { darkMode, setDarkMode } = useGlobalProvider();
 
     const user = useSelector((state) => state?.user)
-    const userUrl = `/dashboard/${user?.name?.toLowerCase()?.replace(" ","-")}-${user?._id}`
+    const userUrl = `/dashboard/${user?.name?.toLowerCase()?.replace(" ", "-")}-${user?._id}`
 
-    // console.log("user from pop-bar", user)
-
-    // useEffect(() => {
-    //     console.log("user from pop-bar", user)
-    // }, [user])
-
+    const location = useLocation()
 
     return (
         <div className='relative z-50'>
@@ -34,46 +30,27 @@ const Popbar = () => {
 
             {
                 closePopUp && (
-                    <div className={`${darkMode ? "bg-primary-text text-primary-dark" : "bg-primary-dark text-primary-text"}  z-50 absolute -right-5 -top-2 bottom-0 mt-10 lg:w-43 ${user ? "lg:h-56 h-[490px]" : "lg:h-45 h-[450px]"}  w-[150px]  rounded-2xl shadow-md`}>
+                    <div className={`${darkMode ? "bg-primary-text text-primary-dark" : "bg-primary-dark text-primary-text"}  z-50 absolute -right-5 -top-2 bottom-0 mt-10 lg:w-43 ${user._id ? "lg:h-56 h-[310px]" : "lg:h-45 h-[280px]"}  w-[150px]  rounded-2xl shadow-md`}>
                         <div className='flex justify-end mx-5 pt-4 cursor-pointer hover:text-[#fc5e03]'><IoClose size={20} onClick={() => setClosePopUp(false)} /></div>
                         <div className='flex flex-col gap-2 px-2 font-semibold mt-[0.5%] m-2'>
 
-                            <Link to='HomeID' smooth={true} duration={200} spy offset={-80}
-                                className='cursor-pointer lg:hidden text-xl' onClick={() => setClosePopUp(false)}>Home
-                            </Link>
 
-                            <div className='lg:hidden'><MarginBottom /></div>
 
-                            <Link to='EducationID' smooth={true} duration={200} spy offset={-80}
-                                className='cursor-pointer lg:hidden text-xl' onClick={() => setClosePopUp(false)}>Education
-                            </Link>
-
-                            <div className='lg:hidden'><MarginBottom /></div>
-
-                            <Link to='projectID' smooth={true} duration={200} spy offset={-80}
-                                className='cursor-pointer lg:hidden text-xl' onClick={() => setClosePopUp(false)}>Project
-                            </Link>
-
-                            <div className='lg:hidden'><MarginBottom /></div>
-
-                            <Link to='skillID' smooth={true} duration={200} spy offset={-80}
-                                className={`cursor-pointer lg:hidden text-xl`} onClick={() => setClosePopUp(false)} >Skills
-                            </Link>
-
-                            <div className='lg:hidden'><MarginBottom /></div>
-
-                            <Link to='ContactID' smooth={true} duration={200} spy offset={-80}
-                                className={`cursor-pointer lg:hidden text-xl`} onClick={() => setClosePopUp(false)}>Contact
-                            </Link>
-
-                            <div className='lg:hidden'><MarginBottom /></div>
-
-                            <NavLink to={"/Others"} className="lg:hidden text-xl" onClick={() => setClosePopUp(false)}>Others</NavLink>
+                            {
+                                location.pathname !== "/" ? (
+                                    <NavLink to="/" className='cursor-pointer lg:hidden text-xl' onClick={() => setClosePopUp(false)}>Home
+                                    </NavLink>
+                                ) : (
+                                    <Link to='HomeID' smooth={true} duration={200} spy offset={-80}
+                                        className='cursor-pointer lg:hidden text-xl' onClick={() => setClosePopUp(false)}>Home
+                                    </Link>
+                                )
+                            }
 
                             <div className='lg:hidden'><MarginBottom /></div>
 
                             {
-                                !user ? (
+                                !user._id ? (
                                     <>
 
                                         <NavLink to={"/SignUp"} className='hover:bg-[#c4c3c350] rounded mr-10 group lg:pl-4' onClick={() => setClosePopUp(false)}><p className='group-hover:scale-105 transition hover:-translate-y-0.5  duration-200 text-xl'>sign up</p></NavLink>
@@ -84,24 +61,34 @@ const Popbar = () => {
                                     </>
                                 ) : (
                                     <>
-                                        <div className='rounded mr-10 group lg:pl-4 flex flex-col items-start'>
+                                        {/* <div className=""> */}
 
-                                            <div className='pb-0.5'><CgProfile size={32} /></div>
+                                            <div className='rounded mr-10 group lg:pl-4 flex flex-col items-start'>
 
-                                            <div className='flex gap-2 items-center'>
-                                                <p className='text-xl'>{user?.name?.split(" ")[0]}</p>
-                                                <NavLink to={userUrl} className='hover:text-[#fc5e03] cursor-pointer' onClick={() => setClosePopUp(false)}><FaExternalLinkAlt /></NavLink>
+                                                <div className='pb-0.5'><CgProfile size={32} /></div>
+
+                                                <div className='flex gap-2 items-center'>
+                                                    <p className='text-xl'>{user?.name?.split(" ")[0]}</p>
+                                                    <NavLink to={userUrl} className='hover:text-[#fc5e03] cursor-pointer' onClick={() => setClosePopUp(false)}><FaExternalLinkAlt /></NavLink>
+                                                </div>
+
                                             </div>
 
-                                        </div>
+                                            <MarginBottom />
 
-                                        <MarginBottom />
+                                            <button className='hover:bg-[#c4c3c350] rounded mr-14 lg:mr-11 group ' onClick={() => setClosePopUp(false)}><p className='lg:group-hover:scale-105 lg:transition  lg:hover:-translate-y-0.5  lg:duration-200 text-xl'>LogOut</p></button>
+                                            <MarginBottom />
 
-                                        <NavLink to={"/jlkhk"} className='hover:bg-[#c4c3c350] rounded mr-10 group lg:pl-4' onClick={() => setClosePopUp(false)}><p className='lg:group-hover:scale-105 lg:transition  lg:hover:-translate-y-0.5  lg:duration-200 text-xl'>LogOut</p></NavLink>
-                                        <MarginBottom />
+                                        {/* </div> */}
+
                                     </>
                                 )
                             }
+
+
+                            <NavLink to={"/Others"} className="lg:hidden text-xl" onClick={() => setClosePopUp(false)}>Others</NavLink>
+
+                            <div className='lg:hidden'><MarginBottom /></div>
 
                             <div className='mx-10 px-2  mt-2 border w-fit rounded-2xl ' onClick={() => {
                                 setDarkMode(!darkMode)

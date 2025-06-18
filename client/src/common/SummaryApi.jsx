@@ -24,6 +24,10 @@ const SummaryApi = {
     fetch_user_details : {
         url : "/api/user/user-details",
         method : "get"
+    },
+    user_logOut : {
+        url : "/api/user/logout",
+        method : "get"
     }
 }
 

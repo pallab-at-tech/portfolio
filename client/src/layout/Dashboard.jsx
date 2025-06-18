@@ -5,11 +5,15 @@ import { NavLink, Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import MarginBottom from '../utils/MarginBottom'
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const Dashboard = () => {
 
     const user = useSelector((state) => state?.user)
     const userUrl = `/dashboard/${user?.name?.toLowerCase()?.replace(" ", "-")}-${user?._id}`
+
+    const location = useLocation()
+    //  console.log("loac dash",location)
 
 
     return (

@@ -13,6 +13,8 @@ const Header = () => {
 
   const [activeSection, setActiveSection] = useState("")
 
+  console.log("location.pathname", location.pathname === "/")
+
 
 
 
@@ -25,38 +27,52 @@ const Header = () => {
 
         <div className='lg:gap-12 md:gap-4 justify-center items-center text-primary-text lg:flex md:flex hidden relative z-10'>
 
-          <Link to='HomeID' smooth={true} duration={200} spy offset={-80}
-            activeClass={'active text-glow'} onSetActive={() => setActiveSection("HomeID")}
-            onSetInactive={() => setActiveSection("")} className='cursor-pointer' >Home
-            {activeSection === "HomeID" && <ActiveUnderline />}
-          </Link>
 
-          {/* <NavLink to={"/"}  className='cursor-pointer' >Home
-          </NavLink> */}
 
-          <Link to='EducationID' smooth={true} duration={200} spy offset={-80}
-            activeClass={'active text-glow'} onSetActive={() => setActiveSection("EducationID")}
-            onSetInactive={() => setActiveSection("")} className='cursor-pointer' >Education
-            {activeSection === "EducationID" && <ActiveUnderline />}
-          </Link>
+          {
+            location.pathname !== "/" ? (
+              <NavLink to="/" className='cursor-pointer' >Home
+              </NavLink>
+            ) : (
+              <Link to='HomeID' smooth={true} duration={200} spy offset={-80}
+                activeClass={'active text-glow'} onSetActive={() => setActiveSection("HomeID")}
+                onSetInactive={() => setActiveSection("")} className='cursor-pointer' >Home
+                {activeSection === "HomeID" && <ActiveUnderline />}
+              </Link>
+            )
+          }
 
-          <Link to='projectID' smooth={true} duration={200} spy offset={-80}
-            activeClass={'active text-glow'} onSetActive={() => setActiveSection("projectID")}
-            onSetInactive={() => setActiveSection("")} className='cursor-pointer' >Project
-            {activeSection === "projectID" && <ActiveUnderline />}
-          </Link>
 
-          <Link to='skillID' smooth={true} duration={200} spy offset={-80}
-            onSetActive={() => setActiveSection("skillID")} activeClass=''
-            onSetInactive={() => setActiveSection("")} className={`${activeSection === "skillID" && "active text-glow"} cursor-pointer`} >Skills
-            {activeSection === "skillID" && <ActiveUnderline />}
-          </Link>
+          {
+            location.pathname === "/" && (
+              <>
+                <Link to='EducationID' smooth={true} duration={200} spy offset={-80}
+                  activeClass={'active text-glow'} onSetActive={() => setActiveSection("EducationID")}
+                  onSetInactive={() => setActiveSection("")} className='cursor-pointer' >Education
+                  {activeSection === "EducationID" && <ActiveUnderline />}
+                </Link>
 
-          <Link to='ContactID' smooth={true} duration={200} spy offset={-80}
-            onSetActive={() => setActiveSection("ContactID")} activeClass=''
-            onSetInactive={() => setActiveSection("")} className={`${activeSection === "ContactID" ? "active text-glow" : ""} cursor-pointer`} >Contact
-            {activeSection === "ContactID" && <ActiveUnderline />}
-          </Link>
+                <Link to='projectID' smooth={true} duration={200} spy offset={-80}
+                  activeClass={'active text-glow'} onSetActive={() => setActiveSection("projectID")}
+                  onSetInactive={() => setActiveSection("")} className='cursor-pointer' >Project
+                  {activeSection === "projectID" && <ActiveUnderline />}
+                </Link>
+
+                <Link to='skillID' smooth={true} duration={200} spy offset={-80}
+                  onSetActive={() => setActiveSection("skillID")} activeClass=''
+                  onSetInactive={() => setActiveSection("")} className={`${activeSection === "skillID" && "active text-glow"} cursor-pointer`} >Skills
+                  {activeSection === "skillID" && <ActiveUnderline />}
+                </Link>
+
+                <Link to='ContactID' smooth={true} duration={200} spy offset={-80}
+                  onSetActive={() => setActiveSection("ContactID")} activeClass=''
+                  onSetInactive={() => setActiveSection("")} className={`${activeSection === "ContactID" ? "active text-glow" : ""} cursor-pointer`} >Contact
+                  {activeSection === "ContactID" && <ActiveUnderline />}
+                </Link>
+              </>
+            )
+          }
+
 
           <NavLink to={"/Others"}>Others</NavLink>
 
