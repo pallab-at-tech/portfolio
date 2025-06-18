@@ -138,13 +138,13 @@ export const userLoginController = async (request, response) => {
     }
 }
 
-export const userEmailVerificationController = async(request , response) => {
+export const userEmailVerificationController = async (request, response) => {
     try {
 
         const { code } = request.body || {}
 
-        const user = await userModel.findByIdAndUpdate(code,{
-            verify_email : true
+        const user = await userModel.findByIdAndUpdate(code, {
+            verify_email: true
         })
 
         if (!user) {
@@ -156,179 +156,179 @@ export const userEmailVerificationController = async(request , response) => {
         }
 
         return response.json({
-            message : 'email verify successfully',
-            error : false,
-            success : true
+            message: 'email verify successfully',
+            error: false,
+            success: true
         })
-        
+
     } catch (error) {
         return response.status(500).json({
-            message : error.message || error,
-            error : true,
-            success : false
+            message: error.message || error,
+            error: true,
+            success: false
         })
     }
 }
 
-export const userLogOutController = async(request , response) =>{
+export const userLogOutController = async (request, response) => {
     try {
 
         const userId = request.userId
 
         const cookiesOption = {
-            httpOnly : true,
-            secure : true,
-            sameSite : 'None'
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None'
         }
 
-        response.clearCookie('accesstoken',cookiesOption)
-        response.clearCookie('refreshToken',cookiesOption)
+        response.clearCookie('accesstoken', cookiesOption)
+        response.clearCookie('refreshToken', cookiesOption)
 
-        const removeRefresh = await userModel.findByIdAndUpdate(userId,{
-            refresh_token : ""
+        const removeRefresh = await userModel.findByIdAndUpdate(userId, {
+            refresh_token: ""
         })
 
         return response.json({
-            message : 'LogOut successfully',
-            error : false,
-            success : true
+            message: 'LogOut successfully',
+            error: false,
+            success: true
         })
 
-        
+
     } catch (error) {
-         return response.status(500).json({
-            message : error.message || error,
-            error : true,
-            success : false
+        return response.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
         })
     }
 }
 
-export const userForgotPassword = async(request , response) =>{
+export const userForgotPassword = async (request, response) => {
     try {
 
         const { email } = request.body || {}
 
-        if(!email) {
+        if (!email) {
             return response.status(400).json({
-                message : 'please provide your email',
-                error : true,
-                success : false
+                message: 'please provide your email',
+                error: true,
+                success: false
             })
         }
 
-        const user = await userModel.findOne({email : email})
+        const user = await userModel.findOne({ email: email })
 
-        if(!user){
+        if (!user) {
             return response.status(400).json({
-                message : 'email not registered',
-                error : true,
-                success : false
+                message: 'email not registered',
+                error: true,
+                success: false
             })
         }
 
         const otp = (await generateOTP()).toString()
         const oneHourLater = new Date(new Date().getTime() + 60 * 60 * 1000);
 
-        const update = await userModel.findByIdAndUpdate(user._id,{
-            forgot_Password_otp : otp,
-            forgot_Password_expiry : oneHourLater
+        const update = await userModel.findByIdAndUpdate(user._id, {
+            forgot_Password_otp: otp,
+            forgot_Password_expiry: oneHourLater
         })
 
         await sendEmail({
             sendTO: email,
             subject: 'email verfication from myPortfolio',
-            html : sendOtpTemplate({
-                name : user.name,
-                otp : otp
+            html: sendOtpTemplate({
+                name: user.name,
+                otp: otp
             })
         })
 
         return response.json({
-            message : 'otp send to your gmail',
-            error : false,
-            success : true
+            message: 'otp send to your gmail',
+            error: false,
+            success: true
         })
-        
+
     } catch (error) {
         return response.status(500).json({
-            message : error.message || error,
-            error : true,
-            success : false
+            message: error.message || error,
+            error: true,
+            success: false
         })
     }
 }
 
-export const userVerifyForgotPasswordController = async(request , response) =>{
+export const userVerifyForgotPasswordController = async (request, response) => {
     try {
 
-        const {email , otp} = request.body || {}
+        const { email, otp } = request.body || {}
 
-        if(!email || !otp){
+        if (!email || !otp) {
             return response.status(400).json({
-                message : 'please provide email and otp',
-                error : true,
-                success : false
+                message: 'please provide email and otp',
+                error: true,
+                success: false
             })
         }
 
-        const user = await userModel.findOne({email})
+        const user = await userModel.findOne({ email })
 
-        if(!user){
+        if (!user) {
             return response.status(400).json({
-                message : 'email not registered',
-                error : true,
-                success : false
+                message: 'email not registered',
+                error: true,
+                success: false
             })
         }
 
         const currTime = new Date()
 
-        if(currTime > user?.forgot_Password_expiry){
+        if (currTime > user?.forgot_Password_expiry) {
             return response.status(400).json({
-                message : 'otp expired',
-                error : true,
-                success : false
+                message: 'otp expired',
+                error: true,
+                success: false
             })
         }
 
-        if(otp !== user.forgot_Password_otp){
+        if (otp !== user.forgot_Password_otp) {
             return response.json({
-                message : 'invalid otp',
-                error : true,
-                success : false
+                message: 'invalid otp',
+                error: true,
+                success: false
             })
         }
 
-        const updateUser = await userModel.findByIdAndUpdate(user?._id , {
-            forgot_Password_expiry : "",
-            forgot_Password_otp : ""
+        const updateUser = await userModel.findByIdAndUpdate(user?._id, {
+            forgot_Password_expiry: "",
+            forgot_Password_otp: ""
         })
 
         return response.json({
-            message : "Verify otp successfully",
-            error : false,
-            success : true
+            message: "Verify otp successfully",
+            error: false,
+            success: true
         })
 
 
 
-        
+
     } catch (error) {
         return response.status(500).json({
-            message : error.message || error,
-            error : true,
-            success : false
+            message: error.message || error,
+            error: true,
+            success: false
         })
     }
 }
 
-export const userResetPasswordController = async(request , response) =>{
+export const userResetPasswordController = async (request, response) => {
     try {
 
-        const {email , newPassword , confirmPassword} = request.body || {}
+        const { email, newPassword, confirmPassword } = request.body || {}
 
-        if(!email || !newPassword || !confirmPassword){
+        if (!email || !newPassword || !confirmPassword) {
             return response.status(400).json({
                 message: "provide required field (email , new password , confirm password)",
                 error: true,
@@ -336,17 +336,17 @@ export const userResetPasswordController = async(request , response) =>{
             })
         }
 
-        const user = await userModel.findOne({email : email})
+        const user = await userModel.findOne({ email: email })
 
-        if(!user){
+        if (!user) {
             return response.status(400).json({
-                message : 'email not registered',
-                error : true,
-                success : false
+                message: 'email not registered',
+                error: true,
+                success: false
             })
         }
 
-        if(newPassword !== confirmPassword){
+        if (newPassword !== confirmPassword) {
             return response.status(400).json({
                 message: "New passowrd and confirm password must be same",
                 error: true,
@@ -355,10 +355,10 @@ export const userResetPasswordController = async(request , response) =>{
         }
 
         const salt = await bcryptjs.genSalt(10)
-        const hashPassword = await bcryptjs.hash(newPassword,salt)
+        const hashPassword = await bcryptjs.hash(newPassword, salt)
 
-        const updateUser = await userModel.findByIdAndUpdate(user._id,{
-            password : hashPassword
+        const updateUser = await userModel.findByIdAndUpdate(user._id, {
+            password: hashPassword
         })
 
         return response.json({
@@ -366,24 +366,24 @@ export const userResetPasswordController = async(request , response) =>{
             error: false,
             success: true
         })
-        
+
     } catch (error) {
-         return response.status(500).json({
-            message : error.message || error,
-            error : true,
-            success : false
+        return response.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
         })
     }
 }
 
-export const userRefressingTokenController = async(request , response) =>{
+export const userRefressingTokenController = async (request, response) => {
     try {
         const tokenFromcookie = request?.cookies?.refreshToken
         const tokenFromHeader = request?.headers?.authorization?.split(" ")[1]
 
-        const refreshToken = tokenFromcookie || tokenFromHeader 
+        const refreshToken = tokenFromcookie || tokenFromHeader
 
-        if(!refreshToken ){
+        if (!refreshToken) {
             return response.status(401).json({
                 message: "Invalid token",
                 error: true,
@@ -391,13 +391,13 @@ export const userRefressingTokenController = async(request , response) =>{
             })
         }
 
-        const verifyToken = await jwt.verify(refreshToken , process.env.SECRET_KEY_REFRESSH_TOKEN)
+        const verifyToken = await jwt.verify(refreshToken, process.env.SECRET_KEY_REFRESSH_TOKEN)
 
-        if(!verifyToken){
+        if (!verifyToken) {
             return response.status(401).json({
-                message : "token is expired",
-                error : true,
-                success : false
+                message: "token is expired",
+                error: true,
+                success: false
             })
         }
 
@@ -406,27 +406,51 @@ export const userRefressingTokenController = async(request , response) =>{
         const newAccessToken = await generatedAccessToken(userId)
 
         const cookiesOption = {
-            httpOnly : true,
-            secure : true,
-            sameSite : "None"
+            httpOnly: true,
+            secure: true,
+            sameSite: "None"
         }
 
-        response.cookie('accesstoken',newAccessToken,cookiesOption)
+        response.cookie('accesstoken', newAccessToken, cookiesOption)
 
         return response.json({
-            message : "New Access token generated",
-            error : false,
-            success : true,
-            data : {
-                accessToken : newAccessToken
+            message: "New Access token generated",
+            error: false,
+            success: true,
+            data: {
+                accessToken: newAccessToken
             }
         })
 
     } catch (error) {
         return response.status(500).json({
-            message : error.message || error,
-            error : true,
-            success : false
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+}
+
+export const userDetailsController = async (request, response) => {
+
+    try {
+
+        const userId = request.userId
+
+        const user = await userModel.findById(userId).select("-password -refresh_token -refresh_token")
+
+        return response.json({
+            message : 'user Details',
+            error : false,
+            data : user,
+            success : true
+        })
+        
+    } catch (error) {
+        return response.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
         })
     }
 }
