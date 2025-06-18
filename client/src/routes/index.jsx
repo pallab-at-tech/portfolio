@@ -15,6 +15,10 @@ import OtpVerification from '../pages/OtpVerification'
 import ResetPassword from '../pages/ResetPassword'
 import Dashboard from '../layout/Dashboard'
 import Profile from '../pages/Profile'
+import ProjectDetailsEdit from '../pages/ProjectDetailsEdit'
+import EducationDetailsEdit from '../pages/EducationDetailsEdit'
+import SkillDetailsEdit from '../pages/SkillDetailsEdit'
+import OthersDetailsEdit from '../pages/OthersDetailsEdit'
 
 const router = createBrowserRouter([
     {
@@ -72,12 +76,28 @@ const router = createBrowserRouter([
             {
                 path : "/dashboard/:user",
                 element : <Dashboard/>,
-                
+
                 children : [
                     {
-                        path : "/dashboard/:user",
+                        index: true,
                         element : <Profile/>
 
+                    },
+                    {
+                        path : "/dashboard/:user/projectEdit",
+                        element : <ProjectDetailsEdit/>
+                    },
+                    {
+                        path : "/dashboard/:user/educationEdit",
+                        element : <EducationDetailsEdit/>
+                    },
+                    {
+                        path : "/dashboard/:user/skillEdit",
+                        element : <SkillDetailsEdit/>
+                    },
+                    {
+                        path : "/dashboard/:user/othersEdit",
+                        element : <OthersDetailsEdit/>
                     }
                 ]
             }

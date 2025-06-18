@@ -4,11 +4,13 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 import { NavLink, Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import MarginBottom from '../utils/MarginBottom'
+import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
 
     const user = useSelector((state) => state?.user)
     const userUrl = `/dashboard/${user?.name?.toLowerCase()?.replace(" ", "-")}-${user?._id}`
+
 
     return (
         <div className='min-h-[calc(100vh-32px)] bg-primary-dark text-primary-text extra-font-style md:px-14 pt-[72px]'>
@@ -27,13 +29,12 @@ const Dashboard = () => {
 
                         </div>
 
-                        {/* <MarginBottom /> */}
-
                     </div>
 
                     <div className='mr-6'>
                         {
-                            !user?.admin_verify ? (
+
+                            user?.admin_verify ? (
                                 <>
                                     <div className='bg-gray-500 text-base my-12 rounded px-4 py-4 w-fit'>
                                         <p className='text-base leading-tight mb-2 font-semibold text-[#d9d9e0]'>verify your account by admin ?</p>
@@ -47,9 +48,23 @@ const Dashboard = () => {
 
                                 </>
                             ) : (
-                                <>
-                                {/* project details , skill details , education details , Logout , others details */}
-                                </>
+                                <div className='py-4 text-base flex flex-col'>
+
+                                    <Link to={`${userUrl}/educationEdit`}>Education</Link>
+
+                                    <Link to={`${userUrl}/projectEdit`}>Project</Link>
+
+                                    <Link to={`${userUrl}/skillEdit`}>Skill</Link>
+
+                                    <Link to={`${userUrl}/othersEdit`}>Other</Link>
+
+                                    <Link to={""}>LogOut</Link>
+
+                                    
+
+                                    {/* project details , skill details , education details , Logout , others details */}
+                                </div>
+
                             )
                         }
                     </div>
@@ -58,7 +73,7 @@ const Dashboard = () => {
 
                 <div className='min-h-[85vh]'>
 
-                    <Outlet userPops={user} />
+                    <Outlet />
 
                 </div>
 

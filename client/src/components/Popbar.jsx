@@ -19,6 +19,8 @@ const Popbar = () => {
     const user = useSelector((state) => state?.user)
     const userUrl = `/dashboard/${user?.name?.toLowerCase()?.replace(" ","-")}-${user?._id}`
 
+    // console.log("user from pop-bar", user)
+
     // useEffect(() => {
     //     console.log("user from pop-bar", user)
     // }, [user])
