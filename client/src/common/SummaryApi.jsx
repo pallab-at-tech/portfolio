@@ -1,4 +1,4 @@
-export const baseURL = import.meta.env.BACKEND_URL
+export const baseURL = import.meta.env.BACKEND_API_URL
 
 const SummaryApi = {
     register: {
