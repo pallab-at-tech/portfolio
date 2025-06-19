@@ -7,6 +7,14 @@ const allOfSchema = new mongoose.Schema({
             ref : "project"
         }
     ],
+    name : {
+        type : String,
+        default : ""
+    },
+    email : {
+        type : String,
+        default : ""
+    },
     resume : {
         type : String,
         default : ""
