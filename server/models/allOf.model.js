@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const allOfSchema = new mongoose.Schema({
-    productList : [
+    projectList : [
         {
             type : mongoose.Schema.ObjectId,
             ref : "project"

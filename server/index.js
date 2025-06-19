@@ -10,6 +10,7 @@ dotenv.config();
 // server connection establish
 import connectDB from './config/connectDB.js';
 import userRoute from './route/user.route.js';
+import allOfRoute from './route/allOf.route.js';
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.get("/", (req, res) => {
 
 // other routes
 app.use("/api/user",userRoute)
+app.use("/api/all-admin-data",allOfRoute)
 
 // if you want to give another port give it in .env file by PORT
 const PORT = 8080 || process.env.PORT
