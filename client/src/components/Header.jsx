@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { gsap } from "gsap";
 import { NavLink, useLocation } from 'react-router-dom';
 import { Link } from 'react-scroll';
-import ActiveUnderline from '../utils/activeUnderline';
+import ActiveUnderline from '../utils/ActiveUnderline';
 import Sidebar from './Sidebar';
 import Popbar from './Popbar';
 
