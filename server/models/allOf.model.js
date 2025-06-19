@@ -52,6 +52,12 @@ const allOfSchema = new mongoose.Schema({
             type : mongoose.Schema.ObjectId,
             ref : "certificate"
         }
+    ],
+    all_education : [
+        {
+            type : mongoose.Schema.ObjectId,
+            ref : "education"
+        }
     ]
 
 },{
