@@ -1,8 +1,10 @@
 import express from "express";
-import { createAllOfDetails } from "../controller/allOf.controller.js";
+import { createAllOfDetails, getAllOfDetails, updateAllOfDetails } from "../controller/allOf.controller.js";
 
 const allOfRoute = express()
 
-allOfRoute.get("/getData",createAllOfDetails)
+allOfRoute.post("/data-create",createAllOfDetails)
+allOfRoute.get("/get-data",getAllOfDetails)
+allOfRoute.post("/update-data",updateAllOfDetails)
 
 export default allOfRoute
