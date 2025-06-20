@@ -189,7 +189,7 @@ export const deleteProjectDetails = async (request, response) => {
 
         if (!deleteModel) {
             return response.status(400).json({
-                message: "provide project id is'nt available",
+                message: "provided project id is'nt available",
                 error: true,
                 success: false
             })

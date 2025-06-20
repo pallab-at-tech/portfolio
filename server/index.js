@@ -12,6 +12,7 @@ import connectDB from './config/connectDB.js';
 import userRoute from './route/user.route.js';
 import allOfRoute from './route/allOf.route.js';
 import projectRoute from './route/project.route.js';
+import experienceRoute from './route/exprience.route.js';
 
 const app = express();
 
@@ -40,6 +41,7 @@ app.get("/", (req, res) => {
 app.use("/api/user",userRoute)
 app.use("/api/all-admin-data",allOfRoute)
 app.use("/api/project-data",projectRoute)
+app.use("/api/experience-data",experienceRoute)
 
 // if you want to give another port give it in .env file by PORT
 const PORT = 8080 || process.env.PORT
