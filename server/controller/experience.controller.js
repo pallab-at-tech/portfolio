@@ -161,16 +161,15 @@ export const deleteExperienecDetails = async (request, response) => {
             })
         }
 
-        if(deleteExperienece){
-            const deletId = await allOfModel.findOneAndUpdate(
-                {},
-                {
-                    $pull : {
-                        all_experience : experienceId
-                    }
+        const deletId = await allOfModel.findOneAndUpdate(
+            {},
+            {
+                $pull: {
+                    all_experience: experienceId
                 }
-            )
-        }
+            }
+        )
+
 
         return response.json({
             message: 'experince deleted successfully',
