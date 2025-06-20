@@ -10,6 +10,14 @@ const projectSchema = new mongoose.Schema({
         type : String,
         default : ""
     },
+    feature : {
+        type :Object,
+        default : {}
+    },
+    tech_uses : {
+        type : Object,
+        default : {}
+    },
     project_deploy_link : {
         type : String,
         default : null
