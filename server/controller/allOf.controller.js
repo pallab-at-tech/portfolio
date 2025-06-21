@@ -56,6 +56,14 @@ export const createAllOfDetails = async (request, response) => {
             })
         }
 
+        if(!about_me){
+             return response.status(400).json({
+                message: 'provide about me',
+                error: true,
+                success: false
+            })
+        }
+
         const payload = {
             name,
             email,
