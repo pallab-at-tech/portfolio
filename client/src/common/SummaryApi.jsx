@@ -28,6 +28,10 @@ const SummaryApi = {
     user_logOut : {
         url : "/api/user/logout",
         method : "get"
+    },
+    fetch_allOf_data : {
+        url : "/api/all-admin-data/get-data",
+        method : "get"
     }
 }
 
