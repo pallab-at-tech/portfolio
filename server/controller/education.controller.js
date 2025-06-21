@@ -1,4 +1,4 @@
-import allOfModel from "../models/allOf.model"
+import allOfModel from "../models/allOf.model.js"
 import educationModel from "../models/Education.model.js"
 
 
@@ -6,7 +6,7 @@ import educationModel from "../models/Education.model.js"
 export const createEducationDetails = async (request, response) => {
     try {
 
-        const { institute_name, location, level, stream, startDate, endDate, typeOfScore, score } = request.body || {}
+        const { institute_name, location, qualification } = request.body || {}
 
         if (!institute_name) {
             return response.status(400).json({
@@ -15,55 +15,30 @@ export const createEducationDetails = async (request, response) => {
                 success: false
             })
         }
-        if (!level) {
+
+        if (!Array.isArray(qualification) || qualification.length === 0) {
             return response.status(400).json({
-                message: 'please provide level of qualification',
+                message: "Please provide at least one qualification entry",
                 error: true,
-                success: false
-            })
+                success: false,
+            });
         }
-        if (!stream) {
-            return response.status(400).json({
-                message: 'please provide stream',
-                error: true,
-                success: false
-            })
-        }
-        if (!startDate) {
-            return response.status(400).json({
-                message: 'please provide start date',
-                error: true,
-                success: false
-            })
-        }
-        if (!endDate) {
-            return response.status(400).json({
-                message: 'please provide end date',
-                error: true,
-                success: false
-            })
-        }
-        if (!score) {
-            return response.status(400).json({
-                message: 'please provide institutional score',
-                error: true,
-                success: false
-            })
+
+        for (let q of qualification) {
+            const { level, stream, startDate, endDate, score } = q;
+            if (!level || !stream || !startDate || !endDate || !score) {
+                return response.status(400).json({
+                    message: "Each qualification must include level, stream, startDate, endDate, and score",
+                    error: true,
+                    success: false,
+                });
+            }
         }
 
         const payload = {
             institute_name,
             location,
-            qualification: [
-                {
-                    level,
-                    stream,
-                    startDate,
-                    endDate,
-                    typeOfScore,
-                    score
-                }
-            ]
+            qualification: qualification
         }
 
         const education = new educationModel(payload)
@@ -205,7 +180,7 @@ export const deleteEducationalDetails = async (request, response) => {
             {},
             {
                 $pull: {
-                    all_education : educationId
+                    all_education: educationId
                 }
             }
         )

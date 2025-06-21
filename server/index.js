@@ -13,6 +13,8 @@ import userRoute from './route/user.route.js';
 import allOfRoute from './route/allOf.route.js';
 import projectRoute from './route/project.route.js';
 import experienceRoute from './route/exprience.route.js';
+import educationRoute from './route/education.route.js';
+import certificateRoute from './route/certificate.route.js';
 
 const app = express();
 
@@ -42,6 +44,8 @@ app.use("/api/user",userRoute)
 app.use("/api/all-admin-data",allOfRoute)
 app.use("/api/project-data",projectRoute)
 app.use("/api/experience-data",experienceRoute)
+app.use("/api/education-data",educationRoute)
+app.use("/api/certificate-data",certificateRoute)
 
 // if you want to give another port give it in .env file by PORT
 const PORT = 8080 || process.env.PORT
