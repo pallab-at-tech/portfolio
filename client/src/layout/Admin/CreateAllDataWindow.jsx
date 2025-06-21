@@ -103,7 +103,7 @@ const CreateAllDataWindow = ({ close }) => {
 
 
 
-                <form onSubmit={handleSubmit} className='grid gap-y-2   min-w-md max-h-[650px] min-h-[650px] scrollbar-custom pl-6 py-2 pt-4 bg-gradient-to-br from-[#43547a] to-[#232a36] rounded overflow-y-auto mt-10 mb-4 px-10'>
+                <form onSubmit={handleSubmit} className='grid gap-y-2   lg:min-w-md md::max-h-[650px] md::min-h-[650px]  md:min-w-[400px] min-w-[300px] max-h-[450px] min-h-[450px]   scrollbar-custom pl-6 py-2 pt-4 bg-gradient-to-br from-[#43547a] to-[#232a36] rounded overflow-y-auto mt-10 mb-4 px-10'>
                     <div className='w-full flex justify-end'>
                         <IoMdCloseCircleOutline size={28} onClick={close} className='cursor-pointer' />
                     </div>
@@ -208,8 +208,6 @@ const CreateAllDataWindow = ({ close }) => {
                     </div>
 
                     <button className='p-2 w-full bg-[#2c6abc]  hover:bg-[#2463b5] text-[#d1dcfb]"   text-[#d1dcfb]  mt-2 rounded  font-semibold'>submit</button>
-
-
 
                 </form>
 
