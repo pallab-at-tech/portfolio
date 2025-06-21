@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGlobalProvider } from '../provider/GlobalProvider'
+import { useGlobalContext } from '../provider/GlobalProvider'
 
 
 const DarkModeToggle = () => {

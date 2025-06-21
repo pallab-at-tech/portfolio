@@ -5,7 +5,7 @@ import MarginBottom from '../utils/MarginBottom'
 import { MdNightsStay } from "react-icons/md";
 import { FaCloudSun } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import { useGlobalProvider } from '../provider/GlobalProvider';
+import { useGlobalContext } from '../provider/GlobalProvider';
 import { Link } from 'react-scroll';
 import { useDispatch, useSelector } from 'react-redux';
 import { CgProfile } from "react-icons/cg";
@@ -17,11 +17,11 @@ import toast from 'react-hot-toast'
 import { setLogOut } from '../store/userSlice';
 import { useNavigate } from 'react-router-dom';
 
-
+// useGlobalProvider
 const Popbar = () => {
 
     const [closePopUp, setClosePopUp] = useState(false)
-    const { darkMode, setDarkMode } = useGlobalProvider();
+    const { darkMode, setDarkMode } = useGlobalContext();
 
     const user = useSelector((state) => state?.user)
     const userUrl = `/dashboard/${user?.name?.toLowerCase()?.replace(" ", "-")}-${user?._id}`

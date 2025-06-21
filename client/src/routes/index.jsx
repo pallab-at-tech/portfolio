@@ -16,7 +16,7 @@ import ResetPassword from '../pages/ResetPassword'
 import Dashboard from '../layout/Dashboard'
 import Profile from '../pages/Profile'
 import ProjectDetailsEdit from '../pages/ProjectDetailsEdit'
-import EducationDetailsEdit from '../pages/EducationDetailsEdit'
+import EducationDetailsEdit from '../layout/Admin/EducationDetailsEdit'
 import SkillDetailsEdit from '../pages/SkillDetailsEdit'
 import OthersDetailsEdit from '../pages/OthersDetailsEdit'
 

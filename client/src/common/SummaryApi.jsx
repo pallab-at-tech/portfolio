@@ -32,6 +32,10 @@ const SummaryApi = {
     fetch_allOf_data : {
         url : "/api/all-admin-data/get-data",
         method : "get"
+    },
+    create_allOf_data : {
+        url : "/api/all-admin-data/data-create",
+        method : "post"
     }
 }
 

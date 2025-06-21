@@ -6,8 +6,8 @@ import { useDispatch } from "react-redux";
 import { setAllOfDetails } from "../store/allOfSlice";
 
 
-const GlobalContext = createContext(null)
-export const useGlobalProvider = () => useContext(GlobalContext)
+export const GlobalContext = createContext(null)
+export const useGlobalContext = () => useContext(GlobalContext)
 
 const GlobalProvider  = ({ children }) => {
     

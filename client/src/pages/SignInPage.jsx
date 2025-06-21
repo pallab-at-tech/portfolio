@@ -41,13 +41,11 @@ const SignInPage = () => {
         data: data
       })
 
-      console.log("response from log-in page",response)
-
-      if (response.data.error) {
+      if (response?.data?.error) {
         toast.error(response?.data?.message)
       }
 
-      if (response.data.success) {
+      if (response?.data?.success) {
 
         toast.success(response?.data?.message)
         localStorage.setItem('accesstoken', response.data.data.accessToken)
