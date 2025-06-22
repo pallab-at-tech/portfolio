@@ -6,6 +6,6 @@ const allOfRoute = express()
 
 allOfRoute.post("/data-create",auth, createAllOfDetails)
 allOfRoute.get("/get-data",getAllOfDetails)
-allOfRoute.post("/update-data",auth, updateAllOfDetails)
+allOfRoute.put("/update-data",auth, updateAllOfDetails)
 
 export default allOfRoute
