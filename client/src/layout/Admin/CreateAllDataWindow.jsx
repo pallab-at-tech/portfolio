@@ -26,7 +26,6 @@ const CreateAllDataWindow = ({ close }) => {
 
     const [loading, setLoading] = useState(false)
     const {fetchAllDetails} = useGlobalContext()
-    const test = useSelector(state => state?.allofdetails)
 
 
     const handlePhoto = async (e) => {
@@ -72,19 +71,14 @@ const CreateAllDataWindow = ({ close }) => {
 
             const {data : responseData} = response
 
-            console.log("response from data create",response)
-
             if (responseData?.error) {
-                toast.error(response?.message)
+                toast.error(responseData?.message)
             }
 
-            console.log("test before",test)
 
             if(responseData?.success){
                 toast.success(responseData?.message)
                 fetchAllDetails()
-
-                console.log("test after",test)
                 close()
             }
 

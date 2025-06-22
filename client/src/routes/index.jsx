@@ -19,6 +19,7 @@ import ProjectDetailsEdit from '../pages/ProjectDetailsEdit'
 import EducationDetailsEdit from '../layout/Admin/EducationDetailsEdit'
 import SkillDetailsEdit from '../pages/SkillDetailsEdit'
 import OthersDetailsEdit from '../pages/OthersDetailsEdit'
+import AllOfDetailsEdit from "../layout/Admin/AllOfDetailsEdit"
 
 const router = createBrowserRouter([
     {
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
                         index: true,
                         element : <Profile/>
 
+                    },
+                    {
+                        path : "/dashboard/:user/allOfEdit",
+                        element : <AllOfDetailsEdit/>
                     },
                     {
                         path : "/dashboard/:user/projectEdit",

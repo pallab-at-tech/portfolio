@@ -28,7 +28,7 @@ const EducationDetailsEdit = () => {
         <section className='lg:mx-24 mx-14  mt-16 text-primary-text relative'>
 
 
-            {
+            {/* {
                 !Boolean(alldata?.name) ? (
                     <>
 
@@ -59,11 +59,17 @@ const EducationDetailsEdit = () => {
                 ) : (
                     <div>
 
-                        <p>All of the details :</p>
+                        <p className='text-2xl font-bold'>All of the details :</p>
 
-                        <form >
+                        <form className='bg-primary-black min-w-[750px] max-w-[750px] p-6 rounded mt-6'>
 
-                            
+                            <div className='group'>
+
+                                <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1 font-semibold pr-1'>Name</p>
+                                <input type="text" className='bg-[#444444f2] rounded outline-none w-full p-2' />
+
+                            </div>
+
 
 
                         </form>
@@ -80,7 +86,7 @@ const EducationDetailsEdit = () => {
                     <CreateAllDataWindow close={() => setopenCreateWindow(false)} />
                 )
 
-            }
+            } */}
 
         </section>
     )

@@ -36,6 +36,10 @@ const SummaryApi = {
     create_allOf_data : {
         url : "/api/all-admin-data/data-create",
         method : "post"
+    },
+    update_allOf_data : {
+        url : "/api/all-admin-data/update-data",
+        method : "put"
     }
 }
 

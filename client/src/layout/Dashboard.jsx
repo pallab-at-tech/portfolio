@@ -54,6 +54,8 @@ const Dashboard = () => {
                             ) : (
                                 <div className='py-4 text-base flex flex-col'>
 
+                                    <Link to={`${userUrl}/allOfEdit`}>all details</Link>
+
                                     <Link to={`${userUrl}/educationEdit`}>Education</Link>
 
                                     <Link to={`${userUrl}/projectEdit`}>Project</Link>
