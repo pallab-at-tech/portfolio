@@ -5,15 +5,13 @@ import { NavLink, Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import MarginBottom from '../utils/MarginBottom'
 import { Link } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
 
 const Dashboard = () => {
 
     const user = useSelector((state) => state?.user)
     const userUrl = `/dashboard/${user?.name?.toLowerCase()?.replace(" ", "-")}-${user?._id}`
 
-    const location = useLocation()
-    //  console.log("loac dash",location)
+    const alldata = useSelector(state => state.allofdetails)
 
 
     return (
@@ -56,17 +54,25 @@ const Dashboard = () => {
 
                                     <Link to={`${userUrl}/allOfEdit`}>all details</Link>
 
-                                    <Link to={`${userUrl}/educationEdit`}>Education</Link>
+                                    {
+                                        Boolean(alldata?.name) && (
+                                            <>
+                                                <Link to={`${userUrl}/educationEdit`}>Education</Link>
 
-                                    <Link to={`${userUrl}/projectEdit`}>Project</Link>
+                                                <Link to={`${userUrl}/projectEdit`}>Project</Link>
 
-                                    <Link to={`${userUrl}/skillEdit`}>Skill</Link>
+                                                <Link to={`${userUrl}/skillEdit`}>Skill</Link>
 
-                                    <Link to={`${userUrl}/othersEdit`}>Other</Link>
+                                                <Link to={`${userUrl}/othersEdit`}>Other</Link>
+                                            </>
+                                        )
+                                    }
+
+
 
                                     <Link to={""}>LogOut</Link>
 
-                                    
+
 
                                     {/* project details , skill details , education details , Logout , others details */}
                                 </div>

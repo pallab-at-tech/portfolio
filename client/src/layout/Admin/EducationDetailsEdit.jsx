@@ -1,40 +1,51 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import CreateAllDataWindow from './CreateAllDataWindow'
 import bg from "../../assets/no data.png"
+import { TiTick } from 'react-icons/ti'
+import Axios from '../../utils/Axios'
+import SummaryApi from '../../common/SummaryApi'
+import toast from 'react-hot-toast'
+import { useGlobalContext } from '../../provider/GlobalProvider'
+import TickMark from '../../utils/TickMark'
+import CreateEducationDataWindow from './CreateEducationDataWindow'
 
 const EducationDetailsEdit = () => {
 
-
     const alldata = useSelector(state => state.allofdetails)
+
     const [data, setData] = useState({
-        name: alldata?.name,
-        email: "",
-        resume: "",
-        contact_number: "",
-        about_me: "",
-        github_link: "",
-        linkedin_link: "",
-        instragram_link: "",
-        facebook_link: ""
+        institute_name: "",
+        location: "",
+        qualification: []
     })
 
-    console.log("all data by redux", alldata)
+    const [qualify, setQualify] = useState({
+        level: "",
+        stream: "",
+        startDate: "",
+        endDate: "",
+        typeOfScore: "",
+        score: ""
+    })
 
     const [openCreateWindow, setopenCreateWindow] = useState(false)
 
+    console.log("edu", alldata)
+
+
+
+
+
 
     return (
-        <section className='lg:mx-24 mx-14  mt-16 text-primary-text relative'>
+        <section className='lg:mx-24 mx-14  mt-16 text-primary-text '>
 
-
-            {/* {
-                !Boolean(alldata?.name) ? (
+            {
+                alldata?.all_education?.length === 0 ? (
                     <>
-
                         <div className='flex flex-col md:pl-16  mt-28'>
                             <div>
-                                <p>It's look you haven't  create all of the data ....</p>
+                                <p>It's look you haven't create education data ....</p>
                                 <div onClick={() => setopenCreateWindow(true)} className=' my-4 rounded-full cursor-pointer px-4 py-1.5 w-fit border-3 text-terniary-dark text-base  transition duration-200 outline-none font-semibold button-shadow'>
                                     create
                                 </div>
@@ -57,36 +68,23 @@ const EducationDetailsEdit = () => {
                         </div>
                     </>
                 ) : (
-                    <div>
-
-                        <p className='text-2xl font-bold'>All of the details :</p>
-
-                        <form className='bg-primary-black min-w-[750px] max-w-[750px] p-6 rounded mt-6'>
-
-                            <div className='group'>
-
-                                <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1 font-semibold pr-1'>Name</p>
-                                <input type="text" className='bg-[#444444f2] rounded outline-none w-full p-2' />
-
-                            </div>
-
-
-
-                        </form>
-
-                    </div>
+                    <>
+                    
+                    </>
                 )
             }
 
 
 
 
+
+
             {
                 openCreateWindow && (
-                    <CreateAllDataWindow close={() => setopenCreateWindow(false)} />
+                    <CreateEducationDataWindow close={() => setopenCreateWindow(false)} />
                 )
 
-            } */}
+            }
 
         </section>
     )

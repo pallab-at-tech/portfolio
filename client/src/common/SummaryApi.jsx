@@ -40,6 +40,10 @@ const SummaryApi = {
     update_allOf_data : {
         url : "/api/all-admin-data/update-data",
         method : "put"
+    },
+    create_education_data : {
+        url : "/api/education-data/education-create",
+        method : "post"
     }
 }
 

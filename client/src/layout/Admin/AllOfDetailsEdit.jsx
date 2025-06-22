@@ -28,7 +28,7 @@ const EducationDetailsEdit = () => {
         facebook_link: alldata?.facebook_link
     })
     const [loading, setLoading] = useState(false)
-    const { fetchAllDetails } = useGlobalContext
+    const { fetchAllDetails } = useGlobalContext()
     const [tick, setTick] = useState(false)
 
     useEffect(() => {
@@ -52,8 +52,6 @@ const EducationDetailsEdit = () => {
         const t = setTimeout(() => setTick(false), 1500);
         return () => clearTimeout(t); 
     }, [tick]);
-
-    console.log("all data by redux", alldata)
 
     const handleChange = async (e) => {
 
@@ -95,8 +93,6 @@ const EducationDetailsEdit = () => {
                 ...SummaryApi.update_allOf_data,
                 data: data
             })
-
-            console.log("Data update ", response)
 
             const { data: responseData } = response
 
