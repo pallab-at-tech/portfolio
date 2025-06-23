@@ -2,46 +2,50 @@ import mongoose from "mongoose";
 
 const projectSchema = new mongoose.Schema({
 
-    tittle : {
-        type : String,
-        default : ""
+    tittle: {
+        type: String,
+        default: ""
     },
-    body : {
-        type : String,
-        default : ""
+    body: {
+        type: String,
+        default: ""
     },
-    feature : {
-        type :Object,
-        default : {}
+    feature: [
+        {
+            type: String,
+            default: ""
+        }
+    ],
+    tech_uses: [
+        {
+            type: String,
+            default: ""
+        }
+    ],
+    project_deploy_link: {
+        type: String,
+        default: null
     },
-    tech_uses : {
-        type : Object,
-        default : {}
+    project_git_link: {
+        type: String,
+        default: null
     },
-    project_deploy_link : {
-        type : String,
-        default : null
+    video: {
+        type: String,
+        default: ""
     },
-    project_git_link : {
-        type : String,
-        default : null
+    image: {
+        type: String,
+        default: ""
     },
-    video : {
-        type : String,
-        default : ""
-    },
-    image : {
-        type : String,
-        default : ""
-    },
-    status : {
-        type : String,
-        enum : ["DONE","PENDING"],
-        default : "PENDING"
+    status: {
+        type: String,
+        enum: ["DONE", "PENDING"],
+        default: "PENDING"
     }
-},{
-    timestamps : true
+}, {
+    timestamps: true
 })
 
-const projectModel = mongoose.model("project" , projectSchema)
+const projectModel = mongoose.model("project", projectSchema)
 export default projectModel
