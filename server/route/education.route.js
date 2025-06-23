@@ -6,7 +6,7 @@ const educationRoute = express()
 
 educationRoute.post("/education-create",auth,createEducationDetails)
 educationRoute.get("/get-education-data",getEducationDetails)
-educationRoute.put("/update-education-data",updateEducationalDetails)
-educationRoute.delete("/delete-education-data",deleteEducationalDetails)
+educationRoute.put("/update-education-data",auth,updateEducationalDetails)
+educationRoute.delete("/delete-education-data",auth,deleteEducationalDetails)
 
 export default educationRoute
