@@ -9,7 +9,6 @@ import { useGlobalContext } from '../../provider/GlobalProvider'
 import TickMark from '../../utils/TickMark'
 import CreateEducationDataWindow from './CreateEducationDataWindow'
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
-import { MdFolderDelete } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import ConfirmationBox from '../../utils/ConfirmationBox'
 
@@ -22,7 +21,7 @@ const EducationDetailsEdit = () => {
 
     const [index, setIndex] = useState(0)
     const educationArr = alldata?.all_education || [];
-    const total = educationArr.length;
+    const total = educationArr?.length;
 
     const [confirmation, setConfirmation] = useState({
         confirm: false,
@@ -79,7 +78,6 @@ const EducationDetailsEdit = () => {
         })
     }
 
-
     const handleOnQualification = (index, e) => {
 
         const { name, value } = e.target
@@ -112,7 +110,6 @@ const EducationDetailsEdit = () => {
             }
         })
     }
-
 
     const handleOnSubmit = async (e) => {
         try {
@@ -149,8 +146,6 @@ const EducationDetailsEdit = () => {
 
 
     }
-
-
 
     const handleDelete = async () => {
 
@@ -195,11 +190,6 @@ const EducationDetailsEdit = () => {
         }
 
     }, [confirmation.confirm])
-
-
-    console.log("confirmation", confirmation)
-
-
 
 
 
@@ -431,22 +421,24 @@ const EducationDetailsEdit = () => {
 
                         </form>
 
+                        <div className='flex items-center gap-1 mb-6 cursor-pointer'
+                            onClick={() => {
+                                setConfirmation((prev) => {
+                                    return {
+                                        ...prev,
+                                        closeWindow: true
+                                    }
+                                })
+                            }}>
+                            <p className='text-lg font-semibold text-[#0bfb0766] underline'>Delete above details ?</p>
+                            <div className='text-red-600'><MdDelete size={24} /></div>
+                        </div>
+
                     </div>
                 )
             }
 
-            <div className='flex items-center gap-1 mb-6 cursor-pointer'
-                onClick={() => {
-                    setConfirmation((prev) => {
-                        return {
-                            ...prev,
-                            closeWindow: true
-                        }
-                    })
-                }}>
-                <p className='text-lg font-semibold text-[#0bfb0766] underline'>Delete above details ?</p>
-                <div className='text-red-600'><MdDelete size={24} /></div>
-            </div>
+
 
 
 
@@ -455,10 +447,6 @@ const EducationDetailsEdit = () => {
                     <ConfirmationBox confirmation={confirmation} setConfirmation={setConfirmation} />
                 )
             }
-
-
-
-
 
 
 

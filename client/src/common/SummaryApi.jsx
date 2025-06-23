@@ -52,6 +52,18 @@ const SummaryApi = {
     delete_education_data : {
         url : "/api/education-data/delete-education-data",
         method : "delete"
+    },
+    create_Project_details : {
+        url : "/api/project-data/project-create",
+        method : "post"
+    },
+    update_Project_details : {
+        url : "/api/project-data/update-project-details",
+        method : "put"
+    },
+    delete_project_details : {
+        url : "/api/project-data/delete-project",
+        method : "delete"
     }
 
 }
