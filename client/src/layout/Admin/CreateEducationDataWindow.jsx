@@ -74,7 +74,7 @@ const CreateEducationDataWindow = ({ close }) => {
     const handleRemoveQualification = (index) => {
         setData(prev => ({
             ...prev,
-            qualification: prev?.qualification?.filter((_, i) => i !== index)
+            qualification: prev?.qualification?.filter((_, i) =>{ i !== index})
         }));
     }
 

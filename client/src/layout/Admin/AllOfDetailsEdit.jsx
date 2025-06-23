@@ -27,6 +27,7 @@ const EducationDetailsEdit = () => {
         instragram_link: alldata?.instragram_link,
         facebook_link: alldata?.facebook_link
     })
+    
     const [loading, setLoading] = useState(false)
     const { fetchAllDetails } = useGlobalContext()
     const [tick, setTick] = useState(false)

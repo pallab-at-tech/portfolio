@@ -44,7 +44,16 @@ const SummaryApi = {
     create_education_data : {
         url : "/api/education-data/education-create",
         method : "post"
+    },
+    update_education_data : {
+        url : "/api/education-data/update-education-data",
+        method : "put"
+    },
+    delete_education_data : {
+        url : "/api/education-data/delete-education-data",
+        method : "delete"
     }
+
 }
 
 export default SummaryApi
