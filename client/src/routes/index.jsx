@@ -18,7 +18,7 @@ import Profile from '../pages/Profile'
 import ProjectDetailsEdit from '../layout/Admin/ProjectDetailsEdit'
 import EducationDetailsEdit from '../layout/Admin/EducationDetailsEdit'
 import SkillDetailsEdit from '../pages/SkillDetailsEdit'
-import OthersDetailsEdit from '../pages/OthersDetailsEdit'
+import OthersDetailsEdit from '../layout/Admin/OthersDetailsEdit'
 import AllOfDetailsEdit from "../layout/Admin/AllOfDetailsEdit"
 
 const router = createBrowserRouter([

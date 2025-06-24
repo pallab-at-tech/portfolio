@@ -192,10 +192,6 @@ const ProjectDetailsEdit = () => {
 
 
 
-
-    // console.log("total", data)
-
-
     return (
         <section className='lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 text-primary-text'>
 

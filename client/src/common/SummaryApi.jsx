@@ -64,6 +64,14 @@ const SummaryApi = {
     delete_project_details : {
         url : "/api/project-data/delete-project",
         method : "delete"
+    },
+    create_Certificate_details : {
+        url : "/api/certificate-data/certificate-create",
+        method : "post"
+    },
+    get_Certificate_details : {
+        url : "/api/certificate-data/get-certificate",
+        method : "post"
     }
 
 }

@@ -360,7 +360,7 @@ const CreateProjectDataWindow = ({ close }) => {
                     </div>
 
 
-                    <button className='p-2 w-full bg-[#2c6abc]  hover:bg-[#2463b5] text-[#d1dcfb]"  text-[#d1dcfb]  mt-2 rounded  font-semibold cursor-pointer'>submit</button>
+                    <button className='p-2 w-full bg-[#2c6abc]  hover:bg-[#2463b5]  text-[#d1dcfb]  mt-2 rounded  font-semibold cursor-pointer'>submit</button>
 
                 </form>
             </div >
