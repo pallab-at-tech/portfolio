@@ -17,12 +17,19 @@ import CreateOtherWindow from './CreateOtherWindow'
 import { useDispatch } from 'react-redux';
 import { OthersDetails } from '../../store/otherSlice'
 import { useRef } from 'react'
+import AxiosTostError from '../../utils/AxiosToastError'
+import WindowLoader from '../../utils/WindowLoader'
 
 
 const OthersDetailsEdit = () => {
 
+    const { fetchAllDetails } = useGlobalContext()
+    const [openCreateWindow, setopenCreateWindow] = useState(false)
+
     const alldata = useSelector(state => state.allofdetails)
     const otherData = useSelector(state => state.other)
+
+
     const dispatch = useDispatch()
     const imageRef = useRef();
 
@@ -31,15 +38,37 @@ const OthersDetailsEdit = () => {
         page: 1,
         totalNoOfPage: otherData?.totalNoOfPage
     })
+
+    const [confirmation, setConfirmation] = useState({
+        confirm: false,
+        closeWindow: false
+    })
+
+    const [hasLoaded, setHasLoaded] = useState(false)
+
     const [tick, setTick] = useState(false)
+    const [window_loader, setWindow_loader] = useState(false)
+    const [imageLoading, setImageLoading] = useState(false)
+
     useEffect(() => {
         if (!tick) return;
         const t = setTimeout(() => setTick(false), 1500);
         return () => clearTimeout(t);
     }, [tick]);
 
+    useEffect(() => {
+        if (!window_loader) return;
+        const t = setTimeout(() => setWindow_loader(false), 1500);
+        return () => clearTimeout(t);
+    }, [window_loader]);
 
 
+    const [data, setData] = useState({
+        certificateId: otherData?.data[0]?._id || "",
+        tittle: otherData?.data[0]?.tittle || "",
+        image: otherData?.data[0]?.image || "",
+        describe: otherData?.data[0]?.describe || ""
+    })
 
 
     const fetchOtherData = async () => {
@@ -64,60 +93,168 @@ const OthersDetailsEdit = () => {
                 }))
             }
 
-
-
-            console.log("response from other", responseData)
         } catch (error) {
             console.log(error)
         }
     }
 
-    const [imageLoading, setImageLoading] = useState(false)
-
-
-
-    const [data, setData] = useState({
-        _id: otherData?.data[0]?._id || "",
-        tittle: otherData?.data[0]?.tittle || "",
-        image: otherData?.data[0]?.image || "",
-        describe: otherData?.data[0]?.describe || ""
-    })
-
-    console.log("ise.,jkh", data)
-
     useEffect(() => {
         fetchOtherData()
-
     }, [pagination.limit, pagination.page])
 
 
+    const handleOnChange = (e) => {
+
+        const { name, value } = e.target
+
+        setData((preve) => {
+            return {
+                ...preve,
+                [name]: value
+            }
+        })
+    }
+
+    const handlePhoto = async (e) => {
+
+        const file = e.target.files?.[0];
+        const { name } = e.target
+
+        if (!file) return;
+
+        setImageLoading(true)
+        const response = await uploadFile(file)
+
+        setImageLoading(false)
+
+        setData((preve) => {
+            return {
+                ...preve,
+                [name]: response?.secure_url
+            }
+        })
+    }
+
+    const handleOnSubmit = async (e) => {
+        try {
+
+            e.preventDefault()
+
+            const response = await Axios({
+                ...SummaryApi.update_certificate_details,
+                data: data
+            })
+
+            const { data: responseData } = response
+
+            if (responseData?.error) {
+                toast.error(responseData?.message)
+            }
+
+            if (responseData?.success) {
+                setTick(true)
+                toast.success(responseData?.message)
+                fetchOtherData()
+                fetchAllDetails()
+            }
+
+        } catch (error) {
+            AxiosTostError(error)
+        }
+    }
+
+    const handleDelete = async (e) => {
+        try {
+
+            const response = await Axios({
+                ...SummaryApi.delete_certificate_details,
+                data: {
+                    certificateId: data?.certificateId
+                }
+            })
+
+            const { data: responseData } = response
+
+            if (responseData?.error) {
+                toast.error(responseData?.message)
+            }
+
+
+            if (responseData?.success) {
+
+                setWindow_loader(true)
+
+                const res = await Axios({
+                    ...SummaryApi.get_Certificate_details,
+                    data: {
+                        page: pagination.page,
+                        limit: pagination.limit
+                    }
+                });
+
+                const newData = res.data;
+
+                let newPage = pagination.page;
+                if (newData.data.length === 0 && pagination.page > 1) {
+                    newPage = pagination.page - 1;
+                }
+
+                setPagination((prev) => ({
+                    ...prev,
+                    page: newPage,
+                    totalNoOfPage: newData.totalNoOfPage || 1
+                }));
+
+                dispatch(OthersDetails(newData));
+                fetchAllDetails();
+            }
+
+        } catch (error) {
+            AxiosTostError(error)
+        }
+    }
 
     useEffect(() => {
 
-        setData({
-            _id: otherData?.data[0]?._id || "",
-            tittle: otherData?.data[0]?.tittle || "",
-            image: otherData?.data[0]?.image || "",
-            describe: otherData?.data[0]?.describe || ""
-        })
+        if (confirmation.confirm) {
+            handleDelete()
 
-        setPagination((preve) => {
-            return {
-                ...preve,
-                totalNoOfPage: otherData?.totalNoOfPage
-            }
-        })
-    }, [fetchOtherData, pagination.limit, pagination.page])
+            setConfirmation((preve) => {
+                return {
+                    ...preve,
+                    confirm: false
+                }
+            })
+        }
+
+    }, [confirmation.confirm])
 
 
+    useEffect(() => {
+
+        if (otherData?.data && otherData.data.length > 0) {
+            setData({
+                certificateId: otherData?.data[0]?._id || "",
+                tittle: otherData?.data[0]?.tittle || "",
+                image: otherData?.data[0]?.image || "",
+                describe: otherData?.data[0]?.describe || ""
+            })
+
+            setPagination((preve) => {
+                return {
+                    ...preve,
+                    totalNoOfPage: otherData?.totalNoOfPage
+                }
+            })
+        }
+
+    }, [pagination.limit, pagination.page, otherData?.data[0]])
 
 
 
 
-    console.log("otherData from...", otherData.data)
+    // console.log("otherData from...", otherData.data)
 
-    const { fetchAllDetails } = useGlobalContext()
-    const [openCreateWindow, setopenCreateWindow] = useState(false)
 
 
     return (
@@ -173,10 +310,14 @@ const OthersDetailsEdit = () => {
                             <div className='flex gap-3 items-center justify-end '>
 
                                 <div className={pagination.page === 1 ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'} onClick={() => {
+
+                                    if (pagination.page === 1) return;
+
                                     setPagination((preve) => {
                                         return {
                                             ...preve,
-                                            page: preve.page == 1 ? 1 : preve.page - 1
+                                            page: preve.page - 1
+
                                         }
                                     })
                                 }}>
@@ -186,10 +327,13 @@ const OthersDetailsEdit = () => {
                                 <p>{`${pagination.page}/${pagination.totalNoOfPage}`}</p>
 
                                 <div className={pagination.page === pagination.totalNoOfPage ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'} onClick={() => {
+
+                                    if (pagination.page === pagination.totalNoOfPage) return;
+
                                     setPagination((preve) => {
                                         return {
                                             ...preve,
-                                            page: preve.page == preve.totalNoOfPage ? preve.totalNoOfPage : preve.page + 1
+                                            page: preve.page + 1
                                         }
                                     })
                                 }}>
@@ -200,7 +344,7 @@ const OthersDetailsEdit = () => {
 
                         </div>
 
-                        <form className='bg-[#1c1d1f] lg:min-w-[750px] lg:max-w-[750px] md:min-h-[500px] md:max-h-[800px] min-h-[500px]  max-h-[500px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4'>
+                        <form onSubmit={handleOnSubmit} className='bg-[#1c1d1f] lg:min-w-[750px] lg:max-w-[750px] md:min-h-[500px] md:max-h-[800px] min-h-[500px]  max-h-[500px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4'>
 
                             {/* tittle */}
                             <div className='group font-semibold'>
@@ -209,7 +353,7 @@ const OthersDetailsEdit = () => {
                                     <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Title :</p>
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
-                                <input type="text" required name='tittle' value={data.tittle} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <input type="text" onChange={handleOnChange} required name='tittle' value={data.tittle} className='bg-[#353333f2] rounded outline-none w-full p-2' />
 
                             </div>
 
@@ -221,7 +365,7 @@ const OthersDetailsEdit = () => {
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
 
-                                <input type="file" ref={imageRef} hidden name='image' id='cover_image' accept="image/*" />
+                                <input type="file" onChange={handlePhoto} ref={imageRef} hidden name='image' id='cover_image' accept="image/*" />
                                 <div onClick={() => imageRef.current?.click()} className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer'>
                                     {
                                         imageLoading ? (
@@ -261,7 +405,7 @@ const OthersDetailsEdit = () => {
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
 
-                                <textarea required name='tittle' rows={4} cols={4} value={data.describe} className='bg-[#353333f2] rounded outline-none w-full p-2 max-h-[120px] min-h-[110px]'></textarea>
+                                <textarea onChange={handleOnChange} required name='describe' rows={4} cols={4} value={data.describe} className='bg-[#353333f2] rounded outline-none w-full p-2 max-h-[120px] min-h-[110px]'></textarea>
                             </div>
 
                             <button className='py-3 w-full bg-terniary-dark  hover:bg-[#fc4503]  text-[#d1dcfb]  mt-2 rounded  font-semibold cursor-pointer'>
@@ -278,26 +422,45 @@ const OthersDetailsEdit = () => {
                         </form>
 
 
+                        <div className='flex items-center gap-1 mb-6 cursor-pointer'
+                            onClick={() => {
+                                setConfirmation((prev) => {
+                                    return {
+                                        ...prev,
+                                        closeWindow: true
+                                    }
+                                })
+                            }}>
+                            <p className='text-lg font-semibold text-[#0bfb0766] underline'>Delete above details ?</p>
+                            <div className='text-red-600'><MdDelete size={24} /></div>
+                        </div>
 
                     </div>
                 )
             }
 
 
+            {
+                window_loader && (
+                    <WindowLoader/>
+                )
+            }
 
 
 
 
-
-
-
+            {
+                confirmation.closeWindow && (
+                    <ConfirmationBox confirmation={confirmation} setConfirmation={setConfirmation} />
+                )
+            }
 
 
 
 
             {
                 openCreateWindow && (
-                    <CreateOtherWindow close={() => setopenCreateWindow(false)} />
+                    <CreateOtherWindow close={() => setopenCreateWindow(false)} loadData={() => setHasLoaded(false)} fetchOtherData={fetchOtherData}/>
                 )
             }
 

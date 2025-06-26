@@ -72,6 +72,14 @@ const SummaryApi = {
     get_Certificate_details : {
         url : "/api/certificate-data/get-certificate",
         method : "post"
+    },
+    update_certificate_details : {
+        url : "/api/certificate-data/update-certificate-details",
+        method : "put"
+    },
+    delete_certificate_details : {
+        url : "/api/certificate-data/delete-certificate-details",
+        method : "delete"
     }
 
 }

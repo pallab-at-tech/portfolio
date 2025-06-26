@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { IoMdCloseCircleOutline } from 'react-icons/io'
 import { TiStarburst, TiTick } from 'react-icons/ti'
 import { IoMdClose } from "react-icons/io";
@@ -10,7 +10,7 @@ import SummaryApi from '../../common/SummaryApi';
 import toast from 'react-hot-toast';
 import AxiosToastError from "../../utils/AxiosToastError"
 
-const CreateOtherWindow = ({ close }) => {
+const CreateOtherWindow = ({ close, loadData, fetchOtherData }) => {
 
     const [data, setData] = useState({
         tittle: "",
@@ -73,13 +73,15 @@ const CreateOtherWindow = ({ close }) => {
 
 
             if (responseData?.success) {
+                loadData()
+                fetchOtherData()
                 toast.success(responseData?.message)
                 fetchAllDetails()
                 close()
             }
 
         } catch (error) {
-           AxiosToastError(error)
+            AxiosToastError(error)
         }
     }
 
