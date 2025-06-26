@@ -48,84 +48,46 @@ export const createCertificateDetails = async (request, response) => {
     }
 }
 
-// export const getCertificateDetails = async (request, response) => {
-//     try {
-
-//         const { certificateId } = request.body || {}
-
-//         if (!certificateId) {
-//             return response.status(400).json({
-//                 message: 'please provide certificate Id',
-//                 error: true,
-//                 success: false
-//             })
-//         }
-
-//         const certificate = await certificateModel.findById(certificateId)
-
-//         if (!certificate) {
-//             return response.status(400).json({
-//                 message: "provide certificate id is'nt available",
-//                 error: true,
-//                 success: false
-//             })
-//         }
-
-//         return response.json({
-//             message: 'all of certificate data',
-//             data: certificate,
-//             error: false,
-//             success: true
-//         })
-
-//     } catch (error) {
-//         return response.status(500).json({
-//             message: error.message || error,
-//             error: true,
-//             success: false
-//         })
-//     }
-// }
-
 export const getCertificateDetails = async (request, response) => {
     try {
 
-        let {page , limit , search} = request.body || {}
+        let { page, limit, search, certificateId  } = request.body || {}
 
         page = Number(page) || 1
         limit = Number(limit) || 1
 
-        if(!page){
+        if (!page) {
             page = 1;
         }
 
-        if(!limit){
+        if (!limit) {
             limit = 1;
         }
 
+
         const query = search ? {
-            $text : {
-                $search : search
+            $text: {
+                $search: search
             }
         } : {}
 
-        const skip = (page-1)*limit
+
+        const skip = (page - 1) * limit
 
 
-        const [data , dataCount] = await Promise.all([
-            certificateModel.find(query).sort({createdAt : -1}).skip(skip).limit(limit),
+        const [data, dataCount] = await Promise.all([
+            certificateModel.find(query).sort({ createdAt: 1  }).skip(skip).limit(limit),
             certificateModel.countDocuments(query)
         ])
 
-        
 
         return response.json({
-            message : 'Data of certificate',
-            error : false,
-            success : true,
-            totalCount : dataCount,
-            totalNoOfPage : Math.ceil(dataCount/limit),
-            data : data
+            message: 'Data of certificate',
+            error: false,
+            success: true,
+            totalCount: dataCount,
+            totalNoOfPage: Math.ceil(dataCount / limit),
+            data: data
         })
 
     } catch (error) {
