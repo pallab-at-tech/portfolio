@@ -85,23 +85,23 @@ const router = createBrowserRouter([
 
                     },
                     {
-                        path : "/dashboard/:user/allOfEdit",
+                        path : "allOfEdit",
                         element : <AllOfDetailsEdit/>
                     },
                     {
-                        path : "/dashboard/:user/projectEdit",
+                        path : "projectEdit",
                         element : <ProjectDetailsEdit/>
                     },
                     {
-                        path : "/dashboard/:user/educationEdit",
+                        path : "educationEdit",
                         element : <EducationDetailsEdit/>
                     },
                     {
-                        path : "/dashboard/:user/skillEdit",
+                        path : "skillEdit",
                         element : <SkillDetailsEdit/>
                     },
                     {
-                        path : "/dashboard/:user/othersEdit",
+                        path : "othersEdit",
                         element : <OthersDetailsEdit/>
                     }
                 ]

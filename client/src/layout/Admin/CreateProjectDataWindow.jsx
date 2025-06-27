@@ -8,6 +8,7 @@ import { FiUploadCloud } from 'react-icons/fi';
 import Axios from '../../utils/Axios';
 import SummaryApi from '../../common/SummaryApi';
 import toast from 'react-hot-toast';
+import AxiosToastError from "../../utils/AxiosToastError"
 
 
 
@@ -120,7 +121,7 @@ const CreateProjectDataWindow = ({ close }) => {
             }
 
         } catch (error) {
-            console.log(error)
+            AxiosToastError(error)
         }
     }
 

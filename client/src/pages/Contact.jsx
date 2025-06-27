@@ -5,8 +5,12 @@ import { IoLocationOutline } from "react-icons/io5";
 import { CiLinkedin } from "react-icons/ci";
 import { Link } from 'react-router-dom'
 import { Element } from 'react-scroll';
+import { useSelector } from 'react-redux';
 
 const Contact = () => {
+
+  const allOf = useSelector(state => state.allofdetails)
+
   return (
     <section className='bg-primary-black text-primary-text extra-font-style  md:px-20 p-10  pb-10'>
 
@@ -33,7 +37,7 @@ const Contact = () => {
                   </div>
                   <div className='text-[#abaeb2] text-sm md:text-base peer-hover:text-[#dbdcde] transition duration-200 peer-hover:scale-y-100  peer-hover:-translate-y-0.5'>
                     <p>Email</p>
-                    <p className='text-[#ededed] break-all block'>Pallab861774@gmail.com</p>
+                    <p className='text-[#ededed] break-all block'>{allOf.email}</p>
                   </div>
                 </div>
 
@@ -43,7 +47,7 @@ const Contact = () => {
                   </div>
                   <div className='text-[#abaeb2] text-sm md:text-base peer-hover:text-[#dbdcde] transition duration-200 peer-hover:scale-y-100  peer-hover:-translate-y-0.5'>
                     <p>Phone no.</p>
-                    <p className='text-[#ededed] break-all block'>0123456789</p>
+                    <p className='text-[#ededed] break-all block'>{allOf.contact_number}</p>
                   </div>
                 </div>
 
@@ -63,7 +67,7 @@ const Contact = () => {
                   </div>
                   <div className='text-[#abaeb2] text-sm md:text-base peer-hover:text-[#dbdcde] transition duration-200 peer-hover:scale-y-100  peer-hover:-translate-y-0.5'>
                     <p>LinkedIn</p>
-                    <Link to={"https://www.linkedin.com/in/pallab-bag-35115a2b1/"} className='text-[#ededed] break-all block'>https://www.linkedin.com/in/pallab-bag-35115a2b1/</Link>
+                    <Link to={allOf.linkedin_link} className='text-[#ededed] break-all block'>{allOf.linkedin_link}</Link>
                   </div>
                 </div>
 

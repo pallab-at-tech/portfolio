@@ -19,6 +19,8 @@ import { useSelector } from 'react-redux'
 
 const Home = () => {
 
+  const allOf = useSelector(state => state.allofdetails)
+
   return (
 
     <div className=''>
@@ -74,11 +76,11 @@ const Home = () => {
                     <p className='text-base px-2 py-1.5'>Resume</p>
                   </div>
 
-                  <Link className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><FaGithub size={20} /></Link>
+                  <Link to={allOf.github_link} className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><FaGithub size={20} /></Link>
 
-                  <Link className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><SiGmail size={20} /></Link>
+                  <Link to={allOf.email} className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><SiGmail size={20} /></Link>
 
-                  <Link className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><FaLinkedin size={20} /></Link>
+                  <Link to={allOf.linkedin_link} className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><FaLinkedin size={20} /></Link>
 
                 </div>
 
