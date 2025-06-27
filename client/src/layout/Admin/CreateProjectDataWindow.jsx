@@ -67,9 +67,6 @@ const CreateProjectDataWindow = ({ close }) => {
             const file = e.target.files?.[0];
             const name = e.target.name
 
-            console.log("file", file)
-            console.log("name", name)
-
             if (!file) return;
 
             if (name === "video") {
@@ -79,7 +76,6 @@ const CreateProjectDataWindow = ({ close }) => {
                 setImageLoading(true)
             }
 
-            // console.log("name",name)
 
             const response = await uploadFile(file)
 
@@ -128,7 +124,7 @@ const CreateProjectDataWindow = ({ close }) => {
         }
     }
 
-    console.log("testing data", data)
+    
 
 
 

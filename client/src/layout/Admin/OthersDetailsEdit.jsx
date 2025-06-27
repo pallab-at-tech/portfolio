@@ -253,8 +253,6 @@ const OthersDetailsEdit = () => {
 
 
 
-    // console.log("otherData from...", otherData.data)
-
 
 
     return (
@@ -422,7 +420,7 @@ const OthersDetailsEdit = () => {
                         </form>
 
 
-                        <div className='flex items-center gap-1 mb-6 cursor-pointer'
+                        <div className='flex items-center gap-1 mb-6 cursor-pointer pt-2'
                             onClick={() => {
                                 setConfirmation((prev) => {
                                     return {
@@ -431,8 +429,8 @@ const OthersDetailsEdit = () => {
                                     }
                                 })
                             }}>
-                            <p className='text-lg font-semibold text-[#0bfb0766] underline'>Delete above details ?</p>
-                            <div className='text-red-600'><MdDelete size={24} /></div>
+                            <p className='text-base font-semibold text-[#d1c6c1] underline'>Delete above details ?</p>
+                            <div className='text-orange-800'><MdDelete size={22} /></div>
                         </div>
 
                     </div>

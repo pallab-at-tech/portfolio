@@ -1,17 +1,45 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CgProfile } from 'react-icons/cg'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import { NavLink, Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import MarginBottom from '../utils/MarginBottom'
 import { Link } from 'react-router-dom'
+import SummaryApi from '../common/SummaryApi'
+import { useDispatch } from 'react-redux'
+import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
+import { setLogOut } from '../store/userSlice'
+import Axios from '../utils/Axios'
 
 const Dashboard = () => {
 
     const user = useSelector((state) => state?.user)
     const userUrl = `/dashboard/${user?.name?.toLowerCase()?.replace(" ", "-")}-${user?._id}`
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const alldata = useSelector(state => state.allofdetails)
+
+    const handleLogOut = async () => {
+        try {
+            const response = await Axios({
+                ...SummaryApi.user_logOut
+            })
+
+            if (response?.data?.success) {
+                dispatch(setLogOut())
+
+                localStorage.clear()
+
+                toast.success(response?.data?.message)
+                navigate("/")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
 
 
     return (
@@ -26,7 +54,7 @@ const Dashboard = () => {
 
                         <div className='flex gap-2 items-center pb-4 '>
 
-                            <p className='text-sm'>{user?.name}</p>
+                            <p className='max-w-[10ch] break-all text-sm line-clamp-2 leading-tight'>{user?.name}</p>
                             <NavLink to={userUrl} className='hover:text-[#fc5e03] cursor-pointer'><FaExternalLinkAlt /></NavLink>
 
                         </div>
@@ -50,31 +78,57 @@ const Dashboard = () => {
 
                                 </>
                             ) : (
-                                <div className='py-4 text-base flex flex-col'>
+                                <div className='py-4 text-lg flex flex-col gap-y-0.5'>
 
-                                    <Link to={`${userUrl}/allOfEdit`}>all details</Link>
+                                    <NavLink to={`${userUrl}/allOfEdit`} className={({ isActive }) => {
+                                        return isActive ? 'bg-[#3d4150] rounded p-2 w-fit' : 'w-fit p-2 transition hover:-translate-y-0.5 duration-300 scale-105'
+                                    }}
+                                    >
+                                        All details
+                                    </NavLink>
 
                                     {
                                         Boolean(alldata?.name) && (
                                             <>
-                                                <Link to={`${userUrl}/educationEdit`}>Education</Link>
 
-                                                <Link to={`${userUrl}/projectEdit`}>Project</Link>
+                                                <NavLink to={`${userUrl}/educationEdit`} className={({ isActive }) => {
+                                                    return isActive ? 'bg-[#3d4150] rounded p-2 w-fit' : 'w-fit p-2 transition hover:-translate-y-0.5 duration-300 scale-105'
+                                                }}
+                                                >
+                                                    Education
+                                                </NavLink>
 
-                                                <Link to={`${userUrl}/skillEdit`}>Skill</Link>
 
-                                                <Link to={`${userUrl}/othersEdit`}>Other</Link>
+                                                <NavLink to={`${userUrl}/projectEdit`} className={({ isActive }) => {
+                                                    return isActive ? 'bg-[#3d4150] rounded p-2 w-fit' : 'w-fit p-2 transition hover:-translate-y-0.5 duration-300 scale-105'
+                                                }}
+                                                >
+                                                    Project
+                                                </NavLink>
+
+
+                                                <NavLink to={`${userUrl}/skillEdit`} className={({ isActive }) => {
+                                                    return isActive ? 'bg-[#3d4150] rounded p-2 w-fit' : 'w-fit p-2 transition hover:-translate-y-0.5 duration-300 scale-105'
+                                                }}
+                                                >
+                                                    Skill
+                                                </NavLink>
+
+                                                <NavLink to={`${userUrl}/othersEdit`} className={({ isActive }) => {
+                                                    return isActive ? 'bg-[#3d4150] rounded p-2 w-fit' : 'w-fit p-2 transition hover:-translate-y-0.5 duration-300 scale-105'
+                                                }}
+                                                >
+                                                    Other
+                                                </NavLink>
+
                                             </>
                                         )
                                     }
 
 
 
-                                    <Link to={""}>LogOut</Link>
+                                    <div onClick={handleLogOut} className='cursor-pointer w-fit p-2 transition hover:-translate-y-0.5 duration-300 scale-105'>LogOut</div>
 
-
-
-                                    {/* project details , skill details , education details , Logout , others details */}
                                 </div>
 
                             )

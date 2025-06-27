@@ -121,7 +121,7 @@ const EducationDetailsEdit = () => {
 
 
     return (
-        <section className='lg:mx-24 mx-14  mt-16 text-primary-text relative'>
+        <section className='lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 text-primary-text relative'>
 
 
             {
@@ -157,7 +157,7 @@ const EducationDetailsEdit = () => {
 
                         <p className='text-2xl font-bold'>All of the details :</p>
 
-                        <form onSubmit={handleSubmit} className='bg-[#1c1d1f] min-w-[750px] max-w-[750px] p-6 rounded mt-6 grid gap-3 mb-6'>
+                        <form onSubmit={handleSubmit} className='bg-[#1c1d1f] lg:min-w-[750px] lg:max-w-[750px] md:min-h-[550px] md:max-h-[800px] min-h-[580px]  max-h-[580px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4'>
 
                             <div className='group font-semibold'>
 

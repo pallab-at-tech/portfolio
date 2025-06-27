@@ -511,7 +511,7 @@ const ProjectDetailsEdit = () => {
 
                         </form>
 
-                        <div className='flex items-center gap-1 mb-6 cursor-pointer'
+                        <div className='flex items-center gap-1 mb-6 cursor-pointer pt-2'
                             onClick={() => {
                                 setConfirmation((prev) => {
                                     return {
@@ -520,8 +520,8 @@ const ProjectDetailsEdit = () => {
                                     }
                                 })
                             }}>
-                            <p className='text-lg font-semibold text-[#0bfb0766] underline'>Delete above details ?</p>
-                            <div className='text-red-600'><MdDelete size={24} /></div>
+                            <p className='text-base font-semibold text-[#d1c6c1] underline'>Delete above details ?</p>
+                            <div className='text-red-800'><MdDelete size={24} /></div>
                         </div>
 
                     </div>

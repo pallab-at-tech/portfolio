@@ -80,6 +80,10 @@ const SummaryApi = {
     delete_certificate_details : {
         url : "/api/certificate-data/delete-certificate-details",
         method : "delete"
+    },
+    upadate_user_details : {
+        url : "/api/user/update-user",
+        method : "put"
     }
 
 }
