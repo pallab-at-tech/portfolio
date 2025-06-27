@@ -440,12 +440,44 @@ export const userDetailsController = async (request, response) => {
         const user = await userModel.findById(userId).select("-password -refresh_token -refresh_token")
 
         return response.json({
-            message : 'user Details',
-            error : false,
-            data : user,
-            success : true
+            message: 'user Details',
+            error: false,
+            data: user,
+            success: true
         })
-        
+
+    } catch (error) {
+        return response.status(500).json({
+            message: error.message || error,
+            error: true,
+            success: false
+        })
+    }
+}
+
+export const updateUserDetails = async (request, response) => {
+    try {
+
+        const { name, avatar, _id } = request.body || {}
+
+        if (!_id) {
+            return response.status(400).json({
+                message: 'provide user id',
+                error: true,
+                success: false
+            })
+        }
+
+        const user = await userModel.findByIdAndUpdate(_id, {
+            ...(name && { name: name }),
+            ...({ avatar: avatar })
+        })
+
+        return response.json({
+            message: 'data upadate successfully',
+            error: false,
+            success: true
+        })
     } catch (error) {
         return response.status(500).json({
             message: error.message || error,

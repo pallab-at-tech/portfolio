@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema({
         type : String,
         required : [true , "provided password"]
     },
+    avatar : {
+        type : String,
+        default : ""
+    },
     verify_email : {
         type : Boolean,
         default : false
