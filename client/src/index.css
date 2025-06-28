@@ -68,15 +68,32 @@ body {
 
 .scrollbar-custom::-webkit-scrollbar {
   width: 8px;
+  height: 10px;
+ 
+  /* display: none; */
+}
+
+.scrollbar-hidden::-webkit-scrollbar{
+  display: none;
 }
 
 .scrollbar-custom::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1;
+  background-color: #464748;
   border-radius: 15px;
+  
 }
 
 .scrollbar-custom::-webkit-scrollbar-track {
   background: #1a1a1a;
+   margin-left: 20px;
+   margin-right: 20px;
+}
+
+
+/* user can't scroll now */
+.no-interaction {
+  pointer-events: none;
+  overflow: hidden; 
 }
 
 /* adding box shadow */
@@ -271,7 +288,8 @@ body {
 .windowload {
   width: 40px;
   height: 40px;
-  --c: no-repeat linear-gradient(orange 0 0); /* square blocks */
+  --c: no-repeat linear-gradient(orange 0 0);
+  /* square blocks */
   background: var(--c), var(--c), var(--c), var(--c);
   background-size: 21px 21px;
   animation: l5 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
@@ -283,16 +301,19 @@ body {
     width: 40px;
     height: 40px;
   }
+
   33% {
     background-position: 0 0, 100% 0, 100% 100%, 0 100%;
     width: 60px;
     height: 60px;
   }
+
   66% {
     background-position: 100% 0, 100% 100%, 0 100%, 0 0;
     width: 60px;
     height: 60px;
   }
+
   100% {
     background-position: 100% 0, 100% 100%, 0 100%, 0 0;
     width: 40px;

@@ -16,8 +16,7 @@ const App = () => {
   const fetchUser = async () => {
     const user = await fetchUserDetails()
     dispatch(setUserDetails(user?.data))
-
-    console.log("user app.jsx",user)
+    console.log("user app.jsx", user)
   }
 
   useEffect(() => {
@@ -28,16 +27,12 @@ const App = () => {
 
   return (
     <>
-      <GlobalProvider >
+      <Header />
 
-        <Header />
+      <Outlet />
 
-        <Outlet />
-
-        <Footer />
-        <Toaster />
-
-      </GlobalProvider >
+      <Footer />
+      <Toaster />
     </>
   )
 }

@@ -17,7 +17,6 @@ import toast from 'react-hot-toast'
 import { setLogOut } from '../store/userSlice';
 import { useNavigate } from 'react-router-dom';
 
-// useGlobalProvider
 const Popbar = () => {
 
     const [closePopUp, setClosePopUp] = useState(false)
@@ -88,11 +87,18 @@ const Popbar = () => {
                                     </>
                                 ) : (
                                     <>
-                                        {/* <div className=""> */}
 
                                         <div className='rounded mr-10 group lg:pl-4 flex flex-col items-start'>
 
-                                            <div className='pb-0.5'><CgProfile size={32} /></div>
+                                            {
+                                                user.avatar ? (
+                                                    <div className='overflow-hidden rounded-full w-10 h-10'>
+                                                        <img src={user?.avatar} alt="" className='w-full h-full object-cover rounded-full'/>
+                                                    </div>
+                                                ) : (
+                                                    <div className='pb-0.5'><CgProfile size={32} /></div>
+                                                )
+                                            }
 
                                             <div className='flex gap-2 items-center'>
                                                 <p className='text-xl'>{user?.name?.split(" ")[0]}</p>
@@ -113,7 +119,6 @@ const Popbar = () => {
                                             <p className='lg:group-hover:scale-105 lg:transition  lg:hover:-translate-y-0.5  lg:duration-200 text-xl'>LogOut</p></button>
                                         <MarginBottom />
 
-                                        {/* </div> */}
 
                                     </>
                                 )

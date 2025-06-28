@@ -9,7 +9,6 @@ import { useGlobalContext } from '../../provider/GlobalProvider'
 import TickMark from '../../utils/TickMark'
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { IoMdClose } from 'react-icons/io'
 import { FiUploadCloud } from 'react-icons/fi'
 import uploadFile from '../../utils/uploadFile'
 import ConfirmationBox from '../../utils/ConfirmationBox'
@@ -19,6 +18,8 @@ import { OthersDetails } from '../../store/otherSlice'
 import { useRef } from 'react'
 import AxiosTostError from '../../utils/AxiosToastError'
 import WindowLoader from '../../utils/WindowLoader'
+import { OthersDetailspro } from '../../store/OtherScrollData'
+import { BsBookmarkStarFill } from "react-icons/bs";
 
 
 const OthersDetailsEdit = () => {
@@ -28,6 +29,7 @@ const OthersDetailsEdit = () => {
 
     const alldata = useSelector(state => state.allofdetails)
     const otherData = useSelector(state => state.other)
+    const otherScrollData = useSelector(state => state.otherscroll)
 
 
     const dispatch = useDispatch()
@@ -50,6 +52,8 @@ const OthersDetailsEdit = () => {
     const [window_loader, setWindow_loader] = useState(false)
     const [imageLoading, setImageLoading] = useState(false)
 
+    
+
     useEffect(() => {
         if (!tick) return;
         const t = setTimeout(() => setTick(false), 1500);
@@ -67,8 +71,10 @@ const OthersDetailsEdit = () => {
         certificateId: otherData?.data[0]?._id || "",
         tittle: otherData?.data[0]?.tittle || "",
         image: otherData?.data[0]?.image || "",
-        describe: otherData?.data[0]?.describe || ""
+        describe: otherData?.data[0]?.describe || "",
+        bookmark : otherData?.data[0]?.bookmark || false
     })
+
 
 
     const fetchOtherData = async () => {
@@ -86,6 +92,7 @@ const OthersDetailsEdit = () => {
 
             if (responseData?.success) {
                 dispatch(OthersDetails(responseData))
+                dispatch(OthersDetailspro(responseData))
 
                 setPagination((prev) => ({
                     ...prev,
@@ -206,6 +213,7 @@ const OthersDetailsEdit = () => {
                 }));
 
                 dispatch(OthersDetails(newData));
+                dispatch(OthersDetailspro(newData))
                 fetchAllDetails();
             }
 
@@ -237,7 +245,8 @@ const OthersDetailsEdit = () => {
                 certificateId: otherData?.data[0]?._id || "",
                 tittle: otherData?.data[0]?.tittle || "",
                 image: otherData?.data[0]?.image || "",
-                describe: otherData?.data[0]?.describe || ""
+                describe: otherData?.data[0]?.describe || "",
+                bookmark : otherData?.data[0]?.bookmark || false
             })
 
             setPagination((preve) => {
@@ -262,7 +271,7 @@ const OthersDetailsEdit = () => {
 
                 <div>
                     {
-                        alldata?.all_certificate?.length === 0 ? (
+                        pagination.totalNoOfPage === 0 ? (
                             <p>It's look you haven't create education data ....</p>
                         ) : (
                             <p>Create new Data . . . . . . . .</p>
@@ -278,7 +287,7 @@ const OthersDetailsEdit = () => {
 
 
             {
-                alldata?.all_certificate?.length === 0 && (
+                pagination.totalNoOfPage === 0 && (
                     <div>
                         <div className='opacity-60' style={{
                             backgroundImage: `url(${bg})`,
@@ -298,7 +307,7 @@ const OthersDetailsEdit = () => {
 
 
             {
-                alldata?.all_certificate?.length > 0 && (
+                pagination.totalNoOfPage > 0 && (
                     <div>
 
                         <div className='flex md:flex-row flex-col md:justify-between md:items-center justify-start items-start gap-2 lg:min-w-[750px] lg:max-w-[750px]'>
@@ -343,6 +352,29 @@ const OthersDetailsEdit = () => {
                         </div>
 
                         <form onSubmit={handleOnSubmit} className='bg-[#1c1d1f] lg:min-w-[750px] lg:max-w-[750px] md:min-h-[500px] md:max-h-[800px] min-h-[500px]  max-h-[500px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4'>
+
+                            <div className='flex justify-end cursor-pointer' onClick={()=>{
+                                
+                                setData((preve) =>{
+                                    return{
+                                        ...preve,
+                                        bookmark : !preve.bookmark
+                                    }
+                                })
+                            }}>
+
+                                {
+                                    data.bookmark ? (
+                                        <div className='text-yellow-300 '>
+                                            <BsBookmarkStarFill size={25} />
+                                        </div>
+                                    ) : (
+
+                                        <BsBookmarkStarFill size={25} />
+                                    )
+                                }
+
+                            </div>
 
                             {/* tittle */}
                             <div className='group font-semibold'>
@@ -440,7 +472,7 @@ const OthersDetailsEdit = () => {
 
             {
                 window_loader && (
-                    <WindowLoader/>
+                    <WindowLoader />
                 )
             }
 
@@ -458,7 +490,7 @@ const OthersDetailsEdit = () => {
 
             {
                 openCreateWindow && (
-                    <CreateOtherWindow close={() => setopenCreateWindow(false)} loadData={() => setHasLoaded(false)} fetchOtherData={fetchOtherData}/>
+                    <CreateOtherWindow close={() => setopenCreateWindow(false)} loadData={() => setHasLoaded(false)} fetchOtherData={fetchOtherData} />
                 )
             }
 
