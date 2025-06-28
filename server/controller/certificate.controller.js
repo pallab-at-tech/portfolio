@@ -23,15 +23,6 @@ export const createCertificateDetails = async (request, response) => {
         const certificate = new certificateModel(payload)
         const save = await certificate.save()
 
-        const pushId = await allOfModel.findOneAndUpdate(
-            {},
-            {
-                $push: {
-                    all_certificate: save._id
-                }
-            }
-        )
-
         return response.json({
             message: 'certificate data created',
             data: certificate,
@@ -102,7 +93,7 @@ export const getCertificateDetails = async (request, response) => {
 export const updateCertificateDetails = async (request, response) => {
     try {
 
-        const { certificateId, tittle, image, describe } = request.body || {}
+        const { certificateId, tittle, image, describe , bookmark } = request.body || {}
 
         if (!certificateId) {
             return response.status(400).json({
@@ -116,9 +107,20 @@ export const updateCertificateDetails = async (request, response) => {
             {
                 ...(tittle && { tittle: tittle }),
                 ...(image && { image: image }),
-                ...(describe && { describe: describe })
+                ...(describe && { describe: describe }),
+                ...({bookmark : bookmark})
             }
         )
+
+        const updateAllof = await allOfModel.findOneAndUpdate(
+            {},
+            bookmark ? {
+                $addToSet : {all_certificate : certificateId}
+            } : {
+                $pull : {all_certificate : certificateId}
+            }
+        )
+
 
         if (!certificate) {
             return response.status(400).json({
@@ -133,6 +135,7 @@ export const updateCertificateDetails = async (request, response) => {
             error: false,
             success: true
         })
+
     } catch (error) {
         return response.status(500).json({
             message: error.message || error,
@@ -165,12 +168,10 @@ export const deleteCertificateDetails = async (request, response) => {
             })
         }
 
-        const pullId = await allOfModel.findOneAndUpdate(
+        const updateAllOfDetails = await allOfModel.findOneAndUpdate(
             {},
             {
-                $pull: {
-                    all_certificate: certificateId
-                }
+                $pull : {all_certificate : certificateId}
             }
         )
 

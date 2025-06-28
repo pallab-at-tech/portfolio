@@ -12,6 +12,10 @@ const certificateSchema = new mongoose.Schema({
     describe : {
         type : String,
         default : ""
+    },
+    bookmark : {
+        type : Boolean,
+        default : false
     }
 },{
     timestamps : true
