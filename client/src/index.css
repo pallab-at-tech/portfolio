@@ -69,31 +69,31 @@ body {
 .scrollbar-custom::-webkit-scrollbar {
   width: 8px;
   height: 10px;
- 
+
   /* display: none; */
 }
 
-.scrollbar-hidden::-webkit-scrollbar{
+.scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
 
 .scrollbar-custom::-webkit-scrollbar-thumb {
   background-color: #464748;
   border-radius: 15px;
-  
+
 }
 
 .scrollbar-custom::-webkit-scrollbar-track {
   background: #1a1a1a;
-   margin-left: 20px;
-   margin-right: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 
 /* user can't scroll now */
 .no-interaction {
-  pointer-events: none;
-  overflow: hidden; 
+  /* pointer-events: none; */
+  overflow: hidden;
 }
 
 /* adding box shadow */
@@ -226,6 +226,21 @@ body {
   }
 }
 
+
+/* email loader */
+/* HTML: <div class="loader"></div> */
+.email_loader {
+  width: 9px;
+  aspect-ratio: 1;
+  background: #000;
+  border-radius: 50%;
+  animation: l6 0.4s infinite linear alternate;
+}
+@keyframes l6 {
+    0%  {box-shadow: 15px 0,-25px 0}
+    50% {box-shadow: 15px 0,-15px 0}
+    100%{box-shadow: 25px 0,-15px 0}
+}
 
 /* tick mark animation */
 .tickmark-container {

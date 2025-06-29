@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { OthersDetails } from '../store/otherSlice';
 import AxiosTostError from '../utils/AxiosToastError';
 import { OthersDetailspro } from '../store/OtherScrollData';
+import Footer from '../components/Footer';
 
 const Others = () => {
 
@@ -116,6 +117,8 @@ const Others = () => {
 
 
 
+
+
     return (
         <section className='min-h-[100vh] bg-primary-dark text-primary-text extra-font-style md:px-14 pt-[72px] lg:px-6 px-2 relative'>
 
@@ -140,12 +143,12 @@ const Others = () => {
                 <div className='mx-auto container lg:max-w-[1280px] max-w-[995px] mt-16 md:px-0 px-4'>
                     <p className='font-semibold text-xl my-1 pl-4'>Most recently..</p>
 
-                    <div className='lg:max-w-[1280px]  max-w-[995px] gap-6 flex overflow-x-auto  scrollbar-hidden no-interaction'>
+                    <div className='lg:max-w-[1280px] max-w-[995px] gap-6 flex  overflow-x-auto  scrollbar-hidden no-interaction'>
 
                         {
                             allOf.all_certificate.map((v, i) => {
                                 return (
-                                    <div key={v._id - i} className='min-w-full max-w-full min-h-[400px] shrink-0 bg-[#2b2b2b] p-3 rounded shadow-md my-4 transition-transform duration-700 ease-in-out'
+                                    <Link to={`/Others/${v._id}`} key={`${v._id} - ${i}`} className='min-w-full max-w-full  shrink-0 bg-[#2b2b2b] p-3 rounded shadow-md my-4 transition-transform duration-700 ease-in-out'
 
                                         style={{
                                             transform: `translateX(-${currentIndex * 100}%)`,
@@ -153,24 +156,24 @@ const Others = () => {
                                         }}
                                     >
 
-                                        <div className='grid lg:grid-cols-[550px_1fr] md:grid-row-[500px_1fr] grid-row-[300px_1fr]'>
+                                        <div className='grid lg:grid-cols-[550px_1fr] md:grid-cols-[420px_1fr] lg:gap-0 md:gap-6 grid-row-2 gap-4 md:items-center lg:items-start md:justify-center lg:p-6 p-4'>
 
-                                            <div className='lg:p-6 p-4'>
+                                            <div className=''>
                                                 <img
                                                     src={v.image}
                                                     alt=''
-                                                    className='w-full lg:h-[350px] md:h-[390px] h-[180px] object-contain rounded'
+                                                    className='w-full lg:h-[350px] md:h-[320px] h-[180px] object-contain rounded px-2 pr-2'
                                                 />
                                             </div>
 
-                                            <div className='p-6'>
-                                                <h1 className='font-semibold text-lg pb-4'>{v.tittle}</h1>
-                                                <pre className="text-sm text-white whitespace-pre-wrap">{v.describe}</pre>
+                                            <div className=''>
+                                                <h1 className='font-semibold text-lg pb-4 lg:line-clamp-none md:line-clamp-[11]'>{v.tittle}</h1>
+                                                <pre className="text-sm text-white whitespace-pre-wrap lg:block hidden">{v.describe}</pre>
                                             </div>
 
                                         </div>
 
-                                    </div>
+                                    </Link>
                                 )
                             })
                         }
@@ -190,8 +193,8 @@ const Others = () => {
 
 
                         {otherData?.data?.map((val, idx) => (
-                            <div
-                                key={val._id + idx}
+                            <Link to={`/Others/${val._id}`}
+                                key={`${val._id} + ${idx}`}
                                 className='min-w-[300px] max-w-[300px] shrink-0 bg-[#2b2b2b] p-3 rounded shadow-md'
                             >
                                 <h1 className='line-clamp-2 font-semibold'>{val.tittle}</h1>
@@ -203,7 +206,7 @@ const Others = () => {
                                         className='w-full h-[180px] object-cover rounded'
                                     />
                                 </div>
-                            </div>
+                            </Link>
                         ))}
 
 
@@ -213,9 +216,10 @@ const Others = () => {
                 </div>
 
 
+            </div>
 
-
-
+            <div className=' pb-4'>
+                <Footer />
             </div>
 
 

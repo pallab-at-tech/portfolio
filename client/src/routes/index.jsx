@@ -20,6 +20,7 @@ import EducationDetailsEdit from '../layout/Admin/EducationDetailsEdit'
 import SkillDetailsEdit from '../pages/SkillDetailsEdit'
 import OthersDetailsEdit from '../layout/Admin/OthersDetailsEdit'
 import AllOfDetailsEdit from "../layout/Admin/AllOfDetailsEdit"
+import OtherCertificate from '../pages/OtherCertificate'
 
 const router = createBrowserRouter([
     {
@@ -110,9 +111,12 @@ const router = createBrowserRouter([
     },
     {
         path: "/Others",
-        element: <Others />
-
+        element: <Others />,
     },
+    {
+        path : "/Others/:other_ceritificate",
+        element : <OtherCertificate/>
+    }
 
 
 ])
