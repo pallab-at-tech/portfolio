@@ -10,7 +10,9 @@ const Education = () => {
   const allEduDetails = allOf?.all_education
 
   return (
-    <section className='bg-primary-black'>
+    <section className='bg-primary-black relative'>
+      <div className="absolute inset-y-0 left-0 w-full blur-[300px] bg-cyan-300 opacity-[1%] pointer-events-none"></div>
+
       <Element id='EducationID'>
 
         <div className='text-primary-text extra-font-style w-full flex justify-start items-center md:px-20   px-10 pb-5 pt-10'>

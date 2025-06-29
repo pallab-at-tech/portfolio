@@ -64,7 +64,7 @@ const Dashboard = () => {
                     <div className='mr-6'>
                         {
 
-                            user?.admin_verify ? (
+                            !user?.admin_verify ? (
                                 <>
                                     <div className='bg-gray-500 text-base my-12 rounded px-4 py-4 w-fit'>
                                         <p className='text-base leading-tight mb-2 font-semibold text-[#d9d9e0]'>verify your account by admin ?</p>

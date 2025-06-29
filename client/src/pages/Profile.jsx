@@ -176,7 +176,7 @@ const Profile = () => {
                 <div className=''>
 
                     {
-                        user?.admin_verify ? (
+                        !user?.admin_verify ? (
                             <div className='bg-gray-500 text-base my-12 rounded px-4 py-4 w-fit md:mt-16'>
                                 <div>
                                     <p className='text-base leading-tight mb-2 font-semibold text-[#d9d9e0]'>verify your account by admin ?</p>

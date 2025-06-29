@@ -76,11 +76,12 @@ const Home = () => {
                     <p className='text-base px-2 py-1.5'>Resume</p>
                   </div>
 
+                  <Link to={allOf.linkedin_link} className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><FaLinkedin size={20} /></Link>
+
                   <Link to={allOf.github_link} className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><FaGithub size={20} /></Link>
 
-                  <Link to={allOf.email} className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><SiGmail size={20} /></Link>
+                  {/* <Link to={allOf.email} className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><SiGmail size={20} /></Link> */}
 
-                  <Link to={allOf.linkedin_link} className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><FaLinkedin size={20} /></Link>
 
                 </div>
 
@@ -102,7 +103,7 @@ const Home = () => {
 
         </Element>
 
-        <div className='items-center justify-center h-full mt-14 pt-14 text-primary-text flex sm:static relative bottom-7'><LuChevronsDown size={30} /></div>
+        <div className='items-center justify-center h-full mt-14 pt-14 text-[#5e5b5b] flex sm:static relative bottom-7 animate-float'><LuChevronsDown size={30} /></div>
 
 
 

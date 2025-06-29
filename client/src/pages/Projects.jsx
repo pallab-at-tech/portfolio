@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-import binkeyitDemo from "../assets/binkeyitDemo.png"
 import { Element } from 'react-scroll';
 import { useSelector } from 'react-redux';
 
@@ -12,7 +11,10 @@ const Projects = () => {
   const proDetails = allOf.projectList
 
   return (
-    <section className='bg-primary-black  px-10 text-primary-text extra-font-style md:px-14  pt-10 pb-5'>
+    <section className='bg-primary-black  px-10 text-primary-text extra-font-style md:px-14  pt-10 pb-5 relative'>
+
+     {/* <div className="absolute inset-y-0 left-0 w-full blur-[300px] bg-cyan-300 opacity-[1%] pointer-events-none"></div> */}
+
       <Element id='projectID'>
 
         <p className='font-bold text-2xl mb-6 pl-6'>project ShowCase</p>
@@ -21,10 +23,13 @@ const Projects = () => {
           <div className='flex overflow-x-auto overflow-y-hidden gap-6 scrollbar-custom scroll-smooth px-5 pb-3'>
 
             {
+              // className='md:max-w-[350px] md:min-w-[350px] bg-[#222325]  min-w-[250px] max-w-[250px] min-h-[525px] max-h-[525px] rounded-xl border border-primary-text shadow-2xl px-2 text-base'
 
               proDetails.map((val, idx) => {
                 return (
-                  <div className='md:max-w-[350px] md:min-w-[350px] bg-[#222325]  min-w-[250px] max-w-[250px] min-h-[525px] max-h-[525px] rounded-xl border border-primary-text shadow-2xl px-2 text-base'>
+                  <div className='md:max-w-[350px] md:min-w-[350px] shadow-[inset_0_0_12px_rgba(0,191,255,0.2),inset_0_0_8px_rgba(255,255,255,0.08)]
+                  hover:shadow-[inset_0_0_20px_rgba(0,191,255,0.4),inset_0_0_12px_rgba(255,255,255,0.15)] 
+                   transition-shadow duration-500 ease-in-out  min-w-[250px] max-w-[250px] md:min-h-[530px] md:max-h-[530px] rounded-xl border border-primary-text  px-2 text-base'>
 
                     <div className='flex justify-around pt-3'>
                       {/* /title */}
@@ -81,11 +86,11 @@ const Projects = () => {
 
                       </div>
 
-                      <div className='flex justify-between pr-10 items-center pl-3 md:py-3 py-5 flex-wrap gap-y-2'>
-                        <p className="text-sm bg-gradient-to-r from-[#3af574] to-[#18b4f0] bg-clip-text text-transparent font-medium">
-                          Want to know more?
+                      <div className='flex justify-between px-6 items-center pl-3 md:py-3 py-5 flex-wrap md:pb-2'>
+                        <p className="text-[13px] text-[#606465] leading-tight">
+                          check out my github readme.md to know more ? <Link to={val.project_git_link} className='bg-gradient-to-r from-[#3af574] to-[#18b4f0] bg-clip-text text-transparent'>click here</Link>
                         </p>
-                        <button className='cursor-pointer bg-terniary-dark py-1 px-2 rounded-2xl mb-0.5 hover:scale-110 transition-all bg-gradient-to-r from-[#034a1a] to-[#074fbc]'>click here</button>
+                        {/* <button className='cursor-pointer bg-terniary-dark py-1 px-2 rounded-2xl mb-0.5 hover:scale-110 transition-all bg-gradient-to-r from-[#034a1a] to-[#074fbc]'>click here</button> */}
                       </div>
 
                     </div>

@@ -21,6 +21,7 @@ import SkillDetailsEdit from '../pages/SkillDetailsEdit'
 import OthersDetailsEdit from '../layout/Admin/OthersDetailsEdit'
 import AllOfDetailsEdit from "../layout/Admin/AllOfDetailsEdit"
 import OtherCertificate from '../pages/OtherCertificate'
+import AdminPermission from '../features/AdminPermission'
 
 const router = createBrowserRouter([
     {
@@ -64,46 +65,46 @@ const router = createBrowserRouter([
                 element: <SignInPage />
             },
             {
-                path : "/forgot-password",
-                element : <ForgotPassword/>
+                path: "/forgot-password",
+                element: <ForgotPassword />
             },
             {
-                path : "/Otp-verification",
-                element : <OtpVerification/>
+                path: "/Otp-verification",
+                element: <OtpVerification />
             },
             {
-                path : "/reset-password",
-                element : <ResetPassword/>
+                path: "/reset-password",
+                element: <ResetPassword />
             },
             {
-                path : "/dashboard/:user",
-                element : <Dashboard/>,
+                path: "/dashboard/:user",
+                element: <Dashboard />,
 
-                children : [
+                children: [
                     {
                         index: true,
-                        element : <Profile/>
+                        element: <Profile />
 
                     },
                     {
-                        path : "allOfEdit",
-                        element : <AllOfDetailsEdit/>
+                        path: "allOfEdit",
+                        element: <AdminPermission><AllOfDetailsEdit /></AdminPermission>
                     },
                     {
-                        path : "projectEdit",
-                        element : <ProjectDetailsEdit/>
+                        path: "projectEdit",
+                        element: <AdminPermission><ProjectDetailsEdit /></AdminPermission>
                     },
                     {
-                        path : "educationEdit",
-                        element : <EducationDetailsEdit/>
+                        path: "educationEdit",
+                        element: <AdminPermission><EducationDetailsEdit /></AdminPermission>
                     },
                     {
-                        path : "skillEdit",
-                        element : <SkillDetailsEdit/>
+                        path: "skillEdit",
+                        element: <AdminPermission><SkillDetailsEdit /></AdminPermission>
                     },
                     {
-                        path : "othersEdit",
-                        element : <OthersDetailsEdit/>
+                        path: "othersEdit",
+                        element: <AdminPermission><OthersDetailsEdit /></AdminPermission>
                     }
                 ]
             }
@@ -114,8 +115,8 @@ const router = createBrowserRouter([
         element: <Others />,
     },
     {
-        path : "/Others/:other_ceritificate",
-        element : <OtherCertificate/>
+        path: "/Others/:other_ceritificate",
+        element: <OtherCertificate />
     }
 
 
