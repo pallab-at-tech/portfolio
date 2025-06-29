@@ -42,7 +42,29 @@ export const createCertificateDetails = async (request, response) => {
 export const getCertificateDetails = async (request, response) => {
     try {
 
-        let { page, limit, search, certificateId  } = request.body || {}
+        let { page, limit, search, certificateId } = request.body || {}
+
+
+        if (certificateId) {
+            const oneData = await certificateModel.findById(certificateId)
+
+            if (!oneData) {
+                return response.status(400).json({
+                    message: "given id is not exist",
+                    error: true,
+                    success: false
+                })
+            }
+
+            return response.json({
+                message: 'Data of certificate',
+                error: false,
+                success: true,
+                data: oneData
+            })
+        }
+
+
 
         page = Number(page) || 1
         limit = Number(limit) || 1
@@ -67,9 +89,10 @@ export const getCertificateDetails = async (request, response) => {
 
 
         const [data, dataCount] = await Promise.all([
-            certificateModel.find(query).sort({ createdAt: 1  }).skip(skip).limit(limit),
+            certificateModel.find(query).sort({ createdAt: 1 }).skip(skip).limit(limit),
             certificateModel.countDocuments(query)
         ])
+
 
 
         return response.json({
@@ -93,7 +116,7 @@ export const getCertificateDetails = async (request, response) => {
 export const updateCertificateDetails = async (request, response) => {
     try {
 
-        const { certificateId, tittle, image, describe , bookmark } = request.body || {}
+        const { certificateId, tittle, image, describe, bookmark } = request.body || {}
 
         if (!certificateId) {
             return response.status(400).json({
@@ -108,16 +131,16 @@ export const updateCertificateDetails = async (request, response) => {
                 ...(tittle && { tittle: tittle }),
                 ...(image && { image: image }),
                 ...(describe && { describe: describe }),
-                ...({bookmark : bookmark})
+                ...({ bookmark: bookmark })
             }
         )
 
         const updateAllof = await allOfModel.findOneAndUpdate(
             {},
             bookmark ? {
-                $addToSet : {all_certificate : certificateId}
+                $addToSet: { all_certificate: certificateId }
             } : {
-                $pull : {all_certificate : certificateId}
+                $pull: { all_certificate: certificateId }
             }
         )
 
@@ -171,7 +194,7 @@ export const deleteCertificateDetails = async (request, response) => {
         const updateAllOfDetails = await allOfModel.findOneAndUpdate(
             {},
             {
-                $pull : {all_certificate : certificateId}
+                $pull: { all_certificate: certificateId }
             }
         )
 
