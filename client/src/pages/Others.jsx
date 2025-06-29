@@ -68,7 +68,7 @@ const Others = () => {
             setCurrentIndex((prevIndex) =>
                 (prevIndex + 1) % allOf.all_certificate.length
             );
-        }, 8000);
+        }, 6000);
 
         return () => clearInterval(interval);
     }, [allOf.all_certificate?.length]);
@@ -167,7 +167,7 @@ const Others = () => {
                                             </div>
 
                                             <div className=''>
-                                                <h1 className='font-semibold text-lg pb-4 lg:line-clamp-none md:line-clamp-[11]'>{v.tittle}</h1>
+                                                <h1 className='font-semibold text-lg pb-4 lg:line-clamp-none md:line-clamp-[11] text-amber-300'>{v.tittle}</h1>
                                                 <pre className="text-sm text-white whitespace-pre-wrap lg:block hidden">{v.describe}</pre>
                                             </div>
 
@@ -198,7 +198,7 @@ const Others = () => {
                                 className='min-w-[300px] max-w-[300px] shrink-0 bg-[#2b2b2b] p-3 rounded shadow-md'
                             >
                                 <h1 className='line-clamp-2 font-semibold'>{val.tittle}</h1>
-                                <Link className='text-sm text-blue-400 hover:underline'>know more</Link>
+                                <Link to={`/Others/${val._id}`} className='text-sm text-blue-400 hover:underline'>know more</Link>
                                 <div className='mt-2'>
                                     <img
                                         src={val.image}

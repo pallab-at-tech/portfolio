@@ -49,7 +49,7 @@ const OtherCertificate = () => {
 
 
     return (
-        <section className='min-h-[100vh] bg-primary-dark text-primary-text extra-font-style md:px-14 pt-[72px] lg:px-6 px-2'>
+        <section className='min-h-[100vh] bg-primary-dark text-primary-text extra-font-style md:px-14 pt-[72px] lg:px-6  px-4'>
 
 
             <div className='lg:ml-28  lg:absolute top-[72px] '>
@@ -70,28 +70,24 @@ const OtherCertificate = () => {
                 ) : (
                     <>
                         <div className='flex items-center justify-center'>
-                            <div className='mt-[6%] mr-10 lg:ml-28 lg:mb-1'>
+                            <div className='mt-[6%] md:mr-10 lg:ml-28 lg:mb-1 lg:block flex flex-col items-center justify-center'>
 
-                                <img src={data?.image} alt="" className='h-[380px] mr-6 lg:float-left border-2 border-amber-300 p-4' />
-                                <h1 className='text-xl font-bold text-amber-300 pb-2'>{data?.tittle}</h1>
-                                <pre className=' text-white whitespace-pre-wrap font-semibold text-lg'>{data?.describe}</pre>
+                                <div className=''>
+                                    <img src={data?.image} alt="" className='md:h-[380px] h-[220px] md:mr-6 lg:float-left border-2 border-amber-300 p-4' />
+                                </div>
+                                <h1 className='lg:mt-0 md:mt-10 mt-6 text-xl font-bold text-amber-300 pb-2'>{data?.tittle}</h1>
+                                <pre className='lg:mt-0 md:mt-6 mt-4 text-white whitespace-pre-wrap font-semibold text-lg'>{data?.describe}</pre>
 
                             </div>
                         </div>
 
-                        <div className='fixed bottom-0 left-0 right-0 pb-4'>
-                            <Footer/>
-                        </div>
                     </>
                 )
             }
 
-
-
-
-
-
-
+            <div className='mt-auto pt-10 pb-2 lg:hidden'>
+                <Footer />
+            </div>
 
         </section>
     )
