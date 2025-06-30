@@ -8,6 +8,7 @@ import Axios from '../../utils/Axios'
 import { setUserDetails } from '../../store/userSlice'
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast'
+import fetchUserDetails from '../../utils/FetchUserDetails'
 
 
 const ProfileWindowEdit = ({ close }) => {
@@ -73,7 +74,9 @@ const ProfileWindowEdit = ({ close }) => {
 
         if (responseData?.success) {
             toast.success(responseData?.message)
-            dispatch(setUserDetails(data))
+
+            const dataFetch = await fetchUserDetails()
+            dispatch(setUserDetails(dataFetch?.data))
             close()
         }
     }
