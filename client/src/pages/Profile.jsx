@@ -181,10 +181,10 @@ const Profile = () => {
                                 <div>
                                     <p className='text-base leading-tight mb-2 font-semibold text-[#d9d9e0]'>verify your account by admin ?</p>
 
-                                    <form action="">
+                                    <form action="" className="flex flex-col sm:flex-row gap-2">
 
-                                        <input type="email" placeholder='Enter your email' className='bg-primary-text outline-none rounded text-black px-2 py-1 text-sm' />
-                                        <button className='bg-terniary-dark mt-3 py-1 px-2 rounded text-sm block'>send</button>
+                                        <input type="email" placeholder='Enter your email' className='bg-primary-text outline-none rounded text-black px-2 py-1 text-sm w-full' />
+                                        <button className='bg-terniary-dark py-2 px-4 rounded text-sm text-white w-full sm:w-auto'>send</button>
                                     </form>
 
                                 </div>
