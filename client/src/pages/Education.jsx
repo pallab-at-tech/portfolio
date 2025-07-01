@@ -10,7 +10,7 @@ const Education = () => {
   const allEduDetails = allOf?.all_education
 
   return (
-    <section className='bg-primary-black relative'>
+    <section className='bg-primary-black relative' id='realEducationId'>
       <div className="absolute inset-y-0 left-0 w-full blur-[300px] bg-cyan-300 opacity-[1%] pointer-events-none"></div>
 
       <Element id='EducationID'>
@@ -33,7 +33,7 @@ const Education = () => {
                   {
                     allEduDetails.map((val, idx) => {
                       return (
-                        <div className='tracking-wide pb-4'>
+                        <div key={`edu-details-${idx}`} className='tracking-wide pb-4'>
 
                           <div className='text-lg pb-1 flex gap-2 items-cente'>
                             <div className='p-1 bg-[#5a5a5a3a] rounded-md hover:text-[#070707] hover:bg-[#9b9a9a] hover:scale-110 md:block hidden'><IoSchoolOutline /></div>
@@ -47,7 +47,7 @@ const Education = () => {
                                 allEduDetails[idx]?.qualification?.map((innerVal, innerIdx) => {
 
                                   return (
-                                    <li className='lg:ml-6'>
+                                    <li key={`innnerval-${val?._id}-${innerIdx}`} className='lg:ml-6'>
                                       <p>{`${innerVal?.level} , ${innerVal?.stream}`}</p>
                                       <p>{`${innerVal?.startDate} - ${innerVal?.endDate} , ${innerVal?.typeOfScore === "CGPA" ? "CGPA : " + innerVal?.score : "Score :" + innerVal?.score}`}</p>
                                     </li>

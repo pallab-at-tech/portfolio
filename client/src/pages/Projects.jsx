@@ -27,7 +27,7 @@ const Projects = () => {
 
               proDetails.map((val, idx) => {
                 return (
-                  <div className='md:max-w-[350px] md:min-w-[350px] shadow-[inset_0_0_12px_rgba(0,191,255,0.2),inset_0_0_8px_rgba(255,255,255,0.08)]
+                  <div key={`project-${val?._id}-${idx}`} className='md:max-w-[350px] md:min-w-[350px] shadow-[inset_0_0_12px_rgba(0,191,255,0.2),inset_0_0_8px_rgba(255,255,255,0.08)]
                   hover:shadow-[inset_0_0_20px_rgba(0,191,255,0.4),inset_0_0_12px_rgba(255,255,255,0.15)] 
                    transition-shadow duration-500 ease-in-out  min-w-[250px] max-w-[250px] md:min-h-[530px] md:max-h-[530px] rounded-xl border border-primary-text  px-2 text-base'>
 
@@ -63,7 +63,7 @@ const Projects = () => {
                         {
                           val.feature?.map((valFeature, idxFeature) => {
                             return (
-                              <li>{valFeature}</li>
+                              <li key={`valFeature-${Math.random()}`}>{valFeature}</li>
                             )
                           })
                         }
@@ -77,7 +77,7 @@ const Projects = () => {
                         {
                           val.tech_uses?.map((valTech, idxTech) => {
                             return (
-                              <div className='px-2 py-1 rounded-full text-center text-[13px] bg-[#0b1c2c] text-[#61DBFB] hover:scale-110 transition-all' style={{ textShadow: '0 0 8px #61DBFB' }}>
+                              <div key={`${Math.random()}`} className='px-2 py-1 rounded-full text-center text-[13px] bg-[#0b1c2c] text-[#61DBFB] hover:scale-110 transition-all' style={{ textShadow: '0 0 8px #61DBFB' }}>
                                 {valTech}
                               </div>
                             )

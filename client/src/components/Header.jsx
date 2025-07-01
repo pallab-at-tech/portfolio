@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { gsap } from "gsap";
 import { NavLink, useLocation } from 'react-router-dom';
 import { Link } from 'react-scroll';
 import ActiveUnderline from '../utils/ActiveUnderline';
 import Sidebar from './Sidebar';
 import Popbar from './Popbar';
+import { useGlobalContext } from '../provider/GlobalProvider';
 
 
 const Header = () => {
@@ -12,14 +13,82 @@ const Header = () => {
   const location = useLocation();
 
   const [activeSection, setActiveSection] = useState("")
+  const homeLocation = location.pathname === "/"
+  const [showHeader, setShowHeader] = useState(true);
+  const { darkMode, setDarkMode } = useGlobalContext();
 
-  console.log("location.pathname", location.pathname === "/")
+
+  useEffect(() => {
+    let homeTop = 0;
+    let eduTop = 0;
+    let eduBottom = 0;
+
+    const homeEl = document.getElementById("realHomeId");
+    const eduEl = document.getElementById("realEducationId");
+
+    if (homeEl) {
+      homeTop = homeEl.getBoundingClientRect().top + window.scrollY;
+    }
+
+    if (eduEl) {
+      const rect = eduEl.getBoundingClientRect();
+      eduTop = rect.top + window.scrollY;
+      eduBottom = eduTop + rect.height;
+    }
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      if (scrollY >= homeTop && scrollY < eduTop) {
+        setActiveSection("HomeID");
+      } else if (scrollY >= eduTop && scrollY < eduBottom) {
+        setActiveSection("EducationID");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Run on load
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+
+  useEffect(() => {
+
+    let lastScroll = window.scrollY
+
+    const handleScoll = () => {
+
+      let currScoll = window.scrollY
+
+      if (currScoll > lastScroll && currScoll > 72) {
+        setShowHeader(false)
+      }
+      else {
+        setShowHeader(true)
+      }
+
+      lastScroll = currScoll
+
+    }
+
+    window.addEventListener("scroll", handleScoll)
+
+    return () => {
+      window.removeEventListener("scroll", handleScoll)
+    }
+
+  }, [])
+
+
 
 
 
 
   return (
-    <header className='h-[72px] bg-primary-dark text-white w-full fixed top-0 z-50'>
+    <header className={`h-[72px]  ${(homeLocation && activeSection === "HomeID" ) ? "background-image" : "bg-primary-dark"} text-white w-full fixed ${showHeader ? "top-0" : "-top-[100px]"}  z-50 transition-all duration-700 `}>
 
       <div className='grid lg:grid-cols-[2fr_1fr_2fr] md:grid-cols-[2fr_1fr_2fr] grid-cols-2 justify-between gap-15 w-full h-full relative z-50'>
 
@@ -34,9 +103,8 @@ const Header = () => {
               <NavLink to="/" className='cursor-pointer' >Home
               </NavLink>
             ) : (
-              <Link to='HomeID' smooth={true} duration={200} spy offset={-80}
-                activeClass={'active text-glow'} onSetActive={() => setActiveSection("HomeID")}
-                onSetInactive={() => setActiveSection("")} className='cursor-pointer' >Home
+              <Link to='HomeID' smooth={true} duration={200}
+                className={`cursor-pointer ${activeSection === "HomeID" && "active text-glow"}`} >Home
                 {activeSection === "HomeID" && <ActiveUnderline />}
               </Link>
             )
@@ -46,9 +114,8 @@ const Header = () => {
           {
             location.pathname === "/" && (
               <>
-                <Link to='EducationID' smooth={true} duration={200} spy offset={-80}
-                  activeClass={'active text-glow'} onSetActive={() => setActiveSection("EducationID")}
-                  onSetInactive={() => setActiveSection("")} className='cursor-pointer' >Education
+                <Link to='EducationID' smooth={true} duration={200}
+                  className={`cursor-pointer ${activeSection === "EducationID" && "active text-glow"}`} >Education
                   {activeSection === "EducationID" && <ActiveUnderline />}
                 </Link>
 
