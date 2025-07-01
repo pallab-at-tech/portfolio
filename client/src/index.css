@@ -43,6 +43,10 @@ body {
   background-image: var(---gradient-light);
 }
 
+.card-bg-color-light {
+  background-image: linear-gradient(125deg, #e59b4c, #e3ac55);
+}
+
 .text-glow {
   text-shadow: 2px -2px 13px #2f2e04, 1px 2px 9px #3f3e2d, 0px 0px 10px #d4d29300;
 }
@@ -461,7 +465,7 @@ body {
   content: '';
   width: 155px;
   height: 300%;
-  background: linear-gradient(135deg, #7a3f00);
+  background: linear-gradient(135deg, #1b1300);
   position: absolute;
   z-index: -1;
   border-radius: 45px;
@@ -524,4 +528,20 @@ body {
 }
 
 
-/*  */
+/* left to right animation */
+
+.left-right-animation{
+  animation: leave 5s ease-in-out infinite;
+}
+
+@keyframes leave{
+   0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

@@ -4,33 +4,33 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { Element } from 'react-scroll';
 import { useSelector } from 'react-redux';
+import { useGlobalContext } from '../provider/GlobalProvider';
 
 const Projects = () => {
 
   const allOf = useSelector(state => state.allofdetails)
   const proDetails = allOf.projectList
+  const { darkMode, setDarkMode } = useGlobalContext()
 
   return (
-    <section className='bg-primary-black  px-10 text-primary-text extra-font-style md:px-14  pt-10 pb-5 relative'>
-
-     {/* <div className="absolute inset-y-0 left-0 w-full blur-[300px] bg-cyan-300 opacity-[1%] pointer-events-none"></div> */}
+    <section className={`${darkMode ? "bg-primary-black" : "bg-[#fdf3e1]"}  px-10 ${darkMode ? "text-primary-text" : "text-[#37290b]"} extra-font-style md:px-14  pt-10 pb-5 relative`}>
+      {/*  */}
+      {/* <div className="absolute inset-y-0 left-0 w-full blur-[300px] bg-cyan-300 opacity-[1%] pointer-events-none"></div> */}
 
       <Element id='projectID'>
 
-        <p className='font-bold text-2xl mb-6 pl-6'>project ShowCase</p>
+        <p className={`font-bold text-2xl mb-6 pl-6 ${darkMode ? "" : "text-[#020826]"}`}>project ShowCase</p>
         <div className='w-full'>
 
           <div className='flex overflow-x-auto overflow-y-hidden gap-6 scrollbar-custom scroll-smooth px-5 pb-3'>
 
             {
-              // className='md:max-w-[350px] md:min-w-[350px] bg-[#222325]  min-w-[250px] max-w-[250px] min-h-[525px] max-h-[525px] rounded-xl border border-primary-text shadow-2xl px-2 text-base'
+              // className='md:max-w-[350px] md:min-w-[350px] bg-[#222325]  min-w-[250px] max-w-[250px] min-h-[525px] max-h-[525px] rounded-xl border border-primary-text shadow-2xl px-2 text-base'  #f5d7a1
 
               proDetails.map((val, idx) => {
                 return (
-                  <div key={`project-${val?._id}-${idx}`} className='md:max-w-[350px] md:min-w-[350px] shadow-[inset_0_0_12px_rgba(0,191,255,0.2),inset_0_0_8px_rgba(255,255,255,0.08)]
-                  hover:shadow-[inset_0_0_20px_rgba(0,191,255,0.4),inset_0_0_12px_rgba(255,255,255,0.15)] 
-                   transition-shadow duration-500 ease-in-out  min-w-[250px] max-w-[250px] md:min-h-[530px] md:max-h-[530px] rounded-xl border border-primary-text  px-2 text-base'>
-
+                  <div key={`project-${val?._id}-${idx}`} className={`md:max-w-[350px] md:min-w-[350px] 
+                   transition-shadow duration-500 ease-in-out  min-w-[250px] max-w-[250px] md:min-h-[530px] md:max-h-[530px] rounded-xl border border-primary-text  px-2 text-base ${darkMode ? "shadow-[inset_0_0_12px_rgba(0,191,255,0.2),inset_0_0_8px_rgba(255,255,255,0.08)] hover:shadow-[inset_0_0_20px_rgba(0,191,255,0.4),inset_0_0_12px_rgba(255,255,255,0.15)]" : "card-bg-color-light shadow-md"}`}>
                     <div className='flex justify-around pt-3'>
                       {/* /title */}
                       <p className='w-[60%] overflow-hidden font-semibold fontw text-xl  bg-gradient-to-r from-[#17f5a4] to-[#0f38ef] bg-clip-text text-transparent'>{val.tittle}</p>
@@ -43,7 +43,7 @@ const Projects = () => {
 
                     </div>
 
-                    <p className='pl-4 pt-1 text-[#cbd5e1] text-sm line-clamp-2'>{val.body}</p>
+                    <p className={`pl-4 pt-1  ${darkMode ? "text-[#cbd5e1]" : "text-[#020826]"} text-sm line-clamp-2`}>{val.body}</p>
 
 
                     {/* image and hover to video */}
@@ -58,7 +58,7 @@ const Projects = () => {
                     <div className='pl-3'>
 
                       <p className='font-semibold  bg-gradient-to-r from-[#d9ff00] to-[#f39428] bg-clip-text text-transparent inline-block'>Feature</p>
-                      <ul className='list-disc pl-7 text-[#d1d3dc] text-sm min-h-[80px] max-h-[80px] overflow-y-auto scrollbar-custom'>
+                      <ul className={`list-disc pl-7 ${darkMode ? "text-[#d1d3dc]" : "text-[#020826]"} text-sm min-h-[80px] max-h-[80px] overflow-y-auto scrollbar-custom`}>
 
                         {
                           val.feature?.map((valFeature, idxFeature) => {

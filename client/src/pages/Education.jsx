@@ -3,28 +3,31 @@ import { BiSolidConfused } from "react-icons/bi";
 import { IoSchoolOutline } from "react-icons/io5";
 import { Element } from 'react-scroll';
 import { useSelector } from 'react-redux';
+import { useGlobalContext } from '../provider/GlobalProvider';
 
 const Education = () => {
 
   const allOf = useSelector(state => state.allofdetails)
   const allEduDetails = allOf?.all_education
+  const { darkMode, setDarkMode } = useGlobalContext();
+
 
   return (
-    <section className='bg-primary-black relative' id='realEducationId'>
-      <div className="absolute inset-y-0 left-0 w-full blur-[300px] bg-cyan-300 opacity-[1%] pointer-events-none"></div>
+    <section className={`${darkMode ? "bg-primary-black" : "bg-[#fdf3e1]"} relative`} id='realEducationId'>
+      <div className={`absolute inset-y-0 left-0 w-full blur-[300px] bg-cyan-300 opacity-[1%] pointer-events-none ${darkMode ? "block" : "hidden"}`}></div>
 
       <Element id='EducationID'>
 
-        <div className='text-primary-text extra-font-style w-full flex justify-start items-center md:px-20   px-10 pb-5 pt-10'>
+        <div className={`${darkMode ? "text-primary-text" : "text-[#37290b]"} extra-font-style w-full flex justify-start items-center md:px-20 px-10 pb-5 pt-10`}>
 
           <div>
-            <p className='font-bold text-2xl mb-4'>Education</p>
+            <p className={`font-bold text-2xl mb-4 ${darkMode ? "" : "text-[#020826]"}`}>Education</p>
 
             {
               !allEduDetails ? (
                 <div className='font-bold text-xl flex items-center gap-2'>
                   <p>No Data found</p>
-                  <BiSolidConfused/>
+                  <BiSolidConfused />
                   <p>?! ....</p>
                 </div>
               ) : (
@@ -40,7 +43,7 @@ const Education = () => {
                             <p>{`${val?.institute_name} , ${val?.location}`}</p>
                           </div>
 
-                          <div className='text-sm text-[#747573]'>
+                          <div className={`text-sm ${darkMode ? "text-[#747573]" : "text-[#2e2d2d]"}`}>
 
                             <ul className='list-disc md:pl-6 pl-5 flex flex-col  gap-4'>
                               {

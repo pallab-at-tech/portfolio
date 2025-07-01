@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import emailjs from "@emailjs/browser"
 import toast from 'react-hot-toast'
 import TickMark from '../utils/TickMark';
+import { useGlobalContext } from '../provider/GlobalProvider';
 
 const Contact = () => {
 
@@ -16,6 +17,7 @@ const Contact = () => {
   const formSubmit = useRef()
   const [tick, setTick] = useState(true)
   const [loaderforEmailSend, setLoaderforEmailSend] = useState(false)
+  const { darkMode, setDarkMode } = useGlobalContext();
 
   useEffect(() => {
     if (!tick) return;
@@ -46,7 +48,7 @@ const Contact = () => {
   }
 
   return (
-    <section className='bg-primary-black text-primary-text extra-font-style  md:px-20 p-10  pb-10'>
+    <section className={`${darkMode ? "bg-primary-black" : "background-image-light"} text-primary-text extra-font-style  md:px-20 p-10  pb-10`}>
 
       {/* for margin */}
       <div className="flex justify-center">

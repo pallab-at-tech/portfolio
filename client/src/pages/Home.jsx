@@ -98,7 +98,7 @@ const Home = () => {
               </div>
 
               <div className='overflow-hidden absolute right-15 bottom-55 rotate-185 z-5 scale-120 object-scale-down select-none lg:block  hidden'>
-                <img src={b} alt="" className="h-[500px] z-0" />
+                <img src={b} alt="" className="h-[500px] z-0  left-right-animation" />
               </div>
 
               {/* <div className='relative flex justify-end right-[20px] -top-[120px] rotate-185 z-10 scale-120 pointer-events-none '>

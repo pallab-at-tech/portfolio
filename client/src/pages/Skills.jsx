@@ -14,10 +14,14 @@ import { FaLanguage } from "react-icons/fa";
 import { FaNodeJs } from "react-icons/fa";
 import { SiExpress } from "react-icons/si";
 import { Element } from 'react-scroll';
+import { useGlobalContext } from '../provider/GlobalProvider';
 
 const Skills = () => {
+
+  const { darkMode, setDarkMode } = useGlobalContext()
+
   return (
-    <section className='bg-primary-black  px-10 text-primary-text extra-font-style pt-10 md:px-14 relative'>
+    <section className={`${darkMode ? "bg-primary-black" : "bg-[#fdf3e1]"}  px-10 text-primary-text extra-font-style pt-10 md:px-14 relative`}>
 
       {/* left Glow */}
       <div className="absolute inset-y-0 left-0 w-full blur-[300px] bg-cyan-300 opacity-[3%] pointer-events-none"></div>

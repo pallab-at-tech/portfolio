@@ -88,7 +88,7 @@ const Header = () => {
 
 
   return (
-    <header className={`h-[72px] ${(homeLocation && activeSection === "HomeID" && darkMode) && "background-image"} ${( !(homeLocation && activeSection === "HomeID") && (darkMode)) && "bg-primary-dark" } ${((homeLocation && activeSection === "HomeID") && (!darkMode)) && "bg-[#181101]"} ${(!(homeLocation && activeSection === "HomeID") && (!darkMode)) && ""}  text-white w-full fixed ${showHeader ? "top-0" : "-top-[100px]"}  z-50 transition-all duration-700 `}>
+    <header className={`h-[72px] ${(homeLocation && activeSection === "HomeID" && darkMode) && "background-image"} ${( !(homeLocation && activeSection === "HomeID") && (darkMode)) && "bg-primary-dark" } ${((homeLocation && activeSection === "HomeID") && (!darkMode)) && "bg-[#1b1300]"} ${(!(homeLocation && activeSection === "HomeID") && (!darkMode)) && "bg-[#2c2109]"}  text-white w-full fixed ${showHeader ? "top-0" : "-top-[100px]"}  z-50 transition-all duration-700 `}>
 
       <div className='grid lg:grid-cols-[2fr_1fr_2fr] md:grid-cols-[2fr_1fr_2fr] grid-cols-2 justify-between gap-15 w-full h-full relative z-50'>
 
