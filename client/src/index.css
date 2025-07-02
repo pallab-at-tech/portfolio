@@ -9,6 +9,13 @@
   font-style: normal;
 }
 
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+}
+
 body {
   font-family: "Crimson Pro", sans-serif;
   font-weight: 500;
@@ -44,7 +51,7 @@ body {
 }
 
 .card-bg-color-light {
-  background-image: linear-gradient(125deg, #e18829, #e3ac55 , #e38623);
+  background-image: linear-gradient(125deg, #e18829, #e3ac55);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -53,6 +60,18 @@ body {
   transform: translateX(-5px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 
+}
+
+/* ackground-image: linear-gradient(125deg, #31281d , #362d23) */
+
+.card-other-section-light{
+  background-image: linear-gradient(125deg, #31281d , #242322);
+}
+
+/*   background-image: linear-gradient(125deg, #3b1d1d, #372a19 , #201f1c); */
+
+.card-other-small-section-light{
+  background-image: linear-gradient(125deg, #291212, #1b1918 , #1f1e19);
 }
 
 .last-section-light {
