@@ -20,8 +20,8 @@ body {
 
 /* define color */
 :root {
-  --gradient-blue: linear-gradient(125deg,  #010915 ,#242629);
-  ---gradient-light : linear-gradient(125deg , #e3ac55 , #d98e3f)
+  --gradient-blue: linear-gradient(125deg, #010915, #242629);
+  ---gradient-light: linear-gradient(125deg, #e3ac55, #d98e3f)
 }
 
 @theme {
@@ -32,7 +32,7 @@ body {
   --color-primary-text: #ededed;
 
 
-  --color-primary-light-text : #2c1e00; 
+  --color-primary-light-text: #2c1e00;
 }
 
 .background-image {
@@ -44,7 +44,24 @@ body {
 }
 
 .card-bg-color-light {
-  background-image: linear-gradient(125deg, #e59b4c, #e3ac55);
+  background-image: linear-gradient(125deg, #e18829, #e3ac55 , #e38623);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-bg-color-light:hover {
+
+  transform: translateX(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+
+}
+
+.last-section-light {
+  background: linear-gradient(135deg, #d3b58b, #a6753d);
+}
+
+.send-message-box-light {
+  background: linear-gradient(135deg, #402c04, #402c04);
+  backdrop-filter: blur(8px);
 }
 
 .text-glow {
@@ -443,7 +460,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f6f5f4; /* base light cream */
+  background-color: #f6f5f4;
+  /* base light cream */
   background-image: linear-gradient(45deg, #e8ae50, #e8aa46, #e3ac55, #eab053);
   z-index: 1;
   background-blend-mode: multiply;
@@ -530,17 +548,19 @@ body {
 
 /* left to right animation */
 
-.left-right-animation{
+.left-right-animation {
   animation: leave 5s ease-in-out infinite;
 }
 
-@keyframes leave{
-   0% {
+@keyframes leave {
+  0% {
     transform: rotate(0deg);
   }
+
   50% {
     transform: rotate(4deg);
   }
+
   100% {
     transform: rotate(0deg);
   }

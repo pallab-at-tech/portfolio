@@ -21,7 +21,7 @@ const Education = () => {
         <div className={`${darkMode ? "text-primary-text" : "text-[#37290b]"} extra-font-style w-full flex justify-start items-center md:px-20 px-10 pb-5 pt-10`}>
 
           <div>
-            <p className={`font-bold text-2xl mb-4 ${darkMode ? "" : "text-[#020826]"}`}>Education</p>
+            <p className={`font-bold text-2xl mb-4 ${darkMode ? "" : "text-[#020826]"}`} >Education</p>
 
             {
               !allEduDetails ? (
@@ -40,17 +40,17 @@ const Education = () => {
 
                           <div className='text-lg pb-1 flex gap-2 items-cente'>
                             <div className='p-1 bg-[#5a5a5a3a] rounded-md hover:text-[#070707] hover:bg-[#9b9a9a] hover:scale-110 md:block hidden'><IoSchoolOutline /></div>
-                            <p>{`${val?.institute_name} , ${val?.location}`}</p>
+                            <p className={`font-bold ${!darkMode && "text-[#a80000]"}`}>{`${val?.institute_name} , ${val?.location}`}</p>
                           </div>
 
-                          <div className={`text-sm ${darkMode ? "text-[#747573]" : "text-[#2e2d2d]"}`}>
+                          <div className={`text-base ${darkMode ? "text-[#747573]" : "text-[#796b54] font-semibold"} leading-tight`}>
 
                             <ul className='list-disc md:pl-6 pl-5 flex flex-col  gap-4'>
                               {
                                 allEduDetails[idx]?.qualification?.map((innerVal, innerIdx) => {
 
                                   return (
-                                    <li key={`innnerval-${val?._id}-${innerIdx}`} className='lg:ml-6'>
+                                    <li key={`innnerval-${val?._id}-${innerIdx}`} className='lg:ml-6 '>
                                       <p>{`${innerVal?.level} , ${innerVal?.stream}`}</p>
                                       <p>{`${innerVal?.startDate} - ${innerVal?.endDate} , ${innerVal?.typeOfScore === "CGPA" ? "CGPA : " + innerVal?.score : "Score :" + innerVal?.score}`}</p>
                                     </li>
