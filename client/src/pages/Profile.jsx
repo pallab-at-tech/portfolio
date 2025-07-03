@@ -118,7 +118,7 @@ const Profile = () => {
                     {
                         userData?.avatar ? (
                             <>
-                                <div className='w-[145px] h-[145px] border-gray-700 rounded-full overflow-hidden border'>
+                                <div className={`w-[145px] h-[145px] ${darkMode ? "border-gray-700" : "border-gray-700"} rounded-full overflow-hidden border`}>
                                     <img src={userData?.avatar} alt="" className='w-full h-full object-cover rounded-full' />
                                 </div>
                             </>
@@ -127,23 +127,23 @@ const Profile = () => {
                             <div className='pb-0.5 text-2xl font-bold'><CgProfile size={60} /></div>
                         )
                     }
-                    <button onClick={() => setopenCreateWindowforDesktop(true)} className='cursor-pointer my-2 rounded-2xl px-4 py-1 border-2 border-terniary-dark text-terniary-dark text-base hover:bg-terniary-dark hover:text-primary-dark font-semibold'>Edit</button>
+                    <button onClick={() => setopenCreateWindowforDesktop(true)} className={`cursor-pointer my-2 rounded-2xl px-4 py-1 border-2 ${darkMode ? "border-terniary-dark text-terniary-dark hover:bg-terniary-dark hover:text-primary-dark" : "hover:bg-[#8e461d] hover:text-white"}  text-base  font-semibold`}>Edit</button>
                 </div>
 
                 <form onSubmit={handleOnSubmit} className='mt-2 lg:max-w-[80%]' >
 
-                    <div className='group mb-2'>
+                    <div className={`group mb-2 ${!darkMode && "text-[#1e1504]"}`}>
                         <p className='font-semibold group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1'>Name : </p>
-                        <input type="text" onChange={handleChange} name='name' placeholder='Enter your name...' value={userData?.name} required className='bg-[#b2b8de] rounded lg:min-w-[420px] lg:max-w-[420px] md:min-w-[320px] md:max-w-[320px] min-w-[220px] max-w-[220px] h-8 text-base outline-none px-2 py-5 mt-1 text-[#100f0f]' />
+                        <input type="text" onChange={handleChange} name='name' placeholder='Enter your name...' value={userData?.name} required className={` ${darkMode ? "bg-[#b2b8de] text-[#100f0f]" : "bg-[#705c34a9] text-[#1e1504]"} rounded lg:min-w-[420px] lg:max-w-[420px] md:min-w-[320px] md:max-w-[320px] min-w-[220px] max-w-[220px] h-8 text-base outline-none px-2 py-5 mt-1 `} />
                     </div>
 
-                    <button className="p-2  bg-[#2c6abc] hover:bg-[#2463b5]  text-[#d1dcfb] md:min-w-[320px] lg:min-w-[420px] lg:max-w-[420px] md:max-w-[320px] min-w-[220px] max-w-[220px] mt-2 rounded  font-semibold cursor-pointer">Update name</button>
+                    <button className={`p-2  ${darkMode ? "bg-[#2c6abc] hover:bg-[#2463b5]  text-[#d1dcfb]" : "bg-[#7b450b] hover:bg-[#6b3c0a]  text-[#d1dcfb]"} md:min-w-[320px] lg:min-w-[420px] lg:max-w-[420px] md:max-w-[320px] min-w-[220px] max-w-[220px] mt-2 rounded  font-semibold cursor-pointer`}>Update name</button>
 
                 </form>
             </div>
 
 
-            {/* for mobile and tablet version */}
+            {/* for mobile and tablet version  */}
 
             <div className='lg:hidden block md:ml-10 md:mr-10'>
 
@@ -165,27 +165,28 @@ const Profile = () => {
                         )
                     }
 
-                    <div>
+                    <div className='flex flex-col items-center justify-center'>
                         <p className='max-w-[6ch] break-all text-sm line-clamp-2 leading-tight'>{user?.name}</p>
-                        <button onClick={() => setopenCreateWindow(true)} className=' my-2 rounded-2xl px-4 py-1 border-2 border-terniary-dark text-terniary-dark text-base hover:bg-terniary-dark hover:text-primary-dark font-semibold'>Edit</button>
+                        <button onClick={() => setopenCreateWindow(true)} className={` my-2 rounded-2xl px-4 py-1 border-2 ${darkMode ? "border-terniary-dark text-terniary-dark hover:bg-terniary-dark hover:text-primary-dark" : "hover:bg-[#8e461d] hover:text-white"}  text-base  font-semibold`}>Edit</button>
                     </div>
 
                 </div>
 
-                <div className='min-h-1 max-h-1 border-b-2 border-b-[#404a57] my-2'></div>
+                <div className={`min-h-1 max-h-1 border-b-2 ${darkMode ? "border-b-[#404a57]" : "border-b-[#332301]"} my-2`}></div>
 
                 <div className=''>
 
                     {
                         !user?.admin_verify ? (
-                            <div className='bg-gray-500 text-base my-12 rounded px-4 py-4 w-fit md:mt-16'>
+                            <div className={`${darkMode ? "bg-gray-500" : "bg-[#705c34a9]"} text-base my-12 rounded px-4 py-4 w-fit md:mt-16`}>
+
                                 <div>
-                                    <p className='text-base leading-tight mb-2 font-semibold text-[#d9d9e0]'>verify your account by admin ?</p>
+                                    <p className={`text-base leading-tight mb-2 font-semibold ${darkMode ? "text-[#d9d9e0]" : "text-[#1e1504]"}`}>verify your account by admin ?</p>
 
                                     <form action="" className="flex flex-col sm:flex-row gap-2">
 
                                         <input type="email" placeholder='Enter your email' className='bg-primary-text outline-none rounded text-black px-2 py-1 text-sm w-full' />
-                                        <button className='bg-terniary-dark py-2 px-4 rounded text-sm text-white w-full sm:w-auto'>send</button>
+                                        <button onClick={(e)=>{e.preventDefault()}} className={`${darkMode ? "bg-terniary-dark text-white" : "bg-[#7b450b] hover:bg-[#6b3c0a] text-white"} mt-0.5 py-2 px-4 rounded text-sm  w-full sm:w-auto`}>send</button>
                                     </form>
 
                                 </div>
@@ -205,7 +206,7 @@ const Profile = () => {
                                         <>
 
                                             <NavLink to={`${userUrl}/educationEdit`} className={({ isActive }) => {
-                                                return isActive ? 'bg-[#3d4150] rounded p-2 w-fit' : 'w-fit p-2 transition hover:-translate-y-0.5 duration-300 scale-105'
+                                                return isActive ? `${darkMode ? "bg-[#3d4150]" : "bg-[#7b450b]"} rounded p-2 w-fit` : 'w-fit p-2 transition hover:-translate-y-0.5 duration-300 scale-105'
                                             }}
                                             >
                                                 Education
