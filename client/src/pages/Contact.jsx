@@ -50,7 +50,7 @@ const Contact = () => {
   // #690551 , #a80000 , #796b54 , #43413c
 
   return (
-    <section className={`${darkMode ? "bg-primary-black" : "background-image-light rounded-t-2xl"} text-primary-text extra-font-style  md:px-20 p-10  pb-10`}>
+    <section className={`${darkMode ? "bg-primary-black" : "background-image-light rounded-t-lg"} text-primary-text extra-font-style  md:px-20 p-10  pb-10`}>
 
       {/* for margin */}
       <div className={`${darkMode ? "flex" : "hidden"} justify-center`}>
@@ -116,16 +116,16 @@ const Contact = () => {
 
               <h2 className={`font-bold text-lg pb-3 ${!darkMode && "text-[#ad2007]"}`}>Send me a message</h2>
 
-              <div className={`${darkMode ? "bg-primary-dark" : "send-message-box-light shadow-md"} rounded-xl p-6`}>
+              <div className={`${darkMode ? "bg-primary-dark" : "bg-gradient-to-br from-[#8c1111] to-[#5c3601] shadow-lg"} rounded-xl p-6`}>
                 <div className={`text-sm pb-3 flex flex-row flex-wrap justify-between items-center gap-3 ${!darkMode && "text-[#fdf3e1]"}`}>
 
-                  <div className='group'>
+                  <div className='group lg:w-auto w-full'>
                     <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1 font-semibold pr-1'>Name</p>
                     <input type="text" name='name' required className={`${darkMode ? "bg-[#444444f2]" : "bg-[#fdf3e1]  text-[#34260c] font-semibold"} rounded outline-none w-full p-2`} />
 
                   </div>
 
-                  <div className='group'>
+                  <div className='group lg:w-auto w-full'>
 
                     <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1 font-semibold pr-1'>Email</p>
                     <input type="email" name='email' required className={`${darkMode ? "bg-[#444444f2]" : "bg-[#fdf3e1]  text-[#34260c] font-semibold"} rounded outline-none w-full p-2`} />
@@ -142,7 +142,7 @@ const Contact = () => {
                 </div>
 
                 <div className='pt-4 font-semibold '>
-                  <button className={`${darkMode ? "bg-[#444444f2] hover:bg-[#393939f2]" : "bg-gray-500 hover:bg-gray-600"} rounded outline-none w-full h-8 cursor-pointer`}>
+                  <button className={`${darkMode ? "bg-[#444444f2] hover:bg-[#393939f2]" : "bg-[#c68934] hover:bg-[#bd8331]"} rounded outline-none w-full h-8 cursor-pointer`}>
                     {
                       loaderforEmailSend ? (
                         <div className='flex gap-7 items-center justify-center'>

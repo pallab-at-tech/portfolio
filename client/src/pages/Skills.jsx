@@ -21,7 +21,7 @@ const Skills = () => {
   const { darkMode, setDarkMode } = useGlobalContext()
 
   return (
-    <section className={`${darkMode ? "bg-primary-black" : "bg-[#fdf3e1] rounded"}  px-10 text-primary-text extra-font-style pt-10 md:px-14 relative pb-6`}>
+    <section className={`${darkMode ? "bg-primary-black" : "bg-[#e9d6b4] rounded"}  px-10 text-primary-text extra-font-style pt-10 md:px-14 relative pb-6`}>
 
       {/* left Glow */}
       {/* <div className="absolute inset-y-0 left-0 w-full blur-[300px] bg-cyan-300 opacity-[3%] pointer-events-none"></div> */}

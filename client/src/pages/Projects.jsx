@@ -13,7 +13,7 @@ const Projects = () => {
   const { darkMode, setDarkMode } = useGlobalContext()
 
   return (
-    <section className={`${darkMode ? "bg-primary-black" : "bg-[#fdf3e1]"}  px-10 ${darkMode ? "text-primary-text" : "text-[#37290b]"} extra-font-style md:px-14  pt-10 pb-5 relative`}>
+    <section className={`${darkMode ? "bg-primary-black" : "bg-[#e9d6b4]"}  px-10 ${darkMode ? "text-primary-text" : "text-[#37290b]"} extra-font-style md:px-14  pt-10 pb-5 relative`}>
       {/*  */}
       {/* <div className="absolute inset-y-0 left-0 w-full blur-[300px] bg-cyan-300 opacity-[1%] pointer-events-none"></div> */}
 

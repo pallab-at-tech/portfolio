@@ -4,6 +4,7 @@ import AxiosTostError from '../utils/AxiosToastError'
 import toast from 'react-hot-toast'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
+import { useGlobalContext } from '../provider/GlobalProvider'
 
 const ForgotPassword = () => {
 
@@ -59,11 +60,13 @@ const ForgotPassword = () => {
         }
     }
 
+    const { darkMode, setDarkMode } = useGlobalContext()
+
     return (
-        <section className='min-h-[calc(100vh-32px)] bg-primary-dark text-primary-text extra-font-style md:px-14 pt-[72px]'>
+        <section className={`min-h-[calc(100vh-32px)] ${darkMode ? "bg-primary-dark" : "card-bg-color-light"} text-primary-text extra-font-style md:px-14 pt-[72px]`}>
             <div className='container mx-auto  md:max-w-lg max-w-[95%] p-7 rounded-md'>
 
-                <form onSubmit={handleSubmit} className='grid gap-4 pl-6 py-2 pt-4 text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36] mt-[30%] pb-6'>
+                <form onSubmit={handleSubmit} className={`grid gap-4 pl-6 py-2 pt-4 ${darkMode ? "text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36]" : "bg-gradient-to-br from-[#a62525] to-[#85530d] text-blue-100 shadow-lg"} mt-[30%] pb-6`}>
 
 
                     <div className='group'>

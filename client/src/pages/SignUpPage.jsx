@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
 import { useNavigate } from 'react-router-dom'
+import { useGlobalContext } from '../provider/GlobalProvider'
 
 const SignUpPage = () => {
 
@@ -69,8 +70,10 @@ const SignUpPage = () => {
     }
   }
 
+  const { darkMode, setDarkMode } = useGlobalContext()
+
   return (
-    <section className='min-h-[calc(100vh-32px)] bg-primary-dark text-primary-text extra-font-style md:px-14 pt-[72px]'>
+    <section className={`min-h-[calc(100vh-32px)] ${darkMode ? "bg-primary-dark" : "card-bg-color-light"} text-primary-text extra-font-style md:px-14 pt-[72px]`}>
 
       <div className='container mx-auto  md:max-w-lg max-w-[95%] p-7 rounded-md'>
 
@@ -78,7 +81,7 @@ const SignUpPage = () => {
           <p className='bg-[#d2645a]  leading-tight text-red-800 p-1.5 font-bold rounded'>Note: After registration, your account will be verified by an admin. Until then, you won't have permission to access admin privileges. </p>
         </div>
 
-        <form onSubmit={handleSubmit} className='grid gap-4 pl-6 py-1 text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36] mt-4'>
+        <form onSubmit={handleSubmit} className={`grid gap-4 pl-6 py-1 ${darkMode ? "text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36]" : "bg-gradient-to-br from-[#a62525] to-[#85530d] text-blue-100 shadow-lg"} mt-4 pt-4`}>
 
           <div className='group'>
             <p className='font-semibold group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1'>Name :</p>

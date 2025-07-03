@@ -7,6 +7,7 @@ import SummaryApi from '../common/SummaryApi'
 import fetchUserDetails from '../utils/FetchUserDetails'
 import { setUserDetails } from '../store/userSlice'
 import { useDispatch } from 'react-redux'
+import { useGlobalContext } from '../provider/GlobalProvider'
 
 const SignInPage = () => {
 
@@ -68,11 +69,13 @@ const SignInPage = () => {
     }
   }
 
+  const { darkMode, setDarkMode } = useGlobalContext()
+
   return (
-    <section className='min-h-[calc(100vh-32px)] bg-primary-dark text-primary-text extra-font-style md:px-14 pt-[72px]'>
+    <section className={`min-h-[calc(100vh-32px)] ${darkMode ? "bg-primary-dark" : "card-bg-color-light"} text-primary-text extra-font-style md:px-14 pt-[72px]`}>
       <div className='container mx-auto  md:max-w-lg max-w-[95%] p-7 rounded-md'>
 
-        <form onSubmit={handleSubmit} className='grid gap-4 pl-6 py-2 pt-4 text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36] mt-14'>
+        <form onSubmit={handleSubmit} className={`grid gap-4 pl-6 py-2 pt-4 ${darkMode ? "text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36]" : "bg-gradient-to-br from-[#a62525] to-[#85530d] text-blue-100 shadow-lg"}  mt-14`}>
 
 
           <div className='group'>
@@ -91,7 +94,7 @@ const SignInPage = () => {
 
             <div className='flex gap-x-1'>
               <p className='text-base  text-sky-50'>Don't have account ? </p>
-              <Link to={"/SignUp"} className='text-blue-300  flex justify-center'>Register</Link>
+              <Link to={"/SignUp"} className={`text-blue-300 flex justify-center`}>Register</Link>
             </div>
 
             <Link to={"/forgot-password"} className='text-blue-300 text-sm pr-6 pb-2'>Forgot Password ?</Link>

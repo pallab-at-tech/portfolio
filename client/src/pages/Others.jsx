@@ -116,7 +116,7 @@ const Others = () => {
     const { darkMode, setDarkMode } = useGlobalContext();
 
 
-// #000000 black
+// #000000 black card-bg-color-light
 
     return (
         <section className={`min-h-[100vh] ${darkMode ? "bg-primary-dark" : "card-bg-color-light"} text-primary-text lato-regular md:px-14 pt-[72px] lg:px-6 px-2 relative`}>
@@ -125,7 +125,7 @@ const Others = () => {
 
 
 
-            <div className='w-full'>
+            <div className='w-full '>
 
                 <div className={`lg:ml-28  lg:absolute top-[72px] ${!darkMode && "text-[#000000]"}`}>
                     <Link to={"/"} className='w-fit'>
@@ -142,12 +142,12 @@ const Others = () => {
                 <div className='mx-auto container lg:max-w-[1280px] max-w-[995px] mt-16 md:px-0 px-4'>
                     <p className={`font-semibold text-xl my-1 pl-4 ${!darkMode && "text-[#a90707]"}`}>Most recently..</p>
 
-                    <div className='lg:max-w-[1280px] max-w-[995px] gap-6 flex  overflow-x-auto  scrollbar-hidden no-interaction'>
+                    <div className='lg:max-w-[1280px] max-w-[995px] gap-6 flex  overflow-x-auto  scrollbar-hidden  no-interaction'>
 
                         {
                             allOf.all_certificate.map((v, i) => {
                                 return (
-                                    <Link to={`/Others/${v._id}`} key={`${v._id} - ${i}`} className={`min-w-full max-w-full  shrink-0 ${darkMode ? "bg-[#2b2b2b] shadow-[inset_0_0_12px_rgba(255,245,200,0.15),inset_0_0_6px_rgba(255,255,255,0.05)]" : "card-other-section-light"} p-3 rounded  my-4 transition-transform duration-700 ease-in-out`}
+                                    <Link to={`/Others/${v._id}`} key={`${v._id} - ${i}`} className={`min-w-full max-w-full  shrink-0 ${darkMode ? "bg-[#2b2b2b] shadow-[inset_0_0_12px_rgba(255,245,200,0.15),inset_0_0_6px_rgba(255,255,255,0.05)]" : "card-other-section-light"} p-3 rounded box-border my-4 transition-transform duration-700 ease-in-out`}
 
                                         style={{
                                             transform: `translateX(-${currentIndex * 100}%)`,
@@ -194,7 +194,7 @@ const Others = () => {
                         {otherData?.data?.map((val, idx) => (
                             <Link to={`/Others/${val._id}`}
                                 key={`${val._id} + ${idx}`}
-                                className={`min-w-[300px] max-w-[300px] shrink-0 ${darkMode ? "bg-[#2b2b2b] shadow-md hover:shadow-[inset_0_0_16px_rgba(255,230,120,0.18),inset_0_0_8px_rgba(255,230,120,0.1)]" : "card-other-small-section-light"}  p-3 rounded   transition-shadow duration-400`}
+                                className={`min-w-[300px] max-w-[300px] shrink-0  ${darkMode ? "bg-[#2b2b2b] shadow-md hover:shadow-[inset_0_0_16px_rgba(255,230,120,0.18),inset_0_0_8px_rgba(255,230,120,0.1)]" : "card-other-small-section-light"}  p-3 rounded   transition-shadow duration-400`}
                             >
                                 <h1 className='line-clamp-2 font-semibold'>{val.tittle}</h1>
                                 <Link to={`/Others/${val._id}`} className='text-sm text-blue-400 hover:underline'>know more</Link>
