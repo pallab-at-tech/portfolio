@@ -10,6 +10,7 @@ import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import { setLogOut } from '../store/userSlice'
 import Axios from '../utils/Axios'
+import { useGlobalContext } from '../provider/GlobalProvider'
 
 const Dashboard = () => {
 
@@ -17,6 +18,7 @@ const Dashboard = () => {
     const userUrl = `/dashboard/${user?.name?.toLowerCase()?.replace(" ", "-")}-${user?._id}`
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const { darkMode, setDarkMode } = useGlobalContext()
 
     const alldata = useSelector(state => state.allofdetails)
 
@@ -43,7 +45,7 @@ const Dashboard = () => {
 
 
     return (
-        <div className='min-h-[calc(100vh-32px)] bg-primary-dark text-primary-text extra-font-style md:px-14 pt-[72px]'>
+        <div className={`min-h-[calc(100vh-32px)] ${darkMode ? "bg-primary-dark text-primary-text" : "card-bg-color-light text-primary-dark"}  extra-font-style md:px-14 pt-[72px]`}>
             <div className='grid lg:grid-cols-[260px_1fr] container mx-auto'>
 
                 <div className='sticky top-[104px] overflow-y-auto border-r-3 border-r-slate-600 max-h-[calc(100vh-104px)] lg:block hidden'>

@@ -75,7 +75,7 @@ const SignInPage = () => {
     <section className={`min-h-[calc(100vh-32px)] ${darkMode ? "bg-primary-dark" : "card-bg-color-light"} text-primary-text extra-font-style md:px-14 pt-[72px]`}>
       <div className='container mx-auto  md:max-w-lg max-w-[95%] p-7 rounded-md'>
 
-        <form onSubmit={handleSubmit} className={`grid gap-4 pl-6 py-2 pt-4 ${darkMode ? "text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36]" : "bg-gradient-to-br from-[#8c1111] to-[#3d2401] text-blue-100 shadow-lg"}  mt-14`}>
+        <form onSubmit={handleSubmit} className={`grid gap-4 pl-6 py-2 pt-4 ${darkMode ? "text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36]" : "bg-gradient-to-br  text-blue-100 shadow-lg"}  mt-14`}>
 
 
           <div className='group'>

@@ -17,6 +17,7 @@ const Profile = () => {
     const user = useSelector((state) => state?.user)
     const alldata = useSelector(state => state.allofdetails)
     const {fetchAllDetails} = useGlobalContext()
+    const { darkMode, setDarkMode } = useGlobalContext()
 
     const [userData, setUserData] = useState({
         name: user?.name,

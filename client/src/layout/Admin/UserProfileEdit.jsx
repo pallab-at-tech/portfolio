@@ -78,7 +78,7 @@ const UserProfileEdit = ({ close }) => {
 
             <div>
 
-                <form onSubmit={handleOnSubmit} className='grid lg:max-w-md lg:min-w-md  md:max-h-[280px] md:min-h-[280px]  md:min-w-[350px] md:max-w-[350px] min-w-[280px] max-w-[280px] max-h-[250px] min-h-[250px] py-2  bg-gradient-to-br from-[#857131] to-[#2a344f] rounded overflow-y-auto  md:px-10 px-6'>
+                <form onSubmit={handleOnSubmit} className='grid lg:max-w-md lg:min-w-md  md:max-h-[280px] md:min-h-[280px]  md:min-w-[350px] md:max-w-[350px] min-w-[280px] max-w-[280px] max-h-[250px] min-h-[250px] py-2  bg-gradient-to-br from-[#41413e] to-[#a9afbf] rounded overflow-y-auto  md:px-10 px-6'>
 
                     <div className='w-full flex justify-end text-primary-black mt-2'>
                         <IoMdCloseCircleOutline size={28} onClick={close} className='cursor-pointer' />
