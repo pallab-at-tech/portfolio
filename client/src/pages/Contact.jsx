@@ -116,7 +116,7 @@ const Contact = () => {
 
               <h2 className={`font-bold text-lg pb-3 ${!darkMode && "text-[#ad2007]"}`}>Send me a message</h2>
 
-              <div className={`${darkMode ? "bg-primary-dark" : "bg-gradient-to-br from-[#8c1111] to-[#5c3601] shadow-lg"} rounded-xl p-6`}>
+              <div className={`${darkMode ? "bg-primary-dark" : "bg-gradient-to-br from-[#8c1111] to-[#3d2401] shadow-lg"} rounded-xl p-6`}>
                 <div className={`text-sm pb-3 flex flex-row flex-wrap justify-between items-center gap-3 ${!darkMode && "text-[#fdf3e1]"}`}>
 
                   <div className='group lg:w-auto w-full'>

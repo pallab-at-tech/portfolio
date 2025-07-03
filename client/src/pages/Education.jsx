@@ -39,7 +39,7 @@ const Education = () => {
                         <div key={`edu-details-${idx}`} className='tracking-wide pb-4'>
 
                           <div className='text-lg pb-1 flex gap-2 items-cente'>
-                            <div className='p-1 bg-[#5a5a5a3a] rounded-md hover:text-[#070707] hover:bg-[#9b9a9a] hover:scale-110 md:block hidden'><IoSchoolOutline /></div>
+                            <div className={`p-1 bg-[#5a5a5a3a] rounded-md hover:text-[#070707] ${darkMode && "hover:bg-[#9b9a9a]"} hover:scale-110 md:block hidden`}><IoSchoolOutline /></div>
                             <p className={`font-bold ${!darkMode && "text-[#a80000]"}`}>{`${val?.institute_name} , ${val?.location}`}</p>
                           </div>
 

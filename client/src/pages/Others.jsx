@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux';
 import { OthersDetails } from '../store/otherSlice';
 import AxiosTostError from '../utils/AxiosToastError';
 import { OthersDetailspro } from '../store/OtherScrollData';
-import Footer from '../components/Footer';
 import { useGlobalContext } from '../provider/GlobalProvider';
 
 const Others = () => {
@@ -116,18 +115,17 @@ const Others = () => {
     const { darkMode, setDarkMode } = useGlobalContext();
 
 
-// #000000 black card-bg-color-light
+    // #000000 black card-bg-color-light
 
     return (
-        <section className={`min-h-[100vh] ${darkMode ? "bg-primary-dark" : "card-bg-color-light"} text-primary-text lato-regular md:px-14 pt-[72px] lg:px-6 px-2 relative`}>
+        <section className={`min-h-[100vh] ${darkMode ? "bg-primary-dark" : "card-bg-color-light"} text-primary-text lato-regular md:px-14 pt-[42px] lg:px-6 px-2 relative`}>
 
-            <h1 className={`px-16 font-bold text-2xl md:pt-2  flex items-center flex-col ${!darkMode && "text-[#000000] font-bold"}`}>Achievement</h1>
-
+            <h1 className={`font-bold text-2xl flex items-center justify-center ${!darkMode && "text-[#000000] font-bold"}`}>Achievement</h1>
 
 
             <div className='w-full '>
 
-                <div className={`lg:ml-28  lg:absolute top-[72px] ${!darkMode && "text-[#000000]"}`}>
+                <div className={` ${!darkMode && "text-[#000000]"} flex items-center justify-start pl-[6%] relative bottom-10`}>
                     <Link to={"/"} className='w-fit'>
                         <div className={`ml-4 `}>
                             <FaHome size={28} />
@@ -139,10 +137,11 @@ const Others = () => {
 
 
                 {/* here recent one */}
-                <div className='mx-auto container lg:max-w-[1280px] max-w-[995px] mt-16 md:px-0 px-4'>
-                    <p className={`font-semibold text-xl my-1 pl-4 ${!darkMode && "text-[#a90707]"}`}>Most recently..</p>
+                <div className='mx-auto container lg:max-w-[1280px] max-w-[995px] -mt-2 md:px-0 px-4'>
 
-                    <div className='lg:max-w-[1280px] max-w-[995px] gap-6 flex  overflow-x-auto  scrollbar-hidden  no-interaction'>
+                    <p className={`font-semibold text-xl my-1 pl-2 ${!darkMode && "text-[#a90707]"}`}>Most recently..</p>
+
+                    <div className='lg:max-w-[1280px] max-w-[995px] flex overflow-x-auto scrollbar-hidden  no-interaction'>
 
                         {
                             allOf.all_certificate.map((v, i) => {
@@ -166,7 +165,7 @@ const Others = () => {
                                             </div>
 
                                             <div className=''>
-                                                <h1 className='font-semibold text-lg pb-4 lg:line-clamp-none md:line-clamp-[11] text-amber-300'>{v.tittle}</h1>
+                                                <h1 className='font-semibold text-lg md:pb-4 lg:line-clamp-none md:line-clamp-[11] text-amber-300'>{v.tittle}</h1>
                                                 <pre className="text-sm lato-regular text-white whitespace-pre-wrap lg:block hidden">{v.describe}</pre>
                                             </div>
 
@@ -184,9 +183,9 @@ const Others = () => {
 
                 {/* some tittle */}
 
-                <div className='mx-auto container lg:max-w-[1280px] max-w-[995px] py-14'>
+                <div className='mx-auto container lg:max-w-[1280px] max-w-[995px] py-6'>
 
-                    <p className={`font-semibold text-xl mt-4 pl-4 ${!darkMode && "text-[#a90707]"}`}>Others..</p>
+                    <p className={`font-semibold text-xl mt-4 pl-6 ${!darkMode && "text-[#a90707]"}`}>Others..</p>
 
                     <div className='lg:max-w-[1280px]  max-w-[995px] overflow-x-auto flex  gap-6 px-6 py-4 scroll-smooth scrollbar-custom' ref={scrollRef}>
 

@@ -75,7 +75,7 @@ const SignInPage = () => {
     <section className={`min-h-[calc(100vh-32px)] ${darkMode ? "bg-primary-dark" : "card-bg-color-light"} text-primary-text extra-font-style md:px-14 pt-[72px]`}>
       <div className='container mx-auto  md:max-w-lg max-w-[95%] p-7 rounded-md'>
 
-        <form onSubmit={handleSubmit} className={`grid gap-4 pl-6 py-2 pt-4 ${darkMode ? "text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36]" : "bg-gradient-to-br from-[#a62525] to-[#85530d] text-blue-100 shadow-lg"}  mt-14`}>
+        <form onSubmit={handleSubmit} className={`grid gap-4 pl-6 py-2 pt-4 ${darkMode ? "text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36]" : "bg-gradient-to-br from-[#8c1111] to-[#3d2401] text-blue-100 shadow-lg"}  mt-14`}>
 
 
           <div className='group'>
@@ -92,9 +92,9 @@ const SignInPage = () => {
 
           <div className='flex items-start flex-col pr-6 '>
 
-            <div className='flex gap-x-1'>
+            <div className='flex flex-wrap gap-x-1 items-center'>
               <p className='text-base  text-sky-50'>Don't have account ? </p>
-              <Link to={"/SignUp"} className={`text-blue-300 flex justify-center`}>Register</Link>
+              <Link to={"/SignUp"} className={`text-blue-300 text-sm flex justify-center`}>Register</Link>
             </div>
 
             <Link to={"/forgot-password"} className='text-blue-300 text-sm pr-6 pb-2'>Forgot Password ?</Link>

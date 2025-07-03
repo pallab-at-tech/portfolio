@@ -20,6 +20,7 @@ const Projects = () => {
       <Element id='projectID'>
 
         <p className={`font-bold text-2xl mb-6 pl-6 ${darkMode ? "" : "text-[#020826]"}`}>project ShowCase</p>
+        
         <div className='w-full'>
 
           <div className='flex overflow-x-auto gap-6 scrollbar-custom scroll-smooth px-5 pb-3'>

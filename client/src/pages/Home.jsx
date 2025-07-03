@@ -17,11 +17,26 @@ import { Element } from 'react-scroll';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import { useGlobalContext } from '../provider/GlobalProvider';
+import resume from "../assets/resume.pdf"
 
 const Home = () => {
 
   const allOf = useSelector(state => state.allofdetails)
   const { darkMode, setDarkMode } = useGlobalContext();
+  
+
+  const downloadFileAtURL = (url) => {
+    
+    const fileName = "MyResume.pdf"
+
+    const aTag = document.createElement('a')
+    aTag.href = url
+    aTag.setAttribute('download', fileName)
+    document.body.appendChild(aTag)
+    aTag.click()
+    aTag.remove()
+
+  }
 
   return (
 
@@ -81,7 +96,8 @@ const Home = () => {
                 </div>
 
                 <div className='flex lg:mt-6 md:mt-12 mt-9 items-center lg:gap-7 md:gap-10 gap-5'>
-                  <div className={`${darkMode ? "bg-[#0b258c] hover:bg-[#0b358f]" : "bg-[#900771] hover:bg-[#87066a] text-[#d3c6c6]"}  rounded flex items-center pl-0.5 cursor-pointer `}>
+
+                  <div onClick={()=>downloadFileAtURL(resume)} className={`${darkMode ? "bg-[#0b258c] hover:bg-[#0b358f]" : "bg-[#900771] hover:bg-[#87066a] text-[#d3c6c6]"}  rounded flex items-center pl-0.5 cursor-pointer `}>
                     <IoMdDownload size={20} />
                     <p className='text-base px-2 py-1.5'>Resume</p>
                   </div>
