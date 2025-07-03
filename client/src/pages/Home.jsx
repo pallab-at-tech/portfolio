@@ -50,8 +50,8 @@ const Home = () => {
 
             {/* for tablet */}
             <div className='items-center justify-center p-3 mt-6 lg:hidden md:flex hidden'>
-              <div className={`${darkMode ? "outer-box" : "outer-box-light"}`}>
-                <div className={`${darkMode ? "card" : "card-light"}`}>
+              <div className={`${darkMode ? "outer-box" : "outer-box-light-md"}`}>
+                <div className={`${darkMode ? "card" : "card-light-md"}`}>
 
                   <img src={pic} alt="" className='w-[220px] h-[234px] object-top m-4 object-cover rounded-3xl' />
 

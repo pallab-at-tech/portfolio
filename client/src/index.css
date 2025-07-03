@@ -523,7 +523,53 @@ body {
 
 
 
+.card-light-md {
+  position: relative;
+  width: 245px;
+  height: 275px;
+  border-radius: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f6f5f4;
+  /* base light cream */
+  background-image: linear-gradient(45deg, #e8ae50, #e8aa46, #e3ac55, #eab053);
+  z-index: 1;
+  background-blend-mode: multiply;
+}
 
+.outer-box-light-md {
+  position: relative;
+  width: 250px;
+  height: 280px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 52px;
+  overflow: hidden;
+}
+
+.outer-box-light-md::before {
+  content: '';
+  width: 155px;
+  height: 200%;
+  background: linear-gradient(135deg, #1b1300);
+  position: absolute;
+  z-index: -1;
+  border-radius: 45px;
+  animation: rotate 10s linear infinite;
+  filter: blur(1.5rem);
+  opacity: 0.9;
+}
+
+.card-light-md img:hover~.outer-box-light-md::before {
+  animation-play-state: paused;
+}
+
+.outer-box-light-md:hover::before {
+  animation-play-state: paused;
+}
 
 
 
