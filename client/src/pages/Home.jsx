@@ -88,10 +88,10 @@ const Home = () => {
                   <p className=''> i am ,{" "}<span className={`${darkMode ? "text-terniary-dark" : "text-[#a80000]"} font-semibold`} style={darkMode ? { textShadow: 'rgb(187 80 8 / 50%) 1px 1px 8px' } : { textShadow: 'rgb(187 0 0 / 50%) 2px 0px 6px' }}>Pallab Bag</span></p>
                   <p className=''>Full <span className={`${darkMode ? "text-[#0377dd]" : "text-[#a0003f]"} font-semibold`} style={darkMode ? { textShadow: 'rgba(10, 21, 240, 0.5) 2px 2px 8px' } : { textShadow: 'rgba(240, 10, 143, 0.5) 2px 0px 6px' }}>stack</span> developer</p>
                 </div>
-
+{/* #000000 */}
                 <div className={`text-sm mt-1 md:mt-5 lg:w-[60%] ${darkMode ? "text-[#747573]" : "text-[#332301]"} `}>
                   <p className=''>
-                    A goal-oriented software developer with experience in building applications using modern technologies like <span className={`${darkMode ? "text-[#59b806]" : "text-[#000000]"} font-semibold`}>React, MongoDB, Express.js, Node.js, and more</span>. I am seeking to leverage my technical skills to deliver exceptional user experiences.
+                    A goal-oriented software developer with experience in building applications using modern technologies like <span className={`${darkMode ? "text-[#59b806]" : "text-[#a80202]"} font-semibold`}>React, MongoDB, Express.js, Node.js, and more</span>. I am seeking to leverage my technical skills to deliver exceptional user experiences.
                   </p>
                 </div>
 
