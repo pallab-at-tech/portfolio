@@ -18,7 +18,6 @@ import { OthersDetails } from '../../store/otherSlice'
 import { useRef } from 'react'
 import AxiosTostError from '../../utils/AxiosToastError'
 import WindowLoader from '../../utils/WindowLoader'
-import { OthersDetailspro } from '../../store/OtherScrollData'
 import { BsBookmarkStarFill } from "react-icons/bs";
 
 
@@ -29,7 +28,6 @@ const OthersDetailsEdit = () => {
 
     const alldata = useSelector(state => state.allofdetails)
     const otherData = useSelector(state => state.other)
-    const otherScrollData = useSelector(state => state.otherscroll)
 
 
     const dispatch = useDispatch()
@@ -259,13 +257,13 @@ const OthersDetailsEdit = () => {
 
     }, [pagination.limit, pagination.page, otherData?.data[0]])
 
-
+    const { darkMode, setDarkMode } = useGlobalContext()
 
 
 
 
     return (
-        <section className='lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 text-primary-text'>
+        <section className={`lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 ${darkMode ? "text-primary-text" : "text-[#020826]"}`}>
 
             <div className='flex flex-col mb-6'>
 
@@ -278,7 +276,7 @@ const OthersDetailsEdit = () => {
                         )
                     }
 
-                    <div onClick={() => setopenCreateWindow(true)} className=' my-4 rounded-full cursor-pointer px-4 py-1.5 w-fit border-3 text-terniary-dark text-base  transition duration-200 outline-none font-semibold button-shadow'>
+                    <div onClick={() => setopenCreateWindow(true)} className={`my-4 rounded-full cursor-pointer px-4 py-1.5 w-fit border-3 ${darkMode ? "text-terniary-dark button-shadow border-terniary-dark" : "text-[#7b450b] hover:bg-[#6b3c0a] hover:text-amber-50 hover:border-[#6b3c0a]"} text-base  transition duration-200 outline-none font-semibold`}>
                         create
                     </div>
                 </div>
@@ -328,7 +326,7 @@ const OthersDetailsEdit = () => {
                                         }
                                     })
                                 }}>
-                                    <FaArrowAltCircleLeft size={32} />
+                                    <FaArrowAltCircleLeft size={32}/>
                                 </div>
 
                                 <p>{`${pagination.page}/${pagination.totalNoOfPage}`}</p>
@@ -351,7 +349,7 @@ const OthersDetailsEdit = () => {
 
                         </div>
 
-                        <form onSubmit={handleOnSubmit} className='bg-[#1c1d1f] lg:min-w-[750px] lg:max-w-[750px] md:min-h-[500px] md:max-h-[800px] min-h-[500px]  max-h-[500px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4'>
+                        <form onSubmit={handleOnSubmit} className={`${darkMode ? "bg-[#1c1d1f] " : "bg-[#705c34a9]"} lg:min-w-[750px] lg:max-w-[750px] md:min-h-[500px] md:max-h-[800px] min-h-[500px]  max-h-[500px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4`}>
 
                             <div className='flex justify-end cursor-pointer' onClick={()=>{
                                 
@@ -380,10 +378,10 @@ const OthersDetailsEdit = () => {
                             <div className='group font-semibold'>
 
                                 <div className='flex'>
-                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Title :</p>
+                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Title :</p>
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
-                                <input type="text" onChange={handleOnChange} required name='tittle' value={data.tittle} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <input type="text" onChange={handleOnChange} required name='tittle' value={data.tittle} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
@@ -391,12 +389,12 @@ const OthersDetailsEdit = () => {
                             <div className='group font-semibold'>
 
                                 <div className='flex'>
-                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Certificate :</p>
+                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Certificate :</p>
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
 
                                 <input type="file" onChange={handlePhoto} ref={imageRef} hidden name='image' id='cover_image' accept="image/*" />
-                                <div onClick={() => imageRef.current?.click()} className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer'>
+                                <div onClick={() => imageRef.current?.click()} className={`${darkMode ? "bg-[#b2b8de] border" : "bg-[#ded7d7]"} text-primary-dark p-2  outline-none focus-within:border-primary-100 rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer`}>
                                     {
                                         imageLoading ? (
                                             <div className='loader mt-4'></div>
@@ -431,14 +429,14 @@ const OthersDetailsEdit = () => {
                             <div className='group font-semibold'>
 
                                 <div className='flex'>
-                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Description :</p>
+                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Description :</p>
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
 
-                                <textarea onChange={handleOnChange} required name='describe' rows={4} cols={4} value={data.describe} className='bg-[#353333f2] rounded outline-none w-full p-2 max-h-[120px] min-h-[110px]'></textarea>
+                                <textarea onChange={handleOnChange} required name='describe' rows={4} cols={4} value={data.describe} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2 max-h-[120px] min-h-[110px]`}></textarea>
                             </div>
 
-                            <button className='py-3 w-full bg-terniary-dark  hover:bg-[#fc4503]  text-[#d1dcfb]  mt-2 rounded  font-semibold cursor-pointer'>
+                            <button className={`py-3 w-full ${darkMode ? "bg-terniary-dark  hover:bg-[#fc4503]  text-[#d1dcfb]" : "text-[#d1dcfb] bg-[#5d3509]  hover:bg-[#542f08]"}  mt-2 rounded  font-semibold cursor-pointer`}>
                                 {
                                     tick ? (
                                         <TickMark />
@@ -461,7 +459,7 @@ const OthersDetailsEdit = () => {
                                     }
                                 })
                             }}>
-                            <p className='text-base font-semibold text-[#d1c6c1] underline'>Delete above details ?</p>
+                            <p className={`text-base font-semibold ${darkMode ? "text-[#d1c6c1]" : "text-[#020826]"} underline`}>Delete above details ?</p>
                             <div className='text-orange-800'><MdDelete size={22} /></div>
                         </div>
 

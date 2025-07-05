@@ -190,10 +190,12 @@ const ProjectDetailsEdit = () => {
 
     }, [confirmation.confirm])
 
+    const { darkMode, setDarkMode } = useGlobalContext()
+
 
 
     return (
-        <section className='lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 text-primary-text'>
+        <section className={`lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 ${darkMode ? "text-primary-text" : "text-[#020826]"}`}>
 
             <div className='flex flex-col mb-6'>
                 <div>
@@ -205,7 +207,7 @@ const ProjectDetailsEdit = () => {
                         )
                     }
 
-                    <div onClick={() => setopenCreateWindow(true)} className=' my-4 rounded-full cursor-pointer px-4 py-1.5 w-fit border-3 text-terniary-dark text-base  transition duration-200 outline-none font-semibold button-shadow'>
+                    <div onClick={() => setopenCreateWindow(true)} className={`my-4 rounded-full cursor-pointer px-4 py-1.5 w-fit border-3 ${darkMode ? "text-terniary-dark button-shadow border-terniary-dark" : "text-[#7b450b] hover:bg-[#6b3c0a] hover:text-amber-50 hover:border-[#6b3c0a]"}  text-base  transition duration-200 outline-none font-semibold`}>
                         create
                     </div>
                 </div>
@@ -247,41 +249,41 @@ const ProjectDetailsEdit = () => {
                                     else {
                                         setIndex(index - 1)
                                     }
-                                }}><FaArrowAltCircleLeft size={32} /></div>
+                                }}><FaArrowAltCircleLeft size={32} className='cursor-pointer'/></div>
 
                                 <p>{index % total} / {total - 1}</p>
 
-                                <div onClick={() => setIndex((index + 1) % total)}><FaArrowAltCircleRight size={32} /></div>
+                                <div onClick={() => setIndex((index + 1) % total)}><FaArrowAltCircleRight size={32} className='cursor-pointer'/></div>
                             </div>
 
                         </div>
 
-                        <form onSubmit={handleOnSubmit} className='bg-[#1c1d1f] lg:min-w-[750px] lg:max-w-[750px] md:min-h-[500px] md:max-h-[800px] min-h-[500px]  max-h-[500px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4'>
+                        <form onSubmit={handleOnSubmit} className={`${darkMode ? "bg-[#1c1d1f] " : "bg-[#705c34a9]"} g:min-w-[750px] lg:max-w-[750px] md:min-h-[500px] md:max-h-[800px] min-h-[500px]  max-h-[500px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4`}>
 
                             <div className='group font-semibold'>
 
                                 <div className='flex'>
-                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Title :</p>
+                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Title :</p>
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
-                                <input type="text" onChange={handleOnChange} required name='tittle' value={data.tittle} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <input type="text" onChange={handleOnChange} required name='tittle' value={data.tittle} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
                             <div className='group font-semibold'>
 
                                 <div className='flex'>
-                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Body :</p>
+                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Body :</p>
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
-                                <input type="text" onChange={handleOnChange} required name='body' value={data.body} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <input type="text" onChange={handleOnChange} required name='body' value={data.body} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
                             <div className='group font-semibold'>
 
                                 <div className='flex'>
-                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Body :</p>
+                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Body :</p>
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
 
@@ -299,7 +301,7 @@ const ProjectDetailsEdit = () => {
                                     }}
 
                                     required name='feature' value={data.feature?.join(".")}
-                                    className='bg-[#353333f2] rounded outline-none w-full p-2'
+                                    className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`}
                                 />
 
                             </div>
@@ -308,11 +310,11 @@ const ProjectDetailsEdit = () => {
 
 
                                 <div className='flex'>
-                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Tech use :</p>
+                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Tech use :</p>
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
 
-                                <select name="" id="" required className='bg-[#353333f2]  outline-none p-1 rounded'
+                                <select name="" id="" required className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"}  outline-none p-1 rounded`}
 
                                     onChange={(e) => {
                                         const value = e.target.value
@@ -371,20 +373,20 @@ const ProjectDetailsEdit = () => {
                             <div className='group font-semibold'>
 
                                 <div className='flex'>
-                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Project deploy link :</p>
+                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Project deploy link :</p>
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
-                                <input type="text" onChange={handleOnChange} name='project_deploy_link' value={data.project_deploy_link} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <input type="text" onChange={handleOnChange} name='project_deploy_link' value={data.project_deploy_link} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
                             <div className='group font-semibold'>
 
                                 <div className='flex'>
-                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Project git link :</p>
+                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Project git link :</p>
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
-                                <input type="text" onChange={handleOnChange} name='project_git_link' value={data.project_git_link} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <input type="text" onChange={handleOnChange} name='project_git_link' value={data.project_git_link} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
@@ -392,12 +394,12 @@ const ProjectDetailsEdit = () => {
                             <div className='group font-semibold'>
 
                                 <div className='flex'>
-                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>video :</p>
+                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>video :</p>
                                 </div>
 
                                 <label htmlFor="video">
                                     <input onChange={handlePhotoAndVideo} type="file" hidden name='video' id='video' accept="video/*" />
-                                    <div className='bg-[#353333f2] p-2 rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer'>
+                                    <div className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} p-2 rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer`}>
                                         {
                                             videoLoading ? (
                                                 <div className='loader mt-4'></div>
@@ -428,13 +430,13 @@ const ProjectDetailsEdit = () => {
                             <div className='group font-semibold'>
 
                                 <div className='flex'>
-                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Cover Image :</p>
+                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Cover Image :</p>
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
 
                                 <label htmlFor="cover_image">
                                     <input type="file" onChange={handlePhotoAndVideo} hidden name='image' id='cover_image' accept="image/*" />
-                                    <div className='bg-[#353333f2]  p-2  rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer'>
+                                    <div className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"}  p-2  rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer`}>
                                         {
                                             imageLoading ? (
                                                 <div className='loader mt-4'></div>
@@ -464,13 +466,13 @@ const ProjectDetailsEdit = () => {
                             <div className='group font-semibold'>
 
                                 <div className='flex'>
-                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Status :</p>
+                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Status :</p>
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
 
                                 <div className='flex gap-2'>
                                     <div>
-                                        <select name="" id="" className='bg-[#353333f2] outline-none p-1'
+                                        <select  className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} outline-none p-1`}
 
                                             onChange={(e) => {
 
@@ -499,7 +501,7 @@ const ProjectDetailsEdit = () => {
 
                             </div>
 
-                            <button className='py-3 w-full bg-terniary-dark  hover:bg-[#fc4503]  text-[#d1dcfb]  mt-2 rounded  font-semibold cursor-pointer'>
+                            <button className={`py-3 w-full ${darkMode ? "bg-terniary-dark  hover:bg-[#fc4503]  text-[#d1dcfb]" : "text-[#d1dcfb] bg-[#5d3509]  hover:bg-[#542f08]"}  mt-2 rounded  font-semibold cursor-pointer`}>
                                 {
                                     tick ? (
                                         <TickMark />
@@ -520,7 +522,7 @@ const ProjectDetailsEdit = () => {
                                     }
                                 })
                             }}>
-                            <p className='text-base font-semibold text-[#d1c6c1] underline'>Delete above details ?</p>
+                            <p className={`text-base font-semibold ${darkMode ? "text-[#d1c6c1]" : "text-[#020826]"} underline`}>Delete above details ?</p>
                             <div className='text-red-800'><MdDelete size={24} /></div>
                         </div>
 

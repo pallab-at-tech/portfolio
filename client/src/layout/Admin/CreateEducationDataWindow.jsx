@@ -72,10 +72,13 @@ const CreateEducationDataWindow = ({ close }) => {
     }
 
     const handleRemoveQualification = (index) => {
-        setData(prev => ({
-            ...prev,
-            qualification: prev?.qualification?.filter((_, i) =>{ i !== index})
-        }));
+
+        setData((preve)=>{
+            return {
+                ...preve,
+                qualification: preve?.qualification?.filter((_, i) => i !== index)
+            }
+        })
     }
 
 
@@ -114,33 +117,32 @@ const CreateEducationDataWindow = ({ close }) => {
 
     }
 
-    console.log("main", data)
+    const { darkMode, setDarkMode } = useGlobalContext()
 
 
     return (
-        <section className='fixed top-0 right-0 left-0 bottom-0 min-h-screen bg-neutral-900/70 z-50 flex items-center justify-center'>
+        <section className={`fixed top-0 right-0 left-0 bottom-0 min-h-screen ${darkMode ? "bg-neutral-900/70" : "bg-[#000000a9]/90"} z-50 flex items-center justify-center`}>
 
             <div>
 
-                <form onSubmit={handleSubmit} className='grid gap-y-2 lg:min-w-md md:max-h-[620px] md:min-h-[620px]  md:min-w-[400px] min-w-[300px] max-h-[450px] min-h-[450px]   scrollbar-custom pl-6 pb-4 py-2 pt-4 bg-gradient-to-br from-[#43547a] to-[#232a36] rounded overflow-y-auto  px-10'>
+                <form onSubmit={handleSubmit} className={`grid gap-y-2 lg:min-w-md md:max-h-[620px] md:min-h-[620px]  md:min-w-[400px] min-w-[300px] max-h-[450px] min-h-[450px]   scrollbar-custom pl-6 pb-4 py-2 pt-4 ${darkMode ? "bg-gradient-to-br from-[#43547a] to-[#232a36]" : "bg-[#dbd7d7]"} rounded overflow-y-auto  px-10`}>
 
                     <div className='w-full flex justify-end'>
                         <IoMdCloseCircleOutline size={28} onClick={close} className='cursor-pointer' />
                     </div>
 
                     <div>
-
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>Institute name : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Institute name : </p>
                             <TiStarburst size={10} />
                         </div>
 
-                        <input type="text" onChange={handleOnChange} name='institute_name' value={data.institute_name} required className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                        <input type="text" onChange={handleOnChange} name='institute_name' value={data.institute_name} required className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                     </div>
 
                     <div>
-                        <p>location :</p>
-                        <input type="text" onChange={handleOnChange} name='location' value={data.location} className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                        <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>location :</p>
+                        <input type="text" onChange={handleOnChange} name='location' value={data.location} className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                     </div>
 
                     {
@@ -150,54 +152,54 @@ const CreateEducationDataWindow = ({ close }) => {
                             return (
                                 <div className='grid gap-y-3'>
 
-                                    <h4 className="font-bold text-xl my-2 underline text-[#dfc29e]">Qualification {`${data.qualification.length > 1 ? idx + 1 : ""}`}</h4>
+                                    <h4 className={`font-bold text-xl my-2 underline ${darkMode ? "text-[#dfc29e]" : "text-[#deb17b]"}`}>Qualification {`${data.qualification.length > 1 ? idx + 1 : ""}`}</h4>
 
                                     <div>
 
                                         <div className='flex gap-1 text-red-700'>
-                                            <p className='text-primary-text'>Education field : </p>
+                                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Education field : </p>
                                             <TiStarburst size={10} />
                                         </div>
 
-                                        <input type="text" onChange={(e) => handleOnchangeQualification(idx, e)} name='level' value={val.level} required className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                                        <input type="text" onChange={(e) => handleOnchangeQualification(idx, e)} name='level' value={val.level} required className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                                     </div>
 
 
                                     <div>
 
                                         <div className='flex gap-1 text-red-700'>
-                                            <p className='text-primary-text'>stream : </p>
+                                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>stream : </p>
                                             <TiStarburst size={10} />
                                         </div>
 
-                                        <input type="text" onChange={(e) => handleOnchangeQualification(idx, e)} name='stream' value={val.stream} required className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                                        <input type="text" onChange={(e) => handleOnchangeQualification(idx, e)} name='stream' value={val.stream} required className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                                     </div>
 
                                     <div>
 
                                         <div className='flex gap-1 text-red-700'>
-                                            <p className='text-primary-text'>Start Date  ("ex..Jan 2022"): </p>
+                                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Start Date  ("ex..Jan 2022"): </p>
                                             <TiStarburst size={10} />
                                         </div>
 
                                         <input type="text" onChange={(e) => handleOnchangeQualification(idx, e)} name='startDate' value={val.startDate} required
                                             pattern="^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d{4}$"
                                             title="Enter a valid date in format: Jan 2022"
-                                            className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1'
+                                            className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`}
                                         />
                                     </div>
 
                                     <div>
 
                                         <div className='flex gap-1 text-red-700'>
-                                            <p className='text-primary-text'>End Date ("ex..Feb 2022") : </p>
+                                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>End Date ("ex..Feb 2022") : </p>
                                             <TiStarburst size={10} />
                                         </div>
 
                                         <input onChange={(e) => handleOnchangeQualification(idx, e)} type="text" name='endDate' value={val.endDate} required
                                             pattern="^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d{4}$"
                                             title="Enter a valid date in format: Jan 2022"
-                                            className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1'
+                                            className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`}
                                         />
                                     </div>
 
@@ -217,11 +219,11 @@ const CreateEducationDataWindow = ({ close }) => {
                                     <div>
 
                                         <div className='flex gap-1 text-red-700'>
-                                            <p className='text-primary-text'>Score : </p>
+                                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Score : </p>
                                             <TiStarburst size={10} />
                                         </div>
 
-                                        <input type="text" onChange={(e) => handleOnchangeQualification(idx, e)} name='score' value={val.score} required className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                                        <input type="text" onChange={(e) => handleOnchangeQualification(idx, e)} name='score' value={val.score} required className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                                     </div>
 
 
@@ -236,7 +238,7 @@ const CreateEducationDataWindow = ({ close }) => {
 
                         {
                             data.qualification.length > 1 && (
-                                <div onClick={() => handleRemoveQualification(data.qualification.length - 1)} className='my-1 rounded cursor-pointer px-4 py-1.5 w-fit  bg-[#029f37] text-white text-base outline-none font-semibold'>-Remove field</div>
+                                <div onClick={() => handleRemoveQualification(data?.qualification?.length - 1)} className='my-1 rounded cursor-pointer px-4 py-1.5 w-fit  bg-[#029f37] text-white text-base outline-none font-semibold'>-Remove field</div>
                             )
                         }
 

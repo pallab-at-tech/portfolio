@@ -191,13 +191,12 @@ const EducationDetailsEdit = () => {
 
     }, [confirmation.confirm])
 
+    const { darkMode, setDarkMode } = useGlobalContext()
 
-
-
-    console.log("edu", data)
+    
 
     return (
-        <section className='lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 text-primary-text '>
+        <section className={`lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 ${darkMode ? "text-primary-text" : "text-[#020826]"}`}>
 
 
             <div className='flex flex-col mb-6'>
@@ -210,7 +209,7 @@ const EducationDetailsEdit = () => {
                         )
                     }
 
-                    <div onClick={() => setopenCreateWindow(true)} className=' my-4 rounded-full cursor-pointer px-4 py-1.5 w-fit border-3 text-terniary-dark text-base  transition duration-200 outline-none font-semibold button-shadow'>
+                    <div onClick={() => setopenCreateWindow(true)} className={`my-4 rounded-full cursor-pointer px-4 py-1.5 w-fit border-3 ${darkMode ? "text-terniary-dark button-shadow border-terniary-dark" : "text-[#7b450b] hover:bg-[#6b3c0a] hover:text-amber-50 hover:border-[#6b3c0a]"} text-base  transition duration-200 outline-none font-semibold`}>
                         create
                     </div>
                 </div>
@@ -253,32 +252,32 @@ const EducationDetailsEdit = () => {
                                     else {
                                         setIndex(index - 1)
                                     }
-                                }}><FaArrowAltCircleLeft size={32} /></div>
+                                }}><FaArrowAltCircleLeft size={32} className='cursor-pointer'/></div>
 
                                 <p>{index % total} / {total - 1}</p>
 
-                                <div onClick={() => setIndex((index + 1) % total)}><FaArrowAltCircleRight size={32} /></div>
+                                <div onClick={() => setIndex((index + 1) % total)} className='cursor-pointer'><FaArrowAltCircleRight size={32} /></div>
                             </div>
 
                         </div>
 
 
-                        <form onSubmit={handleOnSubmit} className='bg-[#1c1d1f] lg:min-w-[750px] lg:max-w-[750px] md:min-h-[500px] md:max-h-[800px] min-h-[500px]  max-h-[500px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4'>
+                        <form onSubmit={handleOnSubmit} className={`${darkMode ? "bg-[#1c1d1f]" : "bg-[#705c34a9]"} lg:min-w-[750px] lg:max-w-[750px] md:min-h-[500px] md:max-h-[800px] min-h-[500px]  max-h-[500px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4`}>
 
                             <div className='group font-semibold'>
 
                                 <div className='flex'>
-                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Institute Name :</p>
+                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Institute Name :</p>
                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                 </div>
-                                <input type="text" onChange={handleOnChange} required name='institute_name' value={data.institute_name} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <input type="text" onChange={handleOnChange} required name='institute_name' value={data.institute_name} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
                             <div className='group font-semibold'>
 
-                                <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Location :</p>
-                                <input type="text" onChange={handleOnChange} name='location' value={data.location} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Location :</p>
+                                <input type="text" onChange={handleOnChange} name='location' value={data.location} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
@@ -288,16 +287,16 @@ const EducationDetailsEdit = () => {
                                     return (
                                         <div className='grid gap-y-3'>
 
-                                            <h4 className="font-bold text-xl my-2 underline text-[#dfc29e]">Qualification {`${data.qualification.length > 1 ? idx + 1 : ""}`}</h4>
+                                            <h4 className={`font-bold text-xl my-2 underline ${darkMode ? "text-[#dfc29e]" : "text-[#543717]"} `}>Qualification {`${data.qualification.length > 1 ? idx + 1 : ""}`}</h4>
 
                                             <div className='group font-semibold'>
 
                                                 <div className='flex'>
-                                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Education field :</p>
+                                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Education field :</p>
                                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                                 </div>
 
-                                                <input type="text" onChange={(e) => handleOnQualification(idx, e)} name='level' value={val?.level} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                                <input type="text" onChange={(e) => handleOnQualification(idx, e)} name='level' value={val?.level} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                                             </div>
 
@@ -305,11 +304,11 @@ const EducationDetailsEdit = () => {
                                             <div className='group font-semibold'>
 
                                                 <div className='flex'>
-                                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Stream :</p>
+                                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Stream :</p>
                                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                                 </div>
 
-                                                <input type="text" onChange={(e) => handleOnQualification(idx, e)} name='stream' value={val?.stream} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                                <input type="text" onChange={(e) => handleOnQualification(idx, e)} name='stream' value={val?.stream} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                                             </div>
 
@@ -317,14 +316,14 @@ const EducationDetailsEdit = () => {
                                             <div className='group font-semibold'>
 
                                                 <div className='flex'>
-                                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Start Date  ("ex..Jan 2022"):</p>
+                                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Start Date  ("ex..Jan 2022"):</p>
                                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                                 </div>
 
                                                 <input type="text" onChange={(e) => handleOnQualification(idx, e)} name='startDate'
                                                     pattern="^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d{4}$"
                                                     title="Enter a valid date in format: Jan 2022"
-                                                    value={val?.startDate} className='bg-[#353333f2] rounded outline-none w-full p-2'
+                                                    value={val?.startDate} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`}
                                                 />
 
                                             </div>
@@ -332,14 +331,14 @@ const EducationDetailsEdit = () => {
                                             <div className='group font-semibold'>
 
                                                 <div className='flex'>
-                                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>End Date  ("ex..Jan 2022"):</p>
+                                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>End Date  ("ex..Jan 2022"):</p>
                                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                                 </div>
 
                                                 <input type="text" onChange={(e) => handleOnQualification(idx, e)} name='endDate'
                                                     pattern="^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d{4}$"
                                                     title="Enter a valid date in format: Jan 2022"
-                                                    value={val?.endDate} className='bg-[#353333f2] rounded outline-none w-full p-2'
+                                                    value={val?.endDate} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`}
                                                 />
 
                                             </div>
@@ -347,7 +346,7 @@ const EducationDetailsEdit = () => {
 
                                             <div className='group font-semibold'>
 
-                                                <p className='pr-1 text-[#f2980a] text-lg'>Select either one :</p>
+                                                <p className={`pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Select either one :</p>
 
                                                 <input
                                                     type="radio"
@@ -360,8 +359,9 @@ const EducationDetailsEdit = () => {
                                                             target: { name: 'typeOfScore', value: 'CGPA' },
                                                         })
                                                     }
+                                                    
                                                 />
-                                                <label htmlFor={`cgpa-${idx}`} className='mr-6'>CGPA</label>
+                                                <label htmlFor={`cgpa-${idx}`} className={`mr-6 ${!darkMode && "text-[#442d13]"}`}>CGPA</label>
 
                                                 <input
                                                     type="radio"
@@ -374,18 +374,19 @@ const EducationDetailsEdit = () => {
                                                             target: { name: 'typeOfScore', value: 'PERCENTAGE' },
                                                         })
                                                     }
+                                                    
                                                 />
-                                                <label htmlFor={`percentage-${idx}`}>PERCENTAGE</label>
+                                                <label htmlFor={`percentage-${idx}`} className={`${!darkMode && "text-[#442d13]"}`}>PERCENTAGE</label>
 
                                             </div>
 
                                             <div className='group font-semibold'>
 
                                                 <div className='flex'>
-                                                    <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Score :</p>
+                                                    <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Score :</p>
                                                     <div className='text-red-700'><TiStarburst size={10} /></div>
                                                 </div>
-                                                <input type="text" onChange={(e) => handleOnQualification(idx, e)} required name='score' value={val?.score} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                                <input type="text" onChange={(e) => handleOnQualification(idx, e)} required name='score' value={val?.score} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                                             </div>
 
@@ -398,7 +399,7 @@ const EducationDetailsEdit = () => {
 
                             <div className={`flex md:flex-row flex-col  mt-2 ${data.qualification.length > 1 && "justify-between"}`}>
 
-                                <div onClick={handleAddMore} className='my-1 rounded cursor-pointer px-8 py-1.5 w-fit  bg-terniary-dark text-white text-base outline-none font-semibold'>+Add field</div>
+                                <div onClick={handleAddMore} className={`my-1 rounded cursor-pointer px-8 py-1.5 w-fit  ${darkMode ? "bg-terniary-dark text-white" : "text-white bg-[#bb1b1b]"} text-base outline-none font-semibold`}>+Add field</div>
 
                                 {
                                     data.qualification.length > 1 && (
@@ -409,7 +410,7 @@ const EducationDetailsEdit = () => {
                             </div>
 
 
-                            <button className='py-3 w-full bg-terniary-dark  hover:bg-[#fc4503]  text-[#d1dcfb]  mt-2 rounded  font-semibold'>
+                            <button className={`py-3 w-full ${darkMode ? "bg-terniary-dark  hover:bg-[#fc4503]  text-[#d1dcfb]" : "text-[#d1dcfb] bg-[#5d3509]  hover:bg-[#542f08]"}  mt-2 rounded  font-semibold`}>
                                 {
                                     tick ? (
                                         <TickMark />
@@ -430,7 +431,7 @@ const EducationDetailsEdit = () => {
                                     }
                                 })
                             }}>
-                            <p className='text-base font-semibold text-[#d1c6c1] underline'>Delete above details ?</p>
+                            <p className={`text-base font-semibold ${darkMode ? "text-[#d1c6c1]" : "text-[#020826]"} underline`}>Delete above details ?</p>
                             <div className='text-red-800'><MdDelete size={24} /></div>
                         </div>
 

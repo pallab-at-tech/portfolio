@@ -85,12 +85,14 @@ const CreateOtherWindow = ({ close, loadData, fetchOtherData }) => {
         }
     }
 
+    const { darkMode, setDarkMode } = useGlobalContext()
+
     return (
-        <section className='fixed top-0 right-0 left-0 bottom-0 min-h-screen bg-neutral-900/70 z-50 flex items-center justify-center'>
+        <section className={`fixed top-0 right-0 left-0 bottom-0 min-h-screen ${darkMode ? "bg-neutral-900/70" : "bg-[#000000a9]/90"} z-50 flex items-center justify-center`}>
 
             <div>
 
-                <form onSubmit={handleOnSubmit} className='grid gap-y-2 lg:min-w-md lg:max-w-md md:max-h-[440px] md:min-h-[440px]  md:min-w-[400px] md:max-w-[400px] min-w-[300px] max-w-[300px] max-h-[430px] min-h-[430px]   scrollbar-custom pl-6 pb-4 py-2 pt-4 bg-gradient-to-br from-[#43547a] to-[#232a36] rounded overflow-y-auto  px-10'>
+                <form onSubmit={handleOnSubmit} className={`grid gap-y-2 lg:min-w-md lg:max-w-md md:max-h-[440px] md:min-h-[440px]  md:min-w-[400px] md:max-w-[400px] min-w-[300px] max-w-[300px] max-h-[430px] min-h-[430px]   scrollbar-custom pl-6 pb-4 py-2 pt-4 ${darkMode ? "bg-gradient-to-br from-[#43547a] to-[#232a36]" : "bg-[#dbd7d7]"} rounded overflow-y-auto  px-10`}>
 
                     <div className='w-full flex justify-end'>
                         <IoMdCloseCircleOutline size={28} onClick={close} className='cursor-pointer' />
@@ -100,23 +102,23 @@ const CreateOtherWindow = ({ close, loadData, fetchOtherData }) => {
                     <div>
 
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>Title : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Title : </p>
                             <TiStarburst size={10} />
                         </div>
 
-                        <input onChange={handleChange} type="text" name='tittle' value={data.tittle} required className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                        <input onChange={handleChange} type="text" name='tittle' value={data.tittle} required className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                     </div>
 
                     {/* image */}
                     <div>
 
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>Certificate : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Certificate : </p>
                             <TiStarburst size={10} />
                         </div>
 
                         <input type="file" onChange={handlePhoto} ref={imageRef} hidden name='image' id='cover_image' accept="image/*" />
-                        <div onClick={() => imageRef.current?.click()} className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer'>
+                        <div onClick={() => imageRef.current?.click()} className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer`}>
                             {
                                 imageLoading ? (
                                     <div className='loader mt-4'></div>
@@ -146,11 +148,11 @@ const CreateOtherWindow = ({ close, loadData, fetchOtherData }) => {
                     <div>
 
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>Describe : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Describe : </p>
                             <TiStarburst size={10} />
                         </div>
 
-                        <textarea onChange={handleChange} name="describe" value={data.describe} rows={4} cols={4} required className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1 max-h-[120px] min-h-[110px]'></textarea>
+                        <textarea onChange={handleChange} name="describe" value={data.describe} rows={4} cols={4} required className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1 max-h-[120px] min-h-[110px]`}></textarea>
 
                     </div>
 

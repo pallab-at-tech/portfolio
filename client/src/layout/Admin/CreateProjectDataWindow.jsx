@@ -125,16 +125,14 @@ const CreateProjectDataWindow = ({ close }) => {
         }
     }
 
+    const { darkMode, setDarkMode } = useGlobalContext()
     
 
-
-
-
     return (
-        <section className='fixed top-0 right-0 left-0 bottom-0 min-h-screen bg-neutral-900/70 z-50 flex items-center justify-center'>
+        <section className={`fixed top-0 right-0 left-0 bottom-0 min-h-screen ${darkMode ? "bg-neutral-900/70" : "bg-[#000000a9]/90"} z-50 flex items-center justify-center`}>
 
             <div>
-                <form onSubmit={handleSubmit} className='grid gap-y-2 lg:min-w-md lg:max-w-md md:max-h-[620px] md:min-h-[620px]  md:min-w-[400px] md:max-w-[400px] min-w-[300px] max-w-[300px] max-h-[450px] min-h-[450px]   scrollbar-custom pl-6 pb-4 py-2 pt-4 bg-gradient-to-br from-[#43547a] to-[#232a36] rounded overflow-y-auto  px-10'>
+                <form onSubmit={handleSubmit} className={`grid gap-y-2 lg:min-w-md lg:max-w-md md:max-h-[620px] md:min-h-[620px]  md:min-w-[400px] md:max-w-[400px] min-w-[300px] max-w-[300px] max-h-[450px] min-h-[450px]   scrollbar-custom pl-6 pb-4 py-2 pt-4 ${darkMode ? "bg-gradient-to-br from-[#43547a] to-[#232a36]" : "bg-[#dbd7d7]"} rounded overflow-y-auto  px-10`}>
 
                     <div className='w-full flex justify-end'>
                         <IoMdCloseCircleOutline size={28} onClick={close} className='cursor-pointer' />
@@ -143,32 +141,32 @@ const CreateProjectDataWindow = ({ close }) => {
                     <div>
 
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>Title : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Title : </p>
                             <TiStarburst size={10} />
                         </div>
 
-                        <input type="text" onChange={handleOnChange} name='tittle' value={data.tittle} required className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                        <input type="text" onChange={handleOnChange} name='tittle' value={data.tittle} required className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                     </div>
 
                     <div>
 
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>Small descrption : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Small descrption : </p>
                             <TiStarburst size={10} />
                         </div>
 
-                        <textarea name="body" id="" onChange={handleOnChange} value={data.body} rows={4} cols={4} required className='bg-[#b2b8de] max-h-[70px] min-h-[60px] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1'></textarea>
+                        <textarea name="body" id="" onChange={handleOnChange} value={data.body} rows={4} cols={4} required className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} max-h-[70px] min-h-[60px] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`}></textarea>
                     </div>
 
 
                     <div>
 
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>Tech use : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Tech use : </p>
                             <TiStarburst size={10} />
                         </div>
 
-                        <select name="" id="" required className='bg-[#b2b8de] text-primary-dark outline-none p-1 rounded'
+                        <select name="" id="" required className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark outline-none p-1 rounded`}
 
                             onChange={(e) => {
                                 const value = e.target.value
@@ -228,7 +226,7 @@ const CreateProjectDataWindow = ({ close }) => {
                     <div>
 
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>Describe feature : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Describe feature : </p>
                             <TiStarburst size={10} />
                         </div>
 
@@ -245,7 +243,7 @@ const CreateProjectDataWindow = ({ close }) => {
                                 })
                             }}
                             rows={4} cols={4} required
-                            className='bg-[#b2b8de] max-h-[70px] min-h-[60px] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1'>
+                            className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} max-h-[70px] min-h-[60px] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`}>
 
                         </textarea>
 
@@ -253,21 +251,21 @@ const CreateProjectDataWindow = ({ close }) => {
 
 
                     <div>
-                        <p className='text-primary-text'>project deploy link : </p>
-                        <input type="text" onChange={handleOnChange} name='project_deploy_link' value={data.project_deploy_link} className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                        <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>project deploy link : </p>
+                        <input type="text" onChange={handleOnChange} name='project_deploy_link' value={data.project_deploy_link} className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                     </div>
 
                     <div>
-                        <p className='text-primary-text'>project Git link : </p>
-                        <input type="text" onChange={handleOnChange} name='project_git_link' value={data.project_git_link} className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                        <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>project Git link : </p>
+                        <input type="text" onChange={handleOnChange} name='project_git_link' value={data.project_git_link} className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                     </div>
 
                     {/* video */}
                     <div>
-                        <p className='text-primary-text'>video : </p>
+                        <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>video : </p>
 
                         <input type="file" onChange={handlePhotoAndVideo} ref={videoRef} hidden name='video' id='video' accept="video/*" />
-                        <div onClick={() => videoRef.current?.click()} className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer'>
+                        <div onClick={() => videoRef.current?.click()} className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer`}>
                             {
                                 videoLoading ? (
                                     <div className='loader mt-4'></div>
@@ -297,12 +295,12 @@ const CreateProjectDataWindow = ({ close }) => {
                     <div>
 
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>Cover Image : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Cover Image : </p>
                             <TiStarburst size={10} />
                         </div>
 
                         <input type="file" ref={imageRef} onChange={handlePhotoAndVideo} hidden name='image' id='cover_image' accept="image/*" />
-                        <div onClick={() => imageRef.current?.click()} className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer'>
+                        <div onClick={() => imageRef.current?.click()} className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer`}>
                             {
                                 imageLoading ? (
                                     <div className='loader mt-4'></div>
@@ -332,11 +330,11 @@ const CreateProjectDataWindow = ({ close }) => {
                     <div>
 
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>Status : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Status : </p>
                             <TiStarburst size={10} />
                         </div>
 
-                        <select required name="" id="" className='bg-[#b2b8de] text-primary-dark outline-none p-1'
+                        <select required name="" id="" className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark outline-none p-1`}
 
                             onChange={(e) => {
 

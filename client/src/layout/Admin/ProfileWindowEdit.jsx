@@ -9,6 +9,7 @@ import { setUserDetails } from '../../store/userSlice'
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast'
 import fetchUserDetails from '../../utils/FetchUserDetails'
+import { useGlobalContext } from '../../provider/GlobalProvider'
 
 
 const ProfileWindowEdit = ({ close }) => {
@@ -81,13 +82,15 @@ const ProfileWindowEdit = ({ close }) => {
         }
     }
 
+    const { darkMode, setDarkMode } = useGlobalContext()
+
 
     return (
-        <section className='fixed top-0 right-0 left-0 bottom-0 min-h-screen bg-neutral-900/70 z-50 flex items-center justify-center'>
+        <section className={`fixed top-0 right-0 left-0 bottom-0 min-h-screen ${darkMode ? "bg-neutral-900/70" : "bg-[#000000a9]/90"} z-50 flex items-center justify-center`}>
 
             <div>
 
-                <form onSubmit={handleOnSubmit} className='grid md:max-h-[280px] md:min-h-[280px]  md:min-w-[350px] md:max-w-[350px] min-w-[280px] max-w-[280px] max-h-[250px] min-h-[250px] py-2  bg-gradient-to-br to-[#767d8c] from-[#80899a] rounded overflow-y-auto  md:px-10 px-6'>
+                <form onSubmit={handleOnSubmit} className={`grid md:max-h-[280px] md:min-h-[280px]  md:min-w-[350px] md:max-w-[350px] min-w-[280px] max-w-[280px] max-h-[250px] min-h-[250px] py-2  ${darkMode ? "bg-gradient-to-br to-[#767d8c] from-[#80899a]" : "bg-[#dbd7d7]"} rounded overflow-y-auto  md:px-10 px-6`}>
 
                     <div className='w-full flex justify-end text-primary-black mt-2'>
                         <IoMdCloseCircleOutline size={28} onClick={close} className='cursor-pointer' />

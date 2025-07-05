@@ -158,7 +158,7 @@ const Profile = () => {
                             </>
                         ) : (
                             <>
-                                <div className='w-[70px] h-[70px] rounded-full overflow-hidden border'>
+                                <div className={`w-[70px] h-[70px] rounded-full overflow-hidden ${darkMode ? "" : "border border-[#020826]"}`}>
                                     <img src={userData?.avatar} alt="" className='w-full h-full object-cover rounded-full' />
                                 </div>
                             </>

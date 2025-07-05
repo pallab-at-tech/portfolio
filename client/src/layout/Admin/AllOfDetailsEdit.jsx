@@ -118,11 +118,11 @@ const EducationDetailsEdit = () => {
     }
 
     const [openCreateWindow, setopenCreateWindow] = useState(false)
+    const { darkMode, setDarkMode } = useGlobalContext()
 
 
     return (
-        <section className='lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 text-primary-text relative'>
-
+        <section className={`lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 ${darkMode ? "text-primary-text" : "text-[#020826]"}  relative`}>
 
             {
                 !Boolean(alldata?.name) ? (
@@ -155,31 +155,31 @@ const EducationDetailsEdit = () => {
                 ) : (
                     <div>
 
-                        <p className='text-2xl font-bold'>All of the details :</p>
+                        <p className={`text-2xl font-bold`}>All of the details :</p>
 
-                        <form onSubmit={handleSubmit} className='bg-[#1c1d1f] lg:min-w-[750px] lg:max-w-[750px] md:min-h-[550px] md:max-h-[800px] min-h-[580px]  max-h-[580px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4'>
+                        <form onSubmit={handleSubmit} className={`${darkMode ? "bg-[#1c1d1f]" : "bg-[#705c34a9]"} lg:min-w-[750px] lg:max-w-[750px] md:min-h-[550px] md:max-h-[800px] min-h-[580px]  max-h-[580px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4`}>
 
                             <div className='group font-semibold'>
 
-                                <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Name :</p>
-                                <input onChange={handleChange} type="text" required name='name' value={data.name} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Name :</p>
+                                <input onChange={handleChange} type="text" required name='name' value={data.name} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
                             <div className='group font-semibold'>
 
-                                <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>email :</p>
-                                <input type="email" onChange={handleChange} required name='email' value={data.email} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>email :</p>
+                                <input type="email" onChange={handleChange} required name='email' value={data.email} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
                             <div className='group font-semibold'>
 
-                                <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>resume (pdf format) :</p>
+                                <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>resume (pdf format) :</p>
 
                                 <label htmlFor="image">
-                                    {/* <input type="text" value={data.resume} className='bg-[#353333f2] rounded outline-none w-full p-2' /> */}
-                                    <div className='bg-[#353333f2] rounded outline-none w-full p-3'>
+                                    
+                                    <div className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-3`}>
                                         {
 
                                             loading ? (
@@ -211,47 +211,47 @@ const EducationDetailsEdit = () => {
 
                             <div className='group font-semibold'>
 
-                                <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Contact Number :</p>
-                                <input type="text" onChange={handleChange} required name='contact_number' value={data.contact_number} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Contact Number :</p>
+                                <input type="text" onChange={handleChange} required name='contact_number' value={data.contact_number} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
                             <div className='group font-semibold'>
 
-                                <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>About me :</p>
-                                <textarea name="about_me" onChange={handleChange} value={data.about_me} rows={3} cols={3} className='bg-[#353333f2] scrollbar-custom rounded outline-none w-full p-2'></textarea>
+                                <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>About me :</p>
+                                <textarea name="about_me" onChange={handleChange} value={data.about_me} rows={3} cols={3} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} scrollbar-custom rounded outline-none w-full p-2`}></textarea>
 
                             </div>
 
                             <div className='group font-semibold'>
 
-                                <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Github Link :</p>
-                                <input type="text" onChange={handleChange} name='github_link' required value={data.github_link} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Github Link :</p>
+                                <input type="text" onChange={handleChange} name='github_link' required value={data.github_link} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
                             <div className='group font-semibold'>
 
-                                <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Linkedin Link :</p>
-                                <input type="text" onChange={handleChange} required name='linkedin_link' value={data.linkedin_link} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Linkedin Link :</p>
+                                <input type="text" onChange={handleChange} required name='linkedin_link' value={data.linkedin_link} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
                             <div className='group font-semibold'>
 
-                                <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Instragram Link :</p>
-                                <input type="text" onChange={handleChange} name='instragram_link' value={data.instragram_link} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Instragram Link :</p>
+                                <input type="text" onChange={handleChange} name='instragram_link' value={data.instragram_link} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
                             <div className='group font-semibold'>
 
-                                <p className='group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 text-[#f2980a] text-lg'>Facebook Link :</p>
-                                <input type="text" onChange={handleChange} name='facebook_link' value={data.facebook_link} className='bg-[#353333f2] rounded outline-none w-full p-2' />
+                                <p className={`group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1  pr-1 ${darkMode ? "text-[#f2980a]" : "text-[#020826]"} text-lg`}>Facebook Link :</p>
+                                <input type="text" onChange={handleChange} name='facebook_link' value={data.facebook_link} className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} rounded outline-none w-full p-2`} />
 
                             </div>
 
-                            <button className='py-3 w-full bg-terniary-dark  hover:bg-[#fc4503]  text-[#d1dcfb]  mt-2 rounded  font-semibold'>
+                            <button className={`py-3 w-full ${darkMode ? "hover:bg-[#fc4503]  text-[#d1dcfb] bg-terniary-dark" : "text-[#d1dcfb] bg-[#5d3509]  hover:bg-[#542f08]"}  mt-2 rounded  font-semibold`}>
 
                                 {
                                     tick ? (
