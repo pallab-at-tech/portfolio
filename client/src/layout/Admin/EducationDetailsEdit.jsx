@@ -141,7 +141,7 @@ const EducationDetailsEdit = () => {
 
 
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
 
 
@@ -171,7 +171,7 @@ const EducationDetailsEdit = () => {
             }
 
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 

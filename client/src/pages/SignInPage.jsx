@@ -54,7 +54,6 @@ const SignInPage = () => {
 
         const userDetails = await fetchUserDetails()
         dispatch(setUserDetails(userDetails?.data))
-        console.log("from sign-in page",userDetails)
 
         setData({
           email: "",

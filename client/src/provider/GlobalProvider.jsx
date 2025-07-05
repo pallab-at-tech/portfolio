@@ -32,7 +32,7 @@ const GlobalProvider  = ({ children }) => {
             }
             
         } catch (error) {
-            console.log("error from global provider",error)
+            // console.log("error from global provider",error)
         }
     }
 

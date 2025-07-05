@@ -107,11 +107,10 @@ const CreateEducationDataWindow = ({ close }) => {
                 fetchAllDetails()
                 close()
 
-                console.log("acutual data", alldata)
             }
         } catch (error) {
 
-            console.log(error)
+            // console.log(error)
         }
 
 

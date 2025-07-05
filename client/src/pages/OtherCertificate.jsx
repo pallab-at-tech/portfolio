@@ -30,13 +30,12 @@ const OtherCertificate = () => {
                 if (responseData?.success) {
 
                     setData(responseData.data)
-                    console.log("datadata", data)
                 }
 
 
             } catch (error) {
 
-                console.log(error)
+                // console.log(error)
 
             }
         }

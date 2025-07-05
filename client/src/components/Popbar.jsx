@@ -44,7 +44,7 @@ const Popbar = ({close}) => {
                 navigate("/")
             }
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 
@@ -54,7 +54,6 @@ const Popbar = ({close}) => {
                 setClosePopUp(!closePopUp)
             }} />
 
-{/* bg-[#2c1d1b] text-primary-text */}
             {
                 (closePopUp && close) && (
                     <div className={`${darkMode ? "bg-primary-text text-primary-dark" : "bg-[#5e2b1b] text-primary-text"}  z-50 absolute -right-5 -top-2 bottom-0 mt-10 lg:w-43 ${user._id ? "lg:h-56 h-[310px]" : "lg:h-45 h-[280px]"}  w-[150px]  rounded-2xl shadow-md`}>

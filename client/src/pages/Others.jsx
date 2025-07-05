@@ -38,8 +38,6 @@ const Others = () => {
 
             const { data: responseData } = response
 
-            console.log("responsmnmahjh", responseData)
-
             if (responseData?.success) {
                 dispatch(OthersDetails(responseData))
                 dispatch(OthersDetailspro(responseData))
@@ -78,9 +76,6 @@ const Others = () => {
 
             if (!element) return;
             const { scrollLeft, scrollWidth, clientWidth } = element;
-
-            console.log("scrollLeft + clientWidth =", scrollLeft + clientWidth);
-            console.log("scrollWidth =", scrollWidth);
 
             if (scrollLeft + clientWidth >= scrollWidth - 10) {
 

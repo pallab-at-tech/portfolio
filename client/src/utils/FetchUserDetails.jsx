@@ -11,7 +11,7 @@ const fetchUserDetails = async () => {
         return response.data
 
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 

@@ -83,11 +83,10 @@ const CreateAllDataWindow = ({ close }) => {
             }
 
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 
-    console.log("data", data)
 
 
     return (

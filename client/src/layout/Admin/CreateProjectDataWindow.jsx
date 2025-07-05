@@ -90,7 +90,7 @@ const CreateProjectDataWindow = ({ close }) => {
                 }
             })
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         } finally {
             // e.target.value = null;
         }
