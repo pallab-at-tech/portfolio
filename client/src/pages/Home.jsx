@@ -18,15 +18,15 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import { useGlobalContext } from '../provider/GlobalProvider';
 import resume from "../assets/resume.pdf"
+import Footer from '../components/Footer';
 
 const Home = () => {
 
   const allOf = useSelector(state => state.allofdetails)
   const { darkMode, setDarkMode } = useGlobalContext();
-  
 
   const downloadFileAtURL = (url) => {
-    
+
     const fileName = "MyResume.pdf"
 
     const aTag = document.createElement('a')
@@ -38,13 +38,19 @@ const Home = () => {
 
   }
 
+
   return (
 
-    <div className='' >
+    <div className='h-screen overflow-y-auto hide-scrollbar' id='fullScreenId' >
 
-      <div className={`min-h-screen ${darkMode ? "background-image" : "background-image-light"}  pt-[72px]`} id='realHomeId'>
+      {/* Home components */}
+      <div className={`h-screen overflow-hidden ${darkMode ? "background-image" : "background-image-light"}  pt-[72px]`} id='realHomeId'>
 
-        <Element id='HomeID'>
+        <div id='HomeID' className='relative'>
+
+          <div className='absolute overflow-hidden -top-14 right-3 rotate-185 scale-120 object-scale-down select-none lg:block hidden'>
+            <img src={b} alt="" className="h-[500px] object-cover z-0 left-right-animation overflow-hidden" />
+          </div>
 
           <div className='grid lg:grid-cols-[2fr_3fr] lg:mx-10 md:mx-[140px] pt-2  p-10 md:p-0 lg:pt-14 md:pt-14'>
 
@@ -88,7 +94,7 @@ const Home = () => {
                   <p className=''> i am ,{" "}<span className={`${darkMode ? "text-terniary-dark" : "text-[#a80000]"} font-semibold`} style={darkMode ? { textShadow: 'rgb(187 80 8 / 50%) 1px 1px 8px' } : { textShadow: 'rgb(187 0 0 / 50%) 2px 0px 6px' }}>Pallab Bag</span></p>
                   <p className=''>Full <span className={`${darkMode ? "text-[#0377dd]" : "text-[#a0003f]"} font-semibold`} style={darkMode ? { textShadow: 'rgba(10, 21, 240, 0.5) 2px 2px 8px' } : { textShadow: 'rgba(240, 10, 143, 0.5) 2px 0px 6px' }}>stack</span> developer</p>
                 </div>
-{/* #000000 */}
+
                 <div className={`text-sm mt-1 md:mt-5 lg:w-[60%] ${darkMode ? "text-[#747573]" : "text-[#332301]"} `}>
                   <p className=''>
                     A goal-oriented software developer with experience in building applications using modern technologies like <span className={`${darkMode ? "text-[#59b806]" : "text-[#a80202]"} font-semibold`}>React, MongoDB, Express.js, Node.js, and more</span>. I am seeking to leverage my technical skills to deliver exceptional user experiences.
@@ -97,7 +103,7 @@ const Home = () => {
 
                 <div className='flex lg:mt-6 md:mt-12 mt-9 items-center lg:gap-7 md:gap-10 gap-5'>
 
-                  <div onClick={()=>downloadFileAtURL(resume)} className={`${darkMode ? "bg-[#0b258c] hover:bg-[#0b358f]" : "bg-[#900771] hover:bg-[#87066a] text-[#d3c6c6]"}  rounded flex items-center pl-0.5 cursor-pointer `}>
+                  <div onClick={() => downloadFileAtURL(resume)} className={`${darkMode ? "bg-[#0b258c] hover:bg-[#0b358f]" : "bg-[#900771] hover:bg-[#87066a] text-[#d3c6c6]"}  rounded flex items-center pl-0.5 cursor-pointer `}>
                     <IoMdDownload size={20} />
                     <p className='text-base px-2 py-1.5'>Resume</p>
                   </div>
@@ -108,46 +114,28 @@ const Home = () => {
 
                   {/* <Link to={allOf.email} className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><SiGmail size={20} /></Link> */}
 
-
                 </div>
-
               </div>
-
-              <div className='overflow-hidden absolute right-15 bottom-55 rotate-185 z-5 scale-120 object-scale-down select-none lg:block  hidden'>
-                <img src={b} alt="" className="h-[500px] z-0  left-right-animation" />
-              </div>
-
-              {/* <div className='relative flex justify-end right-[20px] -top-[120px] rotate-185 z-10 scale-120 pointer-events-none '>
-              <img src={b} alt="" className="" />
-            </div> */}
-
-
-
             </div>
 
           </div>
 
-        </Element>
+        </div>
 
         <div className='items-center justify-center h-full mt-10 pt-14 text-[#5e5b5b] flex sm:static relative bottom-7 animate-float'><LuChevronsDown size={30} /></div>
-
-
       </div>
-
-
 
       {/* <About/> */}
 
-
-
       <Education />
       <Projects />
-
 
       <div className=''>
         <Skills />
         <Contact />
       </div>
+
+      <Footer />
     </div >
   )
 }

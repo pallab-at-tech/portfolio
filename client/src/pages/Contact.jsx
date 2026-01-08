@@ -25,7 +25,6 @@ const Contact = () => {
     return () => clearTimeout(t);
   }, [tick]);
 
-
   const sendEmail = async (e) => {
 
     e.preventDefault()
@@ -47,8 +46,6 @@ const Contact = () => {
 
   }
 
-  // #690551 , #a80000 , #796b54 , #43413c
-
   return (
     <section className={`${darkMode ? "bg-primary-black" : "background-image-light rounded-t-lg"} text-primary-text extra-font-style  md:px-20 p-10  pb-10`}>
 
@@ -57,7 +54,7 @@ const Contact = () => {
         <div className="h-[1px] w-full  bg-[#aba1a180] rounded-full" />
       </div>
 
-      <Element id='ContactID'>
+      <div id='ContactID'>
 
         <div className='pt-10'>
           <h1 className={`font-bold text-2xl pb-4 ${!darkMode && "text-[#020826]"}`}>Contact me</h1>
@@ -167,9 +164,7 @@ const Contact = () => {
           </div>
         </div>
 
-
-      </Element>
-
+      </div>
 
     </section>
   )

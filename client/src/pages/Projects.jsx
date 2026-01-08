@@ -14,10 +14,8 @@ const Projects = () => {
 
   return (
     <section className={`${darkMode ? "bg-primary-black" : "bg-[#e9d6b4]"}  px-10 ${darkMode ? "text-primary-text" : "text-[#37290b]"} extra-font-style md:px-14  pt-10 pb-5 relative`}>
-      {/*  */}
-      {/* <div className="absolute inset-y-0 left-0 w-full blur-[300px] bg-cyan-300 opacity-[1%] pointer-events-none"></div> */}
 
-      <Element id='projectID'>
+      <div id='projectID'>
 
         <p className={`font-bold text-2xl mb-6 pl-6 ${darkMode ? "" : "text-[#020826]"}`}>project ShowCase</p>
         
@@ -26,9 +24,7 @@ const Projects = () => {
           <div className='flex overflow-x-auto gap-6 scrollbar-custom scroll-smooth px-5 pb-3'>
 
             {
-              // className='md:max-w-[350px] md:min-w-[350px] bg-[#222325]  min-w-[250px] max-w-[250px] min-h-[525px] max-h-[525px] rounded-xl border border-primary-text shadow-2xl px-2 text-base'  #f5d7a1
-
-              // inset 0 0 12px var(--tw-shadow-color, rgb(255 14 0 / 20%)), inset 0 0 8px var(--tw-shadow-color, rgb(255 172 0 / 8%))
+            
               proDetails.map((val, idx) => {
                 return (
                   <div key={`project-${val?._id}-${idx}`} className={`md:max-w-[350px] md:min-w-[350px] 
@@ -106,7 +102,7 @@ const Projects = () => {
 
         </div>
 
-      </Element>
+      </div>
 
     </section>
   )

@@ -23,13 +23,7 @@ const Skills = () => {
   return (
     <section className={`${darkMode ? "bg-primary-black" : "bg-[#e9d6b4] rounded"}  px-10 text-primary-text extra-font-style pt-10 md:px-14 relative pb-6`}>
 
-      {/* left Glow */}
-      {/* <div className="absolute inset-y-0 left-0 w-full blur-[300px] bg-cyan-300 opacity-[3%] pointer-events-none"></div> */}
-
-      {/* Right Glow */}
-      {/* <div className="absolute inset-y-0 right-0 w-6 blur-3xl bg-purple-500 opacity-20 pointer-events-none"></div> */}
-
-      <Element id='skillID'>
+      <div id='skillID'>
         <h1 className={`font-bold text-2xl md:pl-6 ${!darkMode && "text-[#020826]"}`}>My Skills</h1>
         <p className={`md:pl-6 pt-1 ${darkMode ? "text-[#cbd5e1]" : "text-[#241a07]"} text-sm pb-8`}>Technology and tools i have work with throughout my projects and experience</p>
 
@@ -225,7 +219,6 @@ const Skills = () => {
                   </p>
                 </div>
 
-
                 <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-orange-shadow"}`}>
                     <RiEnglishInput
@@ -270,7 +263,7 @@ const Skills = () => {
 
         </div>
 
-      </Element>
+      </div>
 
     </section>
   )

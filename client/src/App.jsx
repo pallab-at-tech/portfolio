@@ -25,9 +25,6 @@ const App = () => {
   }, [])
 
 
-
-
-
   return (
     <>
       <Header isReady={!!allOf?.name} />
@@ -47,7 +44,7 @@ const App = () => {
       }
 
 
-      <Footer />
+      {/* <Footer /> */}
       <Toaster />
     </>
   )
