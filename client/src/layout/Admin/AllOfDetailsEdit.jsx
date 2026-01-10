@@ -122,7 +122,7 @@ const EducationDetailsEdit = () => {
 
 
     return (
-        <section className={`lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 ${darkMode ? "text-primary-text" : "text-[#020826]"}  relative`}>
+        <section className={`h-[calc(100vh-72px)] overflow-y-auto hide-scrollbar sm:px-8 lg:px-14 mx-6 sm:mx-8 lg:pt-16 pt-10 ${darkMode ? "text-primary-text" : "text-[#020826]"}  relative`}>
 
             {
                 !Boolean(alldata?.name) ? (
@@ -130,7 +130,7 @@ const EducationDetailsEdit = () => {
 
                         <div className='flex flex-col md:pl-16  mt-28'>
                             <div>
-                                <p>It's look you haven't  create all of the data ....</p>
+                                <p>It's look you haven't create all of the data ....</p>
                                 <div onClick={() => setopenCreateWindow(true)} className=' my-4 rounded-full cursor-pointer px-4 py-1.5 w-fit border-3 text-terniary-dark text-base  transition duration-200 outline-none font-semibold button-shadow'>
                                     create
                                 </div>
@@ -157,7 +157,7 @@ const EducationDetailsEdit = () => {
 
                         <p className={`text-2xl font-bold`}>All of the details :</p>
 
-                        <form onSubmit={handleSubmit} className={`${darkMode ? "bg-[#1c1d1f]" : "bg-[#705c34a9]"} lg:min-w-[750px] lg:max-w-[750px] md:min-h-[550px] md:max-h-[800px] min-h-[580px]  max-h-[580px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4`}>
+                        <form onSubmit={handleSubmit} className={`${darkMode ? "bg-[#1c1d1f]" : "bg-[#705c34a9]"}  scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4`}>
 
                             <div className='group font-semibold'>
 
@@ -267,8 +267,6 @@ const EducationDetailsEdit = () => {
                     </div>
                 )
             }
-
-
 
 
             {

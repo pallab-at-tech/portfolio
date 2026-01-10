@@ -25,7 +25,7 @@ const CreateAllDataWindow = ({ close }) => {
     })
 
     const [loading, setLoading] = useState(false)
-    const {fetchAllDetails} = useGlobalContext()
+    const { fetchAllDetails, darkMode } = useGlobalContext()
 
 
     const handlePhoto = async (e) => {
@@ -66,17 +66,17 @@ const CreateAllDataWindow = ({ close }) => {
 
             const response = await Axios({
                 ...SummaryApi.create_allOf_data,
-                data : data
+                data: data
             })
 
-            const {data : responseData} = response
+            const { data: responseData } = response
 
             if (responseData?.error) {
                 toast.error(responseData?.message)
             }
 
 
-            if(responseData?.success){
+            if (responseData?.success) {
                 toast.success(responseData?.message)
                 fetchAllDetails()
                 close()
@@ -90,39 +90,40 @@ const CreateAllDataWindow = ({ close }) => {
 
 
     return (
-        <section className='fixed top-0 right-0 left-0 bottom-0 min-h-screen bg-neutral-900/70 z-50 flex items-center justify-center'>
+        <section className='fixed inset-0 backdrop-blur-[3px] h-screen pt-[80px] bg-neutral-900/70 z-50 flex items-center justify-center'>
 
             <div className=''>
 
-
-
-                <form onSubmit={handleSubmit} className='grid gap-y-2   lg:min-w-md md::max-h-[650px] md::min-h-[650px]  md:min-w-[400px] min-w-[300px] max-h-[450px] min-h-[450px]   scrollbar-custom pl-6 py-2 pt-4 bg-gradient-to-br from-[#43547a] to-[#232a36] rounded overflow-y-auto mt-10 mb-4 px-10'>
+                <form onSubmit={handleSubmit} className={`grid gap-y-2 lg:min-w-md  md:min-w-[400px] min-w-[300px] h-[70vh] md:h-[80vh] scrollbar-custom  pb-4 py-2 pt-4 ${darkMode ? "bg-gradient-to-br from-[#334a7d] via-[#4f6aa29c] to-[#232a36]" : "bg-[#dbd7d7]"} rounded-md overflow-y-auto px-6`}>
                     <div className='w-full flex justify-end'>
                         <IoMdCloseCircleOutline size={28} onClick={close} className='cursor-pointer' />
                     </div>
 
+                    {/* Name */}
                     <div>
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>Name : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Name : </p>
                             <TiStarburst size={10} />
                         </div>
-                        <input type="text" name='name' value={data.name} onChange={handleChange} className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                        <input type="text" name='name' value={data.name} onChange={handleChange} className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                     </div>
 
+                    {/* Email */}
                     <div>
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>Email : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Email : </p>
                             <TiStarburst size={10} />
                         </div>
-                        <input type="email" name='email' value={data.email} onChange={handleChange} className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                        <input type="email" name='email' value={data.email} onChange={handleChange} className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                     </div>
 
+                    {/* Resume upload */}
                     <div>
-                        <p>resume (upload pdf) : </p>
+                        <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>resume (upload pdf) : </p>
 
                         <label htmlFor="image">
                             <input type="file" onChange={handlePhoto} name='image' hidden id='image' accept="application/pdf" />
-                            <div className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer'>
+                            <div className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-10 my-1 flex items-center justify-center cursor-pointer`}>
 
                                 {
 
@@ -150,57 +151,61 @@ const CreateAllDataWindow = ({ close }) => {
 
                     </div>
 
+                    {/* Contact number */}
                     <div>
-
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>Contact number : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>Contact number : </p>
                             <TiStarburst size={10} />
                         </div>
 
-                        <input type="text" name='contact_number' value={data.contact_number} onChange={handleChange} id='contact' required className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                        <input type="text" name='contact_number' value={data.contact_number} onChange={handleChange} id='contact' required className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`}  />
                     </div>
 
+                    {/* About me */}
                     <div>
-
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>about me : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>about me : </p>
                             <TiStarburst size={10} />
                         </div>
 
-                        <textarea name="about_me" value={data.about_me} onChange={handleChange} required rows={4} cols={4} className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full max-h-[50px] min-h-[50px] my-1'></textarea>
+                        <textarea name="about_me" value={data.about_me} onChange={handleChange} required rows={4} cols={4} className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full max-h-[50px] min-h-[50px] my-1`}></textarea>
                     </div>
 
+                    {/* GitHub link */}
                     <div>
 
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>github link : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>github link : </p>
                             <TiStarburst size={10} />
                         </div>
 
-                        <input type="text" name='github_link' value={data.github_link} onChange={handleChange} required className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                        <input type="text" name='github_link' value={data.github_link} onChange={handleChange} required className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                     </div>
 
+                    {/* Linkdin link */}
                     <div>
 
                         <div className='flex gap-1 text-red-700'>
-                            <p className='text-primary-text'>linkedin link : </p>
+                            <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>linkedin link : </p>
                             <TiStarburst size={10} />
                         </div>
 
-                        <input type="text" name='linkedin_link' value={data.linkedin_link} onChange={handleChange} required className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                        <input type="text" name='linkedin_link' value={data.linkedin_link} onChange={handleChange} required className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                     </div>
 
+                    {/* instragam link */}
                     <div>
-                        <p>instragram link :</p>
-                        <input type="text" name='instragram_link' value={data.instragram_link} onChange={handleChange} className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                        <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>instragram link :</p>
+                        <input type="text" name='instragram_link' value={data.instragram_link} onChange={handleChange} className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                     </div>
 
+                    {/* Facebook link */}
                     <div>
-                        <p>facebook link :</p>
-                        <input type="text" name='facebook_link' value={data.facebook_link} onChange={handleChange} className='bg-[#b2b8de] text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1' />
+                        <p className={`${darkMode ? "text-primary-text" : "text-[#020826]"}`}>facebook link :</p>
+                        <input type="text" name='facebook_link' value={data.facebook_link} onChange={handleChange} className={`${darkMode ? "bg-[#b2b8de] text-primary-dark" : "bg-[#705c34a9]"} text-primary-dark p-2 border outline-none focus-within:border-primary-100 rounded w-full h-8 my-1`} />
                     </div>
 
-                    <button className='p-2 w-full bg-[#2c6abc]  hover:bg-[#2463b5] text-[#d1dcfb]"   text-[#d1dcfb]  mt-2 rounded  font-semibold'>submit</button>
+                    <button className='p-2 w-full cursor-pointer bg-[#1857a8] hover:bg-[#2463b5] text-[#d1dcfb] mt-2 rounded font-semibold'>submit</button>
 
                 </form>
 

@@ -2,13 +2,13 @@ import React from 'react'
 
 const ConfirmationBox = ({ confirmation, setConfirmation }) => {
     return (
-        <div className='fixed top-0 right-0 left-0 bottom-0 bg-neutral-900/90 z-50 flex items-center justify-center'>
+        <div className='fixed h-screen inset-0 backdrop-blur-[3px] bg-neutral-900/70 z-50 flex items-center justify-center'>
 
-            <div className='bg-[#bac0cd] rounded md:min-w-[400px] p-3 text-black'>
+            <div className='bg-[#dbdde3] rounded-md px-[25px] py-[22px] text-black shadow-md'>
 
-                <p className='font-semibold text-center'>want to delete the education data ?</p>
+                <p className='font-semibold text-center'>Want To Delete The Education Data ?</p>
 
-                <div className='flex justify-around my-3 cursor-pointer'>
+                <div className='flex items-center gap-3 mt-2 cursor-pointer text-[16px]'>
 
                     <div onClick={() => {
                         setConfirmation((preve) => {
@@ -19,7 +19,7 @@ const ConfirmationBox = ({ confirmation, setConfirmation }) => {
                             }
                         })
                     }}
-                        className='bg-green-700 w-fit px-3 py-1.5 rounded'>
+                        className='bg-green-700 hover:bg-green-800 transition-colors duration-200 w-fit px-3 py-1 rounded text-white'>
                         confirm
                     </div>
 
@@ -31,10 +31,9 @@ const ConfirmationBox = ({ confirmation, setConfirmation }) => {
                             }
                         })
                     }}
-                        className='bg-red-700 w-fit px-3 py-1.5 rounded'>
+                        className='bg-red-700 hover:bg-red-800 transition-colors duration-200 w-fit px-3 py-1 text-white rounded'>
                         cancel
                     </div>
-
                     
                 </div>
 

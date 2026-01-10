@@ -42,10 +42,9 @@ const Dashboard = () => {
     }
 
 
-
-
     return (
-        <div className={`min-h-[calc(100vh-32px)] ${darkMode ? "bg-primary-dark text-primary-text" : "bg-[#e9d6b4] text-primary-dark"}  extra-font-style md:px-14 pt-[72px]`}>
+        <div className={`min-h-[calc(100vh-72px)] ${darkMode ? "bg-primary-dark text-primary-text" : "bg-[#e9d6b4] text-primary-dark"} extra-font-style md:px-14 pt-[72px]`}>
+
             <div className='grid lg:grid-cols-[260px_1fr] container mx-auto'>
 
                 <div className={`sticky top-[104px] overflow-y-auto border-r-3 ${darkMode ? "border-r-slate-600" : "border-r-[#332301]"} max-h-[calc(100vh-104px)] lg:block hidden`}>
@@ -138,13 +137,14 @@ const Dashboard = () => {
 
                 </div>
 
-                <div className='min-h-[85vh]'>
+                <div className={`h-[calc(100vh-72px)] lg:h-[calc(100vh-72px)`}>
 
                     <Outlet />
 
                 </div>
 
             </div>
+
         </div>
     )
 }

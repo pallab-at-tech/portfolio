@@ -18,7 +18,7 @@ const ProfileWindowEdit = ({ close }) => {
     const dispatch = useDispatch()
 
     const [data, setData] = useState({
-        _id : user?._id,
+        _id: user?._id,
         name: user?.name || "",
         avatar: user?.avatar || ""
     })
@@ -86,54 +86,52 @@ const ProfileWindowEdit = ({ close }) => {
 
 
     return (
-        <section className={`fixed top-0 right-0 left-0 bottom-0 min-h-screen ${darkMode ? "bg-neutral-900/70" : "bg-[#000000a9]/90"} z-50 flex items-center justify-center`}>
+        <section className={`fixed inset-0 h-screen backdrop-blur-[3px] ${darkMode ? "bg-neutral-900/70" : "bg-[#000000a9]/90"} z-50 flex items-center justify-center`}>
 
-            <div>
+            <form onSubmit={handleOnSubmit}
+                className={`max-w-lg relative px-[25px] py-6 ${darkMode ? "bg-gradient-to-br to-[#767d8c] from-[#80899a]" : "bg-[#dbd7d7]"} rounded-md overflow-y-auto`}
+            >
 
-                <form onSubmit={handleOnSubmit} className={`grid md:max-h-[280px] md:min-h-[280px]  md:min-w-[350px] md:max-w-[350px] min-w-[280px] max-w-[280px] max-h-[250px] min-h-[250px] py-2  ${darkMode ? "bg-gradient-to-br to-[#767d8c] from-[#80899a]" : "bg-[#dbd7d7]"} rounded overflow-y-auto  md:px-10 px-6`}>
+                <div className='absolute right-1 top-1.5 text-primary-black'>
+                    <IoMdCloseCircleOutline size={26} onClick={close} className='cursor-pointer' />
+                </div>
 
-                    <div className='w-full flex justify-end text-primary-black mt-2'>
-                        <IoMdCloseCircleOutline size={28} onClick={close} className='cursor-pointer' />
+                <div>
+
+                    <div className='text-primary-black flex items-center gap-x-4 pb-2'>
+
+                        {
+                            !data?.avatar ? (
+                                <div><CgProfile size={56} /></div>
+                            ) : (
+                                <div className='w-26 h-16 rounded-full overflow-hidden border'>
+                                    <img src={data.avatar} alt="" className='w-full h-full object-cover rounded-full' />
+                                </div>
+                            )
+                        }
+
+                        <input type="file" onChange={handlePhoto} ref={imageRef} hidden name='avatar' id='profile_image' accept="image/*" />
+                        <div onClick={() => imageRef.current?.click()} className='rounded-md md:px-4 px-2 py-2  bg-[#cc8708] border border-black text-base font-semibold cursor-pointer w-full flex items-center p-2 justify-center'>
+                            {
+                                imageLoading ? (
+                                    <div className='loader mt-3'></div>
+                                ) : (
+                                    <p>upload image</p>
+                                )
+                            }
+                        </div>
+
                     </div>
 
                     <div>
-
-
-                        <div className='text-primary-black flex items-center gap-x-6 pb-2'>
-
-                            {
-                                !data?.avatar ? (
-                                    <div><CgProfile size={56} /></div>
-                                ) : (
-                                    <div className='w-26 h-16 rounded-full overflow-hidden border'>
-                                        <img src={data.avatar} alt="" className='w-full h-full object-cover rounded-full' />
-                                    </div>
-                                )
-                            }
-
-                            <input type="file" onChange={handlePhoto} ref={imageRef} hidden name='avatar' id='profile_image' accept="image/*" />
-                            <div onClick={() => imageRef.current?.click()} className='rounded-md md:px-4 px-2 py-2  bg-[#cc8708] border border-black text-base font-semibold cursor-pointer w-full flex items-center p-2 justify-center'>
-                                {
-                                    imageLoading ? (
-                                        <div className='loader mt-3'></div>
-                                    ) : (
-                                        <p>upload image</p>
-                                    )
-                                }
-                            </div>
-
-                        </div>
-
-                        <div>
-                            <input type="text" name='name' onChange={handleChange} value={data.name} placeholder='Enter your name ...' className='text-primary-dark p-2 border-2 outline-none rounded w-full h-8 my-1' />
-                        </div>
-
-                        <button className='p-2 my-2 w-full bg-[#2c6abc]  hover:bg-[#2463b5]  text-[#d1dcfb]  mt-2 rounded  font-semibold cursor-pointer'>update</button>
-
+                        <input type="text" name='name' onChange={handleChange} value={data.name} required placeholder='Enter your name ...' className='text-primary-dark p-2 border-2 outline-none rounded w-full h-8 my-1' />
                     </div>
 
-                </form>
-            </div>
+                    <button className='p-2 w-full bg-[#2c6abc]  hover:bg-[#2463b5]  text-[#d1dcfb]  mt-2 rounded  font-semibold cursor-pointer'>update</button>
+
+                </div>
+
+            </form>
 
         </section>
     )

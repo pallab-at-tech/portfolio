@@ -16,7 +16,7 @@ const Profile = () => {
 
     const user = useSelector((state) => state?.user)
     const alldata = useSelector(state => state.allofdetails)
-    const {fetchAllDetails} = useGlobalContext()
+    const { fetchAllDetails } = useGlobalContext()
     const { darkMode, setDarkMode } = useGlobalContext()
 
     const [userData, setUserData] = useState({
@@ -94,10 +94,10 @@ const Profile = () => {
             toast.success(responseData?.message)
             dispatch(setUserDetails(userData))
 
-            setUserData((preve) =>{
-                return{
+            setUserData((preve) => {
+                return {
                     ...preve,
-                    name : userData?.name
+                    name: userData?.name
                 }
             })
 
@@ -105,10 +105,8 @@ const Profile = () => {
     }
 
 
-
     return (
-        <section className='lg:mx-24 mx-14  mt-16'>
-
+        <section className='px-10 sm:px-2 h-[calc(100vh-72px)] overflow-y-auto pt-16'>
 
             {/*for desktop version*/}
 
@@ -118,7 +116,7 @@ const Profile = () => {
                     {
                         userData?.avatar ? (
                             <>
-                                <div className={`w-[145px] h-[145px] ${darkMode ? "border-gray-700" : "border-gray-700"} rounded-full overflow-hidden border`}>
+                                <div className={`w-[100px] h-[100px] ${darkMode ? "border-gray-700" : "border-gray-700"} rounded-full overflow-hidden border`}>
                                     <img src={userData?.avatar} alt="" className='w-full h-full object-cover rounded-full' />
                                 </div>
                             </>
@@ -145,34 +143,37 @@ const Profile = () => {
 
             {/* for mobile and tablet version  */}
 
-            <div className='lg:hidden block md:ml-10 md:mr-10'>
+            <div className='lg:hidden block'>
 
-                <div className='flex md:gap-10 gap-8 mb-4 items-center'>
+                <div className='flex items-center justify-between'>
 
-                    {
-                        !userData?.avatar ? (
-                            <>
-                                <div className='pb-0.5 text-2xl font-bold md:block hidden'><CgProfile size={120} /></div>
+                    <div className='flex flex-col items-start gap-1.5'>
+                        {
+                            !userData?.avatar ? (
+                                <>
+                                    <div className='pb-0.5 text-2xl font-bold md:block hidden'><CgProfile size={120} /></div>
 
-                                <div className='pb-0.5 text-2xl font-bold md:hidden'><CgProfile size={60} /></div>
-                            </>
-                        ) : (
-                            <>
-                                <div className={`w-[70px] h-[70px] rounded-full overflow-hidden ${darkMode ? "" : "border border-[#020826]"}`}>
-                                    <img src={userData?.avatar} alt="" className='w-full h-full object-cover rounded-full' />
-                                </div>
-                            </>
-                        )
-                    }
+                                    <div className='pb-0.5 text-2xl font-bold md:hidden'><CgProfile size={60} /></div>
+                                </>
+                            ) : (
+                                <>
+                                    <div className={`w-[70px] h-[70px] rounded-full overflow-hidden ${darkMode ? "" : "border border-[#020826]"}`}>
+                                        <img src={userData?.avatar} alt="" className='w-full h-full object-cover rounded-full' />
+                                    </div>
+                                </>
+                            )
+                        }
 
-                    <div className='flex flex-col items-center justify-center'>
-                        <p className='max-w-[6ch] break-all text-sm line-clamp-2 leading-tight'>{user?.name}</p>
+                        <p className='max-w-[16ch] sm:max-w-[36ch] break-all text-sm line-clamp-2 leading-tight'>{user?.name}</p>
+                    </div>
+
+                    <div className='flex flex-col items-start justify-center'>
                         <button onClick={() => setopenCreateWindow(true)} className={` my-2 rounded-2xl px-4 py-1 border-2 ${darkMode ? "border-terniary-dark text-terniary-dark hover:bg-terniary-dark hover:text-primary-dark" : "hover:bg-[#8e461d] hover:text-white"}  text-base  font-semibold`}>Edit</button>
                     </div>
 
                 </div>
 
-                <div className={`min-h-1 max-h-1 border-b-2 ${darkMode ? "border-b-[#404a57]" : "border-b-[#332301]"} my-2`}></div>
+                <div className={`h-0.5 border-b-[1px] ${darkMode ? "border-b-[#404a57]" : "border-b-[#332301]"} my-2`}></div>
 
                 <div className=''>
 
@@ -186,7 +187,7 @@ const Profile = () => {
                                     <form action="" className="flex flex-col sm:flex-row gap-2">
 
                                         <input type="email" placeholder='Enter your email' className='bg-primary-text outline-none rounded text-black px-2 py-1 text-sm w-full' />
-                                        <button onClick={(e)=>{e.preventDefault()}} className={`${darkMode ? "bg-terniary-dark text-white" : "bg-[#7b450b] hover:bg-[#6b3c0a] text-white"} mt-0.5 py-2 px-4 rounded text-sm  w-full sm:w-auto`}>send</button>
+                                        <button onClick={(e) => { e.preventDefault() }} className={`${darkMode ? "bg-terniary-dark text-white" : "bg-[#7b450b] hover:bg-[#6b3c0a] text-white"} mt-0.5 py-2 px-4 rounded text-sm  w-full sm:w-auto`}>send</button>
                                     </form>
 
                                 </div>
@@ -250,7 +251,6 @@ const Profile = () => {
             </div>
 
 
-
             {/* for mobile and tablet version  */}
 
             {
@@ -266,8 +266,6 @@ const Profile = () => {
                     <UserProfileEdit close={() => setopenCreateWindowforDesktop(false)} />
                 )
             }
-
-
 
         </section>
     )

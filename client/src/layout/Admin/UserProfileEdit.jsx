@@ -23,7 +23,6 @@ const UserProfileEdit = ({ close }) => {
     const [imageLoading, setImageLoading] = useState(false)
 
 
-
     const handlePhoto = async (e) => {
 
         const file = e.target.files?.[0];
@@ -67,9 +66,9 @@ const UserProfileEdit = ({ close }) => {
 
             dispatch(setUserDetails({
                 ...user,
-                avatar : data.avatar
+                avatar: data.avatar
             }))
-            
+
             close()
         }
     }
@@ -77,49 +76,47 @@ const UserProfileEdit = ({ close }) => {
     const { darkMode, setDarkMode } = useGlobalContext()
 
     return (
-        <section className={`fixed top-0 right-0 left-0 bottom-0 min-h-screen  ${darkMode ? "bg-neutral-900/70" : "bg-[#000000a9]/90"} z-50 flex items-center justify-center`}>
+        <section className={`fixed inset-0 h-screen backdrop-blur-[3px] ${darkMode ? "bg-neutral-900/70" : "bg-[#000000a9]/90"} z-50 flex items-center justify-center`}>
 
-            <div>
+            <form
+                onSubmit={handleOnSubmit}
+                className={`max-w-lg relative px-6 py-5 ${darkMode ? "bg-gradient-to-br to-[#767d8c] from-[#80899a]" : "bg-[#dbd7d7]"} rounded-md overflow-y-auto`}
+            >
+                <div className='absolute top-1 right-1 text-primary-black'>
+                    <IoMdCloseCircleOutline size={26} onClick={close} className='cursor-pointer' />
+                </div>
 
-                <form onSubmit={handleOnSubmit} className={`grid lg:max-w-md lg:min-w-md  md:max-h-[280px] md:min-h-[280px]  md:min-w-[350px] md:max-w-[350px] min-w-[280px] max-w-[280px] max-h-[250px] min-h-[250px] py-2  ${darkMode ? "bg-gradient-to-br to-[#767d8c] from-[#80899a]" : "bg-[#dbd7d7]"} rounded overflow-y-auto  md:px-10 px-6`}>
+                <div className='grid gap-4 grid-cols-[1fr_150px] items-center'>
 
-                    <div className='w-full flex justify-end text-primary-black mt-2'>
-                        <IoMdCloseCircleOutline size={28} onClick={close} className='cursor-pointer' />
+                    <div>
+                        {
+                            !data?.avatar ? (
+                                <div><CgProfile size={70} /></div>
+                            ) : (
+                                <div className={`w-26 h-26 rounded-full overflow-hidden border-4 ${darkMode ? "border-[#cc8708]" : "border-[#a44307]"}`}>
+                                    <img src={data.avatar} alt="" className='w-full h-full object-cover rounded-full' />
+                                </div>
+                            )
+                        }
                     </div>
 
-                    <div className='grid grid-cols-[1fr_250px] items-center'>
-
-                        <div>
+                    <div>
+                        <input type="file" onChange={handlePhoto} ref={imageRef} hidden name='avatar' id='profile_image' accept="image/*" />
+                        <div onClick={() => imageRef.current?.click()} className='rounded-md md:px-4 px-2 py-2.5  bg-[#cc8708] border border-black text-base font-semibold cursor-pointer w-full flex items-center p-2 justify-center'>
                             {
-                                !data?.avatar ? (
-                                    <div><CgProfile size={70} /></div>
+                                imageLoading ? (
+                                    <div className='loader mt-3'></div>
                                 ) : (
-                                    <div className={`w-26 h-26 rounded-full overflow-hidden border-4 ${darkMode ? "border-[#cc8708]" : "border-[#a44307]"}`}>
-                                        <img src={data.avatar} alt="" className='w-full h-full object-cover rounded-full' />
-                                    </div>
+                                    <p>upload image</p>
                                 )
                             }
                         </div>
-
-                        <div>
-                            <input type="file" onChange={handlePhoto} ref={imageRef} hidden name='avatar' id='profile_image' accept="image/*" />
-                            <div onClick={() => imageRef.current?.click()} className='rounded-md md:px-4 px-2 py-3  bg-[#cc8708] border border-black text-base font-semibold cursor-pointer w-full flex items-center p-2 justify-center'>
-                                {
-                                    imageLoading ? (
-                                        <div className='loader mt-3'></div>
-                                    ) : (
-                                        <p>upload image</p>
-                                    )
-                                }
-                            </div>
-                        </div>
-
-
                     </div>
+                </div>
 
-                    <button className='p-2 my-2 h-12 w-full bg-[#1d68ca]  hover:bg-[#2463b5]  text-[#d1dcfb] rounded  font-semibold cursor-pointer'>update</button>
-                </form>
-            </div>
+                <button className='px-2 py-2 my-2 w-full bg-[#1d68ca] hover:bg-[#2463b5]  text-[#d1dcfb] rounded  font-semibold cursor-pointer'>update</button>
+
+            </form>
 
         </section>
     )

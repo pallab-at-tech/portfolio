@@ -67,7 +67,7 @@ const Popbar = ({ close }) => {
 
             {
                 (closePopUp && close) && (
-                    <div className={`${darkMode ? "bg-primary-text text-primary-dark" : "bg-[#5e2b1b] text-primary-text"}  z-50 absolute -right-5 -top-2 bottom-0 mt-10 lg:w-43 ${user?._id ? "lg:h-56 h-[310px]" : "lg:h-45 h-[230px]"}  w-[150px]  rounded-2xl shadow-md`}>
+                    <div className={`${darkMode ? "bg-primary-text text-primary-dark" : "bg-[#5e2b1b] text-primary-text"}  z-50 absolute -right-5 -top-2 bottom-0 mt-10 lg:w-43 sm:w-[160px] w-[150px] ${user?._id ? "lg:h-56 h-[280px]" : "lg:h-45 h-[230px]"}  rounded-2xl shadow-md`}>
 
                         <div className='flex justify-end mx-5 pt-4 cursor-pointer hover:text-[#fc5e03]'><IoClose size={20} onClick={() => setClosePopUp(false)} /></div>
 

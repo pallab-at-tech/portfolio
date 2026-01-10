@@ -50,7 +50,6 @@ const OthersDetailsEdit = () => {
     const [window_loader, setWindow_loader] = useState(false)
     const [imageLoading, setImageLoading] = useState(false)
 
-    
 
     useEffect(() => {
         if (!tick) return;
@@ -70,9 +69,8 @@ const OthersDetailsEdit = () => {
         tittle: otherData?.data[0]?.tittle || "",
         image: otherData?.data[0]?.image || "",
         describe: otherData?.data[0]?.describe || "",
-        bookmark : otherData?.data[0]?.bookmark || false
+        bookmark: otherData?.data[0]?.bookmark || false
     })
-
 
 
     const fetchOtherData = async () => {
@@ -244,7 +242,7 @@ const OthersDetailsEdit = () => {
                 tittle: otherData?.data[0]?.tittle || "",
                 image: otherData?.data[0]?.image || "",
                 describe: otherData?.data[0]?.describe || "",
-                bookmark : otherData?.data[0]?.bookmark || false
+                bookmark: otherData?.data[0]?.bookmark || false
             })
 
             setPagination((preve) => {
@@ -257,13 +255,11 @@ const OthersDetailsEdit = () => {
 
     }, [pagination.limit, pagination.page, otherData?.data[0]])
 
-    const { darkMode, setDarkMode } = useGlobalContext()
-
-
+    const { darkMode } = useGlobalContext()
 
 
     return (
-        <section className={`lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 ${darkMode ? "text-primary-text" : "text-[#020826]"}`}>
+        <section className={`h-[calc(100vh-72px)] overflow-y-auto hide-scrollbar sm:px-8 lg:px-14 mx-6 sm:mx-8 lg:pt-16 pt-10 ${darkMode ? "text-primary-text" : "text-[#020826]"}`}>
 
             <div className='flex flex-col mb-6'>
 
@@ -326,7 +322,7 @@ const OthersDetailsEdit = () => {
                                         }
                                     })
                                 }}>
-                                    <FaArrowAltCircleLeft size={32}/>
+                                    <FaArrowAltCircleLeft size={32} />
                                 </div>
 
                                 <p>{`${pagination.page}/${pagination.totalNoOfPage}`}</p>
@@ -349,14 +345,14 @@ const OthersDetailsEdit = () => {
 
                         </div>
 
-                        <form onSubmit={handleOnSubmit} className={`${darkMode ? "bg-[#1c1d1f] " : "bg-[#705c34a9]"} lg:min-w-[750px] lg:max-w-[750px] md:min-h-[500px] md:max-h-[800px] min-h-[500px]  max-h-[500px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4`}>
+                        <form onSubmit={handleOnSubmit} className={`${darkMode ? "bg-[#1c1d1f] " : "bg-[#705c34a9]"} lg:min-w-[750px] lg:max-w-[750px] md:min-h-[500px] md:max-h-[800px] min-h-[500px]  max-h-[500px] scrollbar-custom overflow-y-auto p-5 sm:px-6 sm:py-5 rounded-md mt-6 grid gap-3 mb-4`}>
 
-                            <div className='flex justify-end cursor-pointer' onClick={()=>{
-                                
-                                setData((preve) =>{
-                                    return{
+                            <div className='flex justify-end cursor-pointer' onClick={() => {
+
+                                setData((preve) => {
+                                    return {
                                         ...preve,
-                                        bookmark : !preve.bookmark
+                                        bookmark: !preve.bookmark
                                     }
                                 })
                             }}>
@@ -364,11 +360,11 @@ const OthersDetailsEdit = () => {
                                 {
                                     data.bookmark ? (
                                         <div className='text-yellow-300 '>
-                                            <BsBookmarkStarFill size={25} />
+                                            <BsBookmarkStarFill size={24} />
                                         </div>
                                     ) : (
 
-                                        <BsBookmarkStarFill size={25} />
+                                        <BsBookmarkStarFill size={24} />
                                     )
                                 }
 

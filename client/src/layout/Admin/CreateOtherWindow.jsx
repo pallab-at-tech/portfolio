@@ -85,14 +85,14 @@ const CreateOtherWindow = ({ close, loadData, fetchOtherData }) => {
         }
     }
 
-    const { darkMode, setDarkMode } = useGlobalContext()
+    const { darkMode } = useGlobalContext()
 
     return (
-        <section className={`fixed top-0 right-0 left-0 bottom-0 min-h-screen ${darkMode ? "bg-neutral-900/70" : "bg-[#000000a9]/90"} z-50 flex items-center justify-center`}>
+        <section className={'fixed inset-0 backdrop-blur-[3px] h-screen pt-[80px] bg-neutral-900/70 z-50 flex items-center justify-center'}>
 
             <div>
 
-                <form onSubmit={handleOnSubmit} className={`grid gap-y-2 lg:min-w-md lg:max-w-md md:max-h-[440px] md:min-h-[440px]  md:min-w-[400px] md:max-w-[400px] min-w-[300px] max-w-[300px] max-h-[430px] min-h-[430px]   scrollbar-custom pl-6 pb-4 py-2 pt-4 ${darkMode ? "bg-gradient-to-br from-[#43547a] to-[#232a36]" : "bg-[#dbd7d7]"} rounded overflow-y-auto  px-10`}>
+                <form onSubmit={handleOnSubmit} className={`grid gap-y-2 lg:min-w-md lg:max-w-md md:min-w-[400px] md:max-w-[400px] min-w-[300px] max-w-[300px] md:min-h-[440px] max-h-[70vh] md:max-h-[80vh] scrollbar-custom pl-6 pb-4 py-2 pt-4 ${darkMode ? "bg-gradient-to-br from-[#334a7d] via-[#4f6aa29c] to-[#232a36]" : "bg-[#dbd7d7]"} rounded-md overflow-y-auto px-6`}>
 
                     <div className='w-full flex justify-end'>
                         <IoMdCloseCircleOutline size={28} onClick={close} className='cursor-pointer' />
@@ -156,7 +156,7 @@ const CreateOtherWindow = ({ close, loadData, fetchOtherData }) => {
 
                     </div>
 
-                    <button className='p-2 w-full bg-[#2c6abc]  hover:bg-[#2463b5] text-[#d1dcfb]  rounded  font-semibold cursor-pointer'>submit</button>
+                    <button className='p-2 w-full cursor-pointer bg-[#1857a8] hover:bg-[#2463b5] text-[#d1dcfb] mt-2 rounded font-semibold'>submit</button>
                 </form>
             </div>
 

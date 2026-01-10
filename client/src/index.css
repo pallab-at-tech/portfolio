@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* default style */
+body {
+  height: calc(100vh-72px);
+  overflow-y: hidden;
+}
+
 
 /* font styles */
 
@@ -235,14 +241,14 @@ body {
 
 /* loader */
 .loader {
-  width: 30px;
-  height: 20px;
+  width: 25px;
+  height: 10px;
   --c: no-repeat radial-gradient(farthest-side, #087e06 93%, #087e06);
   background:
     var(--c) 0 0,
     var(--c) 50% 0,
     var(--c) 100% 0;
-  background-size: 8px 8px;
+  background-size: 7px 7px;
   position: relative;
   animation: l4-0 1s linear infinite alternate;
 }
@@ -250,8 +256,8 @@ body {
 .loader:before {
   content: "";
   position: absolute;
-  width: 8px;
-  height: 12px;
+  width: 6px;
+  height: 8px;
   background: #087e06;
   left: 0;
   top: 0;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import bg from "../../assets/no data.png"
-import { TiStarburst, TiTick } from 'react-icons/ti'
+import { TiStarburst } from 'react-icons/ti'
 import Axios from '../../utils/Axios'
 import SummaryApi from '../../common/SummaryApi'
 import toast from 'react-hot-toast'
@@ -193,10 +193,10 @@ const EducationDetailsEdit = () => {
 
     const { darkMode, setDarkMode } = useGlobalContext()
 
-    
+
 
     return (
-        <section className={`lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 ${darkMode ? "text-primary-text" : "text-[#020826]"}`}>
+        <section className={`h-[calc(100vh-72px)] overflow-y-auto hide-scrollbar sm:px-8 lg:px-14 mx-6 sm:mx-8 lg:pt-16 pt-10 ${darkMode ? "text-primary-text" : "text-[#020826]"}`}>
 
 
             <div className='flex flex-col mb-6'>
@@ -252,9 +252,9 @@ const EducationDetailsEdit = () => {
                                     else {
                                         setIndex(index - 1)
                                     }
-                                }}><FaArrowAltCircleLeft size={32} className='cursor-pointer'/></div>
+                                }}><FaArrowAltCircleLeft size={32} className='cursor-pointer' /></div>
 
-                                <p>{index % total} / {total - 1}</p>
+                                <p>{(index + 1) % (total + 1)} / {(total + 1) - 1}</p>
 
                                 <div onClick={() => setIndex((index + 1) % total)} className='cursor-pointer'><FaArrowAltCircleRight size={32} /></div>
                             </div>
@@ -359,7 +359,7 @@ const EducationDetailsEdit = () => {
                                                             target: { name: 'typeOfScore', value: 'CGPA' },
                                                         })
                                                     }
-                                                    
+
                                                 />
                                                 <label htmlFor={`cgpa-${idx}`} className={`mr-6 ${!darkMode && "text-[#442d13]"}`}>CGPA</label>
 
@@ -374,7 +374,7 @@ const EducationDetailsEdit = () => {
                                                             target: { name: 'typeOfScore', value: 'PERCENTAGE' },
                                                         })
                                                     }
-                                                    
+
                                                 />
                                                 <label htmlFor={`percentage-${idx}`} className={`${!darkMode && "text-[#442d13]"}`}>PERCENTAGE</label>
 
@@ -431,24 +431,19 @@ const EducationDetailsEdit = () => {
                                     }
                                 })
                             }}>
-                            <p className={`text-base font-semibold ${darkMode ? "text-[#d1c6c1]" : "text-[#020826]"} underline`}>Delete above details ?</p>
-                            <div className='text-red-800'><MdDelete size={24} /></div>
+                            <p className={`text-base font-semibold ${darkMode ? "text-[#d1c6c1]" : "text-[#020826]"} underline `}>Delete above details ?</p>
+                            <div className='text-red-800'><MdDelete size={20} /></div>
                         </div>
 
                     </div>
                 )
             }
 
-
-
-
-
             {
                 confirmation.closeWindow && (
                     <ConfirmationBox confirmation={confirmation} setConfirmation={setConfirmation} />
                 )
             }
-
 
 
             {

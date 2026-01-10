@@ -81,7 +81,6 @@ const CreateEducationDataWindow = ({ close }) => {
         })
     }
 
-
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
@@ -120,11 +119,10 @@ const CreateEducationDataWindow = ({ close }) => {
 
 
     return (
-        <section className={`fixed top-0 right-0 left-0 bottom-0 min-h-screen ${darkMode ? "bg-neutral-900/70" : "bg-[#000000a9]/90"} z-50 flex items-center justify-center`}>
+        <section className={`fixed top-0 right-0 left-0 bottom-0 h-screen pt-[80px] backdrop-blur-[3px] ${darkMode ? "bg-neutral-900/70" : "bg-[#000000a9]/90"} z-50 flex items-center justify-center`}>
 
             <div>
-
-                <form onSubmit={handleSubmit} className={`grid gap-y-2 lg:min-w-md md:max-h-[620px] md:min-h-[620px]  md:min-w-[400px] min-w-[300px] max-h-[450px] min-h-[450px]   scrollbar-custom pl-6 pb-4 py-2 pt-4 ${darkMode ? "bg-gradient-to-br from-[#43547a] to-[#232a36]" : "bg-[#dbd7d7]"} rounded overflow-y-auto  px-10`}>
+                <form onSubmit={handleSubmit} className={`grid gap-y-2 lg:min-w-md  md:min-w-[400px] min-w-[300px] h-[70vh] md:h-[80vh] scrollbar-custom  pb-4 py-2 pt-4 ${darkMode ? "bg-gradient-to-br from-[#334a7d] via-[#4f6aa29c] to-[#232a36]" : "bg-[#dbd7d7]"} rounded-md overflow-y-auto px-6`}>
 
                     <div className='w-full flex justify-end'>
                         <IoMdCloseCircleOutline size={28} onClick={close} className='cursor-pointer' />
@@ -151,7 +149,7 @@ const CreateEducationDataWindow = ({ close }) => {
                             return (
                                 <div className='grid gap-y-3'>
 
-                                    <h4 className={`font-bold text-xl my-2 underline ${darkMode ? "text-[#dfc29e]" : "text-[#deb17b]"}`}>Qualification {`${data.qualification.length > 1 ? idx + 1 : ""}`}</h4>
+                                    <h4 className={`font-bold text-xl my-2 underline ${darkMode ? "text-[#dc9339]" : "text-[#b06f1f]"}`}>Qualification {`${data.qualification.length > 1 ? idx + 1 : ""}`}</h4>
 
                                     <div>
 
@@ -244,7 +242,7 @@ const CreateEducationDataWindow = ({ close }) => {
                     </div>
 
 
-                    <button className='p-2 w-full bg-[#2c6abc]  hover:bg-[#2463b5]  text-[#d1dcfb]  mt-2 rounded  font-semibold'>
+                    <button className='p-2 w-full cursor-pointer bg-[#1857a8] hover:bg-[#2463b5] text-[#d1dcfb] mt-2 rounded font-semibold'>
                         {
                             tick ? (
                                 <TickMark />
@@ -255,7 +253,6 @@ const CreateEducationDataWindow = ({ close }) => {
                     </button>
 
                 </form>
-
             </div>
 
         </section>

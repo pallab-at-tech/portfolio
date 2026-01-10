@@ -190,12 +190,11 @@ const ProjectDetailsEdit = () => {
 
     }, [confirmation.confirm])
 
-    const { darkMode, setDarkMode } = useGlobalContext()
-
+    const { darkMode } = useGlobalContext()
 
 
     return (
-        <section className={`lg:mx-24 md:mx-14 mx-8 lg:mt-16 mt-10 ${darkMode ? "text-primary-text" : "text-[#020826]"}`}>
+        <section className={`h-[calc(100vh-72px)] overflow-y-auto hide-scrollbar sm:px-8 lg:px-14 mx-7 sm:mx-8 lg:pt-16 pt-10 ${darkMode ? "text-primary-text" : "text-[#020826]"}`}>
 
             <div className='flex flex-col mb-6'>
                 <div>
@@ -249,11 +248,11 @@ const ProjectDetailsEdit = () => {
                                     else {
                                         setIndex(index - 1)
                                     }
-                                }}><FaArrowAltCircleLeft size={32} className='cursor-pointer'/></div>
+                                }}><FaArrowAltCircleLeft size={32} className='cursor-pointer' /></div>
 
-                                <p>{index % total} / {total - 1}</p>
+                                <p>{(index + 1) % (total + 1)} / {(total + 1) - 1}</p>
 
-                                <div onClick={() => setIndex((index + 1) % total)}><FaArrowAltCircleRight size={32} className='cursor-pointer'/></div>
+                                <div onClick={() => setIndex((index + 1) % total)}><FaArrowAltCircleRight size={32} className='cursor-pointer' /></div>
                             </div>
 
                         </div>
@@ -472,7 +471,7 @@ const ProjectDetailsEdit = () => {
 
                                 <div className='flex gap-2'>
                                     <div>
-                                        <select  className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} outline-none p-1`}
+                                        <select className={`${darkMode ? "bg-[#353333f2]" : "bg-[#ded7d7]"} outline-none p-1`}
 
                                             onChange={(e) => {
 
@@ -529,8 +528,6 @@ const ProjectDetailsEdit = () => {
                     </div>
                 )
             }
-
-
 
             {
                 openCreateWindow && (
