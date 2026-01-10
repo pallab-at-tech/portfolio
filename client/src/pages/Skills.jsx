@@ -1,19 +1,10 @@
 import React from 'react'
 import { IoLogoJavascript } from "react-icons/io5";
-import { RiReactjsLine } from "react-icons/ri";
-import { FaHtml5 } from "react-icons/fa";
-import { FaCss3 } from "react-icons/fa";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { SiMongodb } from "react-icons/si";
-import { FaGitAlt } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+import { RiReactjsLine , RiTailwindCssFill , RiEnglishInput } from "react-icons/ri";
+import { FaHtml5 , FaCss3  , FaGitAlt , FaGithub , FaLanguage , FaNodeJs} from "react-icons/fa";
+import { SiMongodb , SiExpress } from "react-icons/si";
 import { IoLogoVercel } from "react-icons/io5";
 import { FcIdea } from "react-icons/fc";
-import { RiEnglishInput } from "react-icons/ri";
-import { FaLanguage } from "react-icons/fa";
-import { FaNodeJs } from "react-icons/fa";
-import { SiExpress } from "react-icons/si";
-import { Element } from 'react-scroll';
 import { useGlobalContext } from '../provider/GlobalProvider';
 
 const Skills = () => {

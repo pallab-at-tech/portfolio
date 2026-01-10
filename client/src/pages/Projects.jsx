@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { FaExternalLinkAlt } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import { Element } from 'react-scroll';
+import { FaExternalLinkAlt , FaGithub } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import { useGlobalContext } from '../provider/GlobalProvider';
 

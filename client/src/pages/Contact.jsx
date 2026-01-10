@@ -4,7 +4,6 @@ import { FaPhone } from "react-icons/fa6";
 import { IoLocationOutline } from "react-icons/io5";
 import { CiLinkedin } from "react-icons/ci";
 import { Link } from 'react-router-dom'
-import { Element } from 'react-scroll';
 import { useSelector } from 'react-redux';
 import emailjs from "@emailjs/browser"
 import toast from 'react-hot-toast'

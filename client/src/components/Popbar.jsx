@@ -1,31 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import { FaChevronCircleUp } from "react-icons/fa";
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react'
+import { FaChevronCircleUp, FaCloudSun, FaExternalLinkAlt } from "react-icons/fa";
 import MarginBottom from '../utils/MarginBottom'
 import { MdNightsStay } from "react-icons/md";
-import { FaCloudSun } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { useGlobalContext } from '../provider/GlobalProvider';
-import { Link } from 'react-scroll';
 import { useDispatch, useSelector } from 'react-redux';
 import { CgProfile } from "react-icons/cg";
-import { FaExternalLinkAlt } from "react-icons/fa";
-import { useLocation } from 'react-router-dom';
 import SummaryApi from "../common/SummaryApi"
 import Axios from "../utils/Axios"
 import toast from 'react-hot-toast'
 import { setLogOut } from '../store/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 
-const Popbar = ({close}) => {
+const Popbar = ({ close }) => {
 
     const [closePopUp, setClosePopUp] = useState(false)
     const { darkMode, setDarkMode } = useGlobalContext();
 
+    const popBarHideRef = useRef(null)
+
     const user = useSelector((state) => state?.user)
     const userUrl = `/dashboard/${user?.name?.toLowerCase()?.replace(" ", "-")}-${user?._id}`
 
-    const location = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -48,40 +44,42 @@ const Popbar = ({close}) => {
         }
     }
 
+    useEffect(() => {
+        const handleClickOutSide = (event) => {
+            if (popBarHideRef.current && !popBarHideRef.current.contains(event.target)) {
+                setClosePopUp(false)
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutSide)
+
+        return () => document.removeEventListener("mousedown", handleClickOutSide)
+    }, [])
+
     return (
-        <div className='relative z-50'>
-            <FaChevronCircleUp size={20} onClick={() => {
-                setClosePopUp(!closePopUp)
-            }} />
+        <div ref={popBarHideRef} className='relative z-50'>
+
+            <div>
+                <FaChevronCircleUp size={20} onClick={() => {
+                    setClosePopUp(!closePopUp)
+                }} />
+            </div>
 
             {
                 (closePopUp && close) && (
-                    <div className={`${darkMode ? "bg-primary-text text-primary-dark" : "bg-[#5e2b1b] text-primary-text"}  z-50 absolute -right-5 -top-2 bottom-0 mt-10 lg:w-43 ${user._id ? "lg:h-56 h-[310px]" : "lg:h-45 h-[280px]"}  w-[150px]  rounded-2xl shadow-md`}>
+                    <div className={`${darkMode ? "bg-primary-text text-primary-dark" : "bg-[#5e2b1b] text-primary-text"}  z-50 absolute -right-5 -top-2 bottom-0 mt-10 lg:w-43 ${user?._id ? "lg:h-56 h-[310px]" : "lg:h-45 h-[230px]"}  w-[150px]  rounded-2xl shadow-md`}>
+
                         <div className='flex justify-end mx-5 pt-4 cursor-pointer hover:text-[#fc5e03]'><IoClose size={20} onClick={() => setClosePopUp(false)} /></div>
-                        <div className='flex flex-col gap-2 px-2 font-semibold mt-[0.5%] m-2'>
 
-
-
-                            {
-                                location.pathname !== "/" ? (
-                                    <NavLink to="/" className='cursor-pointer lg:hidden text-xl' onClick={() => setClosePopUp(false)}>Home
-                                    </NavLink>
-                                ) : (
-                                    <Link to='HomeID' smooth={true} duration={200} spy offset={-80}
-                                        className='cursor-pointer lg:hidden text-xl' onClick={() => setClosePopUp(false)}>Home
-                                    </Link>
-                                )
-                            }
-
-                            <div className='lg:hidden'><MarginBottom /></div>
+                        <div className='flex flex-col gap-2 pl-3 pr-2 sm:pl-2 font-semibold mt-[0.5%] m-2'>
 
                             {
-                                !user._id ? (
+                                !user?._id ? (
                                     <>
 
-                                        <NavLink to={"/SignUp"} className='hover:bg-[#c4c3c350] rounded mr-10 group lg:pl-4' onClick={() => setClosePopUp(false)}><p className='group-hover:scale-105 transition hover:-translate-y-0.5  duration-200 text-xl'>sign up</p></NavLink>
+                                        <NavLink to={"/SignUp"} className='rounded mr-10 group lg:pl-4' onClick={() => setClosePopUp(false)}><p className='group-hover:scale-105 transition hover:-translate-y-0.5  duration-200 text-xl'>sign up</p></NavLink>
                                         <MarginBottom />
-                                        <NavLink to={"/SignIn"} className='hover:bg-[#c4c3c350] rounded mr-10 group lg:pl-4' onClick={() => setClosePopUp(false)}><p className='group-hover:scale-105 transition hover:-translate-y-0.5  duration-200 text-xl'>sign in</p></NavLink>
+                                        <NavLink to={"/SignIn"} className='rounded mr-10 group lg:pl-4' onClick={() => setClosePopUp(false)}><p className='group-hover:scale-105 transition hover:-translate-y-0.5  duration-200 text-xl'>sign in</p></NavLink>
                                         <MarginBottom />
 
                                     </>
@@ -93,7 +91,7 @@ const Popbar = ({close}) => {
                                             {
                                                 user.avatar ? (
                                                     <div className='overflow-hidden rounded-full w-10 h-10'>
-                                                        <img src={user?.avatar} alt="" className='w-full h-full object-cover rounded-full'/>
+                                                        <img src={user?.avatar} alt="" className='w-full h-full object-cover rounded-full' />
                                                     </div>
                                                 ) : (
                                                     <div className='pb-0.5'><CgProfile size={32} /></div>
@@ -119,7 +117,6 @@ const Popbar = ({close}) => {
                                             <p className='lg:group-hover:scale-105 lg:transition  lg:hover:-translate-y-0.5  lg:duration-200 text-xl'>LogOut</p></button>
                                         <MarginBottom />
 
-
                                     </>
                                 )
                             }
@@ -129,7 +126,7 @@ const Popbar = ({close}) => {
 
                             <div className='lg:hidden'><MarginBottom /></div>
 
-                            <div className='mx-10 px-2  mt-2 border w-fit rounded-2xl ' onClick={() => {
+                            <div className='sm:mx-10 mx-6 px-2  mt-2 border w-fit rounded-2xl ' onClick={() => {
                                 setDarkMode(!darkMode)
                             }}>
                                 {

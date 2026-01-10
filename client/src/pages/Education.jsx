@@ -1,7 +1,6 @@
 import React from 'react'
 import { BiSolidConfused } from "react-icons/bi";
 import { IoSchoolOutline } from "react-icons/io5";
-import { Element } from 'react-scroll';
 import { useSelector } from 'react-redux';
 import { useGlobalContext } from '../provider/GlobalProvider';
 import eduPng from "../assets/edu.png.png"
@@ -86,7 +85,7 @@ const Education = () => {
         </div>
 
       </div>
-      
+
     </section>
   )
 }

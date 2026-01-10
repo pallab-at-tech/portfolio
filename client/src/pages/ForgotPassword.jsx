@@ -63,21 +63,20 @@ const ForgotPassword = () => {
     const { darkMode, setDarkMode } = useGlobalContext()
 
     return (
-        <section className={`min-h-[calc(100vh-32px)] ${darkMode ? "bg-primary-dark" : "card-bg-color-light"} text-primary-text extra-font-style md:px-14 pt-[72px]`}>
-            <div className='container mx-auto  md:max-w-lg max-w-[95%] p-7 rounded-md'>
+        <section className={`h-screen hide-scrollbar overflow-y-auto ${darkMode ? "bg-primary-dark" : "card-bg-color-light"} text-primary-text extra-font-style md:px-14 flex items-center justify-center`}>
 
-                <form onSubmit={handleSubmit} className={`grid gap-4 pl-6 py-2 pt-4 ${darkMode ? "text-[#e3e5ea] bg-gradient-to-br from-[#43547a] to-[#232a36]" : "bg-gradient-to-br from-[#8c1111] to-[#3d2401] text-blue-100 shadow-lg"} mt-[30%] pb-6`}>
+            <div className='container mx-auto md:max-w-lg max-w-[95%] p-4 sm:p-7 rounded-md'>
 
+                <form onSubmit={handleSubmit} className={`grid gap-2 text-[15px] pl-6 sm:pl-8 py-6 shadow-md ${darkMode ? "text-[#e3e5ea] bg-gradient-to-br from-[#21355cc9] via-[#223765d4] to-[#2b3546e7]" : "bg-gradient-to-br from-[#3d2401] via-[#4f0505] to-[#3d2401] text-blue-100 shadow-lg"} mt-4 pt-6 rounded-lg`}>
 
                     <div className='group'>
                         <p className='font-semibold group-hover:scale-y-105 transition-all duration-500 group-hover:-translate-y-1'>Email : </p>
-                        <input type="email" onChange={handleChange} name='email' value={data.name} required className='bg-[#b2b8de] rounded w-[90%] h-8 text-base outline-none p-2 mt-1 text-[#100f0f]' />
+                        <input type="email" onChange={handleChange} name='email' value={data.name} required className='bg-[#b3b6c5] rounded w-[90%] h-8 text-base outline-none p-2 mt-1 text-[#100f0f]' />
                     </div>
 
-                    <button disabled={!valid} className={`p-1.5 ${valid ? "bg-[#2c6abc] hover:bg-[#2463b5] text-[#d1dcfb]" : "bg-[#4c79b4] hover:bg-[#2c6abc]  text-[#d1dcfb]"} w-[90%] mt-2 rounded  font-semibold`}>Login</button>
+                    <button disabled={!valid} className={`p-2 ${valid ? "bg-[#2c6abc] text-[#d1dcfb] cursor-pointer" : "bg-[#0b62d3] hover:bg-[#0559c7] text-[#d1dcfb] cursor-not-allowed"} transition-colors duration-200 w-[90%] mt-2 rounded font-semibold`}>Verify</button>
 
                 </form>
-
 
             </div>
         </section>

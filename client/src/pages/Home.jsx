@@ -1,20 +1,16 @@
 import React from 'react'
 import pic from "../assets/profile_black_1.jpg"
 import { IoMdDownload } from "react-icons/io";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-import { FaLinkedin } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { LuChevronsDown } from "react-icons/lu";
-import About from './About'
 import Education from "./Education"
 import Projects from './Projects';
 
 import b from "../assets/leave.png"
 import Skills from './Skills';
 import Contact from './Contact';
-import { Element } from 'react-scroll';
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import { useGlobalContext } from '../provider/GlobalProvider';
 import resume from "../assets/resume.pdf"
@@ -44,11 +40,11 @@ const Home = () => {
     <div className='h-screen overflow-y-auto hide-scrollbar' id='fullScreenId' >
 
       {/* Home components */}
-      <div className={`h-screen overflow-hidden ${darkMode ? "background-image" : "background-image-light"}  pt-[72px]`} id='realHomeId'>
+      <div className={`h-screen flex flex-col overflow-hidden ${darkMode ? "background-image" : "background-image-light"}  pt-[72px]`} id='realHomeId'>
 
-        <div id='HomeID' className='relative'>
+        <div id='HomeID' className='relative flex-1'>
 
-          <div className='absolute overflow-hidden -top-14 right-3 rotate-185 scale-120 object-scale-down select-none lg:block hidden'>
+          <div className='absolute overflow-hidden -top-14 right-1 rotate-185 scale-120 object-scale-down select-none lg:block hidden'>
             <img src={b} alt="" className="h-[500px] object-cover z-0 left-right-animation overflow-hidden" />
           </div>
 
@@ -89,6 +85,7 @@ const Home = () => {
 
             <div className='flex'>
               <div className={`${darkMode ? "text-primary-text" : "text-primary-light-text"} flex-col extra-font-style flex items-start lg:mt-14 md:mt-[20%] mt-1 justify-start md:text-5xl text-3xl relative z-10`}>
+
                 <div className='flex flex-col gap-0.5'>
                   <p className={`md:pb-2  ${darkMode ? "md:fast-letter-big-md fast-letter-big" : "md:fast-letter-big-md-light fast-letter-big-light"}`}>Hi  {" "}, </p>
                   <p className=''> i am ,{" "}<span className={`${darkMode ? "text-terniary-dark" : "text-[#a80000]"} font-semibold`} style={darkMode ? { textShadow: 'rgb(187 80 8 / 50%) 1px 1px 8px' } : { textShadow: 'rgb(187 0 0 / 50%) 2px 0px 6px' }}>Pallab Bag</span></p>
@@ -108,11 +105,11 @@ const Home = () => {
                     <p className='text-base px-2 py-1.5'>Resume</p>
                   </div>
 
-                  <Link to={allOf.linkedin_link} className={`${darkMode ? "text-[#59b806] hover:shadow-[#59b806]/50" : "text-[#000000]"} p-1 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg rounded-md `}><FaLinkedin size={darkMode ? 25 : 30} /></Link>
+                  <Link to={allOf.linkedin_link} className={`${darkMode ? "text-[#59b806] hover:shadow-[#59b806]/50" : "text-[#000000]"} p-1 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg rounded-md `}><FaLinkedin size={darkMode ? 25 : 28} /></Link>
 
-                  <Link to={allOf.github_link} className={`${darkMode ? "text-[#59b806] hover:shadow-[#59b806]/50" : "text-[#000000]"} p-1 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg rounded-md `}><FaGithub size={darkMode ? 25 : 30} /></Link>
+                  <Link to={allOf.github_link} className={`${darkMode ? "text-[#59b806] hover:shadow-[#59b806]/50" : "text-[#000000]"} p-1 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg rounded-md `}><FaGithub size={darkMode ? 25 : 28} /></Link>
 
-                  {/* <Link to={allOf.email} className='bg-[#747573] p-0.5 rounded-md text-[#211f1f] hover:bg-[#aba7a7]'><SiGmail size={20} /></Link> */}
+                  <Link to={`mailto:${allOf.email}`} className={`${darkMode ? "text-[#59b806] hover:shadow-[#59b806]/50" : "text-[#000000]"} p-1 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg rounded-md `}><SiGmail size={darkMode ? 25 : 28} /></Link>
 
                 </div>
               </div>
@@ -122,10 +119,11 @@ const Home = () => {
 
         </div>
 
-        <div className='items-center justify-center h-full mt-10 pt-14 text-[#5e5b5b] flex sm:static relative bottom-7 animate-float'><LuChevronsDown size={30} /></div>
-      </div>
+        <div className='flex items-center justify-center my-3 text-[#5e5b5b] animate-float'>
+          <LuChevronsDown size={26} />
+        </div>
 
-      {/* <About/> */}
+      </div>
 
       <Education />
       <Projects />
