@@ -100,8 +100,8 @@ const Home = () => {
           </div>
 
           {/* for mobile and tablet */}
-          <div className='flex lg:hidden items-center justify-center w-full h-screen'>
-            <div className='grid grid-rows-[120px_1fr_1fr] sm:grid-rows-[160px_1fr_1fr] px-10 py-5 sm:px-[100px] sm:py-10'>
+          <div className='flex lg:hidden items-center justify-center w-full h-[calc(100vh-72px)]'>
+            <div className='grid grid-rows-[120px_1fr_1fr] sm:grid-rows-[160px_1fr_1fr] px-10 py-5 mt-4 sm:px-[100px] sm:py-10'>
 
               {/* Tittle and text section */}
               <div className={`leading-[1.01] text-4xl sm:text-[46px] ${darkMode ? "text-primary-text" : "text-primary-light-text"}`}>
