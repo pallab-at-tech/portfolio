@@ -594,9 +594,6 @@ body {
 
 
 
-
-
-
 @keyframes rotate {
   from {
     transform: rotate(0deg);
@@ -607,6 +604,55 @@ body {
   }
 }
 
+@keyframes rotateGlow {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.neon-spotlight-dark {
+  pointer-events: none;
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      rgba(18, 55, 114, 0.9) 40deg,
+      transparent 80deg,
+      transparent 180deg,
+      rgba(14, 50, 107, 0.9) 220deg,
+      transparent 260deg);
+  filter: blur(18px);
+  animation: rotateGlow 6s linear infinite;
+}
+
+.neon-spotlight-light {
+  pointer-events: none;
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      #641402 50deg,
+      transparent 90deg,
+      transparent 180deg,
+      #641402 220deg,
+      transparent 260deg);
+  filter: blur(18px);
+  animation: rotateGlow 6s linear infinite;
+}
+
+
+
+/* first letter for light mode */
+.first-light-mode {
+  color: #a0003f;
+  text-shadow: rgba(240, 10, 143, 0.5) 2px 0px 6px;
+}
+
+/* first letter for dark mode */
+.first-dark-mode {
+  color: rgb(3, 119, 221);
+  text-shadow: rgb(10 21 240 / 50%) 0px 0px 8px;
+}
 
 /* fast letter big */
 .fast-letter-big-md::first-letter {
