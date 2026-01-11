@@ -45,7 +45,7 @@ const Home = () => {
         <div id='HomeID' className='relative flex-1'>
 
           {/* Animated leave png */}
-          <div className='absolute overflow-hidden -top-14 sm:-top-[140px] right-1 sm:right-7 rotate-[185deg] sm:rotate-[175deg] scale-120 sm:scale-[140%]  object-scale-down select-none sm:block hidden'>
+          <div className='absolute overflow-hidden -top-[150px] lg:-top-[140px] -right-[30px] lg:right-7 rotate-[180deg] lg:rotate-[175deg] scale-[125%] sm:scale-[140%]  object-scale-down select-none sm:block hidden'>
             <img src={b} alt="" className="h-[500px] object-cover z-0 left-right-animation overflow-hidden" />
           </div>
 

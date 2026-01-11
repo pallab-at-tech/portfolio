@@ -11,15 +11,15 @@ const Projects = () => {
   const { darkMode, setDarkMode } = useGlobalContext()
 
   return (
-    <section className={`${darkMode ? "bg-primary-black" : "bg-[#e9d6b4]"}  px-10 ${darkMode ? "text-primary-text" : "text-[#37290b]"} extra-font-style md:px-14  pt-10 pb-5 relative`}>
+    <section className={`${darkMode ? "bg-primary-black" : "bg-[#e9d6b4]"} ${darkMode ? "text-primary-text" : "text-[#37290b]"} extra-font-style lg:px-20 sm:px-12 px-8 pb-5 pt-6 sm:pt-6 relative`}>
 
       <div id='projectID'>
 
-        <p className={`font-bold text-2xl mb-6 pl-6 ${darkMode ? "" : "text-[#020826]"}`}>project ShowCase</p>
+        <p className={`font-bold text-2xl sm:text-3xl mb-6 sm:pl-1 ${darkMode ? "" : "text-[#171924]"}`}>project ShowCase</p>
         
         <div className='w-full'>
 
-          <div className='flex overflow-x-auto gap-6 scrollbar-custom scroll-smooth px-5 pb-3'>
+          <div className='flex overflow-x-auto gap-6 scrollbar-custom scroll-smooth pb-3'>
 
             {
             

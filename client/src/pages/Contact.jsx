@@ -46,7 +46,7 @@ const Contact = () => {
   }
 
   return (
-    <section className={`${darkMode ? "bg-primary-black" : "background-image-light rounded-t-lg"} text-primary-text extra-font-style  md:px-20 p-10  pb-10`}>
+    <section className={`${darkMode ? "bg-primary-black" : "background-image-light rounded-t-lg"} text-primary-text extra-font-style lg:px-20 sm:px-12 px-8 pb-5 pt-6 sm:pt-6`}>
 
       {/* for margin */}
       <div className={`${darkMode ? "flex" : "hidden"} justify-center`}>
@@ -55,8 +55,8 @@ const Contact = () => {
 
       <div id='ContactID'>
 
-        <div className='pt-10'>
-          <h1 className={`font-bold text-2xl pb-4 ${!darkMode && "text-[#020826]"}`}>Contact me</h1>
+        <div className='pt-6'>
+          <h1 className={`font-bold text-2xl sm:text-3xl pb-4 ${!darkMode && "text-[#171924]"}`}>Contact me</h1>
 
           <div className='flex flex-col md:flex-row items-start justify-between lg:gap-8 md:gap-10 gap-8'>
             <div className=''>

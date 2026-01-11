@@ -21,10 +21,10 @@ const Education = () => {
 
         <div>
 
-          <div className={`${darkMode ? "text-primary-text" : "text-[#37290b]"} extra-font-style w-full flex justify-start items-center md:px-20 px-10 pb-5 pt-10`}>
+          <div className={`${darkMode ? "text-primary-text" : "text-[#37290b]"} extra-font-style w-full flex justify-start items-center lg:px-20 sm:px-12 px-6 pb-5 pt-6 sm:pt-10`}>
 
             <div>
-              <p className={`font-bold text-2xl mb-4 ${darkMode ? "" : "text-[#020826]"}`} >Education</p>
+              <p className={`font-bold text-2xl sm:text-3xl mb-4 ${darkMode ? "" : "text-[#171924]"}`} >Education</p>
 
               {
                 !allEduDetails ? (
@@ -35,20 +35,19 @@ const Education = () => {
                   </div>
                 ) : (
                   <>
-
                     {
                       allEduDetails.map((val, idx) => {
                         return (
                           <div key={`edu-details-${idx}`} className='tracking-wide pb-4'>
 
-                            <div className='text-lg pb-1 flex gap-2 items-cente'>
+                            <div className='text-lg sm:text-[20px] pb-2 sm:pb-2.5 flex gap-2 sm:gap-2.5 items-center'>
                               <div className={`p-1 bg-[#5a5a5a3a] rounded-md hover:text-[#070707] ${darkMode && "hover:bg-[#9b9a9a]"} hover:scale-110 md:block hidden`}><IoSchoolOutline /></div>
-                              <p className={`font-bold ${!darkMode && "text-[#a80000]"}`}>{`${val?.institute_name} , ${val?.location}`}</p>
+                              <p className={`font-bold ${!darkMode && "text-[#ab2929] leading-[1.2]"}`}>{`${val?.institute_name} , ${val?.location}`}</p>
                             </div>
 
-                            <div className={`text-base ${darkMode ? "text-[#747573]" : "text-[#796b54] font-semibold"} leading-tight`}>
+                            <div className={`text-[15px] sm:text-[17px] ${darkMode ? "text-[#747573]" : "text-[#796b54] font-semibold"} leading-tight`}>
 
-                              <ul className='list-disc md:pl-6 pl-5 flex flex-col  gap-4'>
+                              <ul className='list-disc md:pl-6 pl-5 flex flex-col gap-2.5 sm:gap-3 lg:gap-4 '>
                                 {
                                   allEduDetails[idx]?.qualification?.map((innerVal, innerIdx) => {
 
@@ -69,7 +68,6 @@ const Education = () => {
                         )
                       })
                     }
-
                   </>
                 )
               }

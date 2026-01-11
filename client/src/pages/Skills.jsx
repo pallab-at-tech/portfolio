@@ -9,26 +9,26 @@ import { useGlobalContext } from '../provider/GlobalProvider';
 
 const Skills = () => {
 
-  const { darkMode, setDarkMode } = useGlobalContext()
+  const { darkMode } = useGlobalContext()
 
   return (
-    <section className={`${darkMode ? "bg-primary-black" : "bg-[#e9d6b4] rounded"}  px-10 text-primary-text extra-font-style pt-10 md:px-14 relative pb-6`}>
+    <section className={`${darkMode ? "bg-primary-black" : "bg-[#e9d6b4] rounded"} text-primary-text extra-font-style lg:px-20 sm:px-12 px-8 pb-5 pt-6 sm:pt-6 relative`}>
 
       <div id='skillID'>
-        <h1 className={`font-bold text-2xl md:pl-6 ${!darkMode && "text-[#020826]"}`}>My Skills</h1>
-        <p className={`md:pl-6 pt-1 ${darkMode ? "text-[#cbd5e1]" : "text-[#241a07]"} text-sm pb-8`}>Technology and tools i have work with throughout my projects and experience</p>
+        <h1 className={`font-bold text-2xl sm:text-3xl lg:pl-1 ${!darkMode && "text-[#171924]"}`}>My Skills</h1>
+        <p className={`lg:pl-1 pt-1 ${darkMode ? "text-[#cbd5e1]" : "text-[#241a07]"} text-sm pb-8`}>Technology and tools i have work with throughout my projects and experience</p>
 
-        <div className='md:pl-6 '>
+        <div className='lg:pl-1 '>
 
-          <div className='grid lg:grid-cols-2  lg:grid-rows-2 grid-cols-1'>
+          <div className='grid lg:grid-cols-2 lg:grid-rows-2 grid-cols-1 gap-2'>
 
-            <div className='pb-5'>
+            <div className=''>
 
               <h2 className={`pl-2.5 font-bold ${!darkMode && "text-[#241a07]"}`}>Front-End</h2>
 
-              <div className='flex flex-wrap text-sm pt-3'>
+              <div className='flex gap-1.5 flex-wrap text-sm pt-3'>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-yellow-shadow"}`}>
                     <IoLogoJavascript
                       size={26}
@@ -40,7 +40,7 @@ const Skills = () => {
                   </p>
                 </div>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-violet-shadow"}`}>
                     <RiReactjsLine
                       size={26}
@@ -52,7 +52,7 @@ const Skills = () => {
                   </p>
                 </div>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-orange-shadow"}`}>
                     <FaHtml5
                       size={26}
@@ -64,7 +64,7 @@ const Skills = () => {
                   </p>
                 </div>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-sky-shadow"}`}>
                     <FaCss3
                       size={26}
@@ -76,7 +76,7 @@ const Skills = () => {
                   </p>
                 </div>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-sky-shadow"}`}>
                     <RiTailwindCssFill
                       size={26}
@@ -92,13 +92,13 @@ const Skills = () => {
 
             </div>
 
-            <div className='pb-5'>
+            <div className=''>
 
               <h2 className={`pl-2.5 font-bold ${!darkMode && "text-[#241a07]"}`}>DataBase</h2>
 
-              <div className='flex gap-5 flex-wrap  text-sm pt-3'>
+              <div className='flex gap-1.5 flex-wrap text-sm pt-3'>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-green-shadow"}`}>
                     <SiMongodb
                       size={26}
@@ -114,13 +114,13 @@ const Skills = () => {
 
             </div>
 
-            <div className='pb-5'>
+            <div className=''>
 
               <h3 className={`pl-2.5 font-bold ${!darkMode && "text-[#241a07]"}`}>Backend</h3>
 
-              <div className='flex gap-5 flex-wrap  text-sm pt-3'>
+              <div className='flex gap-1.5 flex-wrap text-sm pt-3'>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-yellow-shadow"}`}>
                     <FaNodeJs
                       size={26}
@@ -132,7 +132,7 @@ const Skills = () => {
                   </p>
                 </div>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-green-shadow"}`}>
                     <SiExpress
                       size={26}
@@ -148,13 +148,13 @@ const Skills = () => {
 
             </div>
 
-            <div className='pb-5'>
+            <div className=''>
 
               <h3 className={`pl-2.5 font-bold ${!darkMode && "text-[#241a07]"}`}>Tools & PlatForm</h3>
 
-              <div className='flex gap-5 flex-wrap  text-sm pt-3'>
+              <div className='flex gap-1.5 flex-wrap text-sm pt-3'>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className='bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 light-red-shadow'>
                     <FaGitAlt
                       size={26}
@@ -166,7 +166,7 @@ const Skills = () => {
                   </p>
                 </div>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-gray-shadow"}`}>
                     <FaGithub
                       size={26}
@@ -178,7 +178,7 @@ const Skills = () => {
                   </p>
                 </div>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-gray-shadow"}`}>
                     <IoLogoVercel
                       size={26}
@@ -196,9 +196,9 @@ const Skills = () => {
             <div className=''>
               <h3 className={`pl-2.5 font-bold ${!darkMode && "text-[#241a07]"}`}>Languages & Others</h3>
 
-              <div className='flex gap-5 flex-wrap  text-sm pt-4'>
+              <div className='flex gap-1.5 flex-wrap text-sm pt-3'>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 l${darkMode && "light-yellow-shadow"}`}>
                     <FcIdea
                       size={26}
@@ -210,7 +210,7 @@ const Skills = () => {
                   </p>
                 </div>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-orange-shadow"}`}>
                     <RiEnglishInput
                       size={26}
@@ -222,7 +222,7 @@ const Skills = () => {
                   </p>
                 </div>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-gray-shadow"}`}>
                     <FaLanguage
                       size={26}
@@ -234,7 +234,7 @@ const Skills = () => {
                   </p>
                 </div>
 
-                <div className='flex flex-col items-center justify-start group w-[90px] h-[110px]'>
+                <div className='flex flex-col items-center justify-start group w-[90px] h-[100px]'>
                   <div className={`bg-primary-dark p-3 rounded-full transform transition duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${darkMode && "light-red-shadow"}`}>
                     <FaLanguage
                       size={26}
