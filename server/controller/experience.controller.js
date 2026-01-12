@@ -4,11 +4,27 @@ import experienceModel from "../models/experience.model.js"
 export const createExperienceDetails = async (request, response) => {
 
     try {
-        const { tittle, image, video, describe, other_link } = request.body || {}
+        const { tittle, institute, startDate, endDate, describe = [], tech_stack = [], github_link, view_certificate } = request.body || {}
 
-        if (!tittle || !describe) {
+        if (!tittle) {
             return response.status(400).json({
-                message: 'please provide title and description',
+                message: "Please provide title",
+                error: true,
+                success: false
+            })
+        }
+
+        if (!institute) {
+            return response.status(400).json({
+                message: "Please provide institution",
+                error: true,
+                success: false
+            })
+        }
+
+        if (!describe || !Array.isArray(describe) || describe.length < 1) {
+            return response.status(400).json({
+                message: "Please provide description",
                 error: true,
                 success: false
             })
@@ -16,16 +32,19 @@ export const createExperienceDetails = async (request, response) => {
 
         const payload = {
             tittle,
-            image,
-            video,
+            institute,
+            startDate,
+            endDate,
             describe,
-            other_link
+            tech_stack,
+            github_link,
+            view_certificate
         }
 
         const experience = new experienceModel(payload)
         const save = await experience.save()
 
-        const pushId = await allOfModel.findOneAndUpdate(
+        await allOfModel.findOneAndUpdate(
             {},
             {
                 $push: {
@@ -93,7 +112,7 @@ export const getExprienceDetails = async (request, response) => {
 export const upadateExperienceDetails = async (request, response) => {
 
     try {
-        const { experienceId, tittle, image, video, describe, other_link } = request.body || {}
+        const { experienceId, tittle, institute, startDate, endDate, describe = [], tech_stack = [], github_link, view_certificate } = request.body || {}
 
         if (!experienceId) {
             return response.status(400).json({
@@ -103,15 +122,43 @@ export const upadateExperienceDetails = async (request, response) => {
             })
         }
 
+        if (!tittle) {
+            return response.status(400).json({
+                message: "Title field can't be empty",
+                error: true,
+                success: false
+            })
+        }
 
-        const experienceUpdate = await experienceModel.findByIdAndUpdate(experienceId,
+        if (!institute) {
+            return response.status(400).json({
+                message: "Institute field can't be empty",
+                error: true,
+                success: false
+            })
+        }
+
+        if (!describe || !Array.isArray(describe) || describe.length < 1) {
+            return response.status(400).json({
+                message: "Describe field can't be empty",
+                error: true,
+                success: false
+            })
+        }
+
+        const experienceUpdate = await experienceModel.findByIdAndUpdate(
+            experienceId,
             {
                 ...(tittle && { tittle: tittle }),
-                ...(describe && { describe: describe }),
-                ...(other_link !== null && { other_link: other_link }),
-                ...(video !== null && { video: video }),
-                ...(image !== null && { image: image })
-            }
+                ...(describe && Array.isArray(describe) && { describe: describe }),
+                ...(institute && { institute: institute }),
+                startDate: startDate,
+                endDate: endDate,
+                tech_stack: tech_stack,
+                github_link: github_link,
+                view_certificate: view_certificate
+            },
+            { new: true }
         )
 
         if (!experienceUpdate) {
@@ -125,7 +172,8 @@ export const upadateExperienceDetails = async (request, response) => {
         return response.json({
             message: 'experience Successfully update',
             error: false,
-            success: true
+            success: true,
+            data : experienceUpdate
         })
     } catch (error) {
         return response.status(500).json({
@@ -170,13 +218,11 @@ export const deleteExperienecDetails = async (request, response) => {
             }
         )
 
-
         return response.json({
             message: 'experince deleted successfully',
             error: false,
             success: true
         })
-
 
     } catch (error) {
         return response.status(500).json({

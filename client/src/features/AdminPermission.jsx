@@ -7,7 +7,7 @@ const AdminPermission = ({ children }) => {
 
 
     return (
-        <div className='h-[calc(100vh-72px)] flex items-center justify-center mx-4'>
+        <div className={`h-[calc(100vh-72px)] ${!user?.admin_verify && "flex"} items-center justify-center mx-4`}>
             {
                 user?.admin_verify ? children : <p className='text-red-700 bg-red-200 border border-red-400 rounded-md p-4'>Do not have permission</p>
             }

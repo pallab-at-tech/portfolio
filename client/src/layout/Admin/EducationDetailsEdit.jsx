@@ -15,7 +15,7 @@ import ConfirmationBox from '../../utils/ConfirmationBox'
 const EducationDetailsEdit = () => {
 
     const alldata = useSelector(state => state.allofdetails)
-    const { fetchAllDetails } = useGlobalContext()
+    const { fetchAllDetails , darkMode } = useGlobalContext()
 
     const [openCreateWindow, setopenCreateWindow] = useState(false)
 
@@ -23,6 +23,7 @@ const EducationDetailsEdit = () => {
     const educationArr = alldata?.all_education || [];
     const total = educationArr?.length;
 
+    const [submitLoading, setSubmitLoading] = useState(false)
     const [confirmation, setConfirmation] = useState({
         confirm: false,
         closeWindow: false
@@ -114,6 +115,9 @@ const EducationDetailsEdit = () => {
     const handleOnSubmit = async (e) => {
         try {
             e.preventDefault()
+            if(submitLoading) return
+
+            setSubmitLoading(true)
 
             const response = await Axios({
                 ...SummaryApi.update_education_data,
@@ -139,9 +143,11 @@ const EducationDetailsEdit = () => {
                 fetchAllDetails()
             }
 
+            setSubmitLoading(false)
 
         } catch (error) {
-            // console.log(error)
+            setSubmitLoading(false)
+            toast.error(error?.response?.data?.message)
         }
 
 
@@ -175,7 +181,6 @@ const EducationDetailsEdit = () => {
         }
     }
 
-
     useEffect(() => {
 
         if (confirmation.confirm) {
@@ -190,9 +195,6 @@ const EducationDetailsEdit = () => {
         }
 
     }, [confirmation.confirm])
-
-    const { darkMode, setDarkMode } = useGlobalContext()
-
 
 
     return (
@@ -260,7 +262,6 @@ const EducationDetailsEdit = () => {
                             </div>
 
                         </div>
-
 
                         <form onSubmit={handleOnSubmit} className={`${darkMode ? "bg-[#1c1d1f]" : "bg-[#705c34a9]"} lg:min-w-[750px] lg:max-w-[750px] md:min-h-[500px] md:max-h-[800px] min-h-[500px]  max-h-[500px] scrollbar-custom overflow-y-auto p-6 rounded mt-6 grid gap-3 mb-4`}>
 
@@ -410,12 +411,12 @@ const EducationDetailsEdit = () => {
                             </div>
 
 
-                            <button className={`py-3 w-full ${darkMode ? "bg-terniary-dark  hover:bg-[#fc4503]  text-[#d1dcfb]" : "text-[#d1dcfb] bg-[#5d3509]  hover:bg-[#542f08]"}  mt-2 rounded  font-semibold`}>
+                            <button disabled={submitLoading} className={`py-3 w-full ${submitLoading ? "cursor-not-allowed" : "cursor-pointer"} ${darkMode ? "bg-terniary-dark  hover:bg-[#fc4503]  text-[#d1dcfb]" : "text-[#d1dcfb] bg-[#5d3509]  hover:bg-[#542f08]"}  mt-2 rounded  font-semibold`}>
                                 {
                                     tick ? (
                                         <TickMark />
                                     ) : (
-                                        <p>update</p>
+                                        <p>{submitLoading ? "Updating" : "Update"}</p>
                                     )
                                 }
                             </button>
@@ -424,6 +425,9 @@ const EducationDetailsEdit = () => {
 
                         <div className='flex items-center gap-1 mb-6 cursor-pointer pt-2'
                             onClick={() => {
+                                
+                                if(confirmation.confirm) return
+
                                 setConfirmation((prev) => {
                                     return {
                                         ...prev,

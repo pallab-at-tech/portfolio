@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux'
 import { useGlobalContext } from '../provider/GlobalProvider';
 import resume from "../assets/resume.pdf"
 import Footer from '../components/Footer';
+import Internship from './Internship';
 
 const Home = () => {
 
@@ -273,6 +274,7 @@ const Home = () => {
       </div>
 
       <Education />
+      <Internship/>
       <Projects />
 
       <div className=''>

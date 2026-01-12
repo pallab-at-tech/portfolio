@@ -84,6 +84,22 @@ const SummaryApi = {
     upadate_user_details : {
         url : "/api/user/update-user",
         method : "put"
+    },
+    experience_create : {
+        url : "/api/experience-data/experience-create",
+        method : "post"
+    },
+    get_experience : {
+        url : "/api/experience-data/experience-get-details",
+        method : "get"
+    },
+    experience_update : {
+        url : "/api/experience-data/experience-update",
+        method : "put"
+    },
+    experience_delete : {
+        url : "/api/experience-data/delete-experience",
+        method: "delete"
     }
 
 }

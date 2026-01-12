@@ -17,7 +17,7 @@ const CreateProjectDataWindow = ({ close }) => {
     const [videoLoading, setVideoLoading] = useState(false)
     const [imageLoading, setImageLoading] = useState(false)
 
-    const { fetchAllDetails } = useGlobalContext()
+    const { fetchAllDetails, darkMode } = useGlobalContext()
 
     const [data, setData] = useState({
         tittle: "",
@@ -125,7 +125,6 @@ const CreateProjectDataWindow = ({ close }) => {
         }
     }
 
-    const { darkMode } = useGlobalContext()
 
 
     return (

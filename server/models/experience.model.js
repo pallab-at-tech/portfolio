@@ -5,21 +5,35 @@ const experienceSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
-    image: [
+    institute: {
+        type: String,
+        default: ""
+    },
+    startDate: {
+        type: Date,
+        default: null
+    },
+    endDate: {
+        type: Date,
+        default: null
+    },
+    describe: [
         {
             type: String,
             default: ""
         }
     ],
-    video: {
+    tech_stack: [
+        {
+            type: String,
+            default: ""
+        }
+    ],
+    github_link: {
         type: String,
         default: ""
     },
-    other_link: {
-        type: String,
-        default: ""
-    },
-    describe: {
+    view_certificate: {
         type: String,
         default: ""
     }

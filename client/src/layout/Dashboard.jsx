@@ -107,11 +107,11 @@ const Dashboard = () => {
                                                 </NavLink>
 
 
-                                                <NavLink to={`${userUrl}/skillEdit`} className={({ isActive }) => {
+                                                <NavLink to={`${userUrl}/internEdit`} className={({ isActive }) => {
                                                     return isActive ? `${darkMode ? "bg-[#3d4150]" : "bg-[#7a5227] text-white"} rounded p-1 w-fit my-1` : 'my-1 w-fit p-1 transition hover:-translate-y-0.5 duration-300 scale-105'
                                                 }}
                                                 >
-                                                    Skill
+                                                    Experience
                                                 </NavLink>
 
                                                 <NavLink to={`${userUrl}/othersEdit`} className={({ isActive }) => {
@@ -137,7 +137,7 @@ const Dashboard = () => {
 
                 </div>
 
-                <div className={`h-[calc(100vh-72px)] lg:h-[calc(100vh-72px)`}>
+                <div className={`h-[calc(100vh-72px)]`}>
 
                     <Outlet />
 

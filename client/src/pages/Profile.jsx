@@ -222,11 +222,11 @@ const Profile = () => {
                                             </NavLink>
 
 
-                                            <NavLink to={`${userUrl}/skillEdit`} className={({ isActive }) => {
+                                            <NavLink to={`${userUrl}/internEdit`} className={({ isActive }) => {
                                                 return isActive ? 'bg-[#3d4150] rounded p-2 w-fit' : 'w-fit p-2 transition hover:-translate-y-0.5 duration-300 scale-105'
                                             }}
                                             >
-                                                Skill
+                                                Experience
                                             </NavLink>
 
                                             <NavLink to={`${userUrl}/othersEdit`} className={({ isActive }) => {

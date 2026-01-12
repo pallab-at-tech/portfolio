@@ -15,11 +15,11 @@ import Dashboard from '../layout/Dashboard'
 import Profile from '../pages/Profile'
 import ProjectDetailsEdit from '../layout/Admin/ProjectDetailsEdit'
 import EducationDetailsEdit from '../layout/Admin/EducationDetailsEdit'
-import SkillDetailsEdit from '../pages/SkillDetailsEdit'
 import OthersDetailsEdit from '../layout/Admin/OthersDetailsEdit'
 import AllOfDetailsEdit from "../layout/Admin/AllOfDetailsEdit"
 import OtherCertificate from '../pages/OtherCertificate'
 import AdminPermission from '../features/AdminPermission'
+import InternshipDetailsEdit from '../layout/Admin/InternshipDetailsEdit'
 
 const router = createBrowserRouter([
     {
@@ -91,8 +91,8 @@ const router = createBrowserRouter([
                         element: <AdminPermission><EducationDetailsEdit /></AdminPermission>
                     },
                     {
-                        path: "skillEdit",
-                        element: <AdminPermission><SkillDetailsEdit /></AdminPermission>
+                        path: "internEdit",
+                        element: <AdminPermission><InternshipDetailsEdit /></AdminPermission>
                     },
                     {
                         path: "othersEdit",
