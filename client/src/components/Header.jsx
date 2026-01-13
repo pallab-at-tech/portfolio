@@ -54,10 +54,12 @@ const Header = ({ isReady }) => {
     const projectElement = document.querySelector("#projectID")
     const skillElement = document.querySelector("#skillID")
     const contactElement = document.querySelector("#ContactID")
+    const internElement = document.querySelector("#internId")
 
-    if (!container || !homeElement || !educationElement || !projectElement || !skillElement || !contactElement) return;
+    if (!container || !homeElement || !educationElement || !projectElement || !skillElement || !contactElement || internElement) return;
 
     const educationTop = educationElement.getBoundingClientRect().top
+    const internTop = internElement.getBoundingClientRect().top
     const projectTop = projectElement.getBoundingClientRect().top
     const skillTop = skillElement.getBoundingClientRect().top
     const contactTop = contactElement.getBoundingClientRect().top
@@ -68,8 +70,11 @@ const Header = ({ isReady }) => {
       if (scrollTop < (educationTop - 73)) {
         setActiveSection("H-ID")
       }
-      else if (scrollTop < (projectTop - 73)) {
+      else if(scrollTop < (internTop - 73)){
         setActiveSection("E-ID")
+      }
+      else if (scrollTop < (projectTop - 73)) {
+        setActiveSection("In-ID")
       }
       else if (scrollTop < (skillTop - 73)) {
         setActiveSection("P-ID")
@@ -88,6 +93,24 @@ const Header = ({ isReady }) => {
       container.removeEventListener("scroll", handleScroll);
     };
   }, [isReady]);
+
+  /*
+  if (scrollTop < (educationTop - 73)) {
+        setActiveSection("H-ID")
+      }
+      else if (scrollTop < (projectTop - 73)) {
+        setActiveSection("E-ID")
+      }
+      else if (scrollTop < (skillTop - 73)) {
+        setActiveSection("P-ID")
+      }
+      else if (scrollTop < (contactTop - 300)) {
+        setActiveSection("S-ID")
+      }
+      else {
+        setActiveSection("C-ID")
+      }
+        */
 
   // header disappear when scroll bottom , appear when scroll top
   useEffect(() => {
@@ -160,6 +183,14 @@ const Header = ({ isReady }) => {
                 >
                   Education
                   {activeSection === "E-ID" && <ActiveUnderline />}
+                </div>
+
+                <div
+                  className={`cursor-pointer ${activeSection === "In-ID" && "active text-glow"}`}
+                  onClick={() => scrollTo("internId")}
+                >
+                  Experience
+                  {activeSection === "In-ID" && <ActiveUnderline />}
                 </div>
 
                 <div

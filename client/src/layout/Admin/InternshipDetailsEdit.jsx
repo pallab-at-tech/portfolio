@@ -102,6 +102,12 @@ const InternshipDetailsEdit = () => {
         }
     }
 
+    const formatDateForInput = (dateString) => {
+        if (!dateString || !dateString.trim('')) return "";
+        return new Date(dateString).toISOString().slice(0, 10);
+    };
+
+
     // internData initiate
     useEffect(() => {
         if (!alldata?.all_experience || !Array.isArray(alldata?.all_experience) || alldata?.all_experience?.length === 0) return
@@ -112,8 +118,8 @@ const InternshipDetailsEdit = () => {
             return {
                 tittle: arr?.tittle,
                 institute: arr?.institute,
-                startDate: arr?.startDate ? new Date(arr?.startDate) : "",
-                endDate: arr?.endDate ? new Date(arr?.endDate) : "",
+                startDate: arr?.startDate ? new Date(arr.startDate) : "",
+                endDate: arr?.endDate ? new Date(arr.endDate) : "",
                 describe: (arr?.describe && Array.isArray(arr?.describe) && arr?.describe?.length > 0) ? arr?.describe : [""],
                 tech_stack: arr?.tech_stack,
                 github_link: arr?.github_link,
@@ -139,8 +145,8 @@ const InternshipDetailsEdit = () => {
             return {
                 tittle: arr?.tittle,
                 institute: arr?.institute,
-                startDate: arr?.startDate ? new Date(arr?.startDate) : "",
-                endDate: arr?.endDate ? new Date(arr?.endDate) : "",
+                startDate: arr?.startDate ? formatDateForInput(arr?.startDate) : "",
+                endDate: arr?.endDate ? formatDateForInput(arr?.endDate) : "",
                 describe: (arr?.describe && Array.isArray(arr?.describe) && arr?.describe?.length > 0) ? arr?.describe : [""],
                 tech_stack: arr?.tech_stack,
                 github_link: arr?.github_link,
@@ -214,8 +220,8 @@ const InternshipDetailsEdit = () => {
     }
 
     // Delete experienece
-    useEffect(()=>{
-        if(confirmation.confirm){
+    useEffect(() => {
+        if (confirmation.confirm) {
             handleDelete()
 
             setConfirmation((preve) => {
@@ -225,7 +231,7 @@ const InternshipDetailsEdit = () => {
                 }
             })
         }
-    },[confirmation.confirm])
+    }, [confirmation.confirm])
 
     return (
         <section className={`h-[calc(100vh-72px)] overflow-y-auto hide-scrollbar sm:px-8 lg:px-14 mx-6 sm:mx-8 lg:pt-16 pt-10 ${darkMode ? "text-primary-text" : "text-[#020826]"}`}>
@@ -453,7 +459,7 @@ const InternshipDetailsEdit = () => {
                                     <option value="" disabled>Select tech</option>
 
                                     {
-                                       techList &&  techList.map((v, i) => {
+                                        techList && techList.map((v, i) => {
                                             return (
                                                 <option value={v}>{v}</option>
                                             )
@@ -540,7 +546,7 @@ const InternshipDetailsEdit = () => {
 
                         <div className='flex items-center gap-1 mb-6 cursor-pointer pt-2'
                             onClick={() => {
-                                if(confirmation.confirm) return
+                                if (confirmation.confirm) return
 
                                 setConfirmation((prev) => {
                                     return {

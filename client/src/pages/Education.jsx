@@ -24,7 +24,10 @@ const Education = () => {
           <div className={`${darkMode ? "text-primary-text" : "text-[#37290b]"} extra-font-style w-full flex justify-start items-center lg:px-20 sm:px-12 px-6 pb-5 pt-6 sm:pt-10`}>
 
             <div>
-              <p className={`font-bold text-2xl sm:text-3xl mb-4 ${darkMode ? "" : "text-[#171924]"}`} >Education</p>
+              <div>
+                <p className={`font-bold text-2xl sm:text-3xl ${darkMode ? "text-[#f54e2ced]" : "text-[#171924]"}`} >Education</p>
+                <p className={`lg:pl-1 pt-0.5 ${darkMode ? "text-[#c3c7cb]" : "text-[#241a07de]"} text-sm pb-10`}>My academic background and qualifications.</p>
+              </div>
 
               {
                 !allEduDetails ? (
@@ -79,7 +82,7 @@ const Education = () => {
         </div>
 
         <div className='lg:block hidden'>
-          <img src={eduPng} alt="" className='w-[360px]  mt-[50px] opacity-[70%]'/>
+          <img src={eduPng} alt="" className='w-[360px]  mt-[50px] opacity-[70%]' />
         </div>
 
       </div>

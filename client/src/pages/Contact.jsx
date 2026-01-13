@@ -56,7 +56,7 @@ const Contact = () => {
       <div id='ContactID'>
 
         <div className='pt-6'>
-          <h1 className={`font-bold text-2xl sm:text-3xl pb-4 ${!darkMode && "text-[#171924]"}`}>Contact me</h1>
+          <h1 className={`font-bold text-2xl sm:text-3xl pb-4 ${darkMode ? "text-[#f54e2ced]" : "text-[#171924]"}`}>Contact me</h1>
 
           <div className='flex flex-col md:flex-row items-start justify-between lg:gap-8 md:gap-10 gap-8'>
             <div className=''>

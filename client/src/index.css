@@ -137,16 +137,10 @@ body {
   border-bottom-right-radius: 50px;
 }
 
-/* decorate scroll bar */
-/* .scrollbar-none::-webkit-scrollbar{
-    display: none;
-} */
 
 .scrollbar-custom::-webkit-scrollbar {
   width: 8px;
   height: 10px;
-
-  /* display: none; */
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
@@ -700,4 +694,26 @@ body {
   100% {
     transform: rotate(0deg);
   }
+}
+
+.intern_dark_shadow {
+  box-shadow: inset 0px 2px 18px 9px rgba(49, 111, 183, 0.19);
+  transition-property: all;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+}
+
+.intern_dark_shadow:hover {
+  box-shadow: inset 0px 0px 20px rgba(11, 181, 238, 0.4), inset 0px 0px 12px rgba(255, 255, 255, 0.15);
+}
+
+.intern_light_shadow {
+  box-shadow: inset 0px 2px 20px 8px rgb(248 229 190 / 26%);
+  transition-property: all;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+}
+
+.intern_light_shadow:hover{
+  box-shadow: inset 0px 2px 20px 8px rgb(248 220 161 / 26%)
 }

@@ -84,9 +84,9 @@ const Home = () => {
 
                 <div className='flex lg:mt-6 md:mt-12 mt-9 items-center lg:gap-7 md:gap-10 gap-5'>
 
-                  <div onClick={() => downloadFileAtURL(resume)} className={`${darkMode ? "bg-[#0b258c] hover:bg-[#0b358f]" : "bg-[#900771] hover:bg-[#87066a] text-[#d3c6c6]"}  rounded flex items-center pl-0.5 cursor-pointer `}>
+                  <div onClick={() => downloadFileAtURL(resume)} className={`${darkMode ? "bg-[#0b258c] hover:bg-[#0b358f]" : "bg-[#900771] hover:bg-[#87066a] text-[#d3c6c6]"}  rounded flex gap-1 items-center px-2.5 py-1.5 cursor-pointer `}>
                     <IoMdDownload size={20} />
-                    <p className='text-base px-2 py-1.5'>Resume</p>
+                    <p className='text-base'>Resume</p>
                   </div>
 
                   <Link to={allOf.linkedin_link} className={`${darkMode ? "text-[#59b806] hover:shadow-[#59b806]/50" : "text-[#000000]"} p-1 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg rounded-md `}><FaLinkedin size={darkMode ? 25 : 28} /></Link>

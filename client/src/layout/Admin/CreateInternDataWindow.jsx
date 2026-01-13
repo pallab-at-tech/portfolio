@@ -136,6 +136,8 @@ const CreateInternDataWindow = ({ close }) => {
     }
 
 
+    // console.log("inrendata",internData)
+
     return (
         <section className={`fixed top-0 right-0 left-0 bottom-0 h-screen pt-[80px] backdrop-blur-[3px] ${darkMode ? "bg-neutral-900/70" : "bg-[#000000a9]/90"} z-50 flex items-center justify-center`}>
 
@@ -298,7 +300,7 @@ const CreateInternDataWindow = ({ close }) => {
                             ))
                         }
 
-                        <button
+                        <div
                             onClick={() => {
                                 setInternData((prev) => {
                                     return {
@@ -307,10 +309,10 @@ const CreateInternDataWindow = ({ close }) => {
                                     }
                                 })
                             }}
-                            className={`cursor-pointer ${darkMode ? "bg-yellow-700" : "bg-red-700"} text-white px-2.5 py-0.5 rounded`}
+                            className={`cursor-pointer w-fit ${darkMode ? "bg-yellow-700" : "bg-red-700"} text-white px-2.5 py-0.5 rounded`}
                         >
                             Add +
-                        </button>
+                        </div>
                     </div>
 
                     {/* tech_stack */}
