@@ -92,7 +92,7 @@ const Others = () => {
         <>
             <Header />
 
-            <section className={`h-screen  overflow-y-auto hide-scrollbar pt-[102px] p-8 ${darkMode ? "bg-primary-dark" : "card-bg-color-light"} text-primary-text lato-regular md:px-8 pt-[42px] lg:px-6 sm:px-6 px-2 relative`}>
+            <section className={`h-screen  overflow-y-auto hide-scrollbar pt-[102px] p-8 ${darkMode ? "bg-primary-dark" : "bg-[#dcb77b]"} text-primary-text lato-regular md:px-8 pt-[42px] lg:px-6 sm:px-6 px-2 relative`}>
 
                 <h1 className={`font-bold text-3xl flex items-center justify-center ${!darkMode && "text-[#000000]"}`}>Achievement</h1>
 
@@ -124,7 +124,7 @@ const Others = () => {
                                                    px-[18px] sm:px-6 sm:py-4 py-2.5
                                                     ${darkMode
                                                     ? "bg-[#38393d] shadow-[inset_1px_-1px_20px_12px_rgb(10,0,10,0.15))] border-2 border-[#1e252fac]"
-                                                    : "bg-[#e9d6b4ea] shadow-[inset_1px_-1px_20px_8px_rgb(255,165,22,0.36)] border-2 border-amber-600/60"}
+                                                    : "bg-[#ebd8b8] shadow-[inset_1px_-1px_20px_8px_rgb(240,180,68,0.36)] border-2 border-amber-500/30"}
                                                     rounded-xl overflow-hidden relative`}
                                         >
 
@@ -134,7 +134,7 @@ const Others = () => {
                                                         float-left sm:mr-5 mb-1 justify-self-center
                                                         ${darkMode
                                                         ? "from-[#33383ab6] to-[#42413fc3] border-gray-500"
-                                                        : "from-[#ecc89ef1] to-[#dbcba0] border-amber-600/60"} sm:mb-0 mb-3`}
+                                                        : "from-[#ecc89ef1] to-[#e7d4a0e2] border-amber-600/40"} sm:mb-0 mb-3`}
                                             >
                                                 <img
                                                     src={item.image}
@@ -197,15 +197,47 @@ const Others = () => {
                                         All Achievement
                                     </p>
 
-                                    <div>
-                                        {
-                                            otherData?.data?.map((v, i) => (
-                                                <div>
+                                    <div className="overflow-x-auto py-2 pl-2">
+                                        <div className="flex gap-4 px-1">
 
-                                                </div>
-                                            ))
-                                        }
+                                            {otherData?.data?.map((v, i) => (
+                                                <Link
+                                                    to={`/Others/${v?._id}`}
+                                                    key={v?._id}
+                                                    className={`w-[250px] shrink-0 rounded-xl transition-all duration-300
+                                                            hover:-translate-y-1 hover:shadow-lg
+                                                            ${darkMode
+                                                            ? "bg-[#38393d] border border-[#1e252fac]"
+                                                            : "bg-[#ebd3a5] border border-amber-600/60"}`
+                                                    }
+                                                >
+
+                                                    {/* IMAGE */}
+                                                    <div className="flex justify-center items-center p-3">
+                                                        <div className="w-full h-[160px] rounded-lg overflow-hidden bg-black/80">
+                                                            <img
+                                                                src={v?.image}
+                                                                className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
+                                                            />
+                                                        </div>
+                                                    </div>
+
+                                                    {/* TEXT */}
+                                                    <div className="px-3 pb-4">
+                                                        <h3
+                                                            className={`text-sm font-semibold leading-snug line-clamp-2
+                                                                ${darkMode ? "text-[#f4f1ed]" : "text-[#37290b]"}`}
+                                                        >
+                                                            {v?.tittle}
+                                                        </h3>
+                                                    </div>
+
+                                                </Link>
+                                            ))}
+
+                                        </div>
                                     </div>
+
                                 </div>
                             )
                         }
