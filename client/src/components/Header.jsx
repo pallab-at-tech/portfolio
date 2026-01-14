@@ -131,8 +131,6 @@ const Header = ({ isReady }) => {
     })
   }, [location.pathname])
 
-  console.log("location.pathname",location.pathname.split("/"))
-
 
   return (
     <header className={`h-[72px] ${headerAllowed ? "block" : "hidden"} ${(homeLocation && activeSection === "H-ID" && darkMode) && "background-image"} ${(!(homeLocation && activeSection === "H-ID") && (darkMode)) && "bg-primary-dark"} ${((homeLocation && activeSection === "H-ID") && (!darkMode)) && "bg-[#1b1300]"} ${(!(homeLocation && activeSection === "H-ID") && (!darkMode)) && "bg-[#2c2109]"} text-white w-full fixed ${showHeader ? "top-0" : "-top-[100px]"} z-50 transition-all duration-700 `}>

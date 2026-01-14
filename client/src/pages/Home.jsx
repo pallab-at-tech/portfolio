@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import pic from "../assets/profile_black_1.jpg"
 import { IoMdDownload } from "react-icons/io";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -20,7 +20,10 @@ import Internship from './Internship';
 const Home = () => {
 
   const allOf = useSelector(state => state.allofdetails)
-  const { darkMode, setDarkMode } = useGlobalContext();
+  const { darkMode } = useGlobalContext();
+
+  const [loaded, setLoaded] = useState(false)
+  const imgRef = useRef(null);
 
   const downloadFileAtURL = (url) => {
 
@@ -34,6 +37,12 @@ const Home = () => {
     aTag.remove()
 
   }
+
+  useEffect(() => {
+    if (imgRef.current?.complete) {
+      setLoaded(true);
+    }
+  }, []);
 
 
   return (
@@ -134,14 +143,23 @@ const Home = () => {
                   {/* Image layer */}
                   <div className={`relative rounded-2xl p-1.5 border ${darkMode ? "border-blue-800" : "border-[#92220690]"} overflow-hidden`}>
                     {/* Neon spotlight */}
-                    <div className={`absolute inset-0 rounded-2xl ${darkMode ? "neon-spotlight-dark" : "neon-spotlight-light"}`}></div>
+                    <div className={`${loaded ? "opacity-100" : "opacity-0"} absolute inset-0 rounded-2xl ${darkMode ? "neon-spotlight-dark" : "neon-spotlight-light"}`}></div>
 
                     {/* Image */}
                     <img
                       src={pic}
                       alt=""
-                      className="relative z-10 h-[28vh] sm:h-[29vh] w-full rounded-xl object-contain"
+                      ref={imgRef}
+                      onLoad={() => setLoaded(true)}
+                      fetchPriority='high'
+                      loading='eager'
+                      className={`relative z-10 h-[28vh] sm:h-[29vh] w-full rounded-xl object-contain
+                      transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
                     />
+
+                    {!loaded && (
+                      <div className={`absolute inset-0 animate-pulse  ${darkMode ? "background-image" : "background-image-light"} rounded-xl`} />
+                    )}
                   </div>
 
                   {/* social media section */}
@@ -257,8 +275,8 @@ const Home = () => {
                 </div>
 
                 <div className='flex items-center justify-center sm:my-3 text-[#5e5b5b] animate-float'>
-                  <LuChevronsDown size={32} className='hidden sm:block'/>
-                  <LuChevronsDown size={22} className='block sm:hidden'/>
+                  <LuChevronsDown size={32} className='hidden sm:block' />
+                  <LuChevronsDown size={22} className='block sm:hidden' />
                 </div>
 
               </div>
@@ -274,7 +292,7 @@ const Home = () => {
       </div>
 
       <Education />
-      <Internship/>
+      <Internship />
       <Projects />
 
       <div className=''>

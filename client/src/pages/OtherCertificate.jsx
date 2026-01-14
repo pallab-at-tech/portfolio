@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams, useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
-import { FaHome } from 'react-icons/fa'
 import { useGlobalContext } from '../provider/GlobalProvider'
 import Header from '../components/Header'
 
 const OtherCertificate = () => {
 
     const params = useParams()
-    const location = useLocation()
     const [data, setData] = useState()
-
 
     useEffect(() => {
 

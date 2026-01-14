@@ -83,11 +83,6 @@ const Others = () => {
     }, [allOf?.all_certificate]);
 
 
-    console.log("allOf.all_certificate", allOf.all_certificate)
-    console.log("otherData", otherData)
-
-
-
     return (
         <>
             <Header />
