@@ -1,20 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { FaHome } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
 import { useDispatch } from 'react-redux';
 import { OthersDetails } from '../store/otherSlice';
-import AxiosTostError from '../utils/AxiosToastError';
 import { OthersDetailspro } from '../store/OtherScrollData';
 import { useGlobalContext } from '../provider/GlobalProvider';
+import Header from '../components/Header';
 
 const Others = () => {
 
     // Recall last page , or recent page....
     const otherData = useSelector(state => state.otherscroll)
     const allOf = useSelector(state => state.allofdetails)
+
+    const { darkMode } = useGlobalContext();
+
     const dispatch = useDispatch()
     const scrollRef = useRef(null)
 
@@ -23,9 +25,12 @@ const Others = () => {
         page: 1,
         totalNoOfPage: otherData?.totalNoOfPage
     })
+
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const fetchOtherData = async () => {
+
+        if (pagination.page === null || pagination.limit === null) return
 
         try {
             const response = await Axios({
@@ -49,174 +54,167 @@ const Others = () => {
             }
 
         } catch (error) {
-            AxiosTostError(error)
+            console.log("response error", error)
         }
     }
 
     useEffect(() => {
+        if (pagination.page === null || pagination.limit === null) return
         fetchOtherData()
     }, [pagination.limit, pagination.page])
 
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) =>
-                (prevIndex + 1) % allOf.all_certificate.length
-            );
-        }, 6000);
-
-        return () => clearInterval(interval);
-    }, [allOf.all_certificate?.length]);
-
-
-    useEffect(() => {
-
-        const handleScroll = async () => {
-            const element = scrollRef.current
-
-            if (!element) return;
-            const { scrollLeft, scrollWidth, clientWidth } = element;
-
-            if (scrollLeft + clientWidth >= scrollWidth - 10) {
-
-                setPagination((preve) => {
-                    if (preve.page < preve.totalNoOfPage) {
-                        return {
-                            ...preve,
-                            page: preve.page + 1
-                        }
-                    }
-                    else {
-                        return preve
-                    }
-                })
-            }
+        if (!Array.isArray(allOf?.all_certificate) || allOf.all_certificate.length === 0) {
+            return;
         }
 
-        const element = scrollRef.current;
+        // ✅ Set immediately on data load
+        setCurrentIndex(0);
 
-        if (element) {
-            element.addEventListener('scroll', handleScroll)
-        }
+        const timer = setInterval(() => {
+            setCurrentIndex((prevIndex) => {
+                const nextIndex = (prevIndex + 1) % allOf.all_certificate.length;
+                return nextIndex;
+            });
+        }, 8000);
 
-        return () => {
-            if (element) {
-                element.removeEventListener("scroll", handleScroll)
-            }
-        }
-
-    }, [pagination.totalNoOfPage])
-
-    const { darkMode, setDarkMode } = useGlobalContext();
+        return () => clearInterval(timer);
+    }, [allOf?.all_certificate]);
 
 
-    // #000000 black card-bg-color-light
+    console.log("allOf.all_certificate", allOf.all_certificate)
+    console.log("otherData", otherData)
+
+
 
     return (
-        <section className={`min-h-[100vh] ${darkMode ? "bg-primary-dark" : "card-bg-color-light"} text-primary-text lato-regular md:px-14 pt-[42px] lg:px-6 px-2 relative`}>
+        <>
+            <Header />
 
-            <h1 className={`font-bold text-2xl flex items-center justify-center ${!darkMode && "text-[#000000] font-bold"}`}>Achievement</h1>
+            <section className={`h-screen  overflow-y-auto hide-scrollbar pt-[102px] p-8 ${darkMode ? "bg-primary-dark" : "card-bg-color-light"} text-primary-text lato-regular md:px-8 pt-[42px] lg:px-6 sm:px-6 px-2 relative`}>
 
+                <h1 className={`font-bold text-3xl flex items-center justify-center ${!darkMode && "text-[#000000]"}`}>Achievement</h1>
 
-            <div className='w-full '>
+                <div className='w-full '>
 
-                <div className={` ${!darkMode && "text-[#000000]"} flex items-center justify-start pl-[6%] relative bottom-10`}>
-                    <Link to={"/"} className='w-fit'>
-                        <div className={`ml-4 `}>
-                            <FaHome size={28} />
-                        </div>
-                        <p className='ml-2 font-bold'>Home</p>
-                    </Link>
-                </div>
-
-
-
-                {/* here recent one */}
-                <div className='mx-auto container lg:max-w-[1280px] max-w-[995px] -mt-2 md:px-0 px-4'>
-
-                    <p className={`font-semibold text-xl my-1 pl-2 ${!darkMode && "text-[#a90707]"}`}>Most recently..</p>
-
-                    <div className='lg:max-w-[1280px] max-w-[995px] flex overflow-x-auto scrollbar-hidden  no-interaction'>
-
+                    <div className='mt-4'>
                         {
-                            allOf.all_certificate.map((v, i) => {
-                                return (
-                                    <Link to={`/Others/${v._id}`} key={`${v._id} - ${i}`} className={`min-w-full max-w-full  shrink-0 ${darkMode ? "bg-[#2b2b2b] shadow-[inset_0_0_12px_rgba(255,245,200,0.15),inset_0_0_6px_rgba(255,255,255,0.05)]" : "card-other-section-light"} p-3 rounded box-border my-4 transition-transform duration-700 ease-in-out`}
+                            allOf?.all_certificate && Array.isArray(allOf?.all_certificate) && allOf?.all_certificate?.length > 0 && (
+                                <p className={`font-bold text-2xl my-1 pl-6 ${darkMode ? "text-[#f9431fed]" : "text-[#171924]"}`}>Most recently..</p>
+                            )
+                        }
 
-                                        style={{
-                                            transform: `translateX(-${currentIndex * 100}%)`,
-                                            width: `${(allOf.all_certificate?.length || 1) * 100}%`,
-                                        }}
+                        <div className="overflow-hidden w-full p-3 sm:p-4 lg:p-6">
+                            <div
+                                className="flex transition-transform duration-700 ease-in-out"
+                                style={{
+                                    transform: `translateX(-${currentIndex * 100}%)`,
+                                    width: `${allOf?.all_certificate.length * 100}%`,
+                                }}
+                            >
+                                {allOf.all_certificate.map((item) => (
+                                    <Link
+                                        key={item._id}
+                                        to={`/Others/${item._id}`}
+                                        className="w-full shrink-0"
                                     >
+                                        <div
+                                            className={`w-full max-w-[calc(100vw-38px)] sm:max-w-[calc(100vw-70px)] md:max-w-[calc(100vw-100px)]
+                                                   px-[18px] sm:px-6 sm:py-4 py-2.5
+                                                    ${darkMode
+                                                    ? "bg-[#38393d] shadow-[inset_1px_-1px_20px_12px_rgb(10,0,10,0.15))] border-2 border-[#1e252fac]"
+                                                    : "bg-[#e9d6b4ea] shadow-[inset_1px_-1px_20px_8px_rgb(255,165,22,0.36)] border-2 border-amber-600/60"}
+                                                    rounded-xl overflow-hidden relative`}
+                                        >
 
-                                        <div className='grid lg:grid-cols-[550px_1fr] md:grid-cols-[420px_1fr] lg:gap-0 md:gap-6 grid-row-2 gap-4 md:items-center lg:items-start md:justify-center lg:p-6 p-4'>
-
-                                            <div className=''>
+                                            {/* IMAGE (FLOATING) */}
+                                            <div
+                                                className={`mt-2 rounded-2xl w-fit h-fit overflow-hidden bg-gradient-to-br border p-3 sm:p-4
+                                                        float-left sm:mr-5 mb-1 justify-self-center
+                                                        ${darkMode
+                                                        ? "from-[#33383ab6] to-[#42413fc3] border-gray-500"
+                                                        : "from-[#ecc89ef1] to-[#dbcba0] border-amber-600/60"} sm:mb-0 mb-3`}
+                                            >
                                                 <img
-                                                    src={v.image}
-                                                    alt=''
-                                                    className='w-full lg:h-[350px] md:h-[320px] h-[180px] object-contain rounded px-2 pr-2'
+                                                    src={item.image}
+                                                    alt=""
+                                                    className="w-full sm:max-h-[180px] lg:max-h-[250px] object-contain rounded-2xl"
                                                 />
                                             </div>
 
-                                            <div className=''>
-                                                <h1 className='font-semibold text-lg md:pb-4 lg:line-clamp-none md:line-clamp-[11] text-amber-300'>{v.tittle}</h1>
-                                                <pre className="text-sm lato-regular text-white whitespace-pre-wrap lg:block hidden">{v.describe}</pre>
+                                            {/* TEXT */}
+                                            <div className="text-justify">
+                                                <h1
+                                                    className={`font-semibold text-lg sm:text-xl leading-[1.3] mb-2
+                                                    ${darkMode ? "text-[#ed770f]" : "text-amber-700"}`}
+                                                >
+                                                    {item.tittle}
+                                                </h1>
+
+                                                <p
+                                                    className={`text-[15px] font-semibold leading-relaxed xl:block hidden
+                                                    ${darkMode ? "text-[#f4f1ed]" : "text-[#472f0b]"}`}
+                                                >
+                                                    {item?.describe && `${item.describe?.slice(0, 1400)}`}
+                                                    {item?.describe && item.describe?.length > 1400 && "......"}
+                                                </p>
+
+                                                <p
+                                                    className={`text-[15px] font-semibold leading-relaxed lg:block hidden xl:hidden
+                                                    ${darkMode ? "text-[#f4f1ed]" : "text-[#472f0b]"}`}
+                                                >
+                                                    {item?.describe && `${item?.describe.slice(0, 800)}`}
+                                                    {item?.describe && item.describe?.length > 800 && "......"}
+                                                </p>
+
+                                                <p
+                                                    className={`text-[15px] font-semibold leading-relaxed hidden sm:block lg:hidden
+                                                    ${darkMode ? "text-[#f4f1ed]" : "text-[#472f0b]"}`}
+                                                >
+                                                    {item?.describe && `${item?.describe.slice(0, 500)}`}
+                                                    {item?.describe && item?.describe.length > 500 && "......"}
+                                                </p>
+
                                             </div>
 
                                         </div>
 
                                     </Link>
-                                )
-                            })
-                        }
+                                ))}
+                            </div>
+                        </div>
 
                     </div>
 
-                </div>
+                    <div className='mb-4'>
+                        {
+                            otherData?.data && Array.isArray(otherData?.data) && otherData?.data?.length > 0 && (
+                                <div
+                                    className=''
+                                >
+                                    <p className={`font-bold text-2xl my-1 pl-6 ${darkMode ? "text-[#f9431fed]" : "text-[#171924]"}`}>
+                                        All Achievement
+                                    </p>
 
+                                    <div>
+                                        {
+                                            otherData?.data?.map((v, i) => (
+                                                <div>
 
-                {/* some tittle */}
-
-                <div className='mx-auto container lg:max-w-[1280px] max-w-[995px] py-6'>
-
-                    <p className={`font-semibold text-xl mt-4 pl-6 ${!darkMode && "text-[#a90707]"}`}>Others..</p>
-
-                    <div className='lg:max-w-[1280px]  max-w-[995px] overflow-x-auto flex  gap-6 px-6 py-4 scroll-smooth scrollbar-custom' ref={scrollRef}>
-
-
-                        {otherData?.data?.map((val, idx) => (
-                            <Link to={`/Others/${val._id}`}
-                                key={`${val._id} + ${idx}`}
-                                className={`min-w-[300px] max-w-[300px] shrink-0  ${darkMode ? "bg-[#2b2b2b] shadow-md hover:shadow-[inset_0_0_16px_rgba(255,230,120,0.18),inset_0_0_8px_rgba(255,230,120,0.1)]" : "card-other-small-section-light"}  p-3 rounded   transition-shadow duration-400`}
-                            >
-                                <h1 className='line-clamp-2 font-semibold'>{val.tittle}</h1>
-                                <Link to={`/Others/${val._id}`} className='text-sm text-blue-400 hover:underline'>know more</Link>
-                                <div className='mt-2'>
-                                    <img
-                                        src={val.image}
-                                        alt=''
-                                        className='w-full h-[180px] object-cover rounded'
-                                    />
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
                                 </div>
-                            </Link>
-                        ))}
-
-
+                            )
+                        }
                     </div>
-
 
                 </div>
 
-
-            </div>
-
-            {/* <div className=' pb-4'>
-                <Footer />
-            </div> */}
-
-
-        </section>
+            </section>
+        </>
     )
 }
 

@@ -16,7 +16,7 @@ const Contact = () => {
   const formSubmit = useRef()
   const [tick, setTick] = useState(true)
   const [loaderforEmailSend, setLoaderforEmailSend] = useState(false)
-  const { darkMode, setDarkMode } = useGlobalContext();
+  const { darkMode } = useGlobalContext();
 
   useEffect(() => {
     if (!tick) return;

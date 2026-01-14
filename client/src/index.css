@@ -717,3 +717,7 @@ body {
 .intern_light_shadow:hover{
   box-shadow: inset 0px 2px 20px 8px rgb(248 220 161 / 26%)
 }
+
+.image_pos {
+  float: left;
+}
