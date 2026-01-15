@@ -60,7 +60,7 @@ const Contact = () => {
 
           <div className='flex flex-col md:flex-row items-start justify-between lg:gap-8 md:gap-10 gap-8'>
             <div className=''>
-              <h2 className={`font-bold text-xl pb-3 ${!darkMode && "text-[#ad2007]"}`}>Get in touch</h2>
+              <h2 className={`font-bold text-xl pb-3 ${darkMode ? "text-gray-200" : "text-[#ad2007]"}`}>Get in touch</h2>
 
               <div className='flex flex-col gap-3'>
 

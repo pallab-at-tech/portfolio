@@ -12,11 +12,11 @@ const Skills = () => {
   const { darkMode } = useGlobalContext()
 
   return (
-    <section className={`${darkMode ? "bg-primary-black" : "bg-[#e9d6b4] rounded"} text-primary-text extra-font-style lg:px-20 sm:px-12 px-8 pb-5 pt-6 sm:pt-6 relative`}>
+    <section className={`${darkMode ? "bg-primary-black" : "bg-[#e9d6b4] rounded"} text-primary-text extra-font-style lg:px-20 sm:px-12 px-8 sm:pb-5 pt-6 sm:pt-6 relative`}>
 
       <div id='skillID'>
         <h1 className={`font-bold text-2xl sm:text-3xl lg:pl-1 ${darkMode ? "text-[#f54e2ced]" : "text-[#171924]"}`}>My Skills</h1>
-        <p className={`lg:pl-1 pt-0.5 ${darkMode ? "text-[#c3c7cb]" : "text-[#241a07de]"} text-sm pb-8`}>Technology and tools i have work with throughout my projects and experience.</p>
+        <p className={`lg:pl-1 pt-0.5 ${darkMode ? "text-[#d0d0d0e5]" : "text-[#241a07de]"} text-sm pb-8`}>Technology and tools i have work with throughout my projects and experience.</p>
 
         <div className='lg:pl-1 '>
 

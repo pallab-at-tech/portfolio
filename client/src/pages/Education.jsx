@@ -26,7 +26,7 @@ const Education = () => {
             <div>
               <div>
                 <p className={`font-bold text-2xl sm:text-3xl ${darkMode ? "text-[#f54e2ced]" : "text-[#171924]"}`} >Education</p>
-                <p className={`lg:pl-1 pt-0.5 mb-4 ${darkMode ? "text-[#c3c7cb]" : "text-[#241a07c2]"} text-sm pb-0 lg:pb-8 leading-[1.3]`}>My academic background and qualifications.</p>
+                <p className={`lg:pl-1 pt-0.5 mb-4 ${darkMode ? "text-[#d0d0d0e5]" : "text-[#241a07c2]"} text-sm pb-0 lg:pb-4 leading-[1.3]`}>My academic background.</p>
               </div>
 
               {

@@ -16,7 +16,7 @@ const Projects = () => {
       <div id='projectID'>
 
         <p className={`font-bold text-2xl sm:text-3xl sm:pl-1 ${darkMode ? "text-[#f54e2ced]" : "text-[#241a07de]"}`}>Project ShowCase</p>
-        <p className={`lg:pl-1 pt-0.5 ${darkMode ? "text-[#c3c7cb]" : "text-[#241a07]"} text-sm pb-6`}>A collection of projects that demonstrate my skills, problem-solving approach, and hands-on experience.</p>
+        <p className={`lg:pl-1 pt-0.5 ${darkMode ? "text-[#d0d0d0e5]" : "text-[#241a07]"} text-sm pb-6`}>A collection of projects that demonstrate my skills, problem-solving approach, and hands-on experience.</p>
 
         <div className='w-full'>
 

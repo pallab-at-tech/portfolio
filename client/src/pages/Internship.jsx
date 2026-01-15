@@ -19,7 +19,7 @@ const Internship = () => {
     return (
         <section
             className={`
-                ${darkMode ? "bg-primary-black text-primary-text" : "bg-[#e9d6b4] text-[#37290b]"} extra-font-style lg:px-20 sm:px-12 px-6 py-5 sm:py-12
+                ${darkMode ? "bg-primary-black text-primary-text" : "bg-[#e9d6b4] text-[#37290b]"} extra-font-style lg:px-20 sm:px-12 px-6 py-5 sm:py-7
             `}
         >
             <div id="internId">
@@ -27,7 +27,7 @@ const Internship = () => {
                     <p className={`font-bold text-2xl sm:text-3xl sm:pl-1 ${darkMode ? "text-[#f54e2ced] " : "text-[#171924]"}`}>
                         Work Experience
                     </p>
-                    <p className={`lg:pl-1.5 pt-0.5 mb-6 ${darkMode ? "text-[#c3c7cb]" : "text-[#241a07de]"} text-sm pb-0 lg:pb-8`}>Here is a quick rundown of my most recent experience.</p>
+                    <p className={`lg:pl-1.5 pt-0.5 mb-6 ${darkMode ? "text-[#d0d0d0e5]" : "text-[#241a07de]"} text-sm pb-0 lg:pb-8`}>Here is a quick rundown of my most recent experience.</p>
                 </div>
 
                 <div className="relative">
