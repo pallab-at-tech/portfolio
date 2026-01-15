@@ -13,7 +13,7 @@ import Skills from './Skills';
 import Contact from './Contact';
 import { useSelector } from 'react-redux'
 import { useGlobalContext } from '../provider/GlobalProvider';
-import resume from "../assets/resume.pdf"
+import resume from "../assets/Perfect_resume.pdf"
 import Footer from '../components/Footer';
 import Internship from './Internship';
 
