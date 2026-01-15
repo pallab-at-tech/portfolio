@@ -58,7 +58,7 @@ const Others = () => {
 
         } catch (error) {
             setLoading(false)
-            console.log("response error", error)
+            // console.log("response error", error)
         }
     }
 
@@ -86,6 +86,9 @@ const Others = () => {
         return () => clearInterval(timer);
     }, [allOf?.all_certificate]);
 
+
+    console.log("allOf?.all_certificate",allOf?.all_certificate)
+    console.log("otherData?.data",otherData?.data)
 
     return (
         <>
