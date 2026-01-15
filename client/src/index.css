@@ -612,10 +612,10 @@ body {
   pointer-events: none;
   background: conic-gradient(from 0deg,
       transparent 0deg,
-      rgba(18, 55, 114, 0.9) 40deg,
+      rgba(0, 40, 104, 0.982) 40deg,
       transparent 80deg,
       transparent 180deg,
-      rgba(14, 50, 107, 0.9) 220deg,
+      rgb(14, 50, 107) 220deg,
       transparent 260deg);
   filter: blur(18px);
   animation: rotateGlow 6s linear infinite;
@@ -625,10 +625,10 @@ body {
   pointer-events: none;
   background: conic-gradient(from 0deg,
       transparent 0deg,
-      #641402 50deg,
+      #640d00 50deg,
       transparent 90deg,
       transparent 180deg,
-      #641402 220deg,
+      #640d00 220deg,
       transparent 260deg);
   filter: blur(18px);
   animation: rotateGlow 6s linear infinite;
