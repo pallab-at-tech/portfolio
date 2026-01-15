@@ -89,7 +89,7 @@ export const getCertificateDetails = async (request, response) => {
 
 
         const [data, dataCount] = await Promise.all([
-            certificateModel.find(query).sort({ createdAt: 1 }).skip(skip).limit(limit),
+            certificateModel.find(query).sort({ createdAt: 1 }),
             certificateModel.countDocuments(query)
         ])
 
