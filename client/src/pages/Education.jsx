@@ -45,10 +45,10 @@ const Education = () => {
 
                             <div className='text-lg sm:text-[20px] pb-2 sm:pb-2.5 flex gap-2 sm:gap-2.5 items-center'>
                               <div className={`p-1 bg-[#5a5a5a3a] rounded-md hover:text-[#070707] ${darkMode && "hover:bg-[#9b9a9a]"} hover:scale-110 md:block hidden`}><IoSchoolOutline /></div>
-                              <p className={`font-bold text-lg ${!darkMode && "text-[#a73030] leading-[1.2]"}`}>{`${val?.institute_name} , ${val?.location}`}</p>
+                              <p className={`font-bold text-lg ${darkMode ? "text-[#0ba869] text-shadow-[0px_0px_4px_rgb(21,109,255,0.36)]" : "text-[#a73030] leading-[1.2]"}`}>{`${val?.institute_name} , ${val?.location}`}</p>
                             </div>
 
-                            <div className={`text-[15px] sm:text-[17px] ${darkMode ? "text-[#a5a5a5]" : "text-[#5d5241] font-semibold"} leading-tight`}>
+                            <div className={`text-[15px] sm:text-[17px] ${darkMode ? "text-[#bbb9b9]" : "text-[#5d5241] font-semibold"} leading-tight`}>
 
                               <ul className='list-disc md:pl-6 pl-5 flex flex-col gap-2.5 sm:gap-3 lg:gap-4 '>
                                 {
@@ -57,7 +57,7 @@ const Education = () => {
                                     return (
                                       <li key={`innnerval-${val?._id}-${innerIdx}`} className='lg:ml-6 space-y-1.5'>
                                         <p className={`text-[16px] sm:text-[17px] leading-[1.2]`}>{`${innerVal?.level} , ${innerVal?.stream}`}</p>
-                                        <p className={`text-[13px] sm:text-[15px] ${darkMode ? "text-[#747573b6]" : "text-[#796b54d2]"}`}>{`${innerVal?.startDate} - ${innerVal?.endDate} , ${innerVal?.typeOfScore === "CGPA" ? "CGPA : " + innerVal?.score : "Score :" + innerVal?.score}`}</p>
+                                        <p className={`text-[13px] sm:text-[15px] ${darkMode ? "text-[#747573e0]" : "text-[#796b54d2]"}`}>{`${innerVal?.startDate} - ${innerVal?.endDate} , ${innerVal?.typeOfScore === "CGPA" ? "CGPA : " + innerVal?.score : "Score : " + innerVal?.score}`}</p>
                                       </li>
                                     )
 
