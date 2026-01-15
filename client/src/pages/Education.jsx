@@ -9,7 +9,7 @@ const Education = () => {
 
   const allOf = useSelector(state => state.allofdetails)
   const allEduDetails = allOf?.all_education
-  const { darkMode, setDarkMode } = useGlobalContext();
+  const { darkMode } = useGlobalContext();
 
 
   return (
@@ -21,12 +21,12 @@ const Education = () => {
 
         <div>
 
-          <div className={`${darkMode ? "text-primary-text" : "text-[#37290b]"} extra-font-style w-full flex justify-start items-center lg:px-20 sm:px-12 px-6 pb-5 pt-6 sm:pt-10`}>
+          <div className={`${darkMode ? "text-primary-text" : "text-[#37290b]"} extra-font-style w-full flex justify-start items-center lg:px-20 sm:px-12 px-6 pb-0 pt-6 sm:pt-10`}>
 
             <div>
               <div>
                 <p className={`font-bold text-2xl sm:text-3xl ${darkMode ? "text-[#f54e2ced]" : "text-[#171924]"}`} >Education</p>
-                <p className={`lg:pl-1 pt-0.5 ${darkMode ? "text-[#c3c7cb]" : "text-[#241a07de]"} text-sm pb-10`}>My academic background and qualifications.</p>
+                <p className={`lg:pl-1 pt-0.5 mb-4 ${darkMode ? "text-[#c3c7cb]" : "text-[#241a07c2]"} text-sm pb-0 lg:pb-8 leading-[1.3]`}>My academic background and qualifications.</p>
               </div>
 
               {
@@ -41,23 +41,23 @@ const Education = () => {
                     {
                       allEduDetails.map((val, idx) => {
                         return (
-                          <div key={`edu-details-${idx}`} className='tracking-wide pb-4'>
+                          <div key={`edu-details-${idx}`} className='tracking-wide pb-4 text-justify'>
 
                             <div className='text-lg sm:text-[20px] pb-2 sm:pb-2.5 flex gap-2 sm:gap-2.5 items-center'>
                               <div className={`p-1 bg-[#5a5a5a3a] rounded-md hover:text-[#070707] ${darkMode && "hover:bg-[#9b9a9a]"} hover:scale-110 md:block hidden`}><IoSchoolOutline /></div>
-                              <p className={`font-bold ${!darkMode && "text-[#ab2929] leading-[1.2]"}`}>{`${val?.institute_name} , ${val?.location}`}</p>
+                              <p className={`font-bold text-lg ${!darkMode && "text-[#a73030] leading-[1.2]"}`}>{`${val?.institute_name} , ${val?.location}`}</p>
                             </div>
 
-                            <div className={`text-[15px] sm:text-[17px] ${darkMode ? "text-[#747573]" : "text-[#796b54] font-semibold"} leading-tight`}>
+                            <div className={`text-[15px] sm:text-[17px] ${darkMode ? "text-[#a5a5a5]" : "text-[#5d5241] font-semibold"} leading-tight`}>
 
                               <ul className='list-disc md:pl-6 pl-5 flex flex-col gap-2.5 sm:gap-3 lg:gap-4 '>
                                 {
                                   allEduDetails[idx]?.qualification?.map((innerVal, innerIdx) => {
 
                                     return (
-                                      <li key={`innnerval-${val?._id}-${innerIdx}`} className='lg:ml-6 '>
-                                        <p>{`${innerVal?.level} , ${innerVal?.stream}`}</p>
-                                        <p>{`${innerVal?.startDate} - ${innerVal?.endDate} , ${innerVal?.typeOfScore === "CGPA" ? "CGPA : " + innerVal?.score : "Score :" + innerVal?.score}`}</p>
+                                      <li key={`innnerval-${val?._id}-${innerIdx}`} className='lg:ml-6 space-y-1.5'>
+                                        <p className={`text-[16px] sm:text-[17px] leading-[1.2]`}>{`${innerVal?.level} , ${innerVal?.stream}`}</p>
+                                        <p className={`text-[13px] sm:text-[15px] ${darkMode ? "text-[#747573b6]" : "text-[#796b54d2]"}`}>{`${innerVal?.startDate} - ${innerVal?.endDate} , ${innerVal?.typeOfScore === "CGPA" ? "CGPA : " + innerVal?.score : "Score :" + innerVal?.score}`}</p>
                                       </li>
                                     )
 
