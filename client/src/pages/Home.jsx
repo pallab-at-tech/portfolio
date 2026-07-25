@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, lazy } from 'react'
 import pic from "../assets/profile_black_1.jpg"
 import { IoMdDownload } from "react-icons/io";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -16,6 +16,20 @@ import { useGlobalContext } from '../provider/GlobalProvider';
 import resume from "../assets/Perfect_resume.pdf"
 import Footer from '../components/Footer';
 import Internship from './Internship';
+import SmallLoader from '../utils/SmallLoader';
+
+const downloadFileAtURL = (url) => {
+
+  const fileName = "MyResume.pdf"
+
+  const aTag = document.createElement('a')
+  aTag.href = url
+  aTag.setAttribute('download', fileName)
+  document.body.appendChild(aTag)
+  aTag.click()
+  aTag.remove()
+
+}
 
 const Home = () => {
 
@@ -25,24 +39,25 @@ const Home = () => {
   const [loaded, setLoaded] = useState(false)
   const imgRef = useRef(null);
 
-  const downloadFileAtURL = (url) => {
-
-    const fileName = "MyResume.pdf"
-
-    const aTag = document.createElement('a')
-    aTag.href = url
-    aTag.setAttribute('download', fileName)
-    document.body.appendChild(aTag)
-    aTag.click()
-    aTag.remove()
-
-  }
-
   useEffect(() => {
-    if (imgRef.current?.complete) {
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) {
       setLoaded(true);
     }
   }, []);
+
+  useEffect(() => {
+    const img = new Image();
+
+    img.src = pic;
+
+    img.onload = () => {
+      setLoaded(true);
+    };
+
+    img.onerror = () => {
+      console.error("Failed to load image");
+    };
+  }, [pic]);
 
 
   return (
@@ -64,12 +79,18 @@ const Home = () => {
 
             <div className='items-center justify-center p-3 mt-14 pl-16 flex'>
 
-              <div className={`${darkMode ? "outer-box" : "outer-box-light"}`}>
+              <div className={`${!loaded ? "" : darkMode ? "outer-box" : "outer-box-light"}`}>
 
                 <div className={`${darkMode ? "card" : "card-light"}`}>
-
-                  <img src={pic} alt="" className='w-[220px] h-[254px] rounded-[40px]' />
-
+                  {
+                    loaded ? (
+                      <img src={pic} alt="" className='w-[220px] h-[254px] rounded-[40px]' />
+                    ) : (
+                      <div className={`h-[28vh] sm:h-[29vh] w-[36vw] sm:w-[28vw] text-xl sm:text-2xl ${darkMode ? "text-blue-600" : "text-[#922206fd]"} animate-pulse flex items-center justify-center`}>
+                        Loading...
+                      </div>
+                    )
+                  }
                 </div>
 
               </div>
@@ -150,16 +171,22 @@ const Home = () => {
                     <div className={`${loaded ? "opacity-100" : "opacity-0"} absolute inset-0 rounded-2xl ${darkMode ? "neon-spotlight-dark" : "neon-spotlight-light"}`}></div>
 
                     {/* Image */}
-                    <img
-                      src={pic}
-                      alt=""
-                      ref={imgRef}
-                      onLoad={() => setLoaded(true)}
-                      fetchPriority='high'
-                      loading='eager'
-                      className={`relative z-10 h-[28vh] sm:h-[29vh] w-full rounded-xl object-contain
+                    {
+                      loaded ? (
+                        <img
+                          src={pic}
+                          alt=""
+                          ref={imgRef}
+                          onLoad={() => setLoaded(true)}
+                          className={`relative z-10 h-[28vh] sm:h-[29vh] w-full rounded-xl object-contain
                       transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
-                    />
+                        />
+                      ) : (
+                        <div className={`h-[28vh] sm:h-[29vh] w-[36vw] sm:w-[28vw] text-xl sm:text-2xl ${darkMode ? "text-blue-600" : "text-[#922206fd]"} animate-pulse flex items-center justify-center`}>
+                          Loading...
+                        </div>
+                      )
+                    }
 
                     {!loaded && (
                       <div className={`absolute inset-0 animate-pulse  ${darkMode ? "background-image" : "background-image-light"} rounded-xl`} />
