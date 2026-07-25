@@ -86,8 +86,12 @@ const Home = () => {
                 </div>
 
                 <div className={`text-sm mt-1 md:mt-5 lg:w-[60%] ${darkMode ? "text-[#747573]" : "text-[#332301]"} `}>
-                  <p className=''>
-                    A goal-oriented software developer with experience in building applications using modern technologies like <span className={`${darkMode ? "text-[#59b806]" : "text-[#a80202]"} font-semibold`}>React, MongoDB, Express.js, Node.js, and more</span>. I am seeking to leverage my technical skills to deliver exceptional user experiences.
+                  <p>
+                    Passionate Full Stack Developer specializing in{" "}
+                    <span className={`${darkMode ? "text-[#59b806]" : "text-[#a80202]"} font-semibold`}>
+                      React, Node.js, Express.js, MongoDB, JavaScript, and Tailwind CSS
+                    </span>
+                    . I build responsive, scalable, and user-centric web applications with a strong focus on backend development, REST APIs, authentication, real-time features, and clean architecture. I enjoy solving complex problems, learning new technologies, and creating impactful software.
                   </p>
                 </div>
 
@@ -114,7 +118,7 @@ const Home = () => {
             <div className='grid grid-rows-[120px_1fr_1fr] sm:grid-rows-[160px_1fr_1fr] px-10 py-5 mt-4 sm:px-[100px] sm:py-10'>
 
               {/* Tittle and text section */}
-              <div className={`leading-[1.01] text-4xl sm:text-[46px] ${darkMode ? "text-primary-text" : "text-primary-light-text"}`}>
+              <div className={`leading-[1.01] text-4xl sm:text-[46px] mt-0.5 ${darkMode ? "text-primary-text" : "text-primary-light-text"}`}>
 
                 <div>
                   <span className={`text-[45px] sm:text-[60px] ${darkMode ? "first-dark-mode" : "first-light-mode"} font-semibold`}>H</span>
@@ -257,11 +261,15 @@ const Home = () => {
               </div>
 
               {/* little bit about and download cv */}
-              <div className='flex flex-col sm:gap-10 gap-6 mt-0 sm:mt-4'>
+              <div className='flex flex-col sm:gap-10 gap-4 sm:mt-4'>
 
                 <div className={`text-sm sm:text-lg mt-1 ${darkMode ? "text-[#747573]" : "text-[#332301]"} pl-1 pr-5`}>
-                  <p className=''>
-                    A goal-oriented software developer with experience in building applications using modern technologies like <span className={`${darkMode ? "text-[#59b806]" : "text-[#a80202]"} font-semibold`}>React, MongoDB, Express.js, Node.js, and more</span>. I am seeking to leverage my technical skills to deliver exceptional user experiences.
+                  <p>
+                    Full Stack Developer with a passion for building{" "}
+                    <span className={`${darkMode ? "text-[#59b806]" : "text-[#a80202]"} font-semibold`}>
+                      modern, scalable, and responsive web applications
+                    </span>
+                    . Always learning, improving, and creating solutions that deliver great user experiences.
                   </p>
                 </div>
 
@@ -274,7 +282,7 @@ const Home = () => {
                   <p className='text-base sm:text-lg'>Download Resume</p>
                 </div>
 
-                <div className='flex items-center justify-center sm:my-3 text-[#5e5b5b] animate-float'>
+                <div className='flex items-center justify-center my-10 sm:my-3 text-[#5e5b5b] animate-float'>
                   <LuChevronsDown size={32} className='hidden sm:block' />
                   <LuChevronsDown size={22} className='block sm:hidden' />
                 </div>
