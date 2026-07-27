@@ -1,22 +1,24 @@
-import React, { useEffect, useRef, useState, lazy } from 'react'
-import pic from "../assets/profile_black_1.jpg"
+import React, { useEffect, useState, lazy, Suspense } from 'react'
 import { IoMdDownload } from "react-icons/io";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { Link } from 'react-router-dom';
 import { LuChevronsDown } from "react-icons/lu";
-import Education from "./Education"
-import Projects from './Projects';
-
-import b from "../assets/leave.png"
-import Skills from './Skills';
-import Contact from './Contact';
 import { useSelector } from 'react-redux'
 import { useGlobalContext } from '../provider/GlobalProvider';
+
+import pic from "../assets/profile_black_1.jpg"
+import b from "../assets/leave.png"
 import resume from "../assets/Perfect_resume.pdf"
 import Footer from '../components/Footer';
-import Internship from './Internship';
-import SmallLoader from '../utils/SmallLoader';
+import Loader from '../utils/Loader';
+
+const Education = lazy(() => import("./Education"))
+const Internship = lazy(() => import("./Internship"))
+const Projects = lazy(() => import("./Projects"))
+const Skills = lazy(() => import("./Skills"))
+const Contact = lazy(() => import("./Contact"))
+
 
 const downloadFileAtURL = (url) => {
 
@@ -37,13 +39,6 @@ const Home = () => {
   const { darkMode } = useGlobalContext();
 
   const [loaded, setLoaded] = useState(false)
-  const imgRef = useRef(null);
-
-  useEffect(() => {
-    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) {
-      setLoaded(true);
-    }
-  }, []);
 
   useEffect(() => {
     const img = new Image();
@@ -71,7 +66,7 @@ const Home = () => {
 
           {/* Animated leave png */}
           <div className='absolute overflow-hidden -top-[150px] lg:-top-[140px] -right-[30px] lg:right-7 rotate-[180deg] lg:rotate-[175deg] scale-[125%] sm:scale-[140%]  object-scale-down select-none sm:block hidden'>
-            <img src={b} alt="" className="h-[500px] object-cover z-0 left-right-animation overflow-hidden" />
+            <img src={b} alt="" loading='lazy' className="h-[500px] object-cover z-0 left-right-animation overflow-hidden" />
           </div>
 
           {/* for window */}
@@ -176,8 +171,6 @@ const Home = () => {
                         <img
                           src={pic}
                           alt=""
-                          ref={imgRef}
-                          onLoad={() => setLoaded(true)}
                           className={`relative z-10 h-[28vh] sm:h-[29vh] w-full rounded-xl object-contain
                       transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
                         />
@@ -326,13 +319,26 @@ const Home = () => {
 
       </div>
 
-      <Education />
-      <Internship />
-      <Projects />
+      <Suspense fallback={<Loader />}>
+        <Education />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <Internship />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <Projects />
+      </Suspense>
 
       <div className=''>
-        <Skills />
-        <Contact />
+        <Suspense fallback={<Loader />}>
+          <Skills />
+        </Suspense>
+
+        <Suspense fallback={<Loader />}>
+          <Contact />
+        </Suspense>
       </div>
 
       <Footer />

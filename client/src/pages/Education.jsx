@@ -82,7 +82,7 @@ const Education = () => {
         </div>
 
         <div className='lg:block hidden'>
-          <img src={eduPng} alt="" className='w-[360px]  mt-[50px] opacity-[70%]' />
+          <img src={eduPng} alt="" loading='lazy' className='w-[360px]  mt-[50px] opacity-[70%]' />
         </div>
 
       </div>

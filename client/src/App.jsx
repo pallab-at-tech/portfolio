@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Suspense } from 'react'
 import GlobalProvider, { useGlobalContext } from './provider/GlobalProvider'
 import { Outlet } from 'react-router-dom'
 import Header from './components/Header';
@@ -8,6 +8,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import fetchUserDetails from './utils/FetchUserDetails';
 import { setUserDetails } from './store/userSlice';
+import Loader from './utils/Loader';
 
 const App = () => {
 
@@ -33,7 +34,9 @@ const App = () => {
         allOf?.name ? (
 
           <>
-            <Outlet />
+            <Suspense fallback={<Loader/>}>
+              <Outlet />
+            </Suspense>
           </>
 
         ) : (

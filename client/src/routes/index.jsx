@@ -1,3 +1,4 @@
+import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import App from "../App"
 import Others from "../pages/Others"
@@ -7,15 +8,19 @@ import SignInPage from "../pages/SignInPage"
 import ForgotPassword from '../pages/ForgotPassword'
 import OtpVerification from '../pages/OtpVerification'
 import ResetPassword from '../pages/ResetPassword'
-import Dashboard from '../layout/Dashboard'
-import Profile from '../pages/Profile'
-import ProjectDetailsEdit from '../layout/Admin/ProjectDetailsEdit'
-import EducationDetailsEdit from '../layout/Admin/EducationDetailsEdit'
-import OthersDetailsEdit from '../layout/Admin/OthersDetailsEdit'
-import AllOfDetailsEdit from "../layout/Admin/AllOfDetailsEdit"
+
+const Dashboard = lazy(() => import("../layout/Dashboard"))
+const Profile = lazy(() => import("../pages/Profile"))
+const ProjectDetailsEdit = lazy(() => import("../layout/Admin/ProjectDetailsEdit"))
+const EducationDetailsEdit = lazy(() => import("../layout/Admin/EducationDetailsEdit"))
+const OthersDetailsEdit = lazy(() => import("../layout/Admin/OthersDetailsEdit"))
+const AllOfDetailsEdit = lazy(() => import("../layout/Admin/AllOfDetailsEdit"))
+const InternshipDetailsEdit = lazy(() => import("../layout/Admin/InternshipDetailsEdit"))
+
 import OtherCertificate from '../pages/OtherCertificate'
 import AdminPermission from '../features/AdminPermission'
-import InternshipDetailsEdit from '../layout/Admin/InternshipDetailsEdit'
+import PageNotFound from '../pages/PageNotFound'
+import ErrorBoundary from '../pages/ErrorBoundary'
 
 const router = createBrowserRouter([
     {
@@ -25,11 +30,12 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <Home />
+                element: <Home />,
+                errorElement: <ErrorBoundary />
             },
             {
                 path: "/SignUp",
-                element: <SignUpPage />
+                element: <SignUpPage />,
             },
             {
                 path: "/SignIn",
@@ -50,7 +56,7 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/:user",
                 element: <Dashboard />,
-
+                errorElement: <ErrorBoundary />,
                 children: [
                     {
                         index: true,
@@ -84,13 +90,17 @@ const router = createBrowserRouter([
     {
         path: "/Others",
         element: <Others />,
+        errorElement: <ErrorBoundary />
     },
     {
         path: "/Others/:other_ceritificate",
-        element: <OtherCertificate />
+        element: <OtherCertificate />,
+        errorElement: <ErrorBoundary />
+    },
+    {
+        path: "*",
+        element: <PageNotFound />
     }
-
-
 ])
 
 export default router

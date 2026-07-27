@@ -13,7 +13,6 @@ import TickMark from '../../utils/TickMark'
 
 const EducationDetailsEdit = () => {
 
-
     const alldata = useSelector(state => state.allofdetails)
 
     const [data, setData] = useState({

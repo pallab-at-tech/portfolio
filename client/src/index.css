@@ -714,10 +714,31 @@ body {
   transition-timing-function: linear;
 }
 
-.intern_light_shadow:hover{
+.intern_light_shadow:hover {
   box-shadow: inset 0px 2px 20px 8px rgb(248 220 161 / 26%)
 }
 
 .image_pos {
   float: left;
+}
+
+
+.fallBackLoader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: sans-serif;
+  /* font-size: 30px; */
+  padding-bottom: 8px;
+  background: linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat;
+  animation: fallBackLoader12 2s linear infinite;
+}
+
+.fallBackLoader:before {
+  content: "Loading..."
+}
+
+@keyframes fallBackLoader12 {
+  to {
+    background-size: 100% 3px
+  }
 }
